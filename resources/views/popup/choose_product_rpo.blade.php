@@ -47,12 +47,7 @@
 					</select>
 				</th>
 				<th style="width:27%">
-					<select name="input-filter[company_id]" id="company_id" data-type="select2">
-						<option value="">&nbsp;</option>
-						@foreach($distributes as $company)
-							<option value="{{$company['id']}}" {{$arr_filter['company_id']==$company['id']?'selected':''}}>{{$company['name']}}</option>
-						@endforeach
-					</select>
+					
 				</th>
 				<th style="width:8%">
 					<select name="input-filter[oum_id]" id="oum_id">
@@ -80,7 +75,7 @@
 				<td>{{$product['specification']}}</td>
 				<?php
 					$tonkho = floor($product['in_stock']/$product['specification']);
-					$view_tonkho = $tonkho.' '.$product['oum_name'];
+					$view_tonkho = $tonkho.' '.$product['oum']['name'];
 					if($product['in_stock']%$product['specification'] && $product['specification']!=1){
 						$sodu = $product['in_stock']%$product['specification'];
 						$view_tonkho .= ' + '.$sodu.' '.'cái';
@@ -131,7 +126,7 @@
 			$("#input-sort").val( JSON.stringify(data_sort) );
 			data = $("#form-list").serialize();
 			$.ajax({
-				url : '{{URL}}/products/list-popup-so',
+				url : '{{URL}}/products/list-popup-rpo',
 				type : 'POST',
 				data : data,
 				success : function(html){
@@ -148,7 +143,7 @@
 		$('.table-list-view thead tr:nth-child(2) th:not(.no-sort)').on('change',function(){
 			data = $("#form-list").serialize();
 			$.ajax({
-				url : '{{URL}}/products/list-popup-so',
+				url : '{{URL}}/products/list-popup-rpo',
 				type : 'POST',
 				data : data,
 				success : function(html){
@@ -178,7 +173,7 @@
 			})
 			if($("#check_all").is(':checked')){
 				$.ajax({
-					url : '{{URL}}/saleorders/add-product-session',
+					url : '{{URL}}/returnpurchaseorders/add-product-session',
 					type : 'POST',
 					data:{
 						id : arr_check
@@ -190,7 +185,7 @@
 				});
 			}else{
 				$.ajax({
-					url : '{{URL}}/saleorders/remove-product-session',
+					url : '{{URL}}/returnpurchaseorders/remove-product-session',
 					type : 'POST',
 					data:{
 						id : arr_check
@@ -232,7 +227,7 @@
 			$(".chk_product").prop('disabled',true);
 			if($(this).is(":checked")){
 				$.ajax({
-					url : '{{URL}}/saleorders/add-product-session',
+					url : '{{URL}}/returnpurchaseorders/add-product-session',
 					type : 'POST',
 					data:{
 						id : [id]
@@ -244,7 +239,7 @@
 				});
 			}else{
 				$.ajax({
-					url : '{{URL}}/saleorders/remove-product-session',
+					url : '{{URL}}/returnpurchaseorders/remove-product-session',
 					type : 'POST',
 					data:{
 						id : [id]

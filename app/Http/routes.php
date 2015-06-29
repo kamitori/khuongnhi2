@@ -61,5 +61,8 @@ Route::controllers([
 	   'purchaseorders' => 'PurchaseordersController',
 		]);
 Route::controllers([
+	   'returnpurchaseorders' => 'ReturnPurchaseordersController',
+		]);
+Route::controllers([
 	   'saleorders' => 'SaleordersController',
 		]);
