@@ -507,7 +507,7 @@ class ProductsController extends Controller {
 		$oums = Oum::get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
-		$list_product = Product::select('products.name',
+		$list_product = MProduct::select('products.name',
 		                                'products.sku',
 		                                'm_products.id',
 		                                'm_products.oum_id',
@@ -516,10 +516,8 @@ class ProductsController extends Controller {
 		                                'companies.name as company_name',
 		                                'm_products.module_id'
 		                                )
-										->with('oum')->getMinSellPrice()
-										->leftJoin('m_products',function($join){
-											$join->on('products.id','=','m_products.product_id')->where('m_products.module_type','=','App\Purchaseorder');
-										})
+										->with('oum')
+										->leftJoin('products','products.id','=','m_products.product_id')
 										->leftJoin('purchaseorders',function($join){
 											$join->on('purchaseorders.id','=','m_products.module_id')
 											->where('purchaseorders.status','=',1);
