@@ -195,13 +195,14 @@ class ReturnPurchaseordersController extends Controller {
 		$returnpurchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($returnpurchaseorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
 							->where('module_id', '=', $returnpurchaseorder->id)
 							->where('module_type', '=', 'App\ReturnPurchaseorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
 				if($product_stock->in_stock >= 0){
 					$product_stock->save();
@@ -218,7 +219,8 @@ class ReturnPurchaseordersController extends Controller {
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
 				$product_stock->save();
 			}
@@ -368,6 +370,7 @@ class ReturnPurchaseordersController extends Controller {
 				$product = MProduct::find($product_id);
 				$mproduct = new MProduct;
 				$mproduct->product_id	=	$product->product_id;
+				$mproduct->m_product_id	=	$product->id;
 				$mproduct->module_id	= 	$module_id;
 				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
@@ -422,12 +425,13 @@ class ReturnPurchaseordersController extends Controller {
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
+			$mproduct_po = Mproduct::find($mproduct->m_product_id);
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->origin_price =  $request->has('origin_price')?$request->input('origin_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
-			$product_stock = ProductStock::where('m_product_id','=',$mproduct->id)->first();
+			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity);
 			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
 			// if($product_stock->in_stock >=0){
