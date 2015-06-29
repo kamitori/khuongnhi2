@@ -22,7 +22,7 @@ class SaleordersController extends Controller {
 	* @param  int  $id
 	* @return Response
 	*/
-	
+
 	public function getIndex(Request $request){
 		self::anyEntry($request);
 	}
@@ -46,7 +46,7 @@ class SaleordersController extends Controller {
 			$address->save();
 			$saleorder->address_id = $address->id;
 			$saleorder->save();
-		}	
+		}
 		return redirect('saleorders');
 	}
 
@@ -126,8 +126,8 @@ class SaleordersController extends Controller {
 		foreach ($arr_product as $key => $value) {
 			Session::put('product_of_so'.session('current_saleorder').".".$value , $value);
 		}
-		
-		$view_list_product = self::getListProduct();
+
+		$view_list_product = array();
 
 
 		// pr($list_product);die;
@@ -169,7 +169,7 @@ class SaleordersController extends Controller {
 
 		if($saleorder['address_id']==0){
 			$address = new Address;
-			
+
 		}else{
 			$address = Address::find($address_id);
 		}
@@ -249,8 +249,8 @@ class SaleordersController extends Controller {
 		$list_saleorder = Saleorder::select('saleorders.*','sumamount.*')->with('company')
 					->leftJoin(
 							DB::raw(' (
-									select module_id, module_type,sum(amount) as sum_amount 
-									from m_products where module_type = "App\\\\Saleorder" group by  module_id 
+									select module_id, module_type,sum(amount) as sum_amount
+									from m_products where module_type = "App\\\\Saleorder" group by  module_id
 								    ) as sumamount'), function($join){
 								$join->on('saleorders.id', '=', 'module_id');
 							}
