@@ -3,8 +3,8 @@
 	$sum_amount_interest = 0;
 ?>
 @foreach ($list_product as $product)
-<tr data-id="{{$product['m_id']}}" id="row_product_{{$product['m_id']}}">
-	<input type="hidden" id="id" value="{{$product['m_id']}}">
+<tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">
+	<input type="hidden" id="id" value="{{$product['id']}}">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<td>{{$product['sku']}}</td>
 	<td>{{$product['name']}}</td>
@@ -18,15 +18,6 @@
 		</select>
 	</td>
 	<td>{{$product['specification']}}</td>
-	<td>
-		<select class="sell_price" name="sell_price" id="sell_price">
-			@foreach($product['sellprices'] as $sellprice)
-			<option data-type="currency" value="{{$sellprice['price']}}"  {{$product['sell_price']==$sellprice['price']?'selected':''}}>
-				{{$sellprice['price']}}
-			</option>
-			@endforeach
-		</select>
-	</td>
 	<td><input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity"></td>
 	<td data-type="currency" class="amount">{{$product['amount']}}</td>
 	<td data-type="currency" class="amount">{{$product['amount_interest']}}</td>
@@ -56,7 +47,7 @@
 			$(this).text(value);
 		})
 
-		
+
 		$("#list_product select, #list_product input").on('change',function(){
 			var id = $(this).parent().parent().attr('data-id');
 			var row = $("#row_product_"+id);
@@ -80,7 +71,7 @@
 						row.find("#sell_price").val(data['sell_price']);
 						row.find("#quantity").val(data['quantity']);
 					}
-					
+
 				}
 			})
 		})

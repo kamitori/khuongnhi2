@@ -170,12 +170,11 @@
 								<th style="width:13%">Đơn giá</th>
 								<th style="width:7%">Số lượng</th>
 								<th style="width:13%" class="right">Thành tiền</th>
-								<th style="width:13%" class="right">Lãi</th>
 								<th style="width:3%">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody id="list_product">
-							<?php //echo $view_list_product; ?>
+							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
 				</div>
