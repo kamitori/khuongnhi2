@@ -7,7 +7,7 @@
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
 	</div>
 	<div class="buttons pull-right">
-		
+
 	</div>
 </div>
 <!-- Entry -->
@@ -34,7 +34,7 @@
 								<div class="controls">
 									<select name="company_id" id="company_id" data-type="select2">
 										@foreach($distributes as $distribute)
-										<option value="{{$distribute['id']}}" 
+										<option value="{{$distribute['id']}}"
 									{{isset($saleorder['company_id']) && ($saleorder['company_id'] == $distribute['id'])?'selected':''}}
 										 data-company="{{json_encode($distribute)}}">
 											{{$distribute['name']}}
@@ -93,7 +93,7 @@
 									<input type="text" name="town_city" value="{{isset($address['town_city'])?$address['town_city']:''}}" >
 								</div>
 							</div>
-							
+
 						</div>
 						<div class="span4">
 							<div class="control-group">
@@ -108,7 +108,7 @@
 								<div class="controls">
 									<select name="country_id" id="country_id">
 										@foreach($countries as $country)
-										<option value="{{$country['id']}}" data-province='{{json_encode($country['provinces'])}}' 
+										<option value="{{$country['id']}}" data-province='{{json_encode($country['provinces'])}}'
 										{{isset($address['country_id']) && ($address['country_id']==$country['id'])?'selected':''}}>
 											{{$country['name']}}
 										</option>
@@ -136,7 +136,7 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 <!-- End Entry -->
 
 <!-- Sub Entry -->
@@ -175,7 +175,7 @@
 							</tr>
 						</thead>
 						<tbody id="list_product">
-							<?php echo $view_list_product; ?>
+							<?php //echo $view_list_product; ?>
 						</tbody>
 					</table>
 				</div>
@@ -197,7 +197,7 @@
 			<!-- dialog body -->
 			<div class="modal-body">
 				<div class=" block row" id="list_product_popup">
-					
+
 				</div>
 			</div>
 			<!-- dialog buttons -->
@@ -242,7 +242,7 @@
 				})
 				$("#province_id").html(options).select2({width:'84%'});
 			})
-			
+
 
 			$("#company_id").on("change",function(e){
 				var company = $("#company_id option[value="+$(this).val()+"]").attr('data-company');
@@ -284,14 +284,13 @@
 				});
 			});
 
-			
+
 
 		}) // End Jquery
 
 		function popup_product(){
-			
 			$.ajax({
-				url : '{{URL}}/products/list-popup/so',
+				url : '{{URL}}/products/list-popup-so',
 				type : 'GET',
 				success : function(html){
 					$("#list_product_popup").html(html);
@@ -324,7 +323,7 @@
 								$(window).trigger('resize');
 							}
 						})
-						
+
 					}else{
 						toastr['error'](data.message);
 					}

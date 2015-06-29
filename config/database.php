@@ -75,7 +75,7 @@ return [
 			'schema'   => 'public',
 		],
 
-		'khuongnhi3.com' => [
+		'khuongnhi2.com' => [
 		            'driver'    => 'mysql',
 		            'host'      => DB_HOST,
 		            'database'  => DB_NAME,

@@ -72,7 +72,7 @@ class ProductsController extends Controller {
 						->get()->toArray();
 		}
 		$view_list_po = self::getListPo();
-		
+
 		$this->layout->content=view('product.entry', ['distributes'=>$distributes,
 								'oums'=>$oums,
 								'producttypes'=>$producttypes,
@@ -116,7 +116,7 @@ class ProductsController extends Controller {
 				Session::forget('current_product');
 				$arr_return['status'] = 'success';
 			}
-			
+
 
 		}else{
 			$arr_return['message'] = 'Không tìm thấy sản phẩm';
@@ -144,7 +144,7 @@ class ProductsController extends Controller {
 			$product->save();
 			session(['current_product' => $product->id]);
 		}
-		
+
 		if($product->status == 0){
 			$product->name = $request->has('name') ? $request->input('name') : '';
 			$product->sku = $request->has('sku') ? $request->input('sku') : '';
@@ -273,7 +273,7 @@ class ProductsController extends Controller {
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
 
-		
+
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
 				$list_product = $list_product->orderBy('companies.name',$value);
@@ -288,7 +288,7 @@ class ProductsController extends Controller {
 			}
 		}
 		$list_product = $list_product->orderBy('products.id','asc');
-		
+
 			foreach ($arr_filter as $key => $value) {
 				if($value!=''){
 					if($arr_filter['sku']!=''){
@@ -304,7 +304,7 @@ class ProductsController extends Controller {
 					}else{
 						$list_product->where($key,$value);
 					}
-					
+
 				}
 			}
 		if(!isset($arr_filter['status'])){
@@ -377,7 +377,7 @@ class ProductsController extends Controller {
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
 		$list_product = Product::select('products.*')->with('type');
-		
+
 		foreach ($arr_sort as $key => $value) {
 			if($key=='id'){
 				$list_product = $list_product->orderBy('products.id',$value);
@@ -388,7 +388,7 @@ class ProductsController extends Controller {
 		if(count($arr_sort)==0){
 			$list_product = $list_product->orderBy('products.id','asc');
 		}
-		
+
 		foreach ($arr_filter as $key => $value) {
 			if($value!=''){
 				if($arr_filter['sku']!=''){
@@ -400,7 +400,7 @@ class ProductsController extends Controller {
 				}else{
 					$list_product->where($key,$value);
 				}
-				
+
 			}
 		}
 		if(!isset($arr_filter['status'])){
@@ -476,5 +476,87 @@ class ProductsController extends Controller {
 		}
 		return $arr_return;
 	}
+
+	public function anyListPopupSo(Request $request)
+	{
+		if($request->has('input-sort')){
+			$arr_sort = $request->input('input-sort');
+			$arr_sort = (array)json_decode($arr_sort);
+		}else{
+			$arr_sort = array();
+		}
+
+		if($request->has('input-filter')){
+			$arr_filter = $request->input('input-filter');
+		}else{
+			$arr_filter =[
+						'sku' => '',
+						'name' => '',
+						'company_id' => '',
+						'oum_id' => '',
+						];
+		}
+		session(['sort_filter_product.arr_sort' => $arr_sort]);
+		session(['sort_filter_product.arr_filter'=> $arr_filter]);
+
+		$distributes = array();
+		$oums = array();
+		$list_sku = array();
+
+		$distributes = Company::getDistributeList()->get()->toArray();
+		$oums = Oum::get()->toArray();
+		$list_all_product = Product::select('sku','name')->get()->toArray();
+
+		$list_product = Product::select('products.name',
+		                                'products.sku',
+		                                'm_products.id',
+		                                'm_products.oum_id',
+		                                'm_products.specification',
+		                                'product_stocks.in_stock',
+		                                'companies.name as company_name',
+		                                'm_products.module_id'
+		                                )
+										->with('oum')->getMinSellPrice()
+										->leftJoin('m_products',function($join){
+											$join->on('products.id','=','m_products.product_id')->where('m_products.module_type','=','App\Purchaseorder');
+										})
+										->leftJoin('purchaseorders',function($join){
+											$join->on('purchaseorders.id','=','m_products.module_id')
+											->where('purchaseorders.status','=',1);
+										})
+										->leftJoin('companies','companies.id','=','m_products.company_id')
+										->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
+		if(count($arr_sort)==0){
+			$list_product = $list_product->orderBy('products.id','asc');
+		}
+
+			foreach ($arr_filter as $key => $value) {
+				if($value!=''){
+					if($arr_filter['sku']!=''){
+						$list_product->where('products.sku',$arr_filter['sku']);
+					}elseif($arr_filter['name']!=''){
+						$list_product->where('products.name',$arr_filter['name']);
+					}elseif($key == 'company_id'){
+						$list_product->where('m_products.company_id',$arr_filter['company_id']);
+					}elseif($key == 'oum_id'){
+						$list_product->where('products.oum_id',$arr_filter['oum_id']);
+					}else{
+						$list_product->where($key,$value);
+					}
+
+				}
+			}
+		$list_product = $list_product->paginate(20);
+
+		return view('popup.choose_product_so', [
+								'distributes'		=>$distributes,
+								'oums'			=>$oums,
+								'list_product'		=> $list_product,
+								'list_all_product'	=>$list_all_product,
+								'arr_sort' 		=> $arr_sort,
+								'arr_filter' 		=> $arr_filter,
+							        ]);
+	}
+
 
 }

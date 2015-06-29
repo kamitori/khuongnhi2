@@ -1,11 +1,12 @@
 <div class="heading-buttons main-left">
 	<div class="pagination pagination-small pull-right" style="margin: -15px 20px 5px 20px;" id="paginate_popup">
 		<?php echo $list_product->render(); ?>
-	</div>	
+	</div>
 </div>
-<?php 
-	$session_product = session('product_of_so'.session('current_saleorder'));
+<?php
+	$session_product = session('product_of_po'.session('current_purchaseorder'));
 ?>
+
 <form action="{{URL}}/products/list" method="POST" accept-charset="utf-8" id="form-list">
 	<input type="hidden" id="input-sort" name="input-sort">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -18,10 +19,10 @@
 				<th style="width: 4%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
 				<th style="width: 8%" data-column="sku" {{ isset($arr_sort['sku'])?'data-sort='.$arr_sort['sku']:'' }}>SKU</th>
 				<th style="width: 18%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
-				<th style="width: 17%" data-column="company_id" {{ isset($arr_sort['company_id'])?'data-sort='.$arr_sort['company_id']:'' }}>Nhà cung cấp</th>
-				<th style="width: 7%" data-column="oum_id" {{ isset($arr_sort['oum_id'])?'data-sort='.$arr_sort['oum_id']:'' }}>ĐV bán</th>
-				<th style="width: 7%" data-column="specification" {{ isset($arr_sort['specification'])?'data-sort='.$arr_sort['specification']:'' }}>Quy cách</th>
-				<th style="width: 5%" data-column="in_stock" {{ isset($arr_sort['in_stock'])?'data-sort='.$arr_sort['in_stock']:'' }}>SL kho</th>
+				<th>Nhà cung cấp</th>
+				<th>ĐVT</th>
+				<th>Quy cách</th>
+				<th>Số lượng</th>
 			</tr>
 			<tr class="sort">
 				<th style="width: 3%" class="center no-sort">
@@ -45,25 +46,38 @@
 						@endforeach
 					</select>
 				</th>
-				<th style="width:17%">
-					<select name="input-filter[company_id]" id="company_id" data-type="select2">
+				<th style="width:18%">
+					<select name="input-filter[name]" id="name" data-type="select2">
 						<option value="">&nbsp;</option>
-						@foreach($distributes as $company)
-							<option value="{{$company['id']}}" {{$arr_filter['company_id']==$company['id']?'selected':''}}>{{$company['name']}}</option>
+						@foreach($list_all_product as $name)
+							<option value="{{$name['name']}}" {{$arr_filter['name']==$name['name']?'selected':''}}>{{$name['name']}}</option>
 						@endforeach
 					</select>
 				</th>
-				<th style="width: 7%">
-					<select name="input-filter[oum_id]" id="oum_id">
+				<th style="width:18%">
+					<select name="input-filter[name]" id="name" data-type="select2">
 						<option value="">&nbsp;</option>
-						@foreach($oums as $oum)
-							<option value="{{$oum['id']}}" {{$arr_filter['oum_id']==$oum['id']?'selected':''}}>{{$oum['name']}}</option>
+						@foreach($list_all_product as $name)
+							<option value="{{$name['name']}}" {{$arr_filter['name']==$name['name']?'selected':''}}>{{$name['name']}}</option>
 						@endforeach
 					</select>
 				</th>
-				<th style="width: 7%">
+				<th style="width:18%">
+					<select name="input-filter[name]" id="name" data-type="select2">
+						<option value="">&nbsp;</option>
+						@foreach($list_all_product as $name)
+							<option value="{{$name['name']}}" {{$arr_filter['name']==$name['name']?'selected':''}}>{{$name['name']}}</option>
+						@endforeach
+					</select>
 				</th>
-				<th></th>
+				<th style="width:18%">
+					<select name="input-filter[name]" id="name" data-type="select2">
+						<option value="">&nbsp;</option>
+						@foreach($list_all_product as $name)
+							<option value="{{$name['name']}}" {{$arr_filter['name']==$name['name']?'selected':''}}>{{$name['name']}}</option>
+						@endforeach
+					</select>
+				</th>
 			</tr>
 		</thead>
 		<tbody style="position: relative !important;">
@@ -73,7 +87,7 @@
 				<td>{{($product['id'])}}</td>
 				<td>{{$product['sku']}}</td>
 				<td>{{$product['name']}}</td>
-				<td>{{$product['company']['name']}}</td>
+				<td>{{$product['company_name']}}</td>
 				<td>{{$product['oum']['name']}}</td>
 				<td>{{$product['specification']}}</td>
 				<td>{{$product['in_stock']}}</td>
@@ -82,6 +96,14 @@
 		</tbody>
 	</table>
 </form>
+
+<div class="heading-buttons main-left">
+	<div class="pagination pagination-small pull-right" style="margin: -15px 20px 5px 20px;" id="paginate_popup">
+		<?php echo $list_product->render(); ?>
+	</div>
+</div>
+
+
 <style type="text/css" media="screen">
 	.table-primary{
 		overflow: hidden;
@@ -108,7 +130,7 @@
 				if($(element).attr('data-sort') != undefined){
 					data_sort[ $(element).attr('data-column') ] =  $(element).attr('data-sort');
 				}
-				
+
 			});
 			$("#input-sort").val( JSON.stringify(data_sort) );
 			data = $("#form-list").serialize();
@@ -130,7 +152,7 @@
 		$('.table-list-view thead tr:nth-child(2) th:not(.no-sort)').on('change',function(){
 			data = $("#form-list").serialize();
 			$.ajax({
-				url : '{{URL}}/products/list-popup/so',
+				url : '{{URL}}/products/list-popup/po',
 				type : 'POST',
 				data : data,
 				success : function(html){
