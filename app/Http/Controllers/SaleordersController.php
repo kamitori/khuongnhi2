@@ -127,7 +127,7 @@ class SaleordersController extends Controller {
 			Session::put('product_of_so'.session('current_saleorder').".".$value , $value);
 		}
 
-		$view_list_product = array();
+		$view_list_product = self::getListProduct();;
 
 
 		// pr($list_product);die;
@@ -329,9 +329,9 @@ class SaleordersController extends Controller {
 				$mproduct->module_id	= 	$module_id;
 				$mproduct->company_id	= 	$company_id;
 				$mproduct->module_type	=	$module_type;
-				$mproduct->specification	=	$product->specification;
-				$mproduct->oum_id		=	$product->oum_id;
-				$mproduct->origin_price	=	$product->origin_price;
+				//$mproduct->specification	=	$product->specification;
+				//$mproduct->oum_id		=	$product->oum_id;
+				//$mproduct->origin_price	=	$product->origin_price;
 				$mproduct->save();
 			}
 		}
@@ -349,7 +349,7 @@ class SaleordersController extends Controller {
 						->where('product_id','=',$product_id)->delete();
 				if($check){
 					$product = Product::find($id_product);
-					$product->in_stock =  $product->in_stock + $quantity;
+					$product->in_stock =  $product->in_stock - $quantity;
 					$product->save();
 				}
 			}
@@ -367,19 +367,37 @@ class SaleordersController extends Controller {
 		//Get value
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
 		$oums = Oum::get()->toArray();
+		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Saleorder')
+						->where('module_id','=',$id)
+						->leftJoin('products','products.id','=','m_products.product_id')
+						->get()->toArray();
+		$saleorder = Saleorder::select('status')->where('id','=',$id)->first()->toArray();
+		return view('saleorder.list-product',[	'distributes'=>$distributes,
+							'oums'=>$oums,
+							'list_product'=>$list_product,
+							'saleorder'=>$saleorder
+						]);
+	}
+
+	/*public function getListProduct(){
+		$id = session('current_saleorder');
+		//Init array
+		$distributes = array();
+		$oums = array();
+		$list_product = array();
+
+		//Get value
+		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
+		$oums = Oum::get()->toArray();
 		$arr_product = MProduct::where('module_type','=','App\Saleorder')
 						->where('module_id','=',$id)
 						->lists('product_id');
-		$list_product = Product::with('oum')->with('sellprices')
-						->withSO($id)
-						->whereIn('products.id',$arr_product)
-						->get()->toArray();
 
 		return view('saleorder.list-product',[	'distributes'=>$distributes,
 							'oums'=>$oums,
-							'list_product'=>$list_product
+							'list_product'=>$arr_product
 						]);
-	}
+	}*/
 
 	public function postUpdateMproduct(Request $request){
 		$arr_return= array('status'=>'error','amount'=>0);
