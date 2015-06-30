@@ -68,7 +68,7 @@ label.checkbox.inline .toggle {
 	top: -1px;
 }
 .toggle.btn { min-width: 30px; }
-.toggle-on.btn { padding-left:40px; }
+.toggle-on.btn { padding-right: 40px; width:auto !important;}
 .toggle-off.btn {   padding-right: 50%; }
 
 .toggle.btn-large { min-width: 40px; }

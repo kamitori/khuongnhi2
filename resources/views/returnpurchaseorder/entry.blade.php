@@ -176,7 +176,7 @@
 							<div class="control-group">
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
-									<input type="checkbox" name="status" {{isset($returnpurchaseorder['status']) && ($returnpurchaseorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="150">
+									<input type="checkbox" name="status" {{isset($returnpurchaseorder['status']) && ($returnpurchaseorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="140">
 								</div>
 							</div>
 						</div>
