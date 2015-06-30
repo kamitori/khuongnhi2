@@ -66,3 +66,6 @@ Route::controllers([
 Route::controllers([
 	   'saleorders' => 'SaleordersController',
 		]);
+Route::controllers([
+	   'returnsaleorders' => 'ReturnSaleordersController',
+		]);

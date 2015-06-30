@@ -14,7 +14,7 @@ class SellPricesTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
-		$count_mproduct = MProduct::count();
+		$count_mproduct = MProduct::where('module_type','=','App\Purchaseorder')->count();
         		foreach(range(1, $count_mproduct) as $index)
 		{
 			for($i=0; $i< $faker->numberBetween(3,6); $i++){

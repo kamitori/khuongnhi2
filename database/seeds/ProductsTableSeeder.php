@@ -29,17 +29,12 @@ class ProductsTableSeeder extends Seeder {
 			$in_stock = $faker->numberBetween(0,0);
 			$origin_price = $faker->numberBetween(10,500)*1000;
 			$invest = $in_stock*$origin_price*$specification;
-			$status = $faker->numberBetween(0,1);
-			$check_in_stock = $status;
+			$status = 1;
+			$check_in_stock = 0;
 			Product::create([
 				'sku'=>strtoupper($sku),
 				'name'=>$name,
-				// 'oum_id'=>$oum_id,
 				'product_type'=>$product_type,
-				// 'specification'=>$specification,
-				// 'in_stock'=>$in_stock,
-				// 'origin_price'=>$origin_price,
-				// 'invest'=>$invest,
 				'check_in_stock'=>$check_in_stock,
 				'status'=>$status
 			]);

@@ -19,39 +19,84 @@ class MProductsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 		$key=1;
+		$arr_mproduct_po = array();
         		foreach(range(1, 30) as $po)
 		{
-			foreach(range(3, 10) as $index){
+			foreach(range(3, 6) as $index){
 				$module_type = 'App\Purchaseorder';
 				$module_id = $po;
 				$product_id = $faker->numberBetween(1,50);
+				$m_product_id = 0;
 				$p_order= Purchaseorder::find($module_id);
 				$company_id = $p_order->company_id;
 				$oum_id = $faker->numberBetween(1,12);
 				$origin_price = $faker->numberBetween(10,300)*1000;
 				$specification  = $faker->numberBetween(1,20);
-				$quantity = $faker->numberBetween(2,20)*10;
+				$quantity = $faker->numberBetween(4,20)*10;
 				$invest = $origin_price * $quantity * $specification;
 
 				MProduct::create([
-							"module_type"		=>	$module_type,
+							"module_type"	=>	$module_type,
 							"module_id"		=>	$module_id,
 							"product_id"		=>	$product_id,
+							"m_product_id"	=>	$m_product_id,
 							"company_id"		=>	$company_id,
 							"oum_id"		=>	$oum_id,
 							"origin_price"		=>	$origin_price,
 							"specification"		=>	$specification,
 							"quantity"		=>	$quantity,
-							"invest"			=>	$invest,
+							"invest"		=>	$invest,
 						]);
 				
-					$product = new ProductStock;
+					$product_stock = new ProductStock;
 					if($p_order->status){
-						$product->in_stock = $quantity*$specification;
+						$product_stock->in_stock = $quantity*$specification;
 					}
-					$product->product_id = $product_id;
-					$product->m_product_id = $key;
+					$product_stock->product_id = $product_id;
+					$product_stock->m_product_id = $key;
+					$product_stock->save();
+					$product = Product::find($product_id);
+					$product->check_in_stock = 1;
 					$product->save();
+				$arr_mproduct_po[] = $key;
+				$key++;
+			}
+		}
+
+		foreach(range(1, 30) as $po)
+		{
+			foreach(range(3, 6) as $index){
+				$module_type = 'App\Saleorder';
+				$module_id = $po;
+				$product_id = $faker->numberBetween(1,50);
+				$m_product_id = $faker->randomElement($array = $arr_mproduct_po);
+				$p_order= Saleorder::find($module_id);
+				$company_id = $p_order->company_id;
+				$oum_id = $faker->numberBetween(1,12);
+				$sell_price = $faker->numberBetween(10,300)*1000*20/100;
+				$specification  = $faker->numberBetween(1,10);
+				$quantity = $faker->numberBetween(1,3)*10;
+				$amount = $sell_price * $quantity * $specification;
+
+				MProduct::create([
+							"module_type"	=>	$module_type,
+							"module_id"		=>	$module_id,
+							"product_id"		=>	$product_id,
+							"m_product_id"	=>	$m_product_id,
+							"company_id"		=>	$company_id,
+							"oum_id"		=>	$oum_id,
+							"sell_price"		=>	$sell_price,
+							"specification"		=>	$specification,
+							"quantity"		=>	$quantity,
+							"amount"		=>	$amount,
+						]);
+				
+					$product_stock = ProductStock::where('m_product_id','=',$m_product_id)->get()->first();
+					if($p_order->status){
+						$product_stock->in_stock -= $quantity*$specification;
+					}
+					$product_stock->save();
+				$arr_mproduct_so[] = $key;
 				$key++;
 			}
 		}
