@@ -98,9 +98,7 @@
 							<div class="control-group">
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
-									<div class="toggle-button" data-togglebutton-width="221" data-togglebutton-label-enabled="Hoàn thành" data-togglebutton-label-disabled="Mới" data-togglebutton-height="25" data-togglebutton-font-lineheight="25px">
-										<input type="checkbox" name="status" {{$product['status']==1?'checked':''}}>
-									</div>
+									<input type="checkbox" name="status" {{$product['status']==1?'checked':''}} data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="150">
 								</div>
 							</div>
 

@@ -176,9 +176,7 @@
 							<div class="control-group">
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
-									<div class="toggle-button" data-togglebutton-width="221" data-togglebutton-label-enabled="Hoàn thành" data-togglebutton-label-disabled="Mới" data-togglebutton-height="25" data-togglebutton-font-lineheight="25px" >
-										<input type="checkbox" name="status" {{isset($purchaseorder['status']) && ($purchaseorder['status']==1)?'checked':''}}>
-									</div>
+									<input type="checkbox" name="status" {{isset($purchaseorder['status']) && ($purchaseorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="150">
 								</div>
 							</div>
 						</div>
@@ -338,7 +336,19 @@
 			})
 			$("#delete_purchaseorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
-					window.location = '{{URL}}/purchaseorders/delete';
+					$.ajax({
+						url : '{{URL}}/purchaseorders/delete',
+						type : 'GET',
+						success : function(data){
+							if(data.status == 'success'){
+								toastr['success']('Delete success');
+								window.location = '{{URL}}/purchaseorders';
+							}else{
+								toastr['success'](data.message);
+							}
+						}
+					})
+					
 				});
 			});
 

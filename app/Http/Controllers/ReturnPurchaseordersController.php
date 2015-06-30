@@ -53,14 +53,50 @@ class ReturnPurchaseordersController extends Controller {
 
 	public function anyDelete(Request $request)
 	{
-		$id_return_purchaseorder = session('current_returnpurchaseorder') !== null ? session('current_returnpurchaseorder') : 0;
-		if($id_return_purchaseorder){
-			$returnpurchaseorder = ReturnPurchaseorder::find($id_return_purchaseorder);
-			$returnpurchaseorder->delete();
-			Address::where('module_id','=',$id_return_purchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
+		$arr_return = array('status'=>'error');
+		$id_returnpurchaseorder = session('current_returnpurchaseorder') !== null ? session('current_returnpurchaseorder') : 0;
+		if($id_returnpurchaseorder){
+			$returnpurchaseorder = ReturnPurchaseorder::find($id_returnpurchaseorder);
+			if(!$returnpurchaseorder->status){
+				if($returnpurchaseorder->delete()){
+					Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_returnpurchaseorder)
+									->where('module_type','=','App\ReturnPurchaseorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+					$arr_return['status'] = 'success';
+				}else{
+					$arr_return['message'] = 'Delete fail !';
+				}
+			}else{
+				header('Content-Type: text/html; charset=utf-8');
+				echo  'Không thể xóa hóa đơn đã hoàn thành';die;
+			}
+
 			Session::forget('current_returnpurchaseorder');
+		}else{
+			$arr_return['message'] = 'Không tìm thấy hóa đơn';
 		}
-		return redirect('returnpurchaseorders');
+		return $arr_return;
+	}
+
+
+	public function getDeleteFromList(Request $request,$id=0)
+	{
+		$id_returnpurchaseorder = $id;
+		if($id_returnpurchaseorder){
+			$returnpurchaseorder = ReturnPurchaseorder::find($id_returnpurchaseorder);
+			if(!$returnpurchaseorder->status){
+				if($returnpurchaseorder->delete()){
+					Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_returnpurchaseorder)
+									->where('module_type','=','App\ReturnPurchaseorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+				}
+			}
+		}
+		return redirect('returnpurchaseorders/list');
 	}
 
 	public function anyEntry(Request $request,$id=null)
@@ -153,7 +189,8 @@ class ReturnPurchaseordersController extends Controller {
 	public function postUpdate(Request $request)
 	{
 		$arr_return = array(
-					'status' => 'error'
+					'status' => 'error',
+					'message'=>''
 				);
 		$time =date('H:i:s', time());
 		$id_return_purchaseorder = session('current_returnpurchaseorder') !== null ? session('current_returnpurchaseorder') : 0;
@@ -204,16 +241,13 @@ class ReturnPurchaseordersController extends Controller {
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
-				if($product_stock->in_stock >= 0){
-					$product_stock->save();
-				}else{
-
+				if($product_stock->in_stock < 0){
 					$check_save_in_stock = false;
-					$arr_return['message'] = 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào thấp hơn số lượng đã bán ra<br/>';
+					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào lớn hơn số lượng đã nhập<br/><br/>';
 				}
 			}
 		}else{
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
 							->where('module_id', '=', $returnpurchaseorder->id)
 							->where('module_type', '=', 'App\ReturnPurchaseorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
@@ -228,6 +262,14 @@ class ReturnPurchaseordersController extends Controller {
 
 		if($check_save_in_stock){
 			if($returnpurchaseorder->save()){
+				if($returnpurchaseorder->status){
+					foreach ($arr_mproduct as $key => $mproduct) {
+						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+						$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+						$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
+						$product_stock->save();
+					}
+				}
 				Mproduct::where('module_id', '=', $returnpurchaseorder->id)
 						->where('module_type', '=', 'App\ReturnPurchaseorder')
 						->update(['company_id' => $returnpurchaseorder->company_id ]);
@@ -457,12 +499,13 @@ class ReturnPurchaseordersController extends Controller {
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
-			$id_product = $mproduct->product_id;
+			$id_product = $mproduct->m_product_id;
 			$quantity = $mproduct->quantity;
+			$specification = $mproduct->specification;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
-				$product = Product::find($id_product);
-				$product->in_stock = $product->in_stock + $quantity;
+				$product = ProductStock::find($id_product);
+				$product->in_stock = $product->in_stock + $quantity*$specification;
 				$product->save();
 				$arr_return['status'] = 'success';
 			}else{

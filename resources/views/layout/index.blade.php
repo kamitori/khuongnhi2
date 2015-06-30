@@ -32,6 +32,8 @@
 	<link rel="stylesheet" href="{{URL}}/css/select2.css" />
 	<!-- Toastr -->
 	<link rel="stylesheet" href="{{URL}}/scripts/toastr/toastr.css" />
+	<!-- Toastr -->
+	<link rel="stylesheet" href="{{URL}}/scripts/togglebutton/css/bootstrap2-toggle.css" />
 	<!-- Theme -->
 	<link rel="stylesheet" href="{{URL}}/css/style.css" />
 	@yield('pageCSS')
@@ -138,6 +140,8 @@
 			<script src="{{URL}}/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
 			<script src="{{URL}}/scripts/select2.min.js" type="text/javascript"></script>
 			<script src="{{URL}}/scripts/toastr/toastr.js" type="text/javascript"></script>
+			<script src="{{URL}}/scripts/togglebutton/js/bootstrap2-toggle.min.js" type="text/javascript"></script>
+
 			<script>
 				toastr.options ={
 					"positionClass": "toast-top-center",

@@ -883,7 +883,9 @@ li.center,
 	padding: 0;
 }
 .col.main-left ul li.hasSubmenu2 ul li:last-child {
-	border: 0;
+	border-right: 0;
+	border-left: 0;
+	border-bottom: 0;
 }
 .col.main-left ul li.hasSubmenu2 ul li a {
 	height: auto;

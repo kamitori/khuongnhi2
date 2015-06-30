@@ -71,9 +71,11 @@
 			<td data-type="currency">{{$po['sum_invest']!=null?$po['sum_invest']:0}}</td>
 			<td>{{$po['status']==1?'Hoàn thành':'Mới'}}</td>
 			<td>
-				<a href="{{URL}}/pos/delete-from-list/{{$po['id']}}">
-					<i class="fa fa-remove" data-id="{{$po['id']}}"></i>
-				</a>
+				@if(!$po['status'])
+					<a href="{{URL}}/purchaseorders/delete-from-list/{{$po['id']}}">
+						<i class="fa fa-remove" data-id="{{$po['id']}}"></i>
+					</a>
+				@endif
 			</td>
 		</tr>
 		@endforeach

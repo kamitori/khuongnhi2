@@ -53,14 +53,54 @@ class PurchaseordersController extends Controller {
 
 	public function anyDelete(Request $request)
 	{
+		$arr_return = array('status'=>'error');
 		$id_purchaseorder = session('current_purchaseorder') !== null ? session('current_purchaseorder') : 0;
 		if($id_purchaseorder){
 			$purchaseorder = Purchaseorder::find($id_purchaseorder);
-			$purchaseorder->delete();
-			Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+			if(!$purchaseorder->status){
+				if($purchaseorder->delete()){
+					Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_purchaseorder)
+									->where('module_type','=','App\Purchaseorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+					SellPrice::whereIn('m_product_id',$list_mproduct)->delete();
+					ProductStock::whereIn('m_product_id',$list_mproduct)->delete();
+					$arr_return['status'] = 'success';
+				}else{
+					$arr_return['message'] = 'Delete fail !';
+				}
+			}else{
+				header('Content-Type: text/html; charset=utf-8');
+				echo  'Không thể xóa hóa đơn đã hoàn thành';die;
+			}
+
 			Session::forget('current_purchaseorder');
+		}else{
+			$arr_return['message'] = 'Không tìm thấy hóa đơn';
 		}
-		return redirect('purchaseorders');
+		return $arr_return;
+	}
+
+	public function getDeleteFromList(Request $request,$id=0)
+	{
+		$id_purchaseorder = $id;
+		if($id_purchaseorder){
+			$purchaseorder = Purchaseorder::find($id_purchaseorder);
+			if(!$purchaseorder->status){
+				if($purchaseorder->delete()){
+					Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_purchaseorder)
+									->where('module_type','=','App\Purchaseorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+					SellPrice::whereIn('m_product_id',$list_mproduct)->delete();
+					ProductStock::whereIn('m_product_id',$list_mproduct)->delete();
+
+				}
+			}
+		}
+		return redirect('purchaseorders/list');
 	}
 
 	public function anyEntry(Request $request,$id=null)
@@ -101,18 +141,24 @@ class PurchaseordersController extends Controller {
 		}else{
 			$address = Address::find($purchaseorder->address_id);
 		}
+		$address_province = isset($address->province_id)?$address->province_id:0;
 		$country_province = Province::addSelect('provinces.name as province_name')
-						->where('provinces.id','=',$address->province_id)
+						->where('provinces.id','=',$address_province)
 						->addSelect('countries.name as country_name')
 						->leftJoin('countries','countries.id','=','provinces.country_id')
-						->first()->toArray();
-		$address = $address->toArray();
-		$purchaseorder = $purchaseorder->toArray();
-		$purchaseorder['province_name'] = $country_province['province_name'];
-		$purchaseorder['country_name'] = $country_province['country_name'];
+						->first();
+		if($country_province){
+			$country_province->toArray();
+			$purchaseorder['province_name'] = $country_province['province_name'];
+			$purchaseorder['country_name'] = $country_province['country_name'];
+		}else{
+			$purchaseorder['province_name'] = '';
+			$purchaseorder['country_name'] = '';
+		}
 		// var_dump(DB::getQueryLog());
 		// pr($purchaseorder);die;
-
+		$address = $address->toArray();
+		$purchaseorder = $purchaseorder->toArray();
 		//Init array
 		$distributes = array();
 		$oums = array();
@@ -153,7 +199,8 @@ class PurchaseordersController extends Controller {
 	public function postUpdate(Request $request)
 	{
 		$arr_return = array(
-					'status' => 'error'
+					'status' => 'error',
+					'message'=>''
 				);
 		$time =date('H:i:s', time());
 		$id_purchaseorder = session('current_purchaseorder') !== null ? session('current_purchaseorder') : 0;
@@ -203,12 +250,9 @@ class PurchaseordersController extends Controller {
 			foreach ($arr_mproduct as $key => $mproduct) {
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
 				$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
-				if($product_stock->in_stock >= 0){
-					$product_stock->save();
-				}else{
-
+				if($product_stock->in_stock < 0){
 					$check_save_in_stock = false;
-					$arr_return['message'] = 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào thấp hơn số lượng đã bán ra<br/>';
+					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào thấp hơn số lượng đã bán ra<br/><br/>';
 				}
 			}
 		}else{
@@ -226,6 +270,13 @@ class PurchaseordersController extends Controller {
 
 		if($check_save_in_stock){
 			if($purchaseorder->save()){
+				if($purchaseorder->status){
+					foreach ($arr_mproduct as $key => $mproduct) {
+						$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+						$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
+						$product_stock->save();
+					}
+				}
 				Mproduct::where('module_id', '=', $purchaseorder->id)
 						->where('module_type', '=', 'App\Purchaseorder')
 						->update(['company_id' => $purchaseorder->company_id ]);

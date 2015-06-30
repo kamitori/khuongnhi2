@@ -17,7 +17,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-				<h4 id="product_name">&nbsp;Hóa trả hàng mua hàng số {{$returnpurchaseorder['id']}}</h4>
+				<h4 id="product_name">&nbsp;Hóa đơn trả hàng mua số {{$returnpurchaseorder['id']}}</h4>
 			</a>
 		</div>
 		<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -176,9 +176,7 @@
 							<div class="control-group">
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
-									<div class="toggle-button" data-togglebutton-width="221" data-togglebutton-label-enabled="Hoàn thành" data-togglebutton-label-disabled="Mới" data-togglebutton-height="25" data-togglebutton-font-lineheight="25px" >
-										<input type="checkbox" name="status" {{isset($returnpurchaseorder['status']) && ($returnpurchaseorder['status']==1)?'checked':''}}>
-									</div>
+									<input type="checkbox" name="status" {{isset($returnpurchaseorder['status']) && ($returnpurchaseorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="150">
 								</div>
 							</div>
 						</div>
@@ -331,6 +329,10 @@
 							if(name == 'status')
 								window.location.reload();
 						}else{
+							if(name == 'status'){
+								$("input[name=status]").attr('checked',false);
+								$("input[name=status]").trigger("change");
+							}
 							toastr['error'](data.message);
 						}
 					}
@@ -338,7 +340,18 @@
 			})
 			$("#delete_returnpurchaseorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
-					window.location = '{{URL}}/returnpurchaseorders/delete';
+					$.ajax({
+						url : '{{URL}}/returnpurchaseorders/delete',
+						type : 'GET',
+						success : function(data){
+							if(data.status == 'success'){
+								toastr['success']('Delete success');
+								window.location = '{{URL}}/returnpurchaseorders';
+							}else{
+								toastr['success'](data.message);
+							}
+						}
+					})
 				});
 			});
 

@@ -31,12 +31,8 @@
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
 		@endif
 	</td>
-	<td data-type="{{$returnpurchaseorder['status']?'currency':''}}">
-		@if($returnpurchaseorder['status'])
+	<td data-type="currency" id="origin_price">
 			{{$product['origin_price']}}
-		@else
-		<input type="text" id="origin_price" name="origin_price" value="{{$product['origin_price']}}" data-type="number">
-		@endif
 	</td>
 	<td>
 		@if($returnpurchaseorder['status'])
@@ -75,7 +71,7 @@
 			data = {};
 			data['id'] = row.find("#id").val();
 			data['oum_id'] = row.find("#oum_id").val();
-			origin_price = row.find("#origin_price").val();
+			origin_price = row.find("#origin_price").text();
 			while(origin_price.indexOf(',')>0){
 				origin_price = origin_price.replace(',','')
 			}
