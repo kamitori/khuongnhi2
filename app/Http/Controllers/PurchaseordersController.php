@@ -238,16 +238,19 @@ class PurchaseordersController extends Controller {
 		$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
 		$address->save();
 		$purchaseorder->address_id = $address->id;
+	}else{
+		$purchaseorder->sum_amount = 0;
 	}
 		$purchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($purchaseorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','invest')
 							->where('module_id', '=', $purchaseorder->id)
 							->where('module_type', '=', 'App\Purchaseorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
+				$purchaseorder->sum_amount = $purchaseorder->sum_amount + $mproduct['invest'];
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
 				$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
 				if($product_stock->in_stock < 0){

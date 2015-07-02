@@ -4135,6 +4135,21 @@ div[data-trigger=spinner] a[data-spin=down] i{
 	}
 }
 
+.left-list{
+	  background-color: #fff;
+}
+
+.left-list li{
+	cursor: pointer;
+	padding: 3px 15px;
+}
+
+.left-list li:hover,.left-list li.active{
+	background: #f7dbdb;
+	box-shadow: 0 0 0 1px #fff inset;
+	-webkit-box-shadow: 0 0 0 1px #fff inset;
+	-moz-box-shadow: 0 0 0 1px #fff inset;
+}
 
 /**
 	 * Nestable

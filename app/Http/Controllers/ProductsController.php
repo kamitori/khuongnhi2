@@ -231,6 +231,7 @@ class ProductsController extends Controller {
 		}else{
 			$arr_filter=[
 					'sku'=>'',
+					'like_name'=>'',
 					'name'=>'',
 					'company_id'=>'',
 					'oum_id'=>'',
@@ -280,7 +281,7 @@ class ProductsController extends Controller {
 			if($key=='company_id'){
 				$list_product = $list_product->orderBy('companies.name',$value);
 			}elseif($key=='oum_id'){
-				$list_product = $list_product->leftJoin('oums','oums.id','=','products.oum_id')->orderBy('oums.name',$value);
+				$list_product = $list_product->leftJoin('oums','oums.id','=','m_products.oum_id')->orderBy('oums.name',$value);
 			}elseif($key=='id'){
 				$list_product = $list_product->orderBy('products.id',$value);
 			}elseif($key=='specification'){
@@ -295,16 +296,19 @@ class ProductsController extends Controller {
 				if($value!=''){
 					if($arr_filter['sku']!=''){
 						$list_product->where('products.sku',$arr_filter['sku']);
-					}elseif($arr_filter['name']!=''){
+					}elseif($key == 'like_name'){
+						$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
+						$arr_filter['name']='';
+					}elseif($key == 'name' && $arr_filter['name']!=''){
 						$list_product->where('products.name',$arr_filter['name']);
 					}elseif($key == 'company_id'){
 						$list_product->where('m_products.company_id',$arr_filter['company_id']);
 					}elseif($key == 'status'){
 						$list_product->where('products.status',$arr_filter['status']);
 					}elseif($key == 'oum_id'){
-						$list_product->where('products.oum_id',$arr_filter['oum_id']);
+						$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
 					}else{
-						$list_product->where($key,$value);
+						$a=1;
 					}
 
 				}

@@ -1346,6 +1346,11 @@ $(function()
 		"show":false,
 		"container":"body"
 	});
+
+	$(".left-list li").on("click",function(){
+		$(".left-list li").removeClass('active');
+		$(this).addClass('active');
+	})
 });
 
 function confirms(content,callback){

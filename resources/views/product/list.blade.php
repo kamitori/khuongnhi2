@@ -15,6 +15,7 @@
 <form action="{{URL}}/products/list" method="POST" accept-charset="utf-8" id="form-list">
 
 <input type="hidden" id="input-sort" name="input-sort">
+<input type="hidden" id="like_name" name="input-filter[like_name]">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-view">
 	<thead>
@@ -142,5 +143,20 @@
 			var id = $(this).attr('data-id');
 			window.location = '{{URL}}/products/entry/'+id;
 		})
+
+		var create = 1;
+		$("#name").on('select2:open',function(e){
+			if(create){
+				$("#select2-name-results").parent().prev().find('input').val($("#like_name").val());
+				$("#select2-name-results").parent().prev().find('input').css('width','80%').css('float','left');
+				$("#select2-name-results").parent().prev().append('<button style="  margin-left: 3px;  margin-bottom: 2px; line-height: 14px;" id="search_by_name" onclick="search_list_by_name(this)"><i class="fa fa-search"></i></button >')
+				create =0;
+			}
+		});
 	})
+
+	function search_list_by_name(obj){
+		$("#like_name").val($(obj).prev().val());
+		$('#form-list').submit();
+	}
 </script>
