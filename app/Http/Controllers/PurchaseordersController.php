@@ -38,16 +38,18 @@ class PurchaseordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$purchaseorder = new Purchaseorder;
-		$address = new Address;
-		$purchaseorder->date = date("Y-m-d H:i:s");
-		if($purchaseorder->save()){
-			session(['current_purchaseorder' => $purchaseorder->id]);
-			$address->module_id  = $purchaseorder['id'];
-			$address->module_type  = 'App\Purchaseorder';
-			$address->save();
-			$purchaseorder->address_id = $address->id;
-			$purchaseorder->save();
-		}	
+		$purchaseorder->save();
+		session(['current_purchaseorder' => $purchaseorder->id]);
+		// $address = new Address;
+		// $purchaseorder->date = date("Y-m-d H:i:s");
+		// if($purchaseorder->save()){
+		// 	session(['current_purchaseorder' => $purchaseorder->id]);
+		// 	$address->module_id  = $purchaseorder['id'];
+		// 	$address->module_type  = 'App\Purchaseorder';
+		// 	$address->save();
+		// 	$purchaseorder->address_id = $address->id;
+		// 	$purchaseorder->save();
+		// }	
 		return redirect('purchaseorders');
 	}
 
@@ -59,7 +61,7 @@ class PurchaseordersController extends Controller {
 			$purchaseorder = Purchaseorder::find($id_purchaseorder);
 			if(!$purchaseorder->status){
 				if($purchaseorder->delete()){
-					Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+					// Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_purchaseorder)
 									->where('module_type','=','App\Purchaseorder')
 									->lists('id');
@@ -89,7 +91,7 @@ class PurchaseordersController extends Controller {
 			$purchaseorder = Purchaseorder::find($id_purchaseorder);
 			if(!$purchaseorder->status){
 				if($purchaseorder->delete()){
-					Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+					// Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_purchaseorder)
 									->where('module_type','=','App\Purchaseorder')
 									->lists('id');
@@ -131,16 +133,9 @@ class PurchaseordersController extends Controller {
 				}
 			}
 		}
-		if(!isset($purchaseorder['address_id']) || $purchaseorder['address_id']==0){
-			$address = new Address;
-			$address->module_id  = $purchaseorder->id;
-			$address->module_type  = 'App\Purchaseorder';
-			$address->save();
-			$purchaseorder->address_id = $address->id;
-			$purchaseorder->save();
-		}else{
-			$address = Address::find($purchaseorder->address_id);
-		}
+
+		$address = Address::where('module_id','=',$purchaseorder->id)
+					->where('module_type','=','App\Purchaseorder')->first();
 		$address_province = isset($address->province_id)?$address->province_id:0;
 		$country_province = Province::addSelect('provinces.name as province_name')
 						->where('provinces.id','=',$address_province)
@@ -429,11 +424,6 @@ class PurchaseordersController extends Controller {
 				$mproduct->oum_id		=	0;
 				$mproduct->origin_price	=	0;
 				$mproduct->save();
-				$product_stock = new ProductStock;
-				$product_stock->in_stock = 0;
-				$product_stock->m_product_id = $mproduct->id;
-				$product_stock->product_id = $product_id;
-				$product_stock->save();
 				$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
 				if($last_sellprice){
 					$arr_sellprice = SellPrice::where('m_product_id','=',$last_sellprice->m_product_id)->get()->toArray();

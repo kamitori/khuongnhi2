@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\Saleorder;
-class SaleordersTableSeeder extends Seeder {
+use App\ReturnPurchaseorder;
+class ReturnPurchaseordersTableSeeder extends Seeder {
 
 	/**
 	 * Auto generated seed file
@@ -17,16 +17,16 @@ class SaleordersTableSeeder extends Seeder {
 		{
 			$company_id = $faker->numberBetween(1,20);
 			$date = $faker->dateTimeBetween($startDate = '-6 months', $endDate = 'now');
-			$address_id = $index+50;
+			$address_id = $index+80;
 			$company_phone = $faker->phoneNumber;
 			$company_email = $faker->companyEmail;
-			Saleorder::create([
+			ReturnPurchaseorder::create([
 							'company_id'		=> $company_id,
 							'date'			=> $date,
 							'address_id'		=> $address_id,
 							'company_phone'	=> $company_phone,
 							'company_email'	=> $company_email,
-							'status'			=> $faker->numberBetween(0,1)
+							'status'			=> 1
 						]);
 		}
         

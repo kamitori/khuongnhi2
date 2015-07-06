@@ -38,16 +38,18 @@ class ReturnPurchaseordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$returnpurchaseorder = new ReturnPurchaseorder;
-		$address = new Address;
-		$returnpurchaseorder->date = date("Y-m-d H:i:s");
-		if($returnpurchaseorder->save()){
-			session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
-			$address->module_id  = $returnpurchaseorder['id'];
-			$address->module_type  = 'App\ReturnPurchaseorder';
-			$address->save();
-			$returnpurchaseorder->address_id = $address->id;
-			$returnpurchaseorder->save();
-		}	
+		$returnpurchaseorder->save();
+		session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
+		// $address = new Address;
+		// $returnpurchaseorder->date = date("Y-m-d H:i:s");
+		// if($returnpurchaseorder->save()){
+		// 	session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
+		// 	$address->module_id  = $returnpurchaseorder['id'];
+		// 	$address->module_type  = 'App\ReturnPurchaseorder';
+		// 	$address->save();
+		// 	$returnpurchaseorder->address_id = $address->id;
+		// 	$returnpurchaseorder->save();
+		// }	
 		return redirect('returnpurchaseorders');
 	}
 
@@ -59,7 +61,7 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder = ReturnPurchaseorder::find($id_returnpurchaseorder);
 			if(!$returnpurchaseorder->status){
 				if($returnpurchaseorder->delete()){
-					Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
+					// Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_returnpurchaseorder)
 									->where('module_type','=','App\ReturnPurchaseorder')
 									->lists('id');
@@ -88,7 +90,7 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder = ReturnPurchaseorder::find($id_returnpurchaseorder);
 			if(!$returnpurchaseorder->status){
 				if($returnpurchaseorder->delete()){
-					Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
+					// Address::where('module_id','=',$id_returnpurchaseorder)->where('module_type','=','App\ReturnPurchaseorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_returnpurchaseorder)
 									->where('module_type','=','App\ReturnPurchaseorder')
 									->lists('id');
@@ -127,16 +129,9 @@ class ReturnPurchaseordersController extends Controller {
 				}
 			}
 		}
-		if(!isset($returnpurchaseorder['address_id']) || $returnpurchaseorder['address_id']==0){
-			$address = new Address;
-			$address->module_id  = $returnpurchaseorder->id;
-			$address->module_type  = 'App\ReturnPurchaseorder';
-			$address->save();
-			$returnpurchaseorder->address_id = $address->id;
-			$returnpurchaseorder->save();
-		}else{
-			$address = Address::find($returnpurchaseorder->address_id);
-		}
+		$address = Address::where('module_id','=',$returnpurchaseorder->id)
+					->where('module_type','=','App\ReturnPurchaseorder')->first();
+					
 		$country_province = Province::addSelect('provinces.name as province_name')
 						->where('provinces.id','=',$address->province_id)
 						->addSelect('countries.name as country_name')

@@ -38,16 +38,18 @@ class ReturnSaleordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$returnsaleorder = new ReturnSaleorder;
-		$address = new Address;
-		$returnsaleorder->date = date("Y-m-d H:i:s");
-		if($returnsaleorder->save()){
-			session(['current_returnsaleorder' => $returnsaleorder->id]);
-			$address->module_id  = $returnsaleorder['id'];
-			$address->module_type  = 'App\ReturnSaleorder';
-			$address->save();
-			$returnsaleorder->address_id = $address->id;
-			$returnsaleorder->save();
-		}	
+		$returnsaleorder->save();
+		session(['current_returnsaleorder' => $returnsaleorder->id]);
+		// $address = new Address;
+		// $returnsaleorder->date = date("Y-m-d H:i:s");
+		// if($returnsaleorder->save()){
+		// 	session(['current_returnsaleorder' => $returnsaleorder->id]);
+		// 	$address->module_id  = $returnsaleorder['id'];
+		// 	$address->module_type  = 'App\ReturnSaleorder';
+		// 	$address->save();
+		// 	$returnsaleorder->address_id = $address->id;
+		// 	$returnsaleorder->save();
+		// }	
 		return redirect('returnsaleorders');
 	}
 
@@ -59,7 +61,7 @@ class ReturnSaleordersController extends Controller {
 			$returnsaleorder = ReturnSaleorder::find($id_returnsaleorder);
 			if(!$returnsaleorder->status){
 				if($returnsaleorder->delete()){
-					Address::where('module_id','=',$id_returnsaleorder)->where('module_type','=','App\ReturnSaleorder')->delete();
+					// Address::where('module_id','=',$id_returnsaleorder)->where('module_type','=','App\ReturnSaleorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_returnsaleorder)
 									->where('module_type','=','App\ReturnSaleorder')
 									->lists('id');
@@ -88,7 +90,7 @@ class ReturnSaleordersController extends Controller {
 			$returnsaleorder = ReturnSaleorder::find($id_returnsaleorder);
 			if(!$returnsaleorder->status){
 				if($returnsaleorder->delete()){
-					Address::where('module_id','=',$id_returnsaleorder)->where('module_type','=','App\ReturnSaleorder')->delete();
+					// Address::where('module_id','=',$id_returnsaleorder)->where('module_type','=','App\ReturnSaleorder')->delete();
 					$list_mproduct = Mproduct::where('module_id','=',$id_returnsaleorder)
 									->where('module_type','=','App\ReturnSaleorder')
 									->lists('id');
@@ -127,16 +129,9 @@ class ReturnSaleordersController extends Controller {
 				}
 			}
 		}
-		if(!isset($returnsaleorder['address_id']) || $returnsaleorder['address_id']==0){
-			$address = new Address;
-			$address->module_id  = $returnsaleorder->id;
-			$address->module_type  = 'App\ReturnSaleorder';
-			$address->save();
-			$returnsaleorder->address_id = $address->id;
-			$returnsaleorder->save();
-		}else{
-			$address = Address::find($returnsaleorder->address_id);
-		}
+		$address = Address::where('module_id','=',$purchaseorder->id)
+					->where('module_type','=','App\ReturnSaleorder')->first();
+					
 		$country_province = Province::addSelect('provinces.name as province_name')
 						->where('provinces.id','=',$address->province_id)
 						->addSelect('countries.name as country_name')

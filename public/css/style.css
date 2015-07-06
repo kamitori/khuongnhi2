@@ -4150,7 +4150,19 @@ div[data-trigger=spinner] a[data-spin=down] i{
 	-webkit-box-shadow: 0 0 0 1px #fff inset;
 	-moz-box-shadow: 0 0 0 1px #fff inset;
 }
-
+#sort_receipt{
+	padding: 5px;
+	margin-bottom: 5px;
+}
+#sort_receipt .date{
+	width:48%;
+	display:inline-block;
+}
+#sort_receipt .company{
+	margin-top: 5px;
+	width:97%;
+	margin-left: 1.5%;
+}
 /**
 	 * Nestable
 	 */

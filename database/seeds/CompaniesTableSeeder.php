@@ -29,6 +29,7 @@ class CompaniesTableSeeder extends Seeder {
 			}
 			if($check==3){
 				$is_customer =1;
+				$is_distribute =1;
 			}
 			if($check==2){
 				$is_customer =1;

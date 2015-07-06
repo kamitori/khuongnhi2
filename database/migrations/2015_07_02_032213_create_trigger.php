@@ -89,8 +89,16 @@ class CreateTrigger extends Migration {
 		DB::unprepared("
 			CREATE TRIGGER tr_Create_Mproduct_Productstock AFTER INSERT ON `m_products` FOR EACH ROW
 			BEGIN
-				IF(NEW.module_type = 'App\\\\Purchaseorder') THEN
-					INSERT INTO `khuongnhi`.`product_stocks` (`id`, `m_product_id`, `product_id`, `in_stock`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES (NULL, NEW.id, NEW.product_id, '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+				DECLARE status_po INT;
+				IF(NEW.module_type = 'App\Purchaseorder') THEN
+					SET status_po = (SELECT `status` from `purchaseorders` where `id`=New.module_id);
+					IF(status_po=1) THEN
+						INSERT INTO `khuongnhi`.`product_stocks` (`id`, `m_product_id`, `product_id`, `in_stock`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
+						VALUES (NULL, NEW.id, NEW.product_id, NEW.quantity, '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+					ELSE
+						INSERT INTO `khuongnhi`.`product_stocks` (`id`, `m_product_id`, `product_id`, `in_stock`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
+						VALUES (NULL, NEW.id, NEW.product_id, '0', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+					END IF;
 				END IF;
 			END
 		");
@@ -177,6 +185,8 @@ class CreateTrigger extends Migration {
 				END IF;
 			END
 		");
+
+// Update order --> Update receipt month
 	}
 			
 	/**

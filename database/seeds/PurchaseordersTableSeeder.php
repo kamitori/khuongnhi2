@@ -16,7 +16,7 @@ class PurchaseordersTableSeeder extends Seeder {
         		foreach(range(1, 30) as $index)
 		{
 			$company_id = $faker->numberBetween(1,20);
-			$date = $faker->dateTimeThisYear($max = 'now');
+			$date = $faker->dateTimeBetween($startDate = '-6 months', $endDate = 'now');
 			$address_id = $index+20;
 			$company_phone = $faker->phoneNumber;
 			$company_email = $faker->companyEmail;
@@ -26,7 +26,7 @@ class PurchaseordersTableSeeder extends Seeder {
 							'address_id'		=> $address_id,
 							'company_phone'	=> $company_phone,
 							'company_email'	=> $company_email,
-							'status'			=> $faker->numberBetween(0,1)
+							'status'			=> 1
 						]);
 		}
 	}
