@@ -1,12 +1,12 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
 		<a href="{{URL}}/companies/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
+		<a href="{{URL}}/companies/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
 	</div>
 	<div class="buttons pull-right">
 		<div class="pagination pagination-small pull-right" style="margin: -15px 20px 5px 20px;">
-			<?php echo $list_product->render(); ?>
+			<?php echo $list_company->render(); ?>
 		</div>
 	</div>
 </div>
@@ -18,16 +18,16 @@
 	<thead>
 		<tr class="small">
 			<th style="width: 4%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
-			<th style="width: 18%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên công ty</th>
-			<th style="width: 7%" data-column="phone" {{ isset($arr_sort['phone'])?'data-sort='.$arr_sort['phone']:'' }}>SDT</th>
-			<th style="width: 17%" data-column="oum_id" {{ isset($arr_sort['oum_id'])?'data-sort='.$arr_sort['oum_id']:'' }}>Địa chỉ</th>
-			<th style="width: 7%" data-column="specification" {{ isset($arr_sort['specification'])?'data-sort='.$arr_sort['specification']:'' }}>Tỉnh thành</th>
-			<th style="width: 7%" data-column="in_stock" {{ isset($arr_sort['in_stock'])?'data-sort='.$arr_sort['in_stock']:'' }}>Thành phố</th>
+			<th style="width: 25%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên công ty</th>
+			<th style="width: 10%" data-column="phone" {{ isset($arr_sort['phone'])?'data-sort='.$arr_sort['phone']:'' }}>Số điện thoại</th>
+			<th style="width: 25%" data-column="address" {{ isset($arr_sort['address'])?'data-sort='.$arr_sort['address']:'' }}>Địa chỉ</th>
+			<th style="width: 15%" data-column="town_city" {{ isset($arr_sort['town_city'])?'data-sort='.$arr_sort['town_city']:'' }}>Quận huyện</th>
+			<th style="width: 15%" data-column="province_name" {{ isset($arr_sort['province_name'])?'data-sort='.$arr_sort['province_name']:'' }}>Tỉnh thành</th>
 			<th style="width: 3%" class="no-sort">&nbsp;</th>
 		</tr>
 		<tr class="sort">
 			<th style="width: 4%"></th>
-			<th style="width: 8%">
+			<th style="width: 25%">
 				<select name="input-filter[name]" id="name" data-type="select2">
 					<option value="">&nbsp;</option>
 					@foreach($list_all_companies as $name)
@@ -35,9 +35,10 @@
 					@endforeach
 				</select>
 			</th>
-			<th style="width:18%"></th>
-			<th style="width:7%"></th>
-			<th style="width: 17%">
+			<th style="width:10%"></th>
+			<th style="width:25%"></th>
+			<th style="width: 15%"></th>
+			<th style="width: 15%">
 				<select name="input-filter[province_id]" id="province_id" data-type="select2">
 					<option value="">&nbsp;</option>
 					@foreach($list_provinces as $provinces)
@@ -45,22 +46,21 @@
 					@endforeach
 				</select>
 			</th>
-			<th style="width: 7%"></th>
 			<th style="width: 3%">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach ($list_product as $key => $product)
-		<tr class="selectable" data-id="{{$product['id']}}">
-			<td>{{($product['id'])}}</td>
-			<td>{{$product['name']}}</td>
-			<td>{{$product['phone']}}</td>
-			<td>{{$product['address']}}</td>
-			<td>{{$product['province_name']}}</td>
-			<td>{{$product['town_city']}}</td>
+		@foreach ($list_company as $key => $company)
+		<tr class="selectable" data-id="{{$company['id']}}">
+			<td>{{($company['id'])}}</td>
+			<td>{{$company['name']}}</td>
+			<td>{{$company['phone']}}</td>
+			<td>{{$company['address']}}</td>
+			<td>{{$company['town_city']}}</td>
+			<td>{{$company['province_name']}}</td>
 			<td>
-				<a href="{{URL}}/companies/delete-from-list/{{$product['id']}}">
-					<i class="fa fa-remove" data-id="{{$product['id']}}"></i>
+				<a href="{{URL}}/companies/delete-from-list/{{$company['id']}}">
+					<i class="fa fa-remove" data-id="{{$company['id']}}"></i>
 				</a>
 			</td>
 		</tr>

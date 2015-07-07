@@ -1,13 +1,15 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
 		<a href="{{URL}}/saleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
+		@if(!$saleorder['status'])
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_saleorder"><i class="fa fa-remove"></i> Xóa</button>
+		@endif
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
 	</div>
 	<div class="buttons pull-right">
-
+		
 	</div>
 </div>
 <!-- Entry -->
@@ -15,7 +17,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-				<h4 id="product_name">&nbsp;Hóa đơn bán hàng số {{$saleorder['id']}}</h4>
+				<h4 id="product_name">&nbsp;Hóa đơn mua hàng số {{$saleorder['id']}}</h4>
 			</a>
 		</div>
 		<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -24,110 +26,157 @@
 					<div class="row-fluid form_detail">
 						<div class="span4">
 							<div class="control-group">
-								<label class="control-label">STT</label>
+								<label class="control-label">STT:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+									<span>{{$saleorder['id']}}</span>
+									@else
 									<input type="text" name="stt" value="{{$saleorder['id']}}" readonly="">
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Công ty</label>
+								<label class="control-label">Công ty:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+									<span>
+										@foreach($distributes as $distribute)
+											{{ isset($saleorder['company_id']) && ($saleorder['company_id'] == $distribute['id'])?$distribute['name']:'' }}
+										@endforeach
+									</span>
+									@else
 									<select name="company_id" id="company_id" data-type="select2">
 										@foreach($distributes as $distribute)
-										<option value="{{$distribute['id']}}"
+										<option value="{{$distribute['id']}}" 
 									{{isset($saleorder['company_id']) && ($saleorder['company_id'] == $distribute['id'])?'selected':''}}
 										 data-company="{{json_encode($distribute)}}">
 											{{$distribute['name']}}
 										</option>
 										@endforeach
 									</select>
+									@endif
 								</div>
 							</div>
 
 							<div class="control-group">
-								<label class="control-label">Liên hệ</label>
+								<label class="control-label">Liên hệ:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+									<span>
+										@foreach($users as $user)
+											{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user['id'])?$user['name']:''}}
+										@endforeach
+									</span>
+									@else
 									<select name="user_id" id="user_id" data-type="select2">
 										@foreach($users as $user)
 										<option value="{{$user['id']}}"
-									{{isset($saleorder['user_id'] ) && ($saleorder['user_id'] == $user['id'])?'selected':''}}
+									{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user['id'])?'selected':''}}
 										>
 											{{$user['name']}}
 										</option>
 										@endforeach
 									</select>
+									@endif
 								</div>
 							</div>
-							<div class="control-group" style="  margin-top: -5px;">
-								<label class="control-label" style="vertical-align: bottom;">Ngày</label>
+							<div class="control-group">
+								<label class="control-label">Ngày:</label>
 								<div class="controls">
-									<div class="input-append">
-										<input type="text" id="date" name="date" class="datepicker" value="{{ date('d-m-Y',strtotime($saleorder['date']) ) }}" readonly="">
-										<span class="add-on"><i class="fa fa-calendar"></i></span>
-									</div>
+									@if($saleorder['status'])
+										<span>{{ date('d-m-Y',strtotime($saleorder['date']) ) }}</span>
+									@else
+									<input type="text" id="date" name="date" class="datepicker" value="{{ date('d-m-Y',strtotime($saleorder['date']) ) }}" readonly="" style="background-color: #fff;">
+									@endif
 								</div>
 							</div>
 						</div>
 						<div class="span4">
 							<div class="control-group">
-								<label class="control-label">Điện thoại</label>
+								<label class="control-label">Điện thoại:</label>
 								<div class="controls">
-									<input type="text" name="company_phone" value="{{isset($purchaseorder['company_phone'])?$purchaseorder['company_phone']:''}}" >
+									@if($saleorder['status'])
+										<span>{{isset($saleorder['company_phone'])?$saleorder['company_phone']:''}}</span>
+									@else
+									<input type="text" name="company_phone" value="{{isset($saleorder['company_phone'])?$saleorder['company_phone']:''}}" >
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Email</label>
+								<label class="control-label">Email:</label>
 								<div class="controls">
-									<input type="text" name="company_email" value="{{isset($purchaseorder['company_email'])?$purchaseorder['company_email']:''}}" >
+									@if($saleorder['status'])
+										<span>{{isset($saleorder['company_email'])?$saleorder['company_email']:''}}</span>
+									@else
+									<input type="text" name="company_email" value="{{isset($saleorder['company_email'])?$saleorder['company_email']:''}}" >
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Địa chỉ</label>
+								<label class="control-label">Địa chỉ:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+										<span>{{isset($address['address'])?$address['address']:''}}</span>
+									@else
 									<input type="text" name="address" value="{{isset($address['address'])?$address['address']:''}}" >
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Quận/Huyện</label>
+								<label class="control-label">Quận/Huyện:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+										<span>{{isset($address['town_city'])?$address['town_city']:''}}</span>
+									@else
 									<input type="text" name="town_city" value="{{isset($address['town_city'])?$address['town_city']:''}}" >
+									@endif
 								</div>
 							</div>
-
+							
 						</div>
 						<div class="span4">
 							<div class="control-group">
-								<label class="control-label">Tỉnh thành</label>
+								<label class="control-label">Tỉnh thành:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+										<span>{{isset($saleorder['province_name'])?$saleorder['province_name']:''}}</span>
+									@else
 									<select name="province_id" id="province_id">
 									</select>
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Quốc gia</label>
+								<label class="control-label">Quốc gia:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+										<span>{{isset($saleorder['country_name'])?$saleorder['country_name']:''}}</span>
+									@else
 									<select name="country_id" id="country_id">
 										@foreach($countries as $country)
-										<option value="{{$country['id']}}" data-province='{{json_encode($country['provinces'])}}'
+										<option value="{{$country['id']}}" data-province='{{json_encode($country['provinces'])}}' 
 										{{isset($address['country_id']) && ($address['country_id']==$country['id'])?'selected':''}}>
 											{{$country['name']}}
 										</option>
 										@endforeach
 									</select>
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Mã vùng</label>
+								<label class="control-label">Mã vùng:</label>
 								<div class="controls">
+									@if($saleorder['status'])
+										<span>{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}</span>
+									@else
 									<input type="text" name="zip_postcode" maxlength="15" value="{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}">
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái</label>
+								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
-									<div class="toggle-button" data-togglebutton-width="221" data-togglebutton-label-enabled="Hoàn thành" data-togglebutton-label-disabled="Mới" data-togglebutton-height="25" data-togglebutton-font-lineheight="25px" >
-										<input type="checkbox" name="status" {{isset($saleorder['status']) && ($saleorder['status']==1)?'checked':''}}>
-									</div>
+									<input type="checkbox" name="status" {{isset($saleorder['status']) && ($saleorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="140">
 								</div>
 							</div>
 						</div>
@@ -136,7 +185,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
 <!-- End Entry -->
 
 <!-- Sub Entry -->
@@ -156,7 +205,9 @@
 				<div class="block row">
 					<div class="heading-buttons main-left">
 						<div class="buttons pull-left">
+							@if(!$saleorder['status'])
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
+							@endif
 							<button class="btn btn-primary btn-small btn-icon"><i class="fa fa-print"></i>Xuất PDF</button>
 						</div>
 					</div>
@@ -164,13 +215,15 @@
 						<thead>
 							<tr>
 								<th style="width:7%">Mã</th>
-								<th style="width:29%">Tên sản phẩm</th>
+								<th style="width:35%">Tên sản phẩm</th>
 								<th style="width:8%">ĐV tính</th>
 								<th style="width:7%">Quy cách</th>
 								<th style="width:13%">Đơn giá</th>
 								<th style="width:7%">Số lượng</th>
-								<th style="width:13%" class="right">Thành tiền</th>
+								<th style="width:20%" class="right">Thành tiền</th>
+								@if(!$saleorder['status'])
 								<th style="width:3%">&nbsp;</th>
+								@endif
 							</tr>
 						</thead>
 						<tbody id="list_product">
@@ -196,7 +249,7 @@
 			<!-- dialog body -->
 			<div class="modal-body">
 				<div class=" block row" id="list_product_popup">
-
+					
 				</div>
 			</div>
 			<!-- dialog buttons -->
@@ -241,7 +294,7 @@
 				})
 				$("#province_id").html(options).select2({width:'84%'});
 			})
-
+			
 
 			$("#company_id").on("change",function(e){
 				var company = $("#company_id option[value="+$(this).val()+"]").attr('data-company');
@@ -260,7 +313,9 @@
 
 			$("#country_id").trigger('change');
 
-			$("#form_entry input,#form_entry select").on("change",function(){
+			$("#form_entry input,#form_entry select").on("change",function(e){
+				var name = $(this).attr('name');
+				e.preventDefault();
 				var data = $("#form_entry").serialize();
 				$.ajax({
 					url: '{{URL}}/saleorders/update',
@@ -271,7 +326,13 @@
 							if(data.name != '')
 								$("#product_name").text(data.name);
 							toastr['success']('Saving success !');
+							if(name == 'status')
+								window.location.reload();
 						}else{
+							if(name == 'status'){
+								$("input[name=status]").attr('checked',false);
+								$("input[name=status]").trigger("change");
+							}
 							toastr['error'](data.message);
 						}
 					}
@@ -279,11 +340,22 @@
 			})
 			$("#delete_saleorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
-					window.location = '{{URL}}/saleorders/delete';
+					$.ajax({
+						url : '{{URL}}/saleorders/delete',
+						type : 'GET',
+						success : function(data){
+							if(data.status == 'success'){
+								toastr['success']('Delete success');
+								window.location = '{{URL}}/saleorders';
+							}else{
+								toastr['success'](data.message);
+							}
+						}
+					})
 				});
 			});
 
-
+			
 
 		}) // End Jquery
 
@@ -322,7 +394,7 @@
 								$(window).trigger('resize');
 							}
 						})
-
+						
 					}else{
 						toastr['error'](data.message);
 					}
@@ -348,6 +420,7 @@
 								$("#list_product").html(html);
 								$("#modal_add_product").modal('hide');
 								$(window).trigger('resize');
+								sum_amount();
 							}
 						})
 					}else{
@@ -355,6 +428,20 @@
 					}
 				}
 			});
+		}
+
+		function sum_amount(){
+			var sum_amount =0;
+			$(".amount").each(function(){
+				var value = $(this).text();
+				while(value.indexOf(',')>0){
+					value = value.replace(',','');
+				}
+				value = parseFloat(value);
+				sum_amount += value;
+			})
+			sum_amount = sum_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$("#sum_amount").text(sum_amount);
 		}
 
 	</script>

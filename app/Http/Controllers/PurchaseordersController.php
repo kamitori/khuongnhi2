@@ -38,6 +38,7 @@ class PurchaseordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$purchaseorder = new Purchaseorder;
+		$purchaseorder->date = date("Y-m-d H:i:s");
 		$purchaseorder->save();
 		session(['current_purchaseorder' => $purchaseorder->id]);
 		// $address = new Address;
@@ -170,7 +171,6 @@ class PurchaseordersController extends Controller {
 		$arr_product = MProduct::where('module_type','=','App\Purchaseorder')
 						->where('module_id','=',$purchaseorder['id'])
 						->lists('product_id');
-
 		Session::forget('product_of_po'.session('current_purchaseorder'));
 		foreach ($arr_product as $key => $value) {
 			Session::put('product_of_po'.session('current_purchaseorder').".".$value , $value);
@@ -210,11 +210,11 @@ class PurchaseordersController extends Controller {
 			session(['current_purchaseorder' => $purchaseorder->id]);
 		}
 	if($purchaseorder->status == 0){
-		$purchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
+		$purchaseorder->id = $request->has('id') ? $request->input('id') : 0;
 		$purchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 		$purchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
-		$purchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
-		$purchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
+		$purchaseorder->phone = $request->has('phone') ? $request->input('phone') : '';
+		$purchaseorder->email = $request->has('email') ? $request->input('email') : '';
 		$address_id = isset($purchaseorder->address_id) ? $purchaseorder->address_id : 0;
 
 		if($purchaseorder['address_id']==0){
@@ -277,7 +277,7 @@ class PurchaseordersController extends Controller {
 				}
 				Mproduct::where('module_id', '=', $purchaseorder->id)
 						->where('module_type', '=', 'App\Purchaseorder')
-						->update(['company_id' => $purchaseorder->company_id ]);
+						->update(['id' => $purchaseorder->id ]);
 				$arr_return['status']= 'success';
 			}else{
 				$arr_return['message']= 'Saving fail !';
@@ -313,7 +313,7 @@ class PurchaseordersController extends Controller {
 		}else{
 			$arr_filter=[
 					'id'=>'',
-					'company_id'=>'',
+					'id'=>'',
 					'date'=>'',
 					'status'=>''
 				       ];
@@ -346,8 +346,8 @@ class PurchaseordersController extends Controller {
 							}
 						);
 		foreach ($arr_sort as $key => $value) {
-			if($key=='company_id'){
-				$list_purchaseorder = $list_purchaseorder->leftJoin('companies','companies.id','=','purchaseorders.company_id')->orderBy('companies.name',$value);
+			if($key=='id'){
+				$list_purchaseorder = $list_purchaseorder->leftJoin('companies','companies.id','=','purchaseorders.id')->orderBy('companies.name',$value);
 			}else{
 				$list_purchaseorder = $list_purchaseorder->orderBy($key,$value);
 			}
@@ -403,7 +403,7 @@ class PurchaseordersController extends Controller {
 		$arr_return = array(
 			"status"=>'success'
 		);
-		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$id = $request->has('id')?$request->input('id'):0;
 		$module_id = session('current_purchaseorder');
 		$module_type = 'App\Purchaseorder';
 		$arr_product = session('product_of_po'.session('current_purchaseorder'));
@@ -418,7 +418,7 @@ class PurchaseordersController extends Controller {
 				$mproduct = new MProduct;
 				$mproduct->product_id	=	$product_id;
 				$mproduct->module_id	= 	$module_id;
-				$mproduct->company_id	= 	$company_id;
+				$mproduct->id	= 	$id;
 				$mproduct->module_type	=	$module_type;
 				$mproduct->specification	=	0;
 				$mproduct->oum_id		=	0;

@@ -129,7 +129,7 @@ class ReturnSaleordersController extends Controller {
 				}
 			}
 		}
-		$address = Address::where('module_id','=',$purchaseorder->id)
+		$address = Address::where('module_id','=',$returnsaleorder->id)
 					->where('module_type','=','App\ReturnSaleorder')->first();
 					
 		$country_province = Province::addSelect('provinces.name as province_name')

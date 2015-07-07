@@ -18,9 +18,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('/', function () {
+
+Route::get('/',[ 'middleware' => 'auth', function () {
 	return view('welcome');
-});
+}]);
 
 Route::get('/view', function () {
 	$menus = Menu::getMenu() ;
@@ -35,16 +36,17 @@ Route::get('/login', function () {
 });
 
 Route::get('/home', 'HomeController@index');
-Route::get('/{controller}/{id}',function($controller,$id){
-	$controller = str_replace('-', ' ', strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $controller)));
-	$controller = str_replace(' ',  '', Str::title($controller));
-	$controller = 'App\\Http\\Controllers\\'.$controller.'Controller';
-	$app = app();
-	$controller = $app->make($controller);
-	$request = new Request;
-	$arr_param = array($request,$id);
-	return $controller->callAction('anyEntry', $arr_param);
-})->where([
+
+Route::get('/{controller}/{id}',['middleware' => 'auth', function($controller,$id){
+		$controller = str_replace('-', ' ', strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $controller)));
+		$controller = str_replace(' ',  '', Str::title($controller));
+		$controller = 'App\\Http\\Controllers\\'.$controller.'Controller';
+		$app = app();
+		$controller = $app->make($controller);
+		$request = new Request;
+		$arr_param = array($request,$id);
+		return $controller->callAction('anyEntry', $arr_param);
+}])->where([
 	'controller' => '[^/]+',
 	'id'=>'[0-9]+'
 	]);

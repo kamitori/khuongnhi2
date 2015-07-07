@@ -1,13 +1,15 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
 		<a href="{{URL}}/companies/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
+
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_comapny"><i class="fa fa-remove"></i> Xóa</button>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
+
+		<a href="{{URL}}/companies/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
+		<a href="{{URL}}/companies/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
 	</div>
 	<div class="buttons pull-right">
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+
 	</div>
 </div>
 
@@ -15,7 +17,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-				<h4 id="company_label">{{$company['name'] != '' ? $company['name'] : 'Cong ty moi'}}</h4>
+				<h4 id="label">{{$company['name'] != '' ? $company['name'] : 'Cong ty moi'}}</h4>
 			</a>
 		</div>
 		<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -32,7 +34,7 @@
 							<div class="control-group">
 								<label class="control-label">Tên công ty</label>
 								<div class="controls">
-									<input id="company_name" name="company_name" type="text" value="{{$company['name']}}">
+									<input id="name" name="name" type="text" value="{{$company['name']}}">
 								</div>
 							</div>
 							<div class="control-group">
@@ -69,31 +71,31 @@
 							<div class="control-group">
 								<label class="control-label">Địa chỉ chính</label>
 								<div class="controls">
-									<input id="company_address" name="company_address" type="text" value="{{$address['address']}}">
+									<input id="address" name="address" type="text" value="{{$address['address']}}">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Quận huyện</label>
 								<div class="controls">
-									<input id="company_town_city" name="company_town_city"  type="text" value="{{$address['town_city']}}">
+									<input id="town_city" name="town_city"  type="text" value="{{$address['town_city']}}">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Tỉnh thành</label>
 								<div class="controls">
-									<select name="company_province_state" id="company_province_state" data-type="select2">
-										@foreach($provinces as $province)
-										<option value="{{$province['id']}}" {{$province['id'] == $address['province_id'] ? 'selected' : ''}}>{{$province['name']}}</option>
-										@endforeach
+									<select name="province_id" id="province_id">
 									</select>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Quốc gia</label>
 								<div class="controls">
-									<select name="company_country" id="company_country">
+									<select name="country_id" id="country_id">
 										@foreach($countries as $country)
-										<option value="{{$country['id']}}" {{$country['id'] == $address['country_id'] ? 'selected' :''}}>{{$country['name']}}</option>
+										<option value="{{$country['id']}}" data-province='{{json_encode($country['provinces'])}}' 
+										{{isset($address['country_id']) && ($address['country_id']==$country['id'])?'selected':''}}>
+											{{$country['name']}}
+										</option>
 										@endforeach
 									</select>
 								</div>
@@ -103,25 +105,25 @@
 							<div class="control-group">
 								<label class="control-label">Fax</label>
 								<div class="controls">
-									<input id="company_fax" name="company_fax" type="text" value="{{$company['fax']}}">
+									<input id="fax" name="fax" type="text" value="{{$company['fax']}}">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Email</label>
 								<div class="controls">
-									<input id="company_email" name="company_email" type="text" value="{{$company['email']}}">
+									<input id="email" name="email" type="text" value="{{$company['email']}}">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Web</label>
 								<div class="controls">
-									<input id="company_web" name="company_web" type="text" value="{{$company['web']}}" >
+									<input id="web" name="web" type="text" value="{{$company['web']}}" >
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Điện thoại</label>
 								<div class="controls">
-									<input id="company_phone" name="company_phone" type="text" value="{{$company['phone']}}">
+									<input id="phone" name="phone" type="text" value="{{$company['phone']}}">
 								</div>
 							</div>
 						</div>
@@ -131,30 +133,50 @@
 		</div>
 	</div>
 </div>
-
+@section('pageJS')
 <script type="text/javascript">
-
-	$("#form_entry input, #form_entry select").on("change",function(){
-		var data = $("#form_entry").serialize();
-		$.ajax({
-			url:"{{URL}}/companies/update",
-			type:"POST",
-			data:data,
-			success:function(data){
-				if(data.status == 'success'){
-					if(data.comapny_name != '')
-						$("#company_label").text(data.comapny_name);
-					toastr['success']('Saving success');
-				}else{
-					toastr['error'](data.message);
+	$(function(){
+		$("#country_id").on('change',function(){
+			var provinces = $("#country_id option[value="+$("#country_id").val()+"]").attr('data-province');
+			provinces = JSON.parse(provinces);
+			var options = '';
+			$.each(provinces,function(key,value){
+				options+='<option value="'+value.id+'" ';
+				if(value.id == {{isset($address['province_id'])?$address['province_id']:0}}){
+					options+=' selected ';
 				}
-			}
+				options+='>'
+				options+=value.name;
+				options+='</option>';
+			})
+			$("#province_id").html(options).select2({width:'84%'});
 		})
-	})
 
-	$("#delete_comapny").on("click",function(){
-		confirms('Xóa công ty này ?', function(){
-			window.location = '{{URL}}/companies/delete';
+		$("#country_id").trigger('change');
+
+		$("#form_entry input,#form_entry select").on("change",function(e){
+			e.preventDefault();
+			var data = $("#form_entry").serialize();
+			$.ajax({
+				url:"{{URL}}/companies/update",
+				type:"POST",
+				data:data,
+				success:function(data){
+					if(data.status == 'success'){
+						if(data.comapny_name != '')
+							$("#label").text(data.comapny_name);
+						toastr['success']('Saving success');
+					}else{
+						toastr['error'](data.message);
+					}
+				}
+			})
+		})
+		$("#delete_comapny").on("click",function(){
+			confirms('Xóa công ty này ?', function(){
+				window.location = '{{URL}}/companies/delete';
+			});
 		});
 	});
 </script>
+@stop

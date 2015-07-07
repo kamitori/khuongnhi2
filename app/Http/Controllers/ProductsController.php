@@ -253,30 +253,56 @@ class ProductsController extends Controller {
 		$producttypes = ProductType::get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
-		$list_product = Product::select('products.*',
-						'm_products.oum_id',
-						'm_products.specification',
-						'm_products.origin_price',
-						'm_products.invest',
-						'product_stocks.in_stock',
-						'companies.name as company_name',
-						'oums.name as oum_name',
-						'companies.id as company_id',
-						'm_products.module_id')
-						->leftJoin('m_products',function($join){
-							$join->on('products.id','=','m_products.product_id')->where('m_products.module_type','=','App\Purchaseorder');
-						})
+		$list_product = MProduct::select(
+					'products.id',
+					'products.name',
+					'products.sku',
+					'm_products.product_id',
+					'm_products.oum_id',
+					'm_products.specification',
+					'm_products.origin_price',
+					'm_products.invest',
+					'product_stocks.in_stock',
+					'companies.name as company_name',
+					'oums.name as oum_name',
+					'm_products.module_id'
+		                                )
+					->addSelect(DB::raw('product_stocks.in_stock/m_products.specification as real_in_stock'))
+					->leftJoin('oums','oums.id','=','m_products.oum_id')
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('purchaseorders',function($join){
+						$join->on('purchaseorders.id','=','m_products.module_id')
+						->where('purchaseorders.status','=',1);
+					})
+					->where(function ($query){
+						$query->where('purchaseorders.status', '=', 1)
+							->orWhere('m_products.module_type', '=', 'in_stock');
+					})
+					->leftJoin('companies','companies.id','=','m_products.company_id')
+					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
 
-						->leftJoin('purchaseorders',function($join){
-							$join->on('purchaseorders.id','=','m_products.module_id')
-								->where('purchaseorders.status','=',1);
-						})
-						->where('purchaseorders.status','=',1)
-						->leftJoin('companies','companies.id','=','m_products.company_id')
-						->leftJoin('oums','oums.id','=','m_products.oum_id')
-						->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
+		foreach ($arr_filter as $key => $value) {
+			if($value!=''){
+				if($arr_filter['sku']!=''){
+					$list_product->where('products.sku',$arr_filter['sku']);
+				}elseif($key == 'like_name'){
+					$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
+					$arr_filter['name']='';
+				}elseif($key == 'name' && $arr_filter['name']!=''){
+					$list_product->where('products.name',$arr_filter['name']);
+				}elseif($key == 'company_id'){
+					$list_product->where('m_products.company_id',$arr_filter['company_id']);
+				}elseif($key == 'status'){
+					$list_product->where('products.status',$arr_filter['status']);
+				}elseif($key == 'oum_id'){
+					$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
+				}else{
+					$a=1;
+				}
 
-
+			}
+		}
+		$sum_invest =  $list_product->sum('invest');
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
 				$list_product = $list_product->orderBy('companies.name',$value);
@@ -286,38 +312,18 @@ class ProductsController extends Controller {
 				$list_product = $list_product->orderBy('products.id',$value);
 			}elseif($key=='specification'){
 				$list_product = $list_product->orderBy('m_products.specification',$value);
+			}elseif($key=='in_stock'){
+				$list_product = $list_product->orderBy('real_in_stock',$value);
 			}else{
 				$list_product = $list_product->orderBy($key,$value);
 			}
 		}
 		$list_product = $list_product->orderBy('products.id','asc');
-
-			foreach ($arr_filter as $key => $value) {
-				if($value!=''){
-					if($arr_filter['sku']!=''){
-						$list_product->where('products.sku',$arr_filter['sku']);
-					}elseif($key == 'like_name'){
-						$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
-						$arr_filter['name']='';
-					}elseif($key == 'name' && $arr_filter['name']!=''){
-						$list_product->where('products.name',$arr_filter['name']);
-					}elseif($key == 'company_id'){
-						$list_product->where('m_products.company_id',$arr_filter['company_id']);
-					}elseif($key == 'status'){
-						$list_product->where('products.status',$arr_filter['status']);
-					}elseif($key == 'oum_id'){
-						$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
-					}else{
-						$a=1;
-					}
-
-				}
-			}
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}
-		$sum_invest =  $list_product->sum('invest');
-		$list_product = $list_product->paginate(20);
+		
+		$list_product = $list_product->paginate(100);
 		// pr(DB::getQueryLog());die;
 		// pr($list_product->toArray());die;
 
@@ -467,7 +473,7 @@ class ProductsController extends Controller {
 				$mproduct->quantity		=	$value->quantity;
 				$mproduct->invest		=	intval($value->origin_price)*intval($value->quantity)*intval($value->specification);
 				$check = $check && $mproduct->save();
-			$product_stock = new ProductStock;
+				$product_stock = new ProductStock;
 				$product_stock->in_stock = $mproduct->quantity*$value->specification;
 				$product_stock->m_product_id = $mproduct->id;
 				$product_stock->product_id = $product_id;
@@ -513,44 +519,77 @@ class ProductsController extends Controller {
 		$oums = Oum::get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
-		$list_product = MProduct::select('products.name',
-		                                'products.sku',
-		                                'm_products.id',
-		                                'm_products.oum_id',
-		                                'm_products.specification',
-		                                'product_stocks.in_stock',
-		                                'companies.name as company_name',
-		                                'm_products.module_id'
+		$list_product = MProduct::select(
+					'products.id',
+					'products.name',
+					'products.sku',
+					'm_products.product_id',
+					'm_products.oum_id',
+					'm_products.specification',
+					'm_products.origin_price',
+					'm_products.invest',
+					'product_stocks.in_stock',
+					'companies.name as company_name',
+					'oums.name as oum_name',
+					'm_products.module_id'
 		                                )
-					->with('oum')
+					->addSelect(DB::raw('product_stocks.in_stock/m_products.specification as real_in_stock'))
+					->leftJoin('oums','oums.id','=','m_products.oum_id')
 					->leftJoin('products','products.id','=','m_products.product_id')
 					->leftJoin('purchaseorders',function($join){
 						$join->on('purchaseorders.id','=','m_products.module_id')
 						->where('purchaseorders.status','=',1);
 					})
-					->where('purchaseorders.status','=',1)
+					->where(function ($query){
+						$query->where('purchaseorders.status', '=', 1)
+							->orWhere('m_products.module_type', '=', 'in_stock');
+					})
+					->where('product_stocks.in_stock','>',0)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
-		if(count($arr_sort)==0){
-			$list_product = $list_product->orderBy('products.id','asc');
-		}
 
-			foreach ($arr_filter as $key => $value) {
-				if($value!=''){
-					if($arr_filter['sku']!=''){
-						$list_product->where('products.sku',$arr_filter['sku']);
-					}elseif($arr_filter['name']!=''){
-						$list_product->where('products.name',$arr_filter['name']);
-					}elseif($key == 'company_id'){
-						$list_product->where('m_products.company_id',$arr_filter['company_id']);
-					}elseif($key == 'oum_id'){
-						$list_product->where('products.oum_id',$arr_filter['oum_id']);
-					}else{
-						$list_product->where($key,$value);
-					}
-
+		foreach ($arr_filter as $key => $value) {
+			if($value!=''){
+				if($arr_filter['sku']!=''){
+					$list_product->where('products.sku',$arr_filter['sku']);
+				}elseif($key == 'like_name'){
+					$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
+					$arr_filter['name']='';
+				}elseif($key == 'name' && $arr_filter['name']!=''){
+					$list_product->where('products.name',$arr_filter['name']);
+				}elseif($key == 'company_id'){
+					$list_product->where('m_products.company_id',$arr_filter['company_id']);
+				}elseif($key == 'status'){
+					$list_product->where('products.status',$arr_filter['status']);
+				}elseif($key == 'oum_id'){
+					$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
+				}else{
+					$a=1;
 				}
+
 			}
+		}
+		$sum_invest =  $list_product->sum('invest');
+		foreach ($arr_sort as $key => $value) {
+			if($key=='company_id'){
+				$list_product = $list_product->orderBy('companies.name',$value);
+			}elseif($key=='oum_id'){
+				$list_product = $list_product->leftJoin('oums','oums.id','=','m_products.oum_id')->orderBy('oums.name',$value);
+			}elseif($key=='id'){
+				$list_product = $list_product->orderBy('products.id',$value);
+			}elseif($key=='specification'){
+				$list_product = $list_product->orderBy('m_products.specification',$value);
+			}elseif($key=='in_stock'){
+				$list_product = $list_product->orderBy('real_in_stock',$value);
+			}else{
+				$list_product = $list_product->orderBy($key,$value);
+			}
+		}
+		$list_product = $list_product->orderBy('products.id','asc');
+		if(!isset($arr_filter['status'])){
+			$arr_filter['status'] = '';
+		}
+		
 		$list_product = $list_product->paginate(20);
 
 		return view('popup.choose_product_so', [

@@ -45,14 +45,14 @@
 							<div class="company">
 								<select id="company_select" class="span12" data-type="select2">
 									<option value="all">&nbsp;</option>
-									@foreach($customers as $company)
+									@foreach($distributes as $company)
 									<option value="{{$company['id']}}">{{$company['name']}}</option>
 									@endforeach
 								</select>
 							</div>
 						</div>
 						<ul class="nav bs-docs-sidenav affix-top left-list">
-							@foreach($customers as $company)
+							@foreach($distributes as $company)
 								<li data-id="{{$company['id']}}">
 									<span  class='company'>{{$company['name']}}</span>
 								</li>
@@ -117,7 +117,7 @@
 							<div class="controls">
 								<select id="company_paid" width="auto" data-type="select2">
 									<option value="all">&nbsp;</option>
-									@foreach($customers as $company)
+									@foreach($distributes as $company)
 									<option value="{{$company['id']}}">{{$company['name']}}</option>
 									@endforeach
 								</select>
@@ -224,7 +224,7 @@
 		var month = $("#month").val();
 		var year = $("#year").val();
 		$.ajax({
-			url : '{{URL}}/receipts/list-receipt-customer',
+			url : '{{URL}}/receipts/list-receipt-distribute',
 			type : 'POST',
 			data :{
 				'company_id' : company_id,
@@ -281,7 +281,7 @@
 				company_id 	: company_id,
 				date 		: date,
 				sum_paid	: sum_paid,
-				type_paid	: 'customer',
+				type_paid	: 'distribute',
 				hinh_thuc 	: hinh_thuc,
 				user_id 	: user_paid,
 			},

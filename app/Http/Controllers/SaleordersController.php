@@ -8,8 +8,10 @@ use App\Country;
 use App\Province;
 use App\User;
 use App\Oum;
+use App\ProductStock;
 use App\Saleorder;
 use App\Address;
+use App\SellPrice;
 use Datatables;
 use Illuminate\Http\Request;
 use Session;
@@ -22,7 +24,7 @@ class SaleordersController extends Controller {
 	* @param  int  $id
 	* @return Response
 	*/
-
+	
 	public function getIndex(Request $request){
 		self::anyEntry($request);
 	}
@@ -30,36 +32,73 @@ class SaleordersController extends Controller {
 	public function anyClear(Request $request){
 		Session::forget('product_of_so'.session('current_saleorder'));
 		Session::forget('current_saleorder');
-		Session::flush();
 		return redirect('saleorders');
 	}
 
 	public function anyCreate(Request $request)
 	{
 		$saleorder = new Saleorder;
-		$address = new Address;
-		$saleorder->date = date("Y-m-d H:i:s");
-		if($saleorder->save()){
-			session(['current_saleorder' => $saleorder->id]);
-			$address->module_id  = $saleorder['id'];
-			$address->module_type  = 'App\Saleorder';
-			$address->save();
-			$saleorder->address_id = $address->id;
-			$saleorder->save();
-		}
+		$saleorder->save();
+		session(['current_saleorder' => $saleorder->id]);
+		// $address = new Address;
+		// $saleorder->date = date("Y-m-d H:i:s");
+		// if($saleorder->save()){
+		// 	session(['current_saleorder' => $saleorder->id]);
+		// 	$address->module_id  = $saleorder['id'];
+		// 	$address->module_type  = 'App\Saleorder';
+		// 	$address->save();
+		// 	$saleorder->address_id = $address->id;
+		// 	$saleorder->save();
+		// }	
 		return redirect('saleorders');
 	}
 
 	public function anyDelete(Request $request)
 	{
+		$arr_return = array('status'=>'error');
 		$id_saleorder = session('current_saleorder') !== null ? session('current_saleorder') : 0;
 		if($id_saleorder){
 			$saleorder = Saleorder::find($id_saleorder);
-			$saleorder->delete();
-			Address::where('module_id','=',$id_saleorder)->where('module_type','=','App\Saleorder')->delete();
+			if(!$saleorder->status){
+				if($saleorder->delete()){
+					// Address::where('module_id','=',$id_saleorder)->where('module_type','=','App\Saleorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_saleorder)
+									->where('module_type','=','App\Saleorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+					$arr_return['status'] = 'success';
+				}else{
+					$arr_return['message'] = 'Delete fail !';
+				}
+			}else{
+				header('Content-Type: text/html; charset=utf-8');
+				echo  'Không thể xóa hóa đơn đã hoàn thành';die;
+			}
+
 			Session::forget('current_saleorder');
+		}else{
+			$arr_return['message'] = 'Không tìm thấy hóa đơn';
 		}
-		return redirect('saleorders');
+		return $arr_return;
+	}
+
+
+	public function getDeleteFromList(Request $request,$id=0)
+	{
+		$id_saleorder = $id;
+		if($id_saleorder){
+			$saleorder = Saleorder::find($id_saleorder);
+			if(!$saleorder->status){
+				if($saleorder->delete()){
+					// Address::where('module_id','=',$id_saleorder)->where('module_type','=','App\Saleorder')->delete();
+					$list_mproduct = Mproduct::where('module_id','=',$id_saleorder)
+									->where('module_type','=','App\Saleorder')
+									->lists('id');
+					MProduct::whereIn('id',$list_mproduct)->delete();
+				}
+			}
+		}
+		return redirect('saleorders/list');
 	}
 
 	public function anyEntry(Request $request,$id=null)
@@ -90,19 +129,20 @@ class SaleordersController extends Controller {
 				}
 			}
 		}
-		if(!isset($saleorder['address_id']) || $saleorder['address_id']==0){
-			$address = new Address;
-			$address->module_id  = $saleorder->id;
-			$address->module_type  = 'App\Saleorder';
-			$address->save();
-			$saleorder->address_id = $address->id;
-			$saleorder->save();
-		}else{
-			$address = Address::find($saleorder->address_id);
-		}
-
+		$address = Address::where('module_id','=',$saleorder->id)
+					->where('module_type','=','App\Saleorder')->first();
+					
+		$country_province = Province::addSelect('provinces.name as province_name')
+						->where('provinces.id','=',$address->province_id)
+						->addSelect('countries.name as country_name')
+						->leftJoin('countries','countries.id','=','provinces.country_id')
+						->first();
 		$address = $address->toArray();
 		$saleorder = $saleorder->toArray();
+		$saleorder['province_name'] = isset($country_province->province_name)?$country_province->province_name:'';
+		$saleorder['country_name'] = isset($country_province->country_name)?$country_province->country_name:'';
+		// var_dump(DB::getQueryLog());
+		// pr($saleorder);die;
 
 		//Init array
 		$distributes = array();
@@ -122,12 +162,12 @@ class SaleordersController extends Controller {
 						->lists('product_id');
 
 		Session::forget('product_of_so'.session('current_saleorder'));
-
 		foreach ($arr_product as $key => $value) {
 			Session::put('product_of_so'.session('current_saleorder').".".$value , $value);
 		}
 
-		$view_list_product = self::getListProduct();;
+		$view_list_product = self::getListProduct();
+		// $view_list_product = '';
 
 
 		// pr($list_product);die;
@@ -144,7 +184,8 @@ class SaleordersController extends Controller {
 	public function postUpdate(Request $request)
 	{
 		$arr_return = array(
-					'status' => 'error'
+					'status' => 'error',
+					'message'=>''
 				);
 		$time =date('H:i:s', time());
 		$id_saleorder = session('current_saleorder') !== null ? session('current_saleorder') : 0;
@@ -158,18 +199,17 @@ class SaleordersController extends Controller {
 			$saleorder->save();
 			session(['current_saleorder' => $saleorder->id]);
 		}
-
+	if($saleorder->status == 0){
 		$saleorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 		$saleorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 		$saleorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
 		$saleorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
 		$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
-
 		$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
 
 		if($saleorder['address_id']==0){
 			$address = new Address;
-
+			
 		}else{
 			$address = Address::find($address_id);
 		}
@@ -183,15 +223,55 @@ class SaleordersController extends Controller {
 		$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
 		$address->save();
 		$saleorder->address_id = $address->id;
+	}
 		$saleorder->status = $request->has('status')?1:0;
-
-		if($saleorder->save()){
-			Mproduct::where('module_id', '=', $saleorder->id)
-					->where('module_type', '=', 'App\Saleorder')
-					->update(['company_id' => $saleorder->company_id ]);
-			$arr_return['status']= 'success';
+		$check_save_in_stock = true;
+		if($saleorder->status){
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+							->where('module_id', '=', $saleorder->id)
+							->where('module_type', '=', 'App\Saleorder')
+							->leftJoin('products','products.id','=','m_products.product_id')
+							->get()->toArray();
+			foreach ($arr_mproduct as $key => $mproduct) {
+				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
+				if($product_stock->in_stock < 0){
+					$check_save_in_stock = false;
+					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào lớn hơn số lượng đã nhập<br/><br/>';
+				}
+			}
 		}else{
-			$arr_return['message']= 'Saving fail !';
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+							->where('module_id', '=', $saleorder->id)
+							->where('module_type', '=', 'App\Saleorder')
+							->leftJoin('products','products.id','=','m_products.product_id')
+							->get()->toArray();
+			foreach ($arr_mproduct as $key => $mproduct) {
+				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
+				$product_stock->save();
+			}
+		}
+
+		if($check_save_in_stock){
+			if($saleorder->save()){
+				if($saleorder->status){
+					foreach ($arr_mproduct as $key => $mproduct) {
+						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+						$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+						$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
+						$product_stock->save();
+					}
+				}
+				Mproduct::where('module_id', '=', $saleorder->id)
+						->where('module_type', '=', 'App\Saleorder')
+						->update(['company_id' => $saleorder->company_id ]);
+				$arr_return['status']= 'success';
+			}else{
+				$arr_return['message']= 'Saving fail !';
+			}
 		}
 		return $arr_return;
 	}
@@ -246,12 +326,12 @@ class SaleordersController extends Controller {
 		}
 		$list_date = array_unique($list_date);
 
-		$list_saleorder = Saleorder::select('saleorders.*','sumamount.*')->with('company')
+		$list_saleorder = Saleorder::select('saleorders.*','suminvest.*')->with('company')
 					->leftJoin(
 							DB::raw(' (
-									select module_id, module_type,sum(amount) as sum_amount
-									from m_products where module_type = "App\\\\Saleorder" group by  module_id
-								    ) as sumamount'), function($join){
+									select module_id, module_type,sum(invest) as sum_invest 
+									from m_products where module_type = "App\\\\Saleorder" group by  module_id 
+								    ) as suminvest'), function($join){
 								$join->on('saleorders.id', '=', 'module_id');
 							}
 						);
@@ -321,17 +401,19 @@ class SaleordersController extends Controller {
 						->where('module_type','=',$module_type)
 						->lists('product_id');
 
+
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_so)){
-				$product = Product::find($product_id);
+				$product = MProduct::find($product_id);
 				$mproduct = new MProduct;
-				$mproduct->product_id	=	$product_id;
+				$mproduct->product_id	=	$product->product_id;
+				$mproduct->m_product_id	=	$product->id;
 				$mproduct->module_id	= 	$module_id;
-				$mproduct->company_id	= 	$company_id;
+				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
-				//$mproduct->specification	=	$product->specification;
-				//$mproduct->oum_id		=	$product->oum_id;
-				//$mproduct->origin_price	=	$product->origin_price;
+				$mproduct->specification	=	$product->specification;
+				$mproduct->oum_id		=	$product->oum_id;
+				$mproduct->origin_price	=	$product->origin_price;
 				$mproduct->save();
 			}
 		}
@@ -342,16 +424,12 @@ class SaleordersController extends Controller {
 				$mproduct = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->first()->toArray();
+
 				$id_product = $mproduct['product_id'];
 				$quantity = $mproduct['quantity'];
 				$check = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->delete();
-				if($check){
-					$product = Product::find($id_product);
-					$product->in_stock =  $product->in_stock - $quantity;
-					$product->save();
-				}
 			}
 		}
 		return $arr_return;
@@ -370,6 +448,7 @@ class SaleordersController extends Controller {
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Saleorder')
 						->where('module_id','=',$id)
 						->leftJoin('products','products.id','=','m_products.product_id')
+						->with('getsellprices')
 						->get()->toArray();
 		$saleorder = Saleorder::select('status')->where('id','=',$id)->first()->toArray();
 		return view('saleorder.list-product',[	'distributes'=>$distributes,
@@ -379,49 +458,34 @@ class SaleordersController extends Controller {
 						]);
 	}
 
-	/*public function getListProduct(){
-		$id = session('current_saleorder');
-		//Init array
-		$distributes = array();
-		$oums = array();
-		$list_product = array();
-
-		//Get value
-		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
-		$arr_product = MProduct::where('module_type','=','App\Saleorder')
-						->where('module_id','=',$id)
-						->lists('product_id');
-
-		return view('saleorder.list-product',[	'distributes'=>$distributes,
-							'oums'=>$oums,
-							'list_product'=>$arr_product
-						]);
-	}*/
-
 	public function postUpdateMproduct(Request $request){
-		$arr_return= array('status'=>'error','amount'=>0);
+		$arr_return= array('status'=>'error','invest'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
+			$mproduct_po = Mproduct::find($mproduct->m_product_id);
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->sell_price =  $request->has('sell_price')?$request->input('sell_price'):0;
+			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
-			$product = Product::find($mproduct->product_id);
-			$product->in_stock = $product->in_stock - ($mproduct->quantity - $old_quantity);
-			$mproduct->amount = floatval($mproduct->specification)* floatval($mproduct->quantity)* floatval($mproduct->sell_price);
-			if($product->in_stock >0){
-				if($mproduct->save()){
-				$product->save();
-				$arr_return['status'] = 'success';
-				$arr_return['amount'] = number_format( $mproduct->amount );
+			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity);
+			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
+			// if($product_stock->in_stock >=0){
+				if( !$mproduct->status){
+					if($mproduct->save()){
+						$arr_return['status'] = 'success';
+						$arr_return['amount'] = number_format( $mproduct->amount );
+					}else{
+						$arr_return['message'] = 'Saving fail !';
+					}
 				}else{
-					$arr_return['message'] = 'Saving fail !';
+					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
 				}
-			}else{
-				$arr_return['message'] = 'Vượt quá số lượng kho';
-			}
+			// }else{
+			// 	$arr_return['message'] = 'Số lượng nhập thấp hơn số lượng đã bán';
+			// }
 		}
 		return $arr_return;
 	}
@@ -431,12 +495,13 @@ class SaleordersController extends Controller {
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
-			$id_product = $mproduct->product_id;
+			$id_product = $mproduct->m_product_id;
 			$quantity = $mproduct->quantity;
+			$specification = $mproduct->specification;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
-				$product = Product::find($id_product);
-				$product->in_stock = $product->in_stock + $quantity;
+				$product = ProductStock::find($id_product);
+				$product->in_stock = $product->in_stock + $quantity*$specification;
 				$product->save();
 				$arr_return['status'] = 'success';
 			}else{

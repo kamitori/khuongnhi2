@@ -5,19 +5,14 @@ use App\Company;
 use App\Purchaseorder;
 use App\Paid;
 use App\User;
+use App\Saleorder;
+use App\ReturnSaleorder;
 use App\ReturnPurchaseorder;
+use Datatables;
 use Illuminate\Http\Request;
+use Session;
 
 class ReceiptsController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-
-	}
 
 	public function getIndex(){
 		self::getDistribute();
@@ -30,11 +25,12 @@ class ReceiptsController extends Controller {
 
 		$distributes = Company::getDistributeList()->get()->toArray();
 		$users = User::get()->toArray();
-		$this->layout->content = view('receipt.customer',[
+		$this->layout->content = view('receipt.distribute',[
 							'distributes'	=>	$distributes,
 							'users'		=>	$users
 								]);
 	}
+
 
 	public function postListReceiptDistribute(Request $request)
 	{
@@ -63,7 +59,7 @@ class ReceiptsController extends Controller {
 			$list_order[$key_order]['paid'] =  0;
 			$list_order[$key_order]['no_cu'] =  0;
 			$list_order[$key_order]['con_lai'] =  0;
-			$list_order[$key_order]['hinh_thuc'] =  'Đơn hàng mua';
+			$list_order[$key_order]['hinh_thuc'] =  'Đơn hàng nhập';
 			$key_order++;
 		}
 		$list_rpo = ReturnPurchaseorder::where('date','>=',$begin)
@@ -78,7 +74,7 @@ class ReceiptsController extends Controller {
 			$list_order[$key_order]['paid'] =  0;
 			$list_order[$key_order]['no_cu'] =  0;
 			$list_order[$key_order]['con_lai'] =  0;
-			$list_order[$key_order]['hinh_thuc'] =  'Trả hàng mua';
+			$list_order[$key_order]['hinh_thuc'] =  'Trả hàng nhập';
 			$key_order++;
 		}
 
@@ -117,6 +113,100 @@ class ReceiptsController extends Controller {
 			]);
 	}
 
+	public function getCustomer()
+	{
+		$customers = array();
+		$user = array();
+
+
+		$customers = Company::getCustomerList()->get()->toArray();
+		$users = User::get()->toArray();
+		$this->layout->content = view('receipt.customer',[
+							'customers'	=>	$customers,
+							'users'		=>	$users
+								]);
+	}
+
+	public function postListReceiptCustomer(Request $request)
+	{
+		$list_order = array();
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$month = $request->has('month')?$request->input('month'):0;
+		$year = $request->has('year')?$request->input('year'):0;
+		if($month!='all'){
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1'.'-'.($month+1).'-'.$year));
+		}else{
+			$begin = date('Y-m-d H:i:s',strtotime('1-1-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1-1-'.($year+1)));
+		}
+		
+		$list_so = Saleorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$company_id)
+					->get()->toArray();
+		$key_order = 1;
+		foreach ($list_so as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+			$list_order[$key_order]['paid'] =  0;
+			$list_order[$key_order]['no_cu'] =  0;
+			$list_order[$key_order]['con_lai'] =  0;
+			$list_order[$key_order]['hinh_thuc'] =  'Đơn hàng mua';
+			$key_order++;
+		}
+		$list_rso = ReturnSaleorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$company_id)
+					->get()->toArray();
+		foreach ($list_rso as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+			$list_order[$key_order]['paid'] =  0;
+			$list_order[$key_order]['no_cu'] =  0;
+			$list_order[$key_order]['con_lai'] =  0;
+			$list_order[$key_order]['hinh_thuc'] =  'Trả hàng mua';
+			$key_order++;
+		}
+
+		$list_paid = Paid::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('company_id','=',$company_id)
+					->where('type_paid','=','customer')
+					->get()->toArray();
+		foreach ($list_paid as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  0;
+			$list_order[$key_order]['paid'] =  $value['sum_paid'];
+			$list_order[$key_order]['no_cu'] =  0;
+			$list_order[$key_order]['con_lai'] =  0;
+			$list_order[$key_order]['hinh_thuc'] =  $value['hinh_thuc'];
+			$list_order[$key_order]['company_id'] =  $value['company_id'];
+			$list_order[$key_order]['user_id'] =  $value['user_id'];
+			$key_order++;
+		}
+		$date = array();
+		foreach ($list_order as $key => $value) {
+			$date[$key] = $value['date'];
+		}
+		array_multisort($date,SORT_ASC,$list_order);
+		foreach ($list_order as $key => $value) {
+			if($key==0){
+				$list_order[$key]['no_cu']=0;
+			}else{
+				$list_order[$key]['no_cu']=$list_order[$key-1]['con_lai'];
+			}
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+		return view('receipt.list-receipt-customer',[
+					'list_order' =>$list_order
+			]);
+	}
 	public function postSavePaid(Request $request)
 	{
 		$time =date('H:i:s', time());

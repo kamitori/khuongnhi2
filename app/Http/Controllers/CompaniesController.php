@@ -20,44 +20,61 @@ class CompaniesController extends Controller{
 		 self::anyEntry($request);
 	}
 
-	public function anyEntry(Request $request)
+	public function anyEntry(Request $request,$id=null)
 	{
-		$company_id = session('current_company') !== null ? session('current_company') : 0;
-		$address_id = session('current_address') !== null ? session('current_address') : 0;
-		if($company_id){
-			$company = Company::find($company_id)->toArray();
-			$address = Address::getAddressByCompanyId($company_id);
-			session(["current_company" => $company['id'],"current_address" => $address['id']]);
-		}else{
-			$company = Company::get()->last();
-			$address = Address::getAddressByCompanyId($company_id);
-
-			if($company){
-				$company = $company->toArray();
-				//$address = $address->toArray();
-				session(["current_company" => $company['id'],"current_address" => $address['id']]);
+		if(isset($id) && $id!=null){
+			$company = Company::find($id);
+			if($company != null){
+				session(['current_company' => $company->id]);
 			}else{
-				$company = new Company;
-				$company->save();
-				$address = new Address;
-				$address->save();
-				session(['current_company' => $company->id,'current_address' => $address->id]);
+				return redirect('companies');
+			}
+		}else{	
+			$id = session('current_company') !== null ? session('current_company') : 0;
+			$address_id = session('current_address') !== null ? session('current_address') : 0;
+			if($id){
+				$company = Company::find($id);
+				session(["current_company" => $company->id]);
+			}else{
+				$company = Company::get()->last();
+				if($company){
+					session(["current_company" => $company->id]);
+				}else{
+					$company = new Company;
+					$company->save();
+					session(['current_company' => $company->id]);
+				}
 			}
 		}
-		$provinces = array();
+
+		$address = Address::where('module_id','=',$company->id)
+					->where('module_type','=','App\Company')->first();
+		$address_province = isset($address->province_id)?$address->province_id:0;
+		$country_province = Province::addSelect('provinces.name as province_name')
+						->where('provinces.id','=',$address_province)
+						->addSelect('countries.name as country_name')
+						->leftJoin('countries','countries.id','=','provinces.country_id')
+						->first();
+		if($country_province){
+			$country_province->toArray();
+			$company['province_name'] = $country_province['province_name'];
+			$company['country_name'] = $country_province['country_name'];
+		}else{
+			$company['province_name'] = '';
+			$company['country_name'] = '';
+		}
+
 		$countries = array();
 		$company_type = array();
 
-		$provinces = Province::get()->toArray();
-		$countries = Country::get()->toArray();
+		$countries = Country::with('provinces')->get()->toArray();
 		$company_type = CompanyType::get()->toArray();
 
 
-
+		$company->toArray();
 		$this->layout->content = view('company.entry',[
 		                              'company' 	=> $company,
 		                              'address'		=> $address,
-		                              'provinces' 	=> $provinces,
 		                              'countries'	=> $countries,
 		                              'company_type'=> $company_type
 		                              ]);
@@ -71,7 +88,7 @@ class CompaniesController extends Controller{
 		}
 		$address = new Address;
 		$address->module_id =  $company->id;
-		$address->module_name = "companies";
+		$address->module_type = "App\Company";
 		if($address->save()){
 			session(['current_address' => $address->id]);
 		}
@@ -81,11 +98,11 @@ class CompaniesController extends Controller{
 	public function anyUpdate(Request $request)
 	{
 		$arr_return = array('status' => 'error');
-		$company_id = session('current_company') !== null ? session('current_company') : 0;
+		$id = session('current_company') !== null ? session('current_company') : 0;
 		$address_id = session('current_address') !== null ? session('current_address') : 0;
-		if($company_id ){
-			$company = Company::find($company_id);
-			$address = Address::getAddressByCompanyId($company_id);
+		if($id ){
+			$company = Company::find($id);
+			$address = Address::getAddressByCompanyId($id);
 			session(['current_company' => $company['id'],'current_address' => $address['id']]);
 		}else{
 			$company = Company::get()->last();
@@ -101,19 +118,20 @@ class CompaniesController extends Controller{
 			}
 		}
 
-		$company->name = $request->has('company_name') ? $request->input('company_name') : '';
-		$company->phone = $request->has('company_phone') ? $request->input('company_phone') : '';
-		$company->fax = $request->has('company_fax') ? $request->input('company_fax') : '';
-		$company->email = $request->has('company_email') ? $request->input('company_email') : '';
-		$company->web = $request->has('company_web') ? $request->input('company_web') : '';
+		$company->name = $request->has('name') ? $request->input('name') : '';
+		$company->phone = $request->has('phone') ? $request->input('phone') : '';
+		$company->company_type_id = $request->has('company_type') ? $request->input('company_type') : 0;
+		$company->fax = $request->has('fax') ? $request->input('fax') : '';
+		$company->email = $request->has('email') ? $request->input('email') : '';
+		$company->web = $request->has('web') ? $request->input('web') : '';
 		$company->is_customer = $request->has('is_customer') ? 1:0 ;
 		$company->is_distribute = $request->has('is_distribute') ? 1:0;
 
 
-		$address->address = $request->has('company_address') ? $request->input('company_address') : '';
-		$address->town_city = $request->has('company_town_city') ? $request->input('company_town_city') : '';
-		$address->province_id = $request->has('company_province_state') ? $request->input('company_province_state') : 0;
-		$address->country_id = $request->has('company_country') ? $request->input('company_country') : 0;
+		$address->address = $request->has('address') ? $request->input('address') : '';
+		$address->town_city = $request->has('town_city') ? $request->input('town_city') : '';
+		$address->province_id = $request->has('province_id') ? $request->input('province_id') : 0;
+		$address->country_id = $request->has('country_id') ? $request->input('country_id') : 0;
 
 		if($company->save()){
 			$arr_return['status'] = 'success';
@@ -132,9 +150,9 @@ class CompaniesController extends Controller{
 
 	public function anyDelete(Request $request)
 	{
-		$company_id = session('current_company') !== null ? session('current_company') : 0;
-		if($company_id){
-			$company = Company::find($company_id);
+		$id = session('current_company') !== null ? session('current_company') : 0;
+		if($id){
+			$company = Company::find($id);
 			$company->delete();
 			Session::forget('current_company');
 		}
@@ -143,14 +161,14 @@ class CompaniesController extends Controller{
 
 	public function anyList(Request $request)
 	{
-		// if($request->has('input-sort')){
-		// 	$arr_sort = $request->input('input-sort');
-		// 	$arr_sort =(array) json_decode($arr_sort);
-		// }elseif( session('sort_filter_product.arr_sort') !== null){
-		// 	$arr_sort = session('sort_filter_product.arr_sort');
-		// }else{
+		if($request->has('input-sort')){
+			$arr_sort = $request->input('input-sort');
+			$arr_sort =(array) json_decode($arr_sort);
+		}elseif( session('sort_filter_company.arr_sort') !== null){
+			$arr_sort = session('sort_filter_company.arr_sort');
+		}else{
 			$arr_sort=array();
-		// }
+		}
 		session('sort_filter_company.arr_sort', $arr_sort);
 
 
@@ -172,32 +190,43 @@ class CompaniesController extends Controller{
 		//Get value array
 		$list_all_companies = Company::select('id','name')->get()->toArray();
 
-		$list_product = Company::select('companies.*','addresses.*')->leftJoin('addresses', function($join){
-										$join->on("companies.id","=","addresses.module_id")->where('module_type','=','App\Company');
-									});
-		$list_product->addSelect('provinces.name as province_name')->leftJoin('provinces', function($join){
+		$list_company = Company::select('companies.*','addresses.*','provinces.name as province_name')
+						->leftJoin('addresses', function($join){
+							$join->on("companies.id","=","addresses.module_id")->where('module_type','=','App\Company');
+						});
+		$list_company->addSelect('provinces.name as province_name')->leftJoin('provinces', function($join){
 										$join->on("addresses.province_id","=","provinces.id");
 									});
+
 		foreach ($arr_sort as $key => $value) {
-			$list_product->orderBy($key, $value);
+			if($key=='id')
+				$list_company->orderBy('companies.id', $value);
+			elseif($key=='phone')
+				$list_company->orderBy('companies.phone', $value);
+			elseif($key=='address')
+				$list_company->orderBy('addresses.address', $value);
+			elseif($key=='town_city')
+				$list_company->orderBy('addresses.town_city', $value);
+			elseif($key=='province_name')
+				$list_company->orderBy('provinces.name', $value);
+			else
+				$list_company->orderBy($key, $value);
 		}
+		if(!count($arr_sort))
+			$list_company->orderBy('companies.name', 'asc');
+
 		if($arr_filter['name']!=''){
-			$list_product->where('companies.name', $arr_filter['name']);
+			$list_company->where('companies.name', $arr_filter['name']);
 		}else{
 			foreach ($arr_filter as $key => $value) {
 				if($value!=''){
-					$list_product->where($key,$value);
+					$list_company->where($key,$value);
 				}
 			}
 		}
-		$list_product = $list_product->paginate(20);
-		/*if( !$list_product->isEmpty() ) {
-			$list_product = $list_product->toArray();
-		} else {
-			$list_product = [];
-		}*/
+		$list_company = $list_company->paginate(50);
 		$this->layout->content=view('company.list', [
-								'list_product' => $list_product,
+								'list_company' => $list_company,
 								'list_all_companies'=>$list_all_companies,
 								'arr_sort' => $arr_sort,
 								'arr_filter' => $arr_filter,
