@@ -39,9 +39,9 @@
 	<script src="{{URL}}/scripts/jquery-1.8.2.min.js"></script>
 	<!-- Themer -->
 	<script>
-		var themerPrimaryColor = '#DA4C4C',
+		var themerPrimaryColor = '#0088cc',
 		themerHeaderColor = '#393D41',
-		themerMenuColor = '#ff5487';
+		themerMenuColor = '#383f48';
 	</script>
 	<script src="{{URL}}/scripts/jquery.cookie.js"></script>
 	<script src="{{URL}}/scripts/themer.js"></script>
@@ -195,6 +195,7 @@
 			<!-- Custom Onload Script -->
 			<script src="{{URL}}/scripts/load-setting.js"></script>
 			<script type="text/javascript">
+				themerUpdateColors(themerPrimaryColor, themerMenuColor);
 				$.ajaxSetup({
 				    headers: {
 				        'X-CSRF-Token': '{{ csrf_token() }}'

@@ -41,9 +41,9 @@
 	<script src="{{URL}}/scripts/jquery-1.8.2.min.js"></script>
 	<!-- Themer -->
 	<script>
-		var themerPrimaryColor = '#da4c4c',
+		var themerPrimaryColor = '#388E3C',
 		themerHeaderColor = '#393D41',
-		themerMenuColor = '#455a64';
+		themerMenuColor = '#383f48';
 	</script>
 	<script src="{{URL}}/scripts/jquery.cookie.js"></script>
 	<script src="{{URL}}/scripts/themer.js"></script>

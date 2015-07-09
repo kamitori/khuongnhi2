@@ -38,6 +38,7 @@ class SaleordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$saleorder = new Saleorder;
+		$saleorder->date = date("Y-m-d H:i:s");
 		$saleorder->save();
 		session(['current_saleorder' => $saleorder->id]);
 		// $address = new Address;
@@ -207,12 +208,8 @@ class SaleordersController extends Controller {
 		$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 		$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
 
-		if($saleorder['address_id']==0){
-			$address = new Address;
-			
-		}else{
-			$address = Address::find($address_id);
-		}
+		$address = Address::where('module_id','=',$saleorder->id)
+					->where('module_type','=','App\Saleorder')->first();
 
 		$address->module_id  = $saleorder->id;
 		$address->module_type  = 'App\Saleorder';

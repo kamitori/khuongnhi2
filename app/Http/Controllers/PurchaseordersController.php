@@ -210,19 +210,14 @@ class PurchaseordersController extends Controller {
 			session(['current_purchaseorder' => $purchaseorder->id]);
 		}
 	if($purchaseorder->status == 0){
-		$purchaseorder->id = $request->has('id') ? $request->input('id') : 0;
+		$purchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 		$purchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 		$purchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
-		$purchaseorder->phone = $request->has('phone') ? $request->input('phone') : '';
-		$purchaseorder->email = $request->has('email') ? $request->input('email') : '';
-		$address_id = isset($purchaseorder->address_id) ? $purchaseorder->address_id : 0;
+		$purchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
+		$purchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 
-		if($purchaseorder['address_id']==0){
-			$address = new Address;
-			
-		}else{
-			$address = Address::find($address_id);
-		}
+		$address = Address::where('module_id','=',$purchaseorder->id)
+					->where('module_type','=','App\Purchaseorder')->first();
 
 		$address->module_id  = $purchaseorder->id;
 		$address->module_type  = 'App\Purchaseorder';
@@ -277,7 +272,7 @@ class PurchaseordersController extends Controller {
 				}
 				Mproduct::where('module_id', '=', $purchaseorder->id)
 						->where('module_type', '=', 'App\Purchaseorder')
-						->update(['id' => $purchaseorder->id ]);
+						->update(['company_id' => $purchaseorder->company_id ]);
 				$arr_return['status']= 'success';
 			}else{
 				$arr_return['message']= 'Saving fail !';

@@ -13,21 +13,21 @@
 	<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-view">
 		<thead>
 			<tr class="small">
-				<th style="width: 3%">
+				<th style="width: 5%">
 					Chọn
 				</th>
-				<th style="width: 4%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
-				<th style="width: 8%" data-column="sku" {{ isset($arr_sort['sku'])?'data-sort='.$arr_sort['sku']:'' }}>SKU</th>
-				<th style="width: 18%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
-				<th>Loại sản phẩm</th>
+				<th style="width: 5%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
+				<th style="width: 15%" data-column="sku" {{ isset($arr_sort['sku'])?'data-sort='.$arr_sort['sku']:'' }}>SKU</th>
+				<th style="width: 50%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
+				<th  style="width: 20%">Loại sản phẩm</th>
 			</tr>
 			<tr class="sort">
-				<th style="width: 3%" class="center no-sort">
+				<th style="width: 5%" class="center no-sort">
 					<input type="checkbox" id="check_all" value="">
 				</th>
-				<th style="width: 4%">
+				<th style="width: 5%">
 				</th>
-				<th style="width: 8%">
+				<th style="width: 15%">
 					<select name="input-filter[sku]" id="sku" data-type="select2">
 						<option value="">&nbsp;</option>
 						@foreach($list_all_product as $sku)
@@ -35,7 +35,7 @@
 						@endforeach
 					</select>
 				</th>
-				<th style="width:18%">
+				<th style="width:50%">
 					<select name="input-filter[name]" id="name" data-type="select2">
 						<option value="">&nbsp;</option>
 						@foreach($list_all_product as $name)
@@ -43,7 +43,7 @@
 						@endforeach
 					</select>
 				</th>
-				<th>
+				<th style="width:20%">
 					<select name="input-filter[product_type]" id="product_type" data-type="select2">
 						<option value="">&nbsp;</option>
 						@foreach($producttypes as $type)

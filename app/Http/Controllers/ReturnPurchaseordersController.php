@@ -38,10 +38,11 @@ class ReturnPurchaseordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$returnpurchaseorder = new ReturnPurchaseorder;
+		$returnpurchaseorder->date = date("Y-m-d H:i:s");
 		$returnpurchaseorder->save();
 		session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 		// $address = new Address;
-		// $returnpurchaseorder->date = date("Y-m-d H:i:s");
+		// 
 		// if($returnpurchaseorder->save()){
 		// 	session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 		// 	$address->module_id  = $returnpurchaseorder['id'];
@@ -207,12 +208,8 @@ class ReturnPurchaseordersController extends Controller {
 		$returnpurchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 		$address_id = isset($returnpurchaseorder->address_id) ? $returnpurchaseorder->address_id : 0;
 
-		if($returnpurchaseorder['address_id']==0){
-			$address = new Address;
-			
-		}else{
-			$address = Address::find($address_id);
-		}
+		$address = Address::where('module_id','=',$returnpurchaseorder->id)
+					->where('module_type','=','App\ReturnPurchaseorder')->first();
 
 		$address->module_id  = $returnpurchaseorder->id;
 		$address->module_type  = 'App\ReturnPurchaseorder';

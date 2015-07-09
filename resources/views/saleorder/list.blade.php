@@ -71,7 +71,7 @@
 			<td data-type="currency">{{$rpo['sum_invest']!=null?$rpo['sum_invest']:0}}</td>
 			<td>{{$rpo['status']==1?'Hoàn thành':'Mới'}}</td>
 			<td>
-				<a href="{{URL}}/pos/delete-from-list/{{$rpo['id']}}">
+				<a href="{{URL}}/saleorders/delete-from-list/{{$rpo['id']}}">
 					<i class="fa fa-remove" data-id="{{$rpo['id']}}"></i>
 				</a>
 			</td>

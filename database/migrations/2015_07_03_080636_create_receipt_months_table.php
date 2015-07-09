@@ -15,11 +15,14 @@ class CreateReceiptMonthsTable extends Migration {
 		Schema::create('receipt_months', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('date',20);
+			$table->integer('month');
+			$table->integer('year');
+			$table->string('type_receipt', 50);
 			$table->double('sum_amount')->unsigned()->default(0);
 			$table->double('paid')->unsigned()->default(0);
 			$table->double('no_cu')->unsigned()->default(0);
 			$table->double('con_lai')->unsigned()->default(0);
+			$table->boolean('locked')->unsigned()->default(0);
 			$table->timestamps();
 		});
 	}

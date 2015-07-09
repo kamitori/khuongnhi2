@@ -24,6 +24,7 @@ class CreateReturnPurchaseordersTable extends Migration {
 			$table->string('company_phone', 12);
 			$table->string('company_email', 50);
 			$table->double('sum_amount')->default(0);
+			$table->boolean('locked')->unsigned()->default(0);
 			$table->integer('created_by')->default(0);
 			$table->integer('updated_by')->default(0);
 			$table->timestamps();

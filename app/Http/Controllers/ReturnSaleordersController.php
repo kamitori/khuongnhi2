@@ -38,6 +38,7 @@ class ReturnSaleordersController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$returnsaleorder = new ReturnSaleorder;
+		$returnsaleorder->date = date("Y-m-d H:i:s");
 		$returnsaleorder->save();
 		session(['current_returnsaleorder' => $returnsaleorder->id]);
 		// $address = new Address;
@@ -207,12 +208,8 @@ class ReturnSaleordersController extends Controller {
 		$returnsaleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 		$address_id = isset($returnsaleorder->address_id) ? $returnsaleorder->address_id : 0;
 
-		if($returnsaleorder['address_id']==0){
-			$address = new Address;
-			
-		}else{
-			$address = Address::find($address_id);
-		}
+		$address = Address::where('module_id','=',$returnsaleorder->id)
+					->where('module_type','=','App\ReturnSaleorder')->first();
 
 		$address->module_id  = $returnsaleorder->id;
 		$address->module_type  = 'App\ReturnSaleorder';

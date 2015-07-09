@@ -420,7 +420,7 @@ class ProductsController extends Controller {
 		}
 
 
-		$list_product = $list_product->groupBy('products.id')->paginate(20);
+		$list_product = $list_product->groupBy('products.id')->paginate(50);
 		// echo $module;die;
 		return view('popup.choose_product_'.$module, [
 								'producttypes'=>$producttypes,

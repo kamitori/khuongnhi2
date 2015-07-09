@@ -1124,66 +1124,7 @@ class AddressesTableSeeder extends Seeder {
 				'created_at' => '2015-07-07 09:32:36',
 				'updated_at' => '2015-07-07 09:32:36',
 			),
-			74 => 
-			array (
-				'id' => 75,
-				'address' => '',
-				'zip_postcode' => '',
-				'town_city' => '',
-				'province_id' => 0,
-				'country_id' => 0,
-				'module_id' => 1,
-				'module_type' => 'App\\Saleorder',
-				'created_by' => 0,
-				'updated_by' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
-			),
-			75 => 
-			array (
-				'id' => 76,
-				'address' => '',
-				'zip_postcode' => '',
-				'town_city' => '',
-				'province_id' => 0,
-				'country_id' => 0,
-				'module_id' => 1,
-				'module_type' => 'App\\ReturnSaleorder',
-				'created_by' => 0,
-				'updated_by' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
-			),
-			76 => 
-			array (
-				'id' => 77,
-				'address' => '',
-				'zip_postcode' => '',
-				'town_city' => '',
-				'province_id' => 0,
-				'country_id' => 0,
-				'module_id' => 1,
-				'module_type' => 'App\\Purchaseorder',
-				'created_by' => 0,
-				'updated_by' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
-			),
-			77 => 
-			array (
-				'id' => 78,
-				'address' => '',
-				'zip_postcode' => '',
-				'town_city' => '',
-				'province_id' => 0,
-				'country_id' => 0,
-				'module_id' => 1,
-				'module_type' => 'App\\ReturnPurchaseorder',
-				'created_by' => 0,
-				'updated_by' => 0,
-				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '0000-00-00 00:00:00',
-			),
+			
 		));
 	}
 

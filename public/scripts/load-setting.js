@@ -1,4 +1,4 @@
-themerUpdateColors('#da4c4d', '#455a63');
+themerUpdateColors(themerPrimaryColor, themerMenuColor);
 var scrollers = [];
 var mainYScroller;
 

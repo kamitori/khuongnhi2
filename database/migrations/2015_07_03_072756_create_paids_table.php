@@ -22,6 +22,7 @@ class CreatePaidsTable extends Migration {
 			$table->boolean('status')->unsigned()->default(0);
 			$table->string('type_paid', 50);
 			$table->double('sum_paid')->default(0);
+			$table->boolean('locked')->unsigned()->default(0);
 			$table->integer('created_by')->default(0);
 			$table->integer('updated_by')->default(0);
 			$table->timestamps();

@@ -3,6 +3,7 @@ function themerUpdateColors(primary,secondary)
 	updatePrimaryColor(primary);
 	updateHeaderColor(secondary, true, true);
 	updateMenuColor(secondary,true,true);
+	console.log(123);
 }
 
 //Converts an RGB object to a hex string
@@ -156,15 +157,15 @@ function generateCSS(basePath)
 		"@headerColor: " + themerHeaderColor + ";\n" +
 		"@headerBorderColor: contrast(@headerColor, lighten(@headerColor, "+(lighten+2)+"%), darken(@headerColor, "+(darken+10)+"%));\n" +
 		"@headerBorderColor2: contrast(@headerBorderColor, darken(@headerBorderColor, "+(darken+30)+"%), lighten(@headerBorderColor, "+(lighten+30)+"%));\n" +
-		"@headerTextColor: contrast(@headerColor, darken(@headerColor, "+(darken+50)+"%), lighten(@headerColor, "+(lighten+50)+"%));\n" +
+		"@headerTextColor: contrast(@headerColor, darken(@headerColor, "+(darken+60)+"%), lighten(@headerColor, "+(lighten+60)+"%),25%);\n" +
 		"@headerTextShadowColor: contrast(@headerTextColor, darken(@headerColor, "+(darken+20)+"%), lighten(@headerColor, "+(lighten+20)+"%));\n\n" +
 		"@headerNotifColor: contrast(@headerColor, @primaryColor, lighten(@primaryColor, "+(lighten+20)+"%));\n\n" +
 		
 		"@menuColor: " + themerMenuColor + ";\n" +
 		"@menuBorderColor: contrast(@menuColor, lighten(@menuColor, "+(lighten+2)+"%), darken(@menuColor, "+(darken+10)+"%));\n" +
 		"@menuBorderColor2: contrast(@menuBorderColor, darken(@menuBorderColor, "+(darken+30)+"%), lighten(@menuBorderColor, "+(lighten+30)+"%));\n" +
-		"@menuTextColor: contrast(@menuColor, darken(@menuColor, "+(darken+50)+"%), lighten(@menuColor, "+(lighten+50)+"%));\n" +
-		"@otherTextColor: contrast(@primaryColor, darken(@primaryColor, "+(darken+50)+"%), lighten(@primaryColor, "+(lighten+50)+"%));\n" +
+		"@menuTextColor: contrast(@menuColor, darken(@menuColor, "+(darken+60)+"%), lighten(@menuColor, "+(lighten+60)+"%));\n" +
+		"@otherTextColor: contrast(@primaryColor, darken(@primaryColor, "+(darken+60)+"%), lighten(@primaryColor, "+(lighten+60)+"%),25%);\n" +
 		"@menuTextShadowColor: contrast(@menuTextColor, darken(@menuColor, "+(darken+20)+"%), lighten(@menuColor, "+(lighten+20)+"%));\n\n" +
 		
 		primaryBgColorTargets.join(", \n") + "\n" + 
@@ -294,20 +295,25 @@ function generateCSS(basePath)
 	css += 
 		".table-primary tbody td\n" +
 		"{\n" +
-		"	background-color: contrast(@primaryColor,darken(@primaryColor, "+(darken+10)+"%), lighten(@primaryColor, "+(lighten+20)+"%));\n" +
+		"	background-color: contrast(@primaryColor,darken(@primaryColor, "+(darken+20)+"%), lighten(@primaryColor, "+(lighten+30)+"%),35%);\n" +
 		"}\n\n" +
-		".table-primary tbody tr.selected td, .table-primary tbody tr.selectable:hover td\n" +
+		".table-primary tbody tr:hover > td a\n"+
+		"{\n"+
+		"	color: contrast(@primaryColor,darken(@primaryColor, "+(darken+50)+"%), lighten(@primaryColor, "+(lighten+50)+"%),35%) !important;\n" +
+		"}\n\n" +
+		".left-list li:hover,.left-list li.active, .table-primary tbody tr.selected td, .table-primary tbody tr.selectable:hover td\n" +
 		"{\n" +
-		"	background-color: contrast(@primaryColor,darken(@primaryColor, "+(darken+10)+"%), lighten(@primaryColor, "+(lighten+30)+"%));;\n" +
+		"	color: contrast(@primaryColor,darken(@primaryColor, "+(darken+50)+"%), lighten(@primaryColor, "+(lighten+50)+"%),35%) !important;\n" +
+		"	background-color: contrast(@primaryColor,darken(@primaryColor, "+(darken+5)+"%), lighten(@primaryColor, "+(lighten+20)+"%),-15%);\n" +
 		"}\n\n" +
 		".table-primary.table-bordered tbody td, .table-primary, .pagination ul > .disabled > a, .pagination ul > .disabled > span\n" +
 		"{\n" +
-		"	border-color: lighten(@primaryColor, "+(lighten+50)+"%);\n" +
+		"	border-color: lighten(@primaryColor, "+(lighten+60)+"%);\n" +
 		"}\n\n" +
 		".widget .widget-body.list.list-2 ul li\n" +
 		"{\n" +
 		"	&.active { border-color: lighten(@primaryColor, "+(lighten+20)+"%); }\n" +
-		"	a { color: lighten(@primaryColor, "+(lighten+20)+"%); i:before { background: lighten(@primaryColor, "+(lighten+50)+"%); color: lighten(@primaryColor, "+(lighten+10)+"%); border-color: lighten(@primaryColor, "+(lighten+20)+"%); } }\n" +
+		"	a { color: lighten(@primaryColor, "+(lighten+20)+"%); i:before { background: lighten(@primaryColor, "+(lighten+60)+"%); color: lighten(@primaryColor, "+(lighten+10)+"%); border-color: lighten(@primaryColor, "+(lighten+20)+"%); } }\n" +
 		"}";
 		
 	return css;
@@ -438,6 +444,7 @@ var primaryBgColorTargets =
 [
 	".widget .widget-head",
 	".btn-primary",
+	".dd3-content:hover",
 	".toggle-button span.primary, .toggle-button span.labelLeft",
 	".navbar.main .topnav > li .dropdown-menu li > a:hover, .navbar.main .topnav > li .dropdown-menu .active > a, .navbar.main .topnav > li .dropdown-menu .active > a:hover",
 	"#flotTip",
@@ -454,6 +461,7 @@ var primaryBgColorTargets =
 var primaryTextColorTargets = 
 [
  	"a, p a",
+ 	".bs-docs-sidenav li a:hover, .bs-docs-sidenav li.active a, .bs-docs-sidenav li.active a:hover",
 	".col.main-left ul li.active.glyphicons i:before", 
 	".col.main-left ul li.active a",
 	".widget .widget-body.list ul li .count",
@@ -552,6 +560,7 @@ var contentBgColorTargets =
 var textWhiteColor =
 [
 	".btn",
+	".dd3-content:hover",
  	".widget .widget-head",
  	".pagination ul > li > a:hover",".pagination ul > li.active > a",
  	".widget .widget-head .heading",

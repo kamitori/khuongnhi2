@@ -994,18 +994,18 @@ $(function()
 	if ($('.datepicker').length) 
 	{
 		$(".datepicker").datepicker({
-			showOtherMonths:true,
 			dateFormat: "dd-mm-yy",
-			changeMonth: true, 
-			changeYear: true,
-			yearRange: "c-5:c+3",
+			// stepMonths: 0,
+			minDate: "-1w",
+			maxDate: "+1w",
 		});
 	}
 	if ($('#datepicker-inline').length)
 	{
 		$('#datepicker-inline').datepicker({
 			inline: true,
-			showOtherMonths:true
+			minDate: "-1w",
+			maxDate: "+1w",
 		});
 	}
 	
