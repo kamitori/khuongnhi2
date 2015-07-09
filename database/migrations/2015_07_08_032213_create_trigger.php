@@ -211,6 +211,13 @@ class CreateTrigger extends Migration {
 				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt=NEW.type_paid LIMIT 1)=0) THEN
 
 					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), NEW.type_paid, '0', '0', '0', '0', NOW(), NOW());
+				ELSE
+					UPDATE `khuongnhi`.`receipt_months` SET 
+					`paid`=`paid` + (NEW.sum_paid),
+					`con_lai`= `con_lai` - (NEW.sum_paid)
+					WHERE `month` = MONTH(NEW.date)
+					AND `year` = YEAR(NEW.date)
+					AND `type_receipt` = NEW.type_paid;
 				END IF;
 			END
 		");
