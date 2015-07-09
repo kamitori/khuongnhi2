@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use App\ReturnPurchaseorder;
+
 class ReturnPurchaseordersTableSeeder extends Seeder {
 
 	/**
@@ -12,24 +11,28 @@ class ReturnPurchaseordersTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		$faker = Faker::create();
-        		foreach(range(1, 30) as $index)
-		{
-			$company_id = $faker->numberBetween(1,20);
-			$date = $faker->dateTimeBetween($startDate = '-6 months', $endDate = 'now');
-			$address_id = $index+80;
-			$company_phone = $faker->phoneNumber;
-			$company_email = $faker->companyEmail;
-			ReturnPurchaseorder::create([
-							'company_id'		=> $company_id,
-							'date'			=> $date,
-							'address_id'		=> $address_id,
-							'company_phone'	=> $company_phone,
-							'company_email'	=> $company_email,
-							'status'			=> 1
-						]);
-		}
+		\DB::table('return_purchaseorders')->delete();
         
+		\DB::table('return_purchaseorders')->insert(array (
+			0 => 
+			array (
+				'id' => 1,
+				'company_id' => 0,
+				'company_name' => '',
+				'user_id' => 0,
+				'status' => 0,
+				'date' => '2015-07-09 11:40:37',
+				'address_id' => 0,
+				'company_phone' => '',
+				'company_email' => '',
+				'sum_amount' => 0,
+				'locked' => 0,
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '2015-07-09 11:40:37',
+				'updated_at' => '2015-07-09 11:40:37',
+			),
+		));
 	}
 
 }
