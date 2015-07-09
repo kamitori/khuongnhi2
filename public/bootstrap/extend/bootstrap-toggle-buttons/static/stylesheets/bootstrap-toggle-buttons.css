@@ -155,7 +155,7 @@
 }
 
 .accordion a.accordion-toggle.collapsed:before{
-  content: "►";
+  content: "►" !important;
 }
 .accordion a.accordion-toggle[data-toggle=collapse]:before{
   content: "▼";
