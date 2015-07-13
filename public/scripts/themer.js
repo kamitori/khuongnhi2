@@ -3,7 +3,6 @@ function themerUpdateColors(primary,secondary)
 	updatePrimaryColor(primary);
 	updateHeaderColor(secondary, true, true);
 	updateMenuColor(secondary,true,true);
-	console.log(123);
 }
 
 //Converts an RGB object to a hex string
@@ -293,9 +292,9 @@ function generateCSS(basePath)
 	}
 	
 	css += 
-		".table-primary tbody td\n" +
+		".table-primary tbody td,.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus,.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default\n" +
 		"{\n" +
-		"	background-color: contrast(@primaryColor,darken(@primaryColor, "+(darken+20)+"%), lighten(@primaryColor, "+(lighten+30)+"%),35%);\n" +
+		"	background: contrast(@primaryColor,darken(@primaryColor, "+(darken+20)+"%), lighten(@primaryColor, "+(lighten+30)+"%),35%);\n" +
 		"}\n\n" +
 		".table-primary tbody tr:hover > td a\n"+
 		"{\n"+
@@ -443,6 +442,7 @@ function themerGetCode(less)
 var primaryBgColorTargets = 
 [
 	".widget .widget-head",
+	".ui-widget-header",
 	".btn-primary",
 	".dd3-content:hover",
 	".toggle-button span.primary, .toggle-button span.labelLeft",
@@ -461,6 +461,7 @@ var primaryBgColorTargets =
 var primaryTextColorTargets = 
 [
  	"a, p a",
+ 	".ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default",
  	".bs-docs-sidenav li a:hover, .bs-docs-sidenav li.active a, .bs-docs-sidenav li.active a:hover",
 	".col.main-left ul li.active.glyphicons i:before", 
 	".col.main-left ul li.active a",
@@ -479,6 +480,9 @@ var primaryTextColorTargets =
 var primaryBorderColorTargets = 
 [
 	".col.main-left ul li.active",
+	".ui-widget-header",
+	".ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus",
+	".ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default",
 	".widget .widget-head",
 	".btn-primary",
 	".navbar.main .notif li a",

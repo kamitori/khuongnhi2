@@ -200,27 +200,28 @@ class SaleordersController extends Controller {
 			$saleorder->save();
 			session(['current_saleorder' => $saleorder->id]);
 		}
-	if($saleorder->status == 0){
-		$saleorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
-		$saleorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
-		$saleorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
-		$saleorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
-		$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
-		$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
+		if($saleorder->status == 0){
+			$saleorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
+			$saleorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
+			$saleorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
+			$saleorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
+			$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
+			$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
 
-		$address = Address::where('module_id','=',$saleorder->id)
-					->where('module_type','=','App\Saleorder')->first();
+			$address = Address::where('module_id','=',$saleorder->id)
+						->where('module_type','=','App\Saleorder')->first();
 
-		$address->module_id  = $saleorder->id;
-		$address->module_type  = 'App\Saleorder';
-		$address->address  = $request->has('address') ? $request->input('address') : '';
-		$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
-		$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
-		$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
-		$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
-		$address->save();
-		$saleorder->address_id = $address->id;
-	}
+			$address->module_id  = $saleorder->id;
+			$address->module_type  = 'App\Saleorder';
+			$address->address  = $request->has('address') ? $request->input('address') : '';
+			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
+			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
+			$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
+			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
+			$address->save();
+			$saleorder->address_id = $address->id;
+		}
+		$old_status = $saleorder->status;
 		$saleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($saleorder->status){
@@ -239,16 +240,18 @@ class SaleordersController extends Controller {
 				}
 			}
 		}else{
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
-							->where('module_id', '=', $saleorder->id)
-							->where('module_type', '=', 'App\Saleorder')
-							->leftJoin('products','products.id','=','m_products.product_id')
-							->get()->toArray();
-			foreach ($arr_mproduct as $key => $mproduct) {
-				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
-				$product_stock->save();
+			if($old_status != $saleorder->status){
+				$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+								->where('module_id', '=', $saleorder->id)
+								->where('module_type', '=', 'App\Saleorder')
+								->leftJoin('products','products.id','=','m_products.product_id')
+								->get()->toArray();
+				foreach ($arr_mproduct as $key => $mproduct) {
+					$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+					$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
+					$product_stock->save();
+				}
 			}
 		}
 

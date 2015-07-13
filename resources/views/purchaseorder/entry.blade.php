@@ -329,6 +329,9 @@
 							if(name == 'status')
 								window.location.reload();
 						}else{
+							if(name == 'status'){
+								$('input[name=status]').data("bs.toggle").off(true);
+							}
 							toastr['error'](data.message);
 						}
 					}

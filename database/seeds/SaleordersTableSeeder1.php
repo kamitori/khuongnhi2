@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ReturnPurchaseordersTableSeeder extends Seeder {
+class SaleordersTableSeeder1 extends Seeder {
 
 	/**
 	 * Auto generated seed file
@@ -11,9 +11,9 @@ class ReturnPurchaseordersTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		\DB::table('return_purchaseorders')->delete();
+		\DB::table('saleorders')->delete();
         
-		\DB::table('return_purchaseorders')->insert(array (
+		\DB::table('saleorders')->insert(array (
 			0 => 
 			array (
 				'id' => 1,
@@ -21,7 +21,7 @@ class ReturnPurchaseordersTableSeeder extends Seeder {
 				'company_name' => '',
 				'user_id' => 0,
 				'status' => 0,
-				'date' => '2015-07-09 11:40:37',
+				'date' => '2015-07-09 11:40:03',
 				'address_id' => 0,
 				'company_phone' => '',
 				'company_email' => '',
@@ -29,8 +29,8 @@ class ReturnPurchaseordersTableSeeder extends Seeder {
 				'locked' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-07-09 11:40:37',
-				'updated_at' => '2015-07-09 11:40:37',
+				'created_at' => '2015-07-09 11:40:03',
+				'updated_at' => '2015-07-09 11:40:03',
 			),
 		));
 	}

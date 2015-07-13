@@ -209,28 +209,29 @@ class PurchaseordersController extends Controller {
 			$purchaseorder->save();
 			session(['current_purchaseorder' => $purchaseorder->id]);
 		}
-	if($purchaseorder->status == 0){
-		$purchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
-		$purchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
-		$purchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
-		$purchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
-		$purchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
+		if($purchaseorder->status == 0){
+			$purchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
+			$purchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
+			$purchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
+			$purchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
+			$purchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 
-		$address = Address::where('module_id','=',$purchaseorder->id)
-					->where('module_type','=','App\Purchaseorder')->first();
+			$address = Address::where('module_id','=',$purchaseorder->id)
+						->where('module_type','=','App\Purchaseorder')->first();
 
-		$address->module_id  = $purchaseorder->id;
-		$address->module_type  = 'App\Purchaseorder';
-		$address->address  = $request->has('address') ? $request->input('address') : '';
-		$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
-		$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
-		$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
-		$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
-		$address->save();
-		$purchaseorder->address_id = $address->id;
-	}else{
-		$purchaseorder->sum_amount = 0;
-	}
+			$address->module_id  = $purchaseorder->id;
+			$address->module_type  = 'App\Purchaseorder';
+			$address->address  = $request->has('address') ? $request->input('address') : '';
+			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
+			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
+			$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
+			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
+			$address->save();
+			$purchaseorder->address_id = $address->id;
+		}else{
+			$purchaseorder->sum_amount = 0;
+		}
+		$old_status = $purchaseorder->status;
 		$purchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($purchaseorder->status){
@@ -249,15 +250,17 @@ class PurchaseordersController extends Controller {
 				}
 			}
 		}else{
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name')
-							->where('module_id', '=', $purchaseorder->id)
-							->where('module_type', '=', 'App\Purchaseorder')
-							->leftJoin('products','products.id','=','m_products.product_id')
-							->get()->toArray();
-			foreach ($arr_mproduct as $key => $mproduct) {
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
-				$product_stock->in_stock = $product_stock->in_stock - ($mproduct['quantity']*$mproduct['specification']);
-				$product_stock->save();
+			if($old_status != $purchaseorder->status){
+				$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name')
+								->where('module_id', '=', $purchaseorder->id)
+								->where('module_type', '=', 'App\Purchaseorder')
+								->leftJoin('products','products.id','=','m_products.product_id')
+								->get()->toArray();
+				foreach ($arr_mproduct as $key => $mproduct) {
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+					$product_stock->in_stock = $product_stock->in_stock - ($mproduct['quantity']*$mproduct['specification']);
+					$product_stock->save();
+				}
 			}
 		}
 
@@ -308,7 +311,7 @@ class PurchaseordersController extends Controller {
 		}else{
 			$arr_filter=[
 					'id'=>'',
-					'id'=>'',
+					'company_id'=>'',
 					'date'=>'',
 					'status'=>''
 				       ];

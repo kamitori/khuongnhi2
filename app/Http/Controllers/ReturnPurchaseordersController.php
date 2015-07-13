@@ -200,27 +200,28 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder->save();
 			session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 		}
-	if($returnpurchaseorder->status == 0){
-		$returnpurchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
-		$returnpurchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
-		$returnpurchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
-		$returnpurchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
-		$returnpurchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
-		$address_id = isset($returnpurchaseorder->address_id) ? $returnpurchaseorder->address_id : 0;
+		if($returnpurchaseorder->status == 0){
+			$returnpurchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
+			$returnpurchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
+			$returnpurchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
+			$returnpurchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
+			$returnpurchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
+			$address_id = isset($returnpurchaseorder->address_id) ? $returnpurchaseorder->address_id : 0;
 
-		$address = Address::where('module_id','=',$returnpurchaseorder->id)
-					->where('module_type','=','App\ReturnPurchaseorder')->first();
+			$address = Address::where('module_id','=',$returnpurchaseorder->id)
+						->where('module_type','=','App\ReturnPurchaseorder')->first();
 
-		$address->module_id  = $returnpurchaseorder->id;
-		$address->module_type  = 'App\ReturnPurchaseorder';
-		$address->address  = $request->has('address') ? $request->input('address') : '';
-		$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
-		$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
-		$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
-		$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
-		$address->save();
-		$returnpurchaseorder->address_id = $address->id;
-	}
+			$address->module_id  = $returnpurchaseorder->id;
+			$address->module_type  = 'App\ReturnPurchaseorder';
+			$address->address  = $request->has('address') ? $request->input('address') : '';
+			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
+			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
+			$address->country_id  = $request->has('country_id') ? $request->input('country_id') : 0;
+			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
+			$address->save();
+			$returnpurchaseorder->address_id = $address->id;
+		}
+		$old_status = $returnpurchaseorder->status;
 		$returnpurchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($returnpurchaseorder->status){
@@ -239,16 +240,18 @@ class ReturnPurchaseordersController extends Controller {
 				}
 			}
 		}else{
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
-							->where('module_id', '=', $returnpurchaseorder->id)
-							->where('module_type', '=', 'App\ReturnPurchaseorder')
-							->leftJoin('products','products.id','=','m_products.product_id')
-							->get()->toArray();
-			foreach ($arr_mproduct as $key => $mproduct) {
-				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
-				$product_stock->save();
+			if($old_status != $returnpurchaseorder->status){
+				$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+								->where('module_id', '=', $returnpurchaseorder->id)
+								->where('module_type', '=', 'App\ReturnPurchaseorder')
+								->leftJoin('products','products.id','=','m_products.product_id')
+								->get()->toArray();
+				foreach ($arr_mproduct as $key => $mproduct) {
+					$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+					$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
+					$product_stock->save();
+				}
 			}
 		}
 

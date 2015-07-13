@@ -34,9 +34,7 @@ class CreateTrigger extends Migration {
 			BEGIN
 				INSERT INTO `khuongnhi`.`addresses` (`id`, `address`, `zip_postcode`, `town_city`, `province_id`, `country_id`, `module_id`, `module_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
 				VALUES (NULL, '', '', '', '0', '0', NEW.id, 'App\\\\Purchaseorder', '0', '0', NOW(), NOW());
-				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='distribute' LIMIT 1)=0) THEN
-					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'distribute', '0', '0', '0', '0', NOW(), NOW());
-				END IF;
+
 			END
 		");
 		DB::unprepared("
@@ -44,9 +42,7 @@ class CreateTrigger extends Migration {
 			BEGIN
 				INSERT INTO `khuongnhi`.`addresses` (`id`, `address`, `zip_postcode`, `town_city`, `province_id`, `country_id`, `module_id`, `module_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
 				VALUES (NULL, '', '', '', '0', '0', NEW.id, 'App\\\\Saleorder', '0', '0', NOW(), NOW());
-				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='customer' LIMIT 1)=0) THEN
-					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'customer', '0', '0', '0', '0', NOW(), NOW());
-				END IF;
+				
 			END
 		");
 		DB::unprepared("
@@ -54,9 +50,7 @@ class CreateTrigger extends Migration {
 			BEGIN
 				INSERT INTO `khuongnhi`.`addresses` (`id`, `address`, `zip_postcode`, `town_city`, `province_id`, `country_id`, `module_id`, `module_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
 				VALUES (NULL, '', '', '', '0', '0', NEW.id, 'App\\\\ReturnPurchaseorder', '0', '0', NOW(), NOW());
-				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='distribute' LIMIT 1)=0) THEN
-					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'distribute', '0', '0', '0', '0', NOW(), NOW());
-				END IF;
+				
 			END
 		");
 		DB::unprepared("
@@ -64,9 +58,7 @@ class CreateTrigger extends Migration {
 			BEGIN
 				INSERT INTO `khuongnhi`.`addresses` (`id`, `address`, `zip_postcode`, `town_city`, `province_id`, `country_id`, `module_id`, `module_type`, `created_by`, `updated_by`, `created_at`, `updated_at`) 
 				VALUES (NULL, '', '', '', '0', '0', NEW.id, 'App\\\\ReturnSaleorder', '0', '0', NOW(), NOW());
-				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='customer' LIMIT 1)=0) THEN
-					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'customer', '0', '0', '0', '0', NOW(), NOW());
-				END IF;
+				
 			END
 		");
 
@@ -208,17 +200,31 @@ class CreateTrigger extends Migration {
 			CREATE TRIGGER tr_Create_Paid_Receipt_Month AFTER INSERT ON `Paids` 
 			FOR EACH ROW
 			BEGIN
-				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt=NEW.type_paid LIMIT 1)=0) THEN
-
-					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), NEW.type_paid, '0', '0', '0', '0', NOW(), NOW());
+				IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt=NEW.type_paid and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
+					INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), NEW.type_paid, '0', NEW.sum_paid, '0', '0', NOW(), NOW(),NEW.company_id);
 				ELSE
 					UPDATE `khuongnhi`.`receipt_months` SET 
 					`paid`=`paid` + (NEW.sum_paid),
-					`con_lai`= `con_lai` - (NEW.sum_paid)
+					`con_lai`= `sum_amount`+`no_cu`- `paid`
 					WHERE `month` = MONTH(NEW.date)
 					AND `year` = YEAR(NEW.date)
-					AND `type_receipt` = NEW.type_paid;
+					AND `type_receipt` = NEW.type_paid
+					AND `company_id` = NEW.company_id;
 				END IF;
+			END
+		");
+// Delete Paid --> Decrease receipt month
+		DB::unprepared("
+			CREATE TRIGGER tr_Delete_Paid_Receipt_Month AFTER DELETE ON `Paids` 
+			FOR EACH ROW
+			BEGIN
+				UPDATE `khuongnhi`.`receipt_months` SET 
+					`paid`=`paid` - (OLD.sum_paid),
+					`con_lai`= `sum_amount`+`no_cu`- `paid`
+					WHERE `month` = MONTH(OLD.date)
+					AND `year` = YEAR(OLD.date)
+					AND `type_receipt` = OLD.type_paid
+					AND `company_id` = OLD.company_id;
 			END
 		");
 // Update order --> update receipt month
@@ -228,10 +234,11 @@ class CreateTrigger extends Migration {
 			BEGIN
 				UPDATE `khuongnhi`.`receipt_months` SET 
 				`paid`=`paid` + (NEW.sum_paid - OLD.sum_paid),
-				`con_lai`= `con_lai` - (NEW.sum_paid - OLD.sum_paid)
+				`con_lai`= `sum_amount`+`no_cu`- `paid`
 				WHERE `month` = MONTH(NEW.date)
 				AND `year` = YEAR(NEW.date)
-				AND `type_receipt` = NEW.type_paid;
+				AND `type_receipt` = NEW.type_paid
+				AND `company_id` = NEW.company_id;
 			END
 		");
 
@@ -239,24 +246,60 @@ class CreateTrigger extends Migration {
 			CREATE TRIGGER tr_Update_PO_Receipt_Month AFTER UPDATE ON `purchaseorders` 
 			FOR EACH ROW
 			BEGIN
-				UPDATE `khuongnhi`.`receipt_months` SET 
-				`sum_amount`=`sum_amount` + (NEW.sum_amount - OLD.sum_amount),
-				`con_lai`= `con_lai` + (NEW.sum_amount - OLD.sum_amount)
-				WHERE `month` = MONTH(NEW.date)
-				AND `year` = YEAR(NEW.date)
-				AND `type_receipt` = 'distribute';
+				IF(NEW.status =1 AND OLD.status =0) THEN
+					IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='distribute'  and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
+						INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'distribute', NEW.sum_amount, '0', '0', NEW.sum_amount, NOW(), NOW(),NEW.company_id);
+					ELSE
+
+						UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` + NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'distribute'
+						AND `company_id` = NEW.company_id;
+
+					END IF;
+				END IF;
+				IF(NEW.status =0 AND OLD.status =1) THEN
+					UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'distribute'
+						AND `company_id` = NEW.company_id;
+				END IF;
 			END
 		");
 		DB::unprepared("
 			CREATE TRIGGER tr_Update_RPO_Receipt_Month AFTER UPDATE ON `return_purchaseorders` 
 			FOR EACH ROW
 			BEGIN
-				UPDATE `khuongnhi`.`receipt_months` SET 
-				`sum_amount`=`sum_amount` - (NEW.sum_amount - OLD.sum_amount),
-				`con_lai`= `con_lai` - (NEW.sum_amount - OLD.sum_amount)
-				WHERE `month` = MONTH(NEW.date)
-				AND `year` = YEAR(NEW.date)
-				AND `type_receipt` = 'distribute';
+				IF(NEW.status =1 AND OLD.status =0) THEN
+					IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='distribute'  and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
+						INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'distribute', NEW.sum_amount, '0', '0', '0', NOW(), NOW(),NEW.company_id);
+					ELSE
+
+						UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'distribute'
+						AND `company_id` = NEW.company_id;
+
+					END IF;
+				END IF;
+				IF(NEW.status =0 AND OLD.status =1) THEN
+					UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'distribute'
+						AND `company_id` = NEW.company_id;
+				END IF;
 			END
 		");
 
@@ -264,12 +307,30 @@ class CreateTrigger extends Migration {
 			CREATE TRIGGER tr_Update_SO_Receipt_Month AFTER UPDATE ON `saleorders` 
 			FOR EACH ROW
 			BEGIN
-				UPDATE `khuongnhi`.`receipt_months` SET 
-				`sum_amount`=`sum_amount` + (NEW.sum_amount - OLD.sum_amount),
-				`con_lai`= `con_lai` + (NEW.sum_amount - OLD.sum_amount)
-				WHERE `month` = MONTH(NEW.date)
-				AND `year` = YEAR(NEW.date)
-				AND `type_receipt` = 'customer';
+				IF(NEW.status =1 AND OLD.status =0) THEN
+					IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='customer'  and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
+						INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'customer', NEW.sum_amount, '0', '0', NEW.sum_amount, NOW(), NOW(),NEW.company_id);
+					ELSE
+
+						UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` + NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'customer'
+						AND `company_id` = NEW.company_id;
+
+					END IF;
+				END IF;
+				IF(NEW.status =0 AND OLD.status =1) THEN
+					UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'customer'
+						AND `company_id` = NEW.company_id;
+				END IF;
 			END
 		");
 
@@ -277,12 +338,30 @@ class CreateTrigger extends Migration {
 			CREATE TRIGGER tr_Update_RSO_Receipt_Month AFTER UPDATE ON `return_saleorders` 
 			FOR EACH ROW
 			BEGIN
-				UPDATE `khuongnhi`.`receipt_months` SET 
-				`sum_amount`=`sum_amount` - (NEW.sum_amount - OLD.sum_amount),
-				`con_lai`= `con_lai` -     (NEW.sum_amount - OLD.sum_amount)
-				WHERE `month` = MONTH(NEW.date)
-				AND `year` = YEAR(NEW.date)
-				AND `type_receipt` =  'customer';
+				IF(NEW.status =1 AND OLD.status =0) THEN
+					IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='customer'  and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
+						INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'customer', NEW.sum_amount, '0', '0', '0', NOW(), NOW(),NEW.company_id);
+					ELSE
+
+						UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'customer'
+						AND `company_id` = NEW.company_id;
+
+					END IF;
+				END IF;
+				IF(NEW.status =0 AND OLD.status =1) THEN
+					UPDATE `khuongnhi`.`receipt_months` SET 
+						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`con_lai`= `sum_amount`+`no_cu`- `paid`
+						WHERE  `month` = MONTH(NEW.date)
+						AND `year` = YEAR(NEW.date)
+						AND `type_receipt` = 'customer'
+						AND `company_id` = NEW.company_id;
+				END IF;
 			END
 		");
 	}
@@ -315,6 +394,8 @@ class CreateTrigger extends Migration {
 
 
 		DB::unprepared('DROP TRIGGER `tr_Create_Paid_Receipt_Month`');
+		DB::unprepared('DROP TRIGGER `tr_Delete_Paid_Receipt_Month`');
+
 
 		DB::unprepared('DROP TRIGGER `tr_Update_Paid_Receipt_Month`');
 		DB::unprepared('DROP TRIGGER `tr_Update_PO_Receipt_Month`');

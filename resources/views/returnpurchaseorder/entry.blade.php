@@ -330,8 +330,7 @@
 								window.location.reload();
 						}else{
 							if(name == 'status'){
-								$("input[name=status]").attr('checked',false);
-								$("input[name=status]").trigger("change");
+								$('input[name=status]').data("bs.toggle").off(true);
 							}
 							toastr['error'](data.message);
 						}

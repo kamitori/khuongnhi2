@@ -116,7 +116,6 @@
 							<label class="control-label">Công ty:</label>
 							<div class="controls">
 								<select id="company_paid" width="auto" data-type="select2">
-									<option value="all">&nbsp;</option>
 									@foreach($distributes as $company)
 									<option value="{{$company['id']}}">{{$company['name']}}</option>
 									@endforeach
@@ -149,7 +148,6 @@
 							<label class="control-label">Người thu:</label>
 							<div class="controls">
 								<select id="user_paid" width="auto" data-type="select2">
-									<option value="all">&nbsp;</option>
 									@foreach($users as $user)
 									<option value="{{$user['id']}}">{{$user['name']}}</option>
 									@endforeach
@@ -217,6 +215,7 @@
 <script>
 	$(window).resize();
 	var current_company = 0;
+
 	$(".left-list li").on('click',function(){
 		$("#company_name").text($(this).find(".company").text());
 		var company_id = $(this).attr('data-id');
@@ -257,6 +256,16 @@
 			"show":false,
 			"container":"body"
 		});
+	resizeLeftList();
+	$(window).resize(function(){
+		resizeLeftList();
+	})
+	function resizeLeftList(){
+		var top = $(".left-list").offset()['top'];
+		var height =  $(window).height() - top-120;
+		$(".left-list").height(height);
+		$(".left-list").css({'overflow-y':'scroll','overflow-x':'hidden'});
+	}
 	function addPaid(){
 		$("#paid_id").val(0);
 		$("#modal_paid").modal("show");

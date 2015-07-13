@@ -1,7 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
+use App\MProduct;
+use App\Product;
+use App\ProductStock;
+use App\Purchaseorder;
+use App\ReturnPurchaseorder;
+use App\Saleorder;
+use App\SellPrice;
 class MProductsTableSeeder extends Seeder {
 
 	/**
@@ -21502,6 +21509,57 @@ class MProductsTableSeeder extends Seeder {
 				'updated_at' => '2015-06-01 16:41:42',
 			),
 		));
+
+		// $faker = Faker::create();
+		// $key=1024;
+		// $arr_mproduct_po = array();
+		//foreach(range(1, 30) as $po)
+		// {
+		// 	foreach(range(3, 6) as $index){
+		// 		$module_type = 'App\Purchaseorder';
+		// 		$module_id = $po;
+		// 		$product_id = $faker->numberBetween(1,1023);
+		// 		$m_product_id = 0;
+		// 		$p_order= Purchaseorder::find($module_id);
+		// 		$company_id = $p_order->company_id;
+		// 		$oum_id = $faker->numberBetween(1,12);
+		// 		$origin_price = $faker->numberBetween(10,300)*1000;
+		// 		$specification  = $faker->numberBetween(1,20);
+		// 		$quantity = $faker->numberBetween(4,20)*10;
+		// 		$invest = $origin_price * $quantity * $specification;
+
+		// 		MProduct::create([
+		// 					"module_type"		=>	$module_type,
+		// 					"module_id"		=>	$module_id,
+		// 					"product_id"		=>	$product_id,
+		// 					"m_product_id"		=>	$m_product_id,
+		// 					"company_id"		=>	$company_id,
+		// 					"oum_id"		=>	$oum_id,
+		// 					"origin_price"		=>	$origin_price,
+		// 					"specification"		=>	$specification,
+		// 					"quantity"		=>	$quantity,
+		// 					"invest"			=>	$invest,
+		// 				]);
+				
+		// 			$product = Product::find($product_id);
+		// 			$product->check_in_stock = 1;
+		// 			$product->save();
+		// 		$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
+		// 		if($last_sellprice){
+		// 			$arr_sellprice = SellPrice::where('m_product_id','=',$last_sellprice->m_product_id)->get()->toArray();
+		// 			foreach ($arr_sellprice as  $value) {
+		// 				$sellprice = new SellPrice;
+		// 				$sellprice->name = $value['name'];
+		// 				$sellprice->price = $value['price'];
+		// 				$sellprice->m_product_id = $key;
+		// 				$sellprice->product_id = $value['product_id'];
+		// 				$sellprice->save();
+		// 			}
+		// 		}
+		// 		$arr_mproduct_po[] = $key;
+		// 		$key++;
+		// 	}
+		// }
 	}
 
 }
