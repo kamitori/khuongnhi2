@@ -142,8 +142,6 @@ class ReturnSaleordersController extends Controller {
 		$returnsaleorder = $returnsaleorder->toArray();
 		$returnsaleorder['province_name'] = isset($country_province->province_name)?$country_province->province_name:'';
 		$returnsaleorder['country_name'] = isset($country_province->country_name)?$country_province->country_name:'';
-		// var_dump(DB::getQueryLog());
-		// pr($returnsaleorder);die;
 
 		//Init array
 		$distributes = array();
@@ -220,21 +218,24 @@ class ReturnSaleordersController extends Controller {
 			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
 			$address->save();
 			$returnsaleorder->address_id = $address->id;
+		}else{
+			$returnsaleorder->sum_amount = 0;
 		}
 		$old_status = $returnsaleorder->status;
 		$returnsaleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($returnsaleorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount')
 							->where('module_id', '=', $returnsaleorder->id)
 							->where('module_type', '=', 'App\ReturnSaleorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
+				$returnsaleorder->sum_amount = $returnsaleorder->sum_amount + $mproduct['amount'];
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
 				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
-				if($product_stock->in_stock < 0){
+				if($product_stock->in_stock < 0){ 
 					$check_save_in_stock = false;
 					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào lớn hơn số lượng đã nhập<br/><br/>';
 				}
@@ -248,7 +249,7 @@ class ReturnSaleordersController extends Controller {
 								->get()->toArray();
 				foreach ($arr_mproduct as $key => $mproduct) {
 					$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-					$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
 					$product_stock->in_stock = $product_stock->in_stock - ($mproduct['quantity']*$mproduct['specification']);
 					$product_stock->save();
 				}
@@ -260,7 +261,7 @@ class ReturnSaleordersController extends Controller {
 				if($returnsaleorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
 						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-						$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+						$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
 						$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
 						$product_stock->save();
 					}
@@ -326,12 +327,12 @@ class ReturnSaleordersController extends Controller {
 		}
 		$list_date = array_unique($list_date);
 
-		$list_returnsaleorder = ReturnSaleorder::select('return_saleorders.*','suminvest.*')->with('company')
+		$list_returnsaleorder = ReturnSaleorder::select('return_saleorders.*','sumamount.*')->with('company')
 					->leftJoin(
 							DB::raw(' (
-									select module_id, module_type,sum(invest) as sum_invest 
+									select module_id, module_type,sum(amount) as sum_amount 
 									from m_products where module_type = "App\\\\ReturnSaleorder" group by  module_id 
-								    ) as suminvest'), function($join){
+								    ) as sumamount'), function($join){
 								$join->on('return_saleorders.id', '=', 'module_id');
 							}
 						);
@@ -405,15 +406,16 @@ class ReturnSaleordersController extends Controller {
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_rso)){
 				$product = MProduct::find($product_id);
+				
 				$mproduct = new MProduct;
-				$mproduct->product_id	=	$product->product_id;
+				$mproduct->product_id		=	$product->product_id;
 				$mproduct->m_product_id	=	$product->id;
-				$mproduct->module_id	= 	$module_id;
+				$mproduct->module_id		= 	$module_id;
 				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
 				$mproduct->specification	=	$product->specification;
 				$mproduct->oum_id		=	$product->oum_id;
-				$mproduct->origin_price	=	$product->origin_price;
+				$mproduct->sell_price		=	$product->sell_price;
 				$mproduct->save();
 			}
 		}
@@ -458,29 +460,28 @@ class ReturnSaleordersController extends Controller {
 	}
 
 	public function postUpdateMproduct(Request $request){
-		$arr_return= array('status'=>'error','invest'=>0);
+		$arr_return= array('status'=>'error','amount'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
-			$mproduct_po = Mproduct::find($mproduct->m_product_id);
+			$mproduct_so = Mproduct::find($mproduct->m_product_id);
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
-			$mproduct->origin_price =  $request->has('origin_price')?$request->input('origin_price'):0;
+			$mproduct->sell_price =  $request->has('sell_price')?$request->input('sell_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
-			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-			$product_stock->in_stock = $product_stock->in_stock + ($mproduct->quantity - $old_quantity);
-			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
+			$check_return = ($mproduct_so->quantity - ($mproduct->quantity - $old_quantity)) >=0;
+			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
 			// if($product_stock->in_stock >=0){
-				if( !$mproduct->status){
+				if( $check_return ){
 					if($mproduct->save()){
 						$arr_return['status'] = 'success';
-						$arr_return['invest'] = number_format( $mproduct->invest );
+						$arr_return['amount'] = number_format( $mproduct->amount );
 					}else{
 						$arr_return['message'] = 'Saving fail !';
 					}
 				}else{
-					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
+					$arr_return['message'] = 'Số lượng sản phẩm trả về lớn hơn số lượng đã bán';
 				}
 			// }else{
 			// 	$arr_return['message'] = 'Số lượng nhập thấp hơn số lượng đã bán';

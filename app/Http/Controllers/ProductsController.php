@@ -520,7 +520,7 @@ class ProductsController extends Controller {
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
 		$list_product = MProduct::select(
-					'products.id',
+					'm_products.id',
 					'products.name',
 					'products.sku',
 					'm_products.product_id',
@@ -722,7 +722,7 @@ class ProductsController extends Controller {
 		                                'm_products.id',
 		                                'm_products.oum_id',
 		                                'm_products.specification',
-		                                'product_stocks.in_stock',
+		                                'm_products.quantity',
 		                                'companies.name as company_name',
 		                                'm_products.module_id'
 		                                )
@@ -734,7 +734,6 @@ class ProductsController extends Controller {
 					})
 					->where('saleorders.status','=',1)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
-					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
 					->where('m_products.company_id','=',$current_rpo->company_id);
 		if(count($arr_sort)==0){
 			$list_product = $list_product->orderBy('products.id','asc');

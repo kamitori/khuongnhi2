@@ -74,12 +74,11 @@
 				<td>{{$product['oum']['name']}}</td>
 				<td>{{$product['specification']}}</td>
 				<?php
-					$tonkho = floor($product['in_stock']/$product['specification']);
-					$view_tonkho = $tonkho.' '.$product['oum']['name'];
-					if($product['in_stock']%$product['specification'] && $product['specification']!=1){
-						$sodu = $product['in_stock']%$product['specification'];
-						$view_tonkho .= ' + '.$sodu.' '.'cái';
-					}
+					$view_tonkho = $product['quantity'].' '.$product['oum']['name'];
+					// if($product['quantity']%$product['specification'] && $product['specification']!=1){
+					// 	$sodu = $product['quantity']%$product['specification'];
+					// 	$view_tonkho .= ' + '.$sodu.' '.'cái';
+					// }
 				?>
 				<td>{{$view_tonkho}}</td>
 			</tr>

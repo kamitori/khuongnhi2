@@ -995,22 +995,22 @@ $(function()
 	{
 		$(".datepicker").datepicker({
 			dateFormat: "dd-mm-yy",
-			beforeShow :function(input){
-				var date = $(input).val();
-				var month = date.substr(2);
-				var number_of_month = date.substr(3,2);
-				var number_of_year = date.substr(6,4);
-				maxDate = new Date(number_of_year,number_of_month,0);
-				var options = {
-					year: "numeric", month: "numeric",day: "numeric"
-				}
-				maxDate = maxDate.toLocaleDateString('fr',options);
-				maxDate = maxDate.replace('/','-');
-				maxDate = maxDate.replace('/','-');
-				$(input).datepicker("option", "minDate", '01'+month);
-				$(input).datepicker("option", "maxDate", maxDate);
+			// beforeShow :function(input){
+			// 	var date = $(input).val();
+			// 	var month = date.substr(2);
+			// 	var number_of_month = date.substr(3,2);
+			// 	var number_of_year = date.substr(6,4);
+			// 	maxDate = new Date(number_of_year,number_of_month,0);
+			// 	var options = {
+			// 		year: "numeric", month: "numeric",day: "numeric"
+			// 	}
+			// 	maxDate = maxDate.toLocaleDateString('fr',options);
+			// 	maxDate = maxDate.replace('/','-');
+			// 	maxDate = maxDate.replace('/','-');
+			// 	$(input).datepicker("option", "minDate", '01'+month);
+			// 	$(input).datepicker("option", "maxDate", maxDate);
 				
-			},
+			// },
 			dayNamesMin : ["CN","T2","T3","T4","T5","T6","T7"],
 			monthNames : ["Tháng 1 - ","Tháng 2 - ","Tháng 3 - ","Tháng 4 - ","Tháng 5 - ","Tháng 6 - ","Tháng 7 - ","Tháng 8 - ","Tháng 9 - ","Tháng 10 - ","Tháng 11 - ","Tháng 12 -"]
 		});

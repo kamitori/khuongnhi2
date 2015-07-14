@@ -419,7 +419,7 @@
 								$("#list_product").html(html);
 								$("#modal_add_product").modal('hide');
 								$(window).trigger('resize');
-								sum_invest();
+								sum_amount();
 							}
 						})
 					}else{
@@ -429,18 +429,18 @@
 			});
 		}
 
-		function sum_invest(){
-			var sum_invest =0;
-			$(".invest").each(function(){
+		function sum_amount(){
+			var sum_amount =0;
+			$(".amount").each(function(){
 				var value = $(this).text();
 				while(value.indexOf(',')>0){
 					value = value.replace(',','');
 				}
 				value = parseFloat(value);
-				sum_invest += value;
+				sum_amount += value;
 			})
-			sum_invest = sum_invest.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			$("#sum_invest").text(sum_invest);
+			sum_amount = sum_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$("#sum_amount").text(sum_amount);
 		}
 
 	</script>

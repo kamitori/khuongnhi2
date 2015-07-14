@@ -26,7 +26,6 @@
 	<td  class="right" data-type="currency">{{$total_paid}}</td>
 	<td  class="right" data-type="currency">{{$total_no_cu}}</td>
 	<td  class="right" data-type="currency">{{$total_con_lai}}</td>
-	<td></td>
 </tr>
 @endif
 <style type="text/css" media="screen">

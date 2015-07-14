@@ -326,6 +326,52 @@ class ReceiptsController extends Controller {
 			]);
 	}
 
+	public function getCustomerMonth()
+	{
+		$min_year = ReceiptMonth::min('year');
+
+		$arr_month_year = ReceiptMonth::select('year','month')
+						->groupBy('year','month')
+						->orderBy('year','DESC')
+						->orderBy('month','DESC')
+						->get()->toArray();
+
+		// pr($arr_month_year);die;
+		$this->layout->content = view('receipt.customer-month',[
+							'arr_month_year' 	=> 	$arr_month_year,
+							'min_year'		=>	$min_year
+								]);
+	}
+
+	public function postListReceiptCustomerMonth(Request $request){
+		$month = $request->has('month')?$request->input('month'):0;
+		$year = $request->has('year')?$request->input('year'):0;
+		$month = intval($month);
+		$year = intval($year);
+		$list_order = ReceiptMonth::select('receipt_months.*','companies.name as company_name','companies.id as company_id')
+					->where('year','=',$year)
+					->where('month','=',$month)
+					->where('type_receipt','=','customer')
+					->leftJoin('companies','companies.id','=','receipt_months.company_id')
+					->orderBy('companies.name')
+					->get()->toArray();
+		foreach ($list_order as $key => $value) {
+			ReceiptMonth::where('year','=',$value['year'])
+					->where('month','=',$value['month'])
+					->where('company_id','=',$value['company_id'])
+					->where('type_receipt','=',$value['type_receipt'])
+					->update([
+							'con_lai' => ($value['sum_amount'] - $value['paid'] + $value['no_cu'])
+						]);
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+		return view('receipt.list-receipt-customer-month',[
+					'list_order' =>$list_order
+			]);
+	}
+
+
+
 	public function postSavePaid(Request $request)
 	{
 		$time =date('H:i:s', time());

@@ -1,5 +1,5 @@
 <?php 
-	$sum_invest = 0;
+	$sum_amount = 0;
 ?>
 @foreach ($list_product as $product)
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">
@@ -31,8 +31,8 @@
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
 		@endif
 	</td>
-	<td data-type="currency" id="origin_price">
-			{{$product['origin_price']}}
+	<td data-type="currency" id="sell_price">
+			{{$product['sell_price']}}
 	</td>
 	<td>
 		@if($returnsaleorder['status'])
@@ -41,17 +41,17 @@
 		<input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity">
 		@endif
 	</td>
-	<td data-type="currency" class="invest">{{$product['invest']}}</td>
+	<td data-type="currency" class="amount">{{$product['amount']}}</td>
 	@if(!$returnsaleorder['status'])
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
-<?php $sum_invest+= $product['invest'];?>
+<?php $sum_amount+= $product['amount'];?>
 @endforeach
 @if(count($list_product))
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
-	<td data-type="currency" class="right" id="sum_invest">{{$sum_invest}}</td>
+	<td data-type="currency" class="right" id="sum_amount">{{$sum_amount}}</td>
 	@if(!$returnsaleorder['status'])
 	<td></td>
 	@endif
@@ -71,11 +71,11 @@
 			data = {};
 			data['id'] = row.find("#id").val();
 			data['oum_id'] = row.find("#oum_id").val();
-			origin_price = row.find("#origin_price").text();
-			while(origin_price.indexOf(',')>0){
-				origin_price = origin_price.replace(',','')
+			sell_price = row.find("#sell_price").text();
+			while(sell_price.indexOf(',')>0){
+				sell_price = sell_price.replace(',','')
 			}
-			data['origin_price'] = origin_price;
+			data['sell_price'] = sell_price;
 			data['specification'] = row.find("#specification").val();
 			data['quantity'] = row.find("#quantity").val();
 			$.ajax({
@@ -84,10 +84,10 @@
 				data : data,
 				success : function(data){
 					if(data.status == 'success'){
-						$("tr[data-id="+id+"]").find(".invest").text(data.invest);
-						console.log($("#row_product_"+id).find(".invest"));
+						$("tr[data-id="+id+"]").find(".amount").text(data.amount);
+						console.log($("#row_product_"+id).find(".amount"));
 						toastr['success']('Saving success !');
-						sum_invest();
+						sum_amount();
 					}else{
 						toastr['error'](data.message);
 					}

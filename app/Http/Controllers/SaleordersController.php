@@ -220,17 +220,20 @@ class SaleordersController extends Controller {
 			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
 			$address->save();
 			$saleorder->address_id = $address->id;
+		}else{
+			$saleorder->sum_amount = 0;
 		}
 		$old_status = $saleorder->status;
 		$saleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($saleorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount')
 							->where('module_id', '=', $saleorder->id)
 							->where('module_type', '=', 'App\Saleorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
+				$saleorder->sum_amount = $saleorder->sum_amount + $mproduct['amount'];
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
@@ -470,9 +473,9 @@ class SaleordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity);
+			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity*$mproduct->specification);
 			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
-			// if($product_stock->in_stock >=0){
+			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
 						$arr_return['status'] = 'success';
@@ -483,9 +486,9 @@ class SaleordersController extends Controller {
 				}else{
 					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
 				}
-			// }else{
-			// 	$arr_return['message'] = 'Số lượng nhập thấp hơn số lượng đã bán';
-			// }
+			}else{
+				$arr_return['message'] = 'Số lượng mua lớn hơn số lượng tồn kho';
+			}
 		}
 		return $arr_return;
 	}

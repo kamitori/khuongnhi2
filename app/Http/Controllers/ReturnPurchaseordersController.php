@@ -220,17 +220,20 @@ class ReturnPurchaseordersController extends Controller {
 			$address->province_id  = $request->has('province_id') ? $request->input('province_id') : 0;
 			$address->save();
 			$returnpurchaseorder->address_id = $address->id;
+		}else{
+			$returnpurchaseorder->sum_amount = 0;
 		}
 		$old_status = $returnpurchaseorder->status;
 		$returnpurchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($returnpurchaseorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','invest')
 							->where('module_id', '=', $returnpurchaseorder->id)
 							->where('module_type', '=', 'App\ReturnPurchaseorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
+				$returnpurchaseorder->sum_amount = $returnpurchaseorder->sum_amount + $mproduct['invest'];
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
