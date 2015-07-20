@@ -462,7 +462,7 @@ class ProductsController extends Controller {
 		$product_id = session('current_product') !== null ? session('current_product') : 0;
 		$check = true;
 		foreach ($instock as $key => $value) {
-			$mproduct = new MProduct;
+				$mproduct = new MProduct;
 				$mproduct->product_id	=	$product_id;
 				$mproduct->module_id	= 	0;
 				$mproduct->company_id	= 	$value->company_id;
@@ -473,11 +473,6 @@ class ProductsController extends Controller {
 				$mproduct->quantity		=	$value->quantity;
 				$mproduct->invest		=	intval($value->origin_price)*intval($value->quantity)*intval($value->specification);
 				$check = $check && $mproduct->save();
-				$product_stock = new ProductStock;
-				$product_stock->in_stock = $mproduct->quantity*$value->specification;
-				$product_stock->m_product_id = $mproduct->id;
-				$product_stock->product_id = $product_id;
-				$check = $check && $product_stock->save();
 		}
 		$check = $check && Product::where('id','=',$product_id)->update(['check_in_stock'=>1]);
 		if($check){

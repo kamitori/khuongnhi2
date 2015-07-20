@@ -592,7 +592,7 @@
 							toastr['success']('Saving success');
 							setTimeout(function(){
 								window.location.reload();
-							},2000)
+							},1000)
 						}else{
 							toastr['error'](data.message);
 						}
