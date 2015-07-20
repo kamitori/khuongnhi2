@@ -19,9 +19,7 @@ Route::controllers([
 ]);
 
 
-Route::get('/',[ 'middleware' => 'auth', function () {
-	return view('welcome');
-}]);
+Route::get('/',[ 'middleware' => 'auth','uses' =>'HomeController@index']);
 
 Route::get('/view', function () {
 	$menus = Menu::getMenu() ;
@@ -73,4 +71,7 @@ Route::controllers([
 		]);
 Route::controllers([
 	   'receipts' => 'ReceiptsController',
+		]);
+Route::controllers([
+	   'revenues' => 'RevenuesController',
 		]);

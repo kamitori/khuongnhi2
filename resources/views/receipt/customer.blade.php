@@ -1,10 +1,7 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ tháng KH</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm KH</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ NCC</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ tháng NCC</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
+		<a href="{{URL}}/receipts/customer-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ tháng KH</a>
+		<a href="{{URL}}/receipts/customer-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm KH</a>
 	</div>
 	<div class="buttons pull-right">
 		<a href="javascript:addPaid()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm thanh toán</a>
@@ -19,7 +16,7 @@
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
-						<strong>Danh sách nhà cung cấp</strong>
+						<strong>Danh sách khách hàng</strong>
 					</a>
 				</div>
 				<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -70,7 +67,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
 						<strong>
-							Công nợ nhà cung cấp <span id="company_name"></span>
+							Công nợ khách hàng <span id="company_name"></span>
 						</strong>
 					</a>
 				</div>
@@ -256,7 +253,17 @@
 			"backdrop":true,
 			"show":false,
 			"container":"body"
-		});
+	});
+	resizeLeftList();
+	$(window).resize(function(){
+		resizeLeftList();
+	})
+	function resizeLeftList(){
+		var top = $(".left-list").offset()['top'];
+		var height =  $(window).height() - top-120;
+		$(".left-list").height(height);
+		$(".left-list").css({'overflow-y':'auto','overflow-x':'hidden'});
+	}
 	function addPaid(){
 		$("#paid_id").val(0);
 		$("#modal_paid").modal("show");
@@ -290,7 +297,11 @@
 					toastr['success']('Saving success!');
 					$("#modal_paid").modal("hide");
 					$(".left-list li[data-id="+current_company+"]").click();
-					$("#form_paid")[0].reset();
+					function addPaid(){
+                     $("#form_paid")[0].reset();
+		$("#paid_id").val(0);
+		$("#modal_paid").modal("show");
+	}
 				}else{
 					toastr['error'](data.message);
 				}
@@ -301,12 +312,12 @@
 	function deletePaid(){
 		var id = $("#paid_id").val();
 		$.ajax({
-			url : '{{URL}}/receipts/save-paid',
+			url : '{{URL}}/receipts/delete-paid',
 			type : 'POST',
 			data : {
 				id : id
 			},
-			success : function(datas){
+			success : function(data){
 				if(data.status == 'success'){
 					toastr['success']('Delete success!');
 					

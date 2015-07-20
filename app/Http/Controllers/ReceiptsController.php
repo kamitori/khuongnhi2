@@ -105,6 +105,7 @@ class ReceiptsController extends Controller {
 		$date = array();
 		foreach ($list_order as $key => $value) {
 			$date[$key] = $value['date'];
+			$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
 		}
 		if($month!='all'){
 			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distribute')
@@ -236,6 +237,7 @@ class ReceiptsController extends Controller {
 		$date = array();
 		foreach ($list_order as $key => $value) {
 			$date[$key] = $value['date'];
+			$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
 		}
 		array_multisort($date,SORT_ASC,$list_order);
 		if($month!='all'){
@@ -288,6 +290,7 @@ class ReceiptsController extends Controller {
 
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
+						->where('type_receipt','=','distribute')
 						->orderBy('year','DESC')
 						->orderBy('month','DESC')
 						->get()->toArray();
@@ -332,6 +335,7 @@ class ReceiptsController extends Controller {
 
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
+						->where('type_receipt','=','customer')
 						->orderBy('year','DESC')
 						->orderBy('month','DESC')
 						->get()->toArray();
@@ -366,6 +370,78 @@ class ReceiptsController extends Controller {
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
 		return view('receipt.list-receipt-customer-month',[
+					'list_order' =>$list_order
+			]);
+	}
+
+	public function getDistributeYear()
+	{
+		$min_year = ReceiptMonth::min('year');
+		$this->layout->content = view('receipt.distribute-year',[
+							'min_year'		=>	$min_year
+								]);
+	}
+
+	public function postListReceiptDistributeYear(Request $request){
+		$year = $request->has('year')?$request->input('year'):0;
+		$year = intval($year);
+		$list_order = ReceiptMonth::select(
+						'companies.name as company_name',
+						'companies.id as company_id'
+						)
+					->addSelect(DB::raw('sum(sum_amount) as sum_amount,sum(paid) as paid'))
+					->where('year','=',$year)
+					->where('type_receipt','=','distribute')
+					->leftJoin('companies','companies.id','=','receipt_months.company_id')
+					->groupBy('companies.id')
+					->orderBy('companies.name')
+					->get()->toArray();
+		foreach ($list_order as $key => $value) {
+			$receipt_month_last = 	ReceiptMonth::where('year','=',$year)
+								->where('type_receipt','=','distribute')
+								->where('company_id','=',$value['company_id'])
+								->orderBy('month','DESC')
+								->first()->toArray();
+			$list_order[$key]['no_cu'] = $receipt_month_last['no_cu'];
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+		return view('receipt.list-receipt-distribute-year',[
+					'list_order' =>$list_order
+			]);
+	}
+
+	public function getCustomerYear()
+	{
+		$min_year = ReceiptMonth::min('year');
+		$this->layout->content = view('receipt.customer-year',[
+							'min_year'		=>	$min_year
+								]);
+	}
+
+	public function postListReceiptCustomerYear(Request $request){
+		$year = $request->has('year')?$request->input('year'):0;
+		$year = intval($year);
+		$list_order = ReceiptMonth::select(
+						'companies.name as company_name',
+						'companies.id as company_id'
+						)
+					->addSelect(DB::raw('sum(sum_amount) as sum_amount,sum(paid) as paid'))
+					->where('year','=',$year)
+					->where('type_receipt','=','customer')
+					->leftJoin('companies','companies.id','=','receipt_months.company_id')
+					->groupBy('companies.id')
+					->orderBy('companies.name')
+					->get()->toArray();
+		foreach ($list_order as $key => $value) {
+			$receipt_month_last = 	ReceiptMonth::where('year','=',$year)
+								->where('type_receipt','=','customer')
+								->where('company_id','=',$value['company_id'])
+								->orderBy('month','DESC')
+								->first()->toArray();
+			$list_order[$key]['no_cu'] = $receipt_month_last['no_cu'];
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+		return view('receipt.list-receipt-customer-year',[
 					'list_order' =>$list_order
 			]);
 	}

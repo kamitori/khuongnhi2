@@ -222,6 +222,7 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder->address_id = $address->id;
 		}else{
 			$returnpurchaseorder->sum_amount = 0;
+			$returnpurchaseorder->sum_invest = 0;
 		}
 		$old_status = $returnpurchaseorder->status;
 		$returnpurchaseorder->status = $request->has('status')?1:0;

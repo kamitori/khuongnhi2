@@ -220,18 +220,20 @@ class ReturnSaleordersController extends Controller {
 			$returnsaleorder->address_id = $address->id;
 		}else{
 			$returnsaleorder->sum_amount = 0;
+			$returnsaleorder->sum_invest = 0;
 		}
 		$old_status = $returnsaleorder->status;
 		$returnsaleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($returnsaleorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount','invest')
 							->where('module_id', '=', $returnsaleorder->id)
 							->where('module_type', '=', 'App\ReturnSaleorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
 				$returnsaleorder->sum_amount = $returnsaleorder->sum_amount + $mproduct['amount'];
+				$returnsaleorder->sum_invest = $returnsaleorder->sum_invest + $mproduct['invest'];
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
 				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
@@ -471,7 +473,9 @@ class ReturnSaleordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$check_return = ($mproduct_so->quantity - ($mproduct->quantity - $old_quantity)) >=0;
+			$mproduct->origin_price = $mproduct_so->origin_price;
 			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
+			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
 			// if($product_stock->in_stock >=0){
 				if( $check_return ){
 					if($mproduct->save()){

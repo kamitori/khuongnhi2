@@ -230,6 +230,7 @@ class PurchaseordersController extends Controller {
 			$purchaseorder->address_id = $address->id;
 		}else{
 			$purchaseorder->sum_amount = 0;
+			$purchaseorder->sum_invest = 0;
 		}
 		$old_status = $purchaseorder->status;
 		$purchaseorder->status = $request->has('status')?1:0;

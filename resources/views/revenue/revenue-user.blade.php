@@ -1,7 +1,7 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/receipts/customer" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ NCC</a>
-		<a href="{{URL}}/receipts/customer-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
+		<a href="{{URL}}/revenues/revenue-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
+		<a href="{{URL}}/revenues/revenue-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
 	</div>
 	<div class="buttons pull-right">
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
@@ -15,7 +15,7 @@
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
-						<strong>&nbsp;</strong>
+						<strong>Danh sách nhân viên</strong>
 					</a>
 				</div>
 				<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -28,26 +28,29 @@
 										$current_month = intval(date('m'));
 									?>
 									@for($i=1;$i<13;$i++)
-										<option value="{{$i}}">Tháng {{$i}}</option>
+										<option value="{{$i}}" {{$i==$current_month?'selected':''}}>Tháng {{$i}}</option>
 									@endfor		
 								</select>
 							</div>
 							<div class="date right" style="width:48%;">
 								<select id="year" class="span12">
-									<option value="all">Xem tất cả</option>
-								<?php 
-									$current_year = intval(date('Y'));
-								?>
-									@for($i=$min_year;$i <= $current_year;$i++)
-										<option value="{{$i}}">Năm {{$i}}</option>
-									@endfor	
+									<option value="2015">Năm 2015</option>
+									<option value="2016">Năm 2016</option>		
+								</select>
+							</div>
+							<div class="company">
+								<select id="company_select" class="span12" data-type="select2">
+									<option value="all">&nbsp;</option>
+									@foreach($users as $user)
+									<option value="{{$user['id']}}">{{$user['name']}}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
 						<ul class="nav bs-docs-sidenav affix-top left-list">
-							@foreach($arr_month_year as $value)
-								<li data-year="{{$value['year']}}" data-month="{{$value['month']}}">
-									<span  class='date'>Tháng {{$value['month']}} - {{$value['year']}}</span>
+							@foreach($users as $user)
+								<li data-id="{{$user['id']}}">
+									<span  class='company'>{{$user['name']}}</span>
 								</li>
 							@endforeach
 						</ul>
@@ -63,7 +66,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
 						<strong>
-							Công nợ khách hàng <span id="date_name"></span>
+							Doanh thu nhân viên <span id="company_name"></span>
 						</strong>
 					</a>
 				</div>
@@ -72,15 +75,16 @@
 						<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center">
 							<thead>
 								<tr class="small">
-									<th class="center">Khách hàng</th>
-									<th class="center">Tổng tiền toa</th>
-									<th class="center">Tiền thanh toán</th>
-									<th class="center">Nợ cũ</th>
-									<th class="center">Còn lại</th>
+									<th class="center">Ngày</th>
+									<th class="center">Giá vốn</th>
+									<th class="center">Doanh Thu</th>
+									<th class="center">Khoảng giảm</th>
+									<th class="center">Lãi thực</th>
+									<th class="center">Tỷ lệ lãi</th>
+									<th class="center">Lợi nhuận</th>
 								</tr>
 							</thead>
-							<tbody id="list-receipt">
-								
+							<tbody id="list-revenue">
 							</tbody>
 						</table>
 					</div>
@@ -132,51 +136,52 @@
 @section('pageJS')
 <script>
 	$(window).resize();
-	var current_month = 0;
-	var current_year = 0;
+	var current_user = 0;
 	$(".left-list li").on('click',function(){
-		$("#date_name").text($(this).find(".date").text());
-		var month = $(this).attr('data-month');
-		var year = $(this).attr('data-year');
-		current_month = month;
-		current_year = year;
+		$("#company_name").text($(this).find(".company").text());
+		var user_id = $(this).attr('data-id');
+		current_user = user_id;
+		var month = $("#month").val();
+		var year = $("#year").val();
 		$.ajax({
-			url : '{{URL}}/receipts/list-receipt-customer-month',
+			url : '{{URL}}/revenues/list-revenue-user',
 			type : 'POST',
 			data :{
+				'user_id' : user_id,
 				'month' : month,
 				'year' : year
 			},
 			success : function(data){
-				$("#list-receipt").html(data);
+				$("#list-revenue").html(data);
 			}
 		})
 	})
 
-	$("#month,#year").on('change',function(){
-		var month = $("#month").val();
-		var year = $("#year").val();
-		if(month=='all'){
-			if(year=="all"){
-				$(".left-list li").show();
-			}else{
-				$(".left-list li").hide();
-				$(".left-list li[data-year="+year+"]").show();
-				current_year = year;
-			}
-			
+	$("#company_select").on('change',function(){
+		var id = $(this).val();
+		if(id!='all'){
+			$(".left-list li").hide();
+			$(".left-list li[data-id="+id+"]").show();
+			$(".left-list li[data-id="+id+"]").click();
 		}else{
-			if(year=="all"){
-				$(".left-list li").hide();
-				$(".left-list li[data-month="+month+"]").show();
-			}else{
-				$(".left-list li").hide();
-				$(".left-list li[data-year="+year+"]").show();
-				$(".left-list li[data-year="+year+"][data-month="+month+"]").click();
-			}
+			$(".left-list li").show();
 		}
-		
 	})
+
+	$("#month,#year").on('change',function(){
+		$(".left-list li[data-id="+current_user+"]").click();
+	})
+
+	resizeLeftList();
+	$(window).resize(function(){
+		resizeLeftList();
+	})
+	function resizeLeftList(){
+		var top = $(".left-list").offset()['top'];
+		var height =  $(window).height() - top-120;
+		$(".left-list").height(height);
+		$(".left-list").css({'overflow-y':'auto','overflow-x':'hidden'});
+	}
 
 </script>
 @stop

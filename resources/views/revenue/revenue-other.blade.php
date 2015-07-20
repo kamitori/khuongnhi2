@@ -1,10 +1,10 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/receipts/distibute-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ tháng NCC</a>
-		<a href="{{URL}}/receipts/distibute-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
+		<a href="{{URL}}/revenues/revenue-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
+		<a href="{{URL}}/revenues/revenue-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
 	</div>
 	<div class="buttons pull-right">
-		<a href="javascript:addPaid()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm thanh toán</a>
+		<a href="javascript:addOther()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm chi khác</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Xuất Excel</a>
 	</div>
@@ -16,7 +16,7 @@
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
-						<strong>Danh sách nhà cung cấp</strong>
+						<strong>&nbsp;</strong>
 					</a>
 				</div>
 				<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -29,29 +29,26 @@
 										$current_month = intval(date('m'));
 									?>
 									@for($i=1;$i<13;$i++)
-										<option value="{{$i}}" {{$i==$current_month?'selected':''}}>Tháng {{$i}}</option>
+										<option value="{{$i}}">Tháng {{$i}}</option>
 									@endfor		
 								</select>
 							</div>
 							<div class="date right" style="width:48%;">
 								<select id="year" class="span12">
-									<option value="2015">Năm 2015</option>
-									<option value="2016">Năm 2016</option>		
-								</select>
-							</div>
-							<div class="company">
-								<select id="company_select" class="span12" data-type="select2">
-									<option value="all">&nbsp;</option>
-									@foreach($distributes as $company)
-									<option value="{{$company['id']}}">{{$company['name']}}</option>
-									@endforeach
+									<option value="all">Xem tất cả</option>
+								<?php 
+									$current_year = intval(date('Y'));
+								?>
+									@for($i=$min_year;$i <= $current_year;$i++)
+										<option value="{{$i}}">Năm {{$i}}</option>
+									@endfor	
 								</select>
 							</div>
 						</div>
 						<ul class="nav bs-docs-sidenav affix-top left-list">
-							@foreach($distributes as $company)
-								<li data-id="{{$company['id']}}">
-									<span  class='company'>{{$company['name']}}</span>
+							@foreach($arr_month_year as $value)
+								<li data-year="{{$value['year']}}" data-month="{{$value['month']}}" onclick="loadOther(this)">
+									<span  class='date'>Tháng {{$value['month']}} - {{$value['year']}}</span>
 								</li>
 							@endforeach
 						</ul>
@@ -67,7 +64,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
 						<strong>
-							Công nợ nhà cung cấp <span id="company_name"></span>
+							Chi khác <span id="date_name"></span>
 						</strong>
 					</a>
 				</div>
@@ -77,15 +74,13 @@
 							<thead>
 								<tr class="small">
 									<th class="center">Ngày</th>
-									<th class="center">Tổng tiền toa</th>
-									<th class="center">Tiền thanh toán</th>
-									<th class="center">Nợ cũ</th>
-									<th class="center">Còn lại</th>
-									<th class="center">Hình thức TT</th>
+									<th class="center">Người chi</th>
+									<th class="center">Lý do chi</th>
+									<th class="center">Tổng chi</th>
+									<th class="center">&nbsp;</th>
 								</tr>
 							</thead>
-							<tbody id="list-receipt">
-								
+							<tbody id="list-revenue">
 							</tbody>
 						</table>
 					</div>
@@ -95,56 +90,30 @@
 	</div>
 </div>
 @section('otherPage')
-<div id="modal_paid" class="modal fade">
+<div id="modal_other" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<!-- dialog header -->
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h5>Thêm thanh toán</h5>
+				<h5>Thêm chi khác</h5>
 			</div>
 			<!-- dialog body -->
-			<form  method="post" accept-charset="utf-8" id="form_paid">
+			<form  method="post" accept-charset="utf-8" id="form_other">
 			<div class="modal-body">
 				<div class="row-fluid form_detail">
-					<div class="span4">
-						<input type="hidden" id="paid_id" value="">
-						<div class="control-group">
-							<label class="control-label">Công ty:</label>
-							<div class="controls">
-								<select id="company_paid" width="auto" data-type="select2">
-									@foreach($distributes as $company)
-									<option value="{{$company['id']}}">{{$company['name']}}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>
+					<div class="span6">
+						<input type="hidden" id="other_id" value="">
 						<div class="control-group">
 							<label class="control-label">Ngày:</label>
 							<div class="controls">
 								<input type="text" id="date" name="date" class="datepicker" value="{{ date('d-m-Y') }}" readonly="" style="background-color: #fff;">
 							</div>
 						</div>
-					</div>
-					<div class="span4">
 						<div class="control-group">
-							<label class="control-label">Tiền TT:</label>
+							<label class="control-label">Người chi:</label>
 							<div class="controls">
-								<input type="text" id="sum_paid" value="" data-type='number'>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Hình thức TT:</label>
-							<div class="controls">
-								<input type="text" id="hinh_thuc" value="">
-							</div>
-						</div>
-					</div>
-					<div class="span4">
-						<div class="control-group">
-							<label class="control-label">Người thu:</label>
-							<div class="controls">
-								<select id="user_paid" width="auto" data-type="select2">
+								<select id="user_other" width="auto" data-type="select2">
 									@foreach($users as $user)
 									<option value="{{$user['id']}}">{{$user['name']}}</option>
 									@endforeach
@@ -152,13 +121,27 @@
 							</div>
 						</div>
 					</div>
+					<div class="span6">
+						<div class="control-group">
+							<label class="control-label">Tổng chi:</label>
+							<div class="controls">
+								<input type="text" id="sum_amount" value="" data-type='number'>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Lý do chi:</label>
+							<div class="controls">
+								<input type="text" id="ly_do" value="">
+							</div>
+						</div>
+					</div>
 				</div>
 				<br/>
 				<div class="row center">
-					<button class="btn btn-primary" type="button" onclick="savePaid()">
+					<button class="btn btn-primary" type="button" onclick="saveOther()">
 						Lưu
 					</button>
-					<button class="btn btn-primary" type="button" onclick="deletePaid()">
+					<button class="btn btn-primary" type="button" onclick="deleteOther()">
 						Xóa
 					</button>
 				</div>
@@ -184,20 +167,20 @@
 			margin-left: 1%;
 			width:75.358974%;
 		}
-		#modal_paid{
-			width: 88%;
-			margin-left: -44%;
+		#modal_other{
+			width: 66%;
+			margin-left: -33%;
 		}
 		@media (max-width: 767px) {
 			.block .span9{
 				width:100% !important;
 			}
-			#modal_paid{
+			#modal_other{
 				width: 100% !important;
 				margin-left: -4% !important;
 			}
 		}
-		#modal_paid .select2{
+		#modal_other .select2{
 			width:84.5% !important;
 		}
 		.select2-hidden-accessible{
@@ -211,27 +194,7 @@
 @section('pageJS')
 <script>
 	$(window).resize();
-	var current_company = 0;
-
-	$(".left-list li").on('click',function(){
-		$("#company_name").text($(this).find(".company").text());
-		var company_id = $(this).attr('data-id');
-		current_company = company_id;
-		var month = $("#month").val();
-		var year = $("#year").val();
-		$.ajax({
-			url : '{{URL}}/receipts/list-receipt-distribute',
-			type : 'POST',
-			data :{
-				'company_id' : company_id,
-				'month' : month,
-				'year' : year
-			},
-			success : function(data){
-				$("#list-receipt").html(data);
-			}
-		})
-	})
+	var current_user = 0;
 
 	$("#company_select").on('change',function(){
 		var id = $(this).val();
@@ -245,14 +208,35 @@
 	})
 
 	$("#month,#year").on('change',function(){
-		$(".left-list li[data-id="+current_company+"]").click();
+		var month = $("#month").val();
+		var year = $("#year").val();
+		if(month=='all'){
+			if(year=="all"){
+				$(".left-list li").show();
+			}else{
+				$(".left-list li").hide();
+				$(".left-list li[data-year="+year+"]").show();
+				current_year = year;
+			}
+			
+		}else{
+			if(year=="all"){
+				$(".left-list li").hide();
+				$(".left-list li[data-month="+month+"]").show();
+			}else{
+				$(".left-list li").hide();
+				$(".left-list li[data-year="+year+"]").show();
+				$(".left-list li[data-year="+year+"][data-month="+month+"]").click();
+			}
+		}
+		
 	})
 
-	$("#modal_paid").modal({
+	$("#modal_other").modal({
 			"backdrop":true,
 			"show":false,
 			"container":"body"
-		});
+	});
 	resizeLeftList();
 	$(window).resize(function(){
 		resizeLeftList();
@@ -263,44 +247,56 @@
 		$(".left-list").height(height);
 		$(".left-list").css({'overflow-y':'auto','overflow-x':'hidden'});
 	}
-	function addPaid(){
-		$("#paid_id").val(0);
-		$("#modal_paid").modal("show");
+	function loadOther(obj){
+		$("#date_name").text($(obj).find(".date").text());
+		var month = $(obj).attr('data-month');
+		var year = $(obj).attr('data-year');
+		current_month = month;
+		current_year = year;
+		$.ajax({
+			url : '{{URL}}/revenues/list-revenue-other',
+			type : 'POST',
+			data :{
+				'month' : month,
+				'year' : year
+			},
+			success : function(data){
+				$("#list-revenue").html(data);
+			}
+		})
+	}
+	function addOther(){
+		$("#form_other")[0].reset();
+		$("#other_id").val(0);
+		$("#modal_other").modal("show");
 	}
 
-	function savePaid(){
-		var id = $("#paid_id").val();
-		var company_id = $("#company_paid").val();
+	function saveOther(){
+		var id = $("#other_id").val();
 		var date = $("#date").val();
-		var sum_paid = $("#sum_paid").val();
-		while(sum_paid.indexOf(',')>0){
-			sum_paid = sum_paid.replace(',','');
+		var sum_amount = $("#sum_amount").val();
+		while(sum_amount.indexOf(',')>0){
+			sum_amount = sum_amount.replace(',','');
 		}
-		sum_paid = parseFloat(sum_paid);
-		var hinh_thuc = $("#hinh_thuc").val();
-		var user_paid = $("#user_paid").val();
+		sum_amount = parseFloat(sum_amount);
+		var ly_do = $("#ly_do").val();
+		var user_other = $("#user_other").val();
 		$.ajax({
-			url : '{{URL}}/receipts/save-paid',
+			url : '{{URL}}/revenues/save-other',
 			type : 'POST',
 			data : {
 				id 		: id,
-				company_id 	: company_id,
 				date 		: date,
-				sum_paid	: sum_paid,
-				type_paid	: 'distribute',
-				hinh_thuc 	: hinh_thuc,
-				user_id 	: user_paid,
+				sum_amount	: sum_amount,
+				ly_do 	: ly_do,
+				user_id 	: user_other,
 			},
 			success : function(data){
 				if(data.status == 'success'){
 					toastr['success']('Saving success!');
-					$("#modal_paid").modal("hide");
-					$(".left-list li[data-id="+current_company+"]").click();
-					function addPaid(){
-                     $("#form_paid")[0].reset();
-		$("#paid_id").val(0);
-		$("#modal_paid").modal("show");
-	}
+					$("#modal_other").modal("hide");
+					$(".left-list li[data-year="+current_year+"][data-month="+current_month+"]").click();
+					$("#form_other")[0].reset();
 				}else{
 					toastr['error'](data.message);
 				}
@@ -308,10 +304,10 @@
 		})
 	}
 
-	function deletePaid(){
-		var id = $("#paid_id").val();
+	function deleteOther(){
+		var id = $("#other_id").val();
 		$.ajax({
-			url : '{{URL}}/receipts/delete-paid',
+			url : '{{URL}}/revenues/delete-other',
 			type : 'POST',
 			data : {
 				id : id
@@ -327,20 +323,19 @@
 		});			
 	}
 
-	function editPaid(obj){
+	function editOther(obj){
 		var data = $(obj).attr('data-value');
 		data = JSON.parse(data);
-		$("#paid_id").val(data.id);
+		$("#other_id").val(data.id);
 		console.log(data);
-		$("#company_paid").val(data.company_id);
-		$("#company_paid").select2('val',data.company_id);
 		$("#date").val(data.date);
-		$("#sum_paid").val(data.paid);
-		$("#hinh_thuc").val(data.hinh_thuc);
-		$("#user_paid").val(data.user_id);
-		$("#user_paid").select2('val',data.user_id);
+		$("#date").datepicker();
+		$("#sum_amount").val(data.sum_amount);
+		$("#ly_do").val(data.ly_do);
+		$("#user_other").val(data.user_id);
+		$("#user_other").select2('val',data.user_id);
 		datatype_number();
-		$("#modal_paid").modal("show");
+		$("#modal_other").modal("show");
 	}
 
 </script>

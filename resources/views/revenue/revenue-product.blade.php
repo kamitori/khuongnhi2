@@ -1,7 +1,7 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/receipts/customer" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ NCC</a>
-		<a href="{{URL}}/receipts/customer-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
+		<a href="{{URL}}/revenues/revenue-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
+		<a href="{{URL}}/revenues/revenue-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
 	</div>
 	<div class="buttons pull-right">
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
@@ -15,7 +15,7 @@
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
-						<strong>&nbsp;</strong>
+						<!-- <strong>Danh sách khách hàng</strong> -->
 					</a>
 				</div>
 				<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -63,7 +63,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
 						<strong>
-							Công nợ khách hàng <span id="date_name"></span>
+							Doanh thu theo sản phẩm <span id="date_name"></span>
 						</strong>
 					</a>
 				</div>
@@ -72,15 +72,17 @@
 						<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center">
 							<thead>
 								<tr class="small">
-									<th class="center">Khách hàng</th>
-									<th class="center">Tổng tiền toa</th>
-									<th class="center">Tiền thanh toán</th>
-									<th class="center">Nợ cũ</th>
-									<th class="center">Còn lại</th>
+									<!-- <th class="center">Ngày</th> -->
+									<th class="center">Sản phẩm</th>
+									<th class="center">Giá vốn</th>
+									<th class="center">Doanh Thu</th>
+									<th class="center">Khoảng giảm</th>
+									<th class="center">Lãi thực</th>
+									<th class="center">Tỷ lệ lãi</th>
+									<th class="center">Lợi nhuận</th>
 								</tr>
 							</thead>
-							<tbody id="list-receipt">
-								
+							<tbody id="list-revenue">
 							</tbody>
 						</table>
 					</div>
@@ -132,8 +134,7 @@
 @section('pageJS')
 <script>
 	$(window).resize();
-	var current_month = 0;
-	var current_year = 0;
+	var current_user = 0;
 	$(".left-list li").on('click',function(){
 		$("#date_name").text($(this).find(".date").text());
 		var month = $(this).attr('data-month');
@@ -141,16 +142,27 @@
 		current_month = month;
 		current_year = year;
 		$.ajax({
-			url : '{{URL}}/receipts/list-receipt-customer-month',
+			url : '{{URL}}/revenues/list-revenue-product',
 			type : 'POST',
 			data :{
 				'month' : month,
 				'year' : year
 			},
 			success : function(data){
-				$("#list-receipt").html(data);
+				$("#list-revenue").html(data);
 			}
 		})
+	})
+
+	$("#company_select").on('change',function(){
+		var id = $(this).val();
+		if(id!='all'){
+			$(".left-list li").hide();
+			$(".left-list li[data-id="+id+"]").show();
+			$(".left-list li[data-id="+id+"]").click();
+		}else{
+			$(".left-list li").show();
+		}
 	})
 
 	$("#month,#year").on('change',function(){
@@ -177,6 +189,17 @@
 		}
 		
 	})
+
+	resizeLeftList();
+	$(window).resize(function(){
+		resizeLeftList();
+	})
+	function resizeLeftList(){
+		var top = $(".left-list").offset()['top'];
+		var height =  $(window).height() - top-120;
+		$(".left-list").height(height);
+		$(".left-list").css({'overflow-y':'auto','overflow-x':'hidden'});
+	}
 
 </script>
 @stop

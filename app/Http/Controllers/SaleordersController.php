@@ -153,7 +153,7 @@ class SaleordersController extends Controller {
 		$list_product = array();
 
 		//Get value array
-		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
+		$distributes = Company::getCustomerList()->with('address')->get()->toArray();
 		$oums = Oum::get()->toArray();
 		$users = User::get();
 		$countries = Country::with('provinces')->get()->toArray();
@@ -222,18 +222,20 @@ class SaleordersController extends Controller {
 			$saleorder->address_id = $address->id;
 		}else{
 			$saleorder->sum_amount = 0;
+			$saleorder->sum_invest = 0;
 		}
 		$old_status = $saleorder->status;
 		$saleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($saleorder->status){
-			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount')
+			$arr_mproduct = Mproduct::select('m_products.id','quantity','specification','name','m_product_id','amount','invest')
 							->where('module_id', '=', $saleorder->id)
 							->where('module_type', '=', 'App\Saleorder')
 							->leftJoin('products','products.id','=','m_products.product_id')
 							->get()->toArray();
 			foreach ($arr_mproduct as $key => $mproduct) {
 				$saleorder->sum_amount = $saleorder->sum_amount + $mproduct['amount'];
+				$saleorder->sum_invest = $saleorder->sum_invest + $mproduct['invest'];
 				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
@@ -321,7 +323,7 @@ class SaleordersController extends Controller {
 		$list_saleorder = array();
 
 		//Get value array
-		$distributes = Company::getDistributeList()->get()->toArray();
+		$distributes = Company::getCustomerList()->get()->toArray();
 		$list_id = Saleorder::lists('id');
 		$list_date = Saleorder::orderBy('date','desc')->lists('date');
 		foreach ($list_date as $key => $value) {
@@ -474,7 +476,9 @@ class SaleordersController extends Controller {
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
 			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity*$mproduct->specification);
+			$mproduct->origin_price = $mproduct_po->origin_price;
 			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
+			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
 			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){

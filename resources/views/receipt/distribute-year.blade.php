@@ -1,7 +1,7 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/receipts/customer" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ NCC</a>
-		<a href="{{URL}}/receipts/customer-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
+		<a href="{{URL}}/receipts/distibute" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ NCC</a>
+		<a href="{{URL}}/receipts/distibute-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ tháng NCC</a>
 	</div>
 	<div class="buttons pull-right">
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
@@ -20,36 +20,15 @@
 				</div>
 				<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
 					<div class="accordion-inner" style="padding:0;">
-						<div id="sort_receipt" style="margin-bottom: 10px;">
-							<div class="date" style="margin-left: 1.5%;">
-								<select id="month" class="span12">
-									<option value="all">Xem tất cả</option>
-									<?php
-										$current_month = intval(date('m'));
-									?>
-									@for($i=1;$i<13;$i++)
-										<option value="{{$i}}">Tháng {{$i}}</option>
-									@endfor		
-								</select>
-							</div>
-							<div class="date right" style="width:48%;">
-								<select id="year" class="span12">
-									<option value="all">Xem tất cả</option>
-								<?php 
-									$current_year = intval(date('Y'));
-								?>
-									@for($i=$min_year;$i <= $current_year;$i++)
-										<option value="{{$i}}">Năm {{$i}}</option>
-									@endfor	
-								</select>
-							</div>
-						</div>
 						<ul class="nav bs-docs-sidenav affix-top left-list">
-							@foreach($arr_month_year as $value)
-								<li data-year="{{$value['year']}}" data-month="{{$value['month']}}">
-									<span  class='date'>Tháng {{$value['month']}} - {{$value['year']}}</span>
+							<?php 
+								$current_year = intval(date('Y'));
+							?>
+							@for($i=$min_year;$i <= $current_year;$i++)
+								<li data-year="{{$i}}">
+									<span  class='date'>Năm {{$i}}</span>
 								</li>
-							@endforeach
+							@endfor
 						</ul>
 						<br/>
 					</div>
@@ -63,7 +42,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle">
 						<strong>
-							Công nợ khách hàng <span id="date_name"></span>
+							Công nợ nhà cung cấp <span id="date_name"></span>
 						</strong>
 					</a>
 				</div>
@@ -72,7 +51,7 @@
 						<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center">
 							<thead>
 								<tr class="small">
-									<th class="center">Khách hàng</th>
+									<th class="center">Nhà cung cấp</th>
 									<th class="center">Tổng tiền toa</th>
 									<th class="center">Tiền thanh toán</th>
 									<th class="center">Nợ cũ</th>
@@ -136,15 +115,12 @@
 	var current_year = 0;
 	$(".left-list li").on('click',function(){
 		$("#date_name").text($(this).find(".date").text());
-		var month = $(this).attr('data-month');
 		var year = $(this).attr('data-year');
-		current_month = month;
 		current_year = year;
 		$.ajax({
-			url : '{{URL}}/receipts/list-receipt-customer-month',
+			url : '{{URL}}/receipts/list-receipt-distribute-year',
 			type : 'POST',
 			data :{
-				'month' : month,
 				'year' : year
 			},
 			success : function(data){
@@ -153,30 +129,6 @@
 		})
 	})
 
-	$("#month,#year").on('change',function(){
-		var month = $("#month").val();
-		var year = $("#year").val();
-		if(month=='all'){
-			if(year=="all"){
-				$(".left-list li").show();
-			}else{
-				$(".left-list li").hide();
-				$(".left-list li[data-year="+year+"]").show();
-				current_year = year;
-			}
-			
-		}else{
-			if(year=="all"){
-				$(".left-list li").hide();
-				$(".left-list li[data-month="+month+"]").show();
-			}else{
-				$(".left-list li").hide();
-				$(".left-list li[data-year="+year+"]").show();
-				$(".left-list li[data-year="+year+"][data-month="+month+"]").click();
-			}
-		}
-		
-	})
 
 </script>
 @stop

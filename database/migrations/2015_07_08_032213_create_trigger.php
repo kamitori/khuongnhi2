@@ -263,12 +263,12 @@ class CreateTrigger extends Migration {
 				END IF;
 				IF(NEW.status =0 AND OLD.status =1) THEN
 					UPDATE `khuongnhi`.`receipt_months` SET 
-						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`sum_amount`=`sum_amount` - OLD.sum_amount,
 						`con_lai`= `sum_amount`+`no_cu`- `paid`
-						WHERE  `month` = MONTH(NEW.date)
-						AND `year` = YEAR(NEW.date)
+						WHERE  `month` = MONTH(OLD.date)
+						AND `year` = YEAR(OLD.date)
 						AND `type_receipt` = 'distribute'
-						AND `company_id` = NEW.company_id;
+						AND `company_id` = OLD.company_id;
 				END IF;
 			END
 		");
@@ -293,12 +293,12 @@ class CreateTrigger extends Migration {
 				END IF;
 				IF(NEW.status =0 AND OLD.status =1) THEN
 					UPDATE `khuongnhi`.`receipt_months` SET 
-						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`sum_amount`=`sum_amount` + OLD.sum_amount,
 						`con_lai`= `sum_amount`+`no_cu`- `paid`
-						WHERE  `month` = MONTH(NEW.date)
-						AND `year` = YEAR(NEW.date)
+						WHERE  `month` = MONTH(OLD.date)
+						AND `year` = YEAR(OLD.date)
 						AND `type_receipt` = 'distribute'
-						AND `company_id` = NEW.company_id;
+						AND `company_id` = OLD.company_id;
 				END IF;
 			END
 		");
@@ -324,12 +324,12 @@ class CreateTrigger extends Migration {
 				END IF;
 				IF(NEW.status =0 AND OLD.status =1) THEN
 					UPDATE `khuongnhi`.`receipt_months` SET 
-						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`sum_amount`=`sum_amount` - OLD.sum_amount,
 						`con_lai`= `sum_amount`+`no_cu`- `paid`
-						WHERE  `month` = MONTH(NEW.date)
-						AND `year` = YEAR(NEW.date)
+						WHERE  `month` = MONTH(OLD.date)
+						AND `year` = YEAR(OLD.date)
 						AND `type_receipt` = 'customer'
-						AND `company_id` = NEW.company_id;
+						AND `company_id` = OLD.company_id;
 				END IF;
 			END
 		");
@@ -355,12 +355,12 @@ class CreateTrigger extends Migration {
 				END IF;
 				IF(NEW.status =0 AND OLD.status =1) THEN
 					UPDATE `khuongnhi`.`receipt_months` SET 
-						`sum_amount`=`sum_amount` - NEW.sum_amount,
+						`sum_amount`=`sum_amount` + OLD.sum_amount,
 						`con_lai`= `sum_amount`+`no_cu`- `paid`
-						WHERE  `month` = MONTH(NEW.date)
-						AND `year` = YEAR(NEW.date)
+						WHERE  `month` = MONTH(OLD.date)
+						AND `year` = YEAR(OLD.date)
 						AND `type_receipt` = 'customer'
-						AND `company_id` = NEW.company_id;
+						AND `company_id` = OLD.company_id;
 				END IF;
 			END
 		");

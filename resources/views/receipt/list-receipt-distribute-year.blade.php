@@ -3,34 +3,28 @@
 	$total_sum_amount = 0;
 	$total_paid = 0;
 	$total_con_lai= 0;
+	$total_no_cu= 0;
 ?>
 @foreach($list_order as $key => $order)
 <tr >
-	<td class="center">{{date('d-m-Y',strtotime($order['date']))}}</td>
+	<td class="center">{{$order['company_name']}}</td>
 	<td  class="right" data-type="currency">{{$order['sum_amount']}}</td>
 	<td  class="right" data-type="currency">{{$order['paid']}}</td>
 	<td  class="right" data-type="currency">{{$order['no_cu']}}</td>
 	<td  class="right" data-type="currency">{{$order['con_lai']}}</td>
-	<td>{{$order['hinh_thuc']}}</td>
-	@if($order['paid'])
-	<td class="link" onclick="editPaid(this)"  data-value="{{json_encode($order)}}"><i class="fa fa-caret-left"></i></td>
-	@elseif($order['sum_amount']>0)
-	<td><a href="{{URL}}/saleorders/{{$order['id']}}" title=""><i class="fa fa-caret-left"></i></a></td>
-	@else
-	<td><a href="{{URL}}/returnsaleorders/{{$order['id']}}" title=""><i class="fa fa-caret-left"></i></a></td>
-	@endif
 </tr>
 <?php
 	$total_sum_amount += $order['sum_amount'];
 	$total_paid += $order['paid'];
-	$total_con_lai = $order['con_lai'];
+	$total_con_lai += $order['con_lai'];
+	$total_no_cu += $order['no_cu']
 ?>
 @endforeach
-<tr class="sum">
+<tr>
 	<td class="strong right">Tổng</td>
 	<td  class="right" data-type="currency">{{$total_sum_amount}}</td>
 	<td  class="right" data-type="currency">{{$total_paid}}</td>
-	<td  class="right"> </td>
+	<td  class="right" data-type="currency">{{$total_no_cu}}</td>
 	<td  class="right" data-type="currency">{{$total_con_lai}}</td>
 </tr>
 @endif
