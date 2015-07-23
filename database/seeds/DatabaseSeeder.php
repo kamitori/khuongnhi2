@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SellPricesTableSeeder');
 		//$this->call('PaidsTableSeeder');
 		
+		$this->call('PdfTemplatesTableSeeder');
 	}
 
 }

@@ -9,6 +9,7 @@ use App\ProductType;
 use App\Province;
 use App\Country;
 use App\UserType;
+use App\PdfTemplate;
 use App\Http\Requests\Admin\UserRequest;
 use App\Http\Requests\Admin\UserEditRequest;
 use App\Http\Requests\Admin\DeleteRequest;
@@ -494,5 +495,37 @@ class SettingController extends Controller {
    		}
    		return $arr_return;
    }
+
+
+   // ========== PDF Setting ===========
+   public function anyPdfSettings(){
+   	$pdf_templates = PdfTemplate::orderBy('name')->get()->toArray();
+   	return view('setting.list-pdf-template',["pdf_templates" => $pdf_templates]);
+   }
+
+   public function getGetTemplate($id){
+   	$pdf = PdfTemplate::find($id);
+   	if($pdf)
+   		return $pdf->template;
+   	else
+   		return '';
+   }
+   public function anySaveTemplate(Request $request){
+   	$arr_return = array('status' => 'error');
+   	$id = $request->has('id')?$request->input('id'):0;
+   	$pdf = PdfTemplate::find($id);
+   	if($pdf){
+   		$pdf->template = $request->has('template')?$request->input('template'):'';
+   		if($pdf->save()){
+   			$arr_return['status'] = 'success';
+   		}else{
+   			$arr_return['message'] = 'Saving fail';
+   		}
+   	}
+   	else
+   		$arr_return['message'] = 'Not found';
+   	return $arr_return;
+   }
+   // =============================
 
 }

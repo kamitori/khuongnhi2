@@ -145,6 +145,7 @@
 				<li><a href="javascript:void(0)" onclick="settings_list('province-settings')">Tỉnh thành</a></li>
 				<li><a href="javascrip:void(0)" onclick="settings_list('menu-settings')"> Menu</a></li>
 				<li><a href="javascrip:void(0)" onclick="settings_list('other-settings')"> Tùy chỉnh khác</a></li>
+				<li><a href="javascrip:void(0)" onclick="settings_list('pdf-settings')"> Xuất file PDF</a></li>
 			</ul>
 		</div>
 		<div class="span9" id="content_setting">

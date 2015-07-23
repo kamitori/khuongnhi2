@@ -507,9 +507,9 @@ class SaleordersController extends Controller {
 			$specification = $mproduct->specification;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
-				$product = ProductStock::find($id_product);
-				$product->in_stock = $product->in_stock + $quantity*$specification;
-				$product->save();
+				// $product = ProductStock::find($id_product);
+				// $product->in_stock = $product->in_stock + $quantity*$specification;
+				// $product->save();
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';

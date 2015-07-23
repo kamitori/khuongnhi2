@@ -3,22 +3,30 @@
 		<tr>
 			<th style="width:20%">STT</th>
 			<th style="width:60%">Name</th>
-			<th style="width:20%">Action</th>
+			<th class="center" style="width:20%">Action</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach($provinces as $key => $value)
-		 <tr>
+		 <tr class="selectable">
 			<td>{{($key+1)}}</td>
 			<td>{{$value['name']}}</td>
 			<td class="center">
-				<button class="btn btn-primary" data-value='{{ json_encode($value) }}' onclick="popup_edit_province(this)"><i class="fa fa-pencil"></i></button>
-				<button class="btn btn-danger" onclick="delete_province({{$value['id']}})"><i class="fa fa-remove"></i></button>
+				<i class=" link fa fa-pencil" data-value='{{ json_encode($value) }}' onclick="popup_edit_province(this)"></i>
+				<i class="link fa fa-remove" onclick="delete_province({{$value['id']}})"></i>
 			</td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
+<style type="text/css" media="screen">
+	td i.link:nth-child(2n){
+		margin-left: 20px;
+	}
+	td i.link:before{
+		font-size: 150%;
+	}
+</style>
 <div id="modal_province" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">

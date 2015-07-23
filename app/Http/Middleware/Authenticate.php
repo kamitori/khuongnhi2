@@ -32,6 +32,10 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+		// if( $request->has('phantomjs') && $request->input('phantomjs') ==md5('phantomjs') ) {
+		// 	$this->auth->loginUsingId(1);
+		// 	return $next($request);
+		// }
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())

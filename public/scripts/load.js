@@ -1384,6 +1384,11 @@ $(function()
 		$(".left-list li").removeClass('active');
 		$(this).addClass('active');
 	})
+
+	$(".table-list-edit tbody tr *").focusin(function(){
+		$("table tbody tr").removeClass('selected');
+		$(this).closest($("table tbody tr")).addClass('selected');
+	})
 });
 
 function confirms(content,callback){

@@ -207,6 +207,7 @@
 						<div class="buttons pull-left">
 							@if(!$purchaseorder['status'])
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
+							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_createproduct();"><i class="fa fa-plus"></i>Tạo mới sản phẩm</button>
 							@endif
 							<button class="btn btn-primary btn-small btn-icon"><i class="fa fa-print"></i>Xuất PDF</button>
 						</div>
@@ -214,7 +215,7 @@
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-edit">
 						<thead>
 							<tr>
-								<th style="width:7%">Mã</th>
+								<th style="width:7%">SKU</th>
 								<th style="width:35%">Tên sản phẩm</th>
 								<th style="width:8%">ĐV tính</th>
 								<th style="width:7%">Quy cách</th>
@@ -260,6 +261,51 @@
 		</div>
 	</div>
 </div>
+<div id="modal_create_product" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- dialog header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h5>&nbsp;</h5>
+			</div>
+			<!-- dialog body -->
+			<div class="modal-body">
+				<form action="#" method="POST" accept-charset="utf-8" class="form_detail" id="form_create_product">
+					<div class="control-group">
+						<label class="control-label">SKU:</label>
+						<div class="controls">
+							<input type="text" name="sku" value="" >
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Tên sản phẩm:</label>
+						<div class="controls">
+							<input type="text" name="name" value="" >
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Loại sản phẩm:</label>
+						<div class="controls">
+							<select name="product_type" id="product_type">
+								@foreach($producttypes as $producttype)
+								<option value="{{$producttype['id']}}">
+									{{$producttype['name']}}
+								</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- dialog buttons -->
+			<div class="modal-footer center">
+				<button href="#" class="btn btn-primary" onclick="create_product()">Tạo mới</button>
+				<button href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Đóng</button>
+			</div>
+		</div>
+	</div>
+</div>
 @stop
 
 
@@ -267,6 +313,10 @@
 	#modal_add_product.modal.fade.in{
 		width: 80%;
 		left: 28%;
+	}
+	#modal_create_product.modal.fade.in{
+		width: 40%;
+		left: 52%;
 	}
 </style>
 
@@ -278,6 +328,13 @@
 				"show":false,
 				"container":"body"
 			});
+
+			$("#modal_create_product").modal({
+				"backdrop":true,
+				"show":false,
+				"container":"body"
+			});
+
 			$("#country_id").on('change',function(){
 				// alert(123);
 				var provinces = $("#country_id option[value="+$("#country_id").val()+"]").attr('data-province');
@@ -375,6 +432,10 @@
 			});
 		}
 
+		function popup_createproduct(){
+			$("#modal_create_product").modal("show");
+		}
+
 		function add_product(){
 			$.ajax({
 				url : '{{URL}}/purchaseorders/add-product',
@@ -442,6 +503,24 @@
 			})
 			sum_invest = sum_invest.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			$("#sum_invest").text(sum_invest);
+		}
+
+		function create_product(){
+			var data = $("#form_create_product").serialize();
+			$.ajax({
+				url : '{{URL}}/products/create-product',
+				type : 'POST',
+				data : data,
+				success : function(data){
+					if(data.status == 'success'){
+						$("#form_create_product")[0].reset();
+						toastr['success']('Create success');
+						$("#modal_create_product").modal("hide");
+					}else{
+						toastr['success'](data.message);
+					}
+				}
+			})
 		}
 
 	</script>

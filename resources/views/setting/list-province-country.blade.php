@@ -7,18 +7,19 @@
 					<a href="#" onclick="popupCountry();"><i class="fa fa-plus"></i></a>
 				</span>
 			</div>
-		</div>
-		<div class="widget-body">
-			<div class="dd" id="list_menu">
-				<ol class="dd-list">
-					@foreach($countries as $key => $country)
-					<li class="dd-item dd3-item"  >
-						<div class="dd3-content" onclick="listProvinceDetail({{$country['id']}})">
-							{{$country['name']}}
-						</div>
-					</li>
-					@endforeach
-				</ol>
+		
+			<div class="widget-body">
+				<div class="dd" id="list_menu">
+					<ol class="dd-list">
+						@foreach($countries as $key => $country)
+						<li class="dd-item dd3-item"  >
+							<div class="dd3-content" onclick="listProvinceDetail({{$country['id']}})">
+								{{$country['name']}}
+							</div>
+						</li>
+						@endforeach
+					</ol>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -30,10 +31,11 @@
 					<a href="#" id="popupProvince"><i class="fa fa-plus"></i></a>
 				</span>
 			</div>
-		</div>
-		<div class="widget-body" id="list_province_detail">
-			<div class="dd" id="list_province">
+		
+			<div class="widget-body" id="list_province_detail">
+				<div class="dd" id="list_province">
 
+				</div>
 			</div>
 		</div>
 	</div>

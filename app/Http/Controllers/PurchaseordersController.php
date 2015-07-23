@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductType;
 use App\MProduct;
 use App\Company;
 use App\Country;
@@ -161,12 +162,14 @@ class PurchaseordersController extends Controller {
 		$users = array();
 		$countries = array();
 		$list_product = array();
+		$producttypes = array();
 
 		//Get value array
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
 		$oums = Oum::get()->toArray();
 		$users = User::get();
 		$countries = Country::with('provinces')->get()->toArray();
+		$producttypes = ProductType::get()->toArray();
 
 		$arr_product = MProduct::where('module_type','=','App\Purchaseorder')
 						->where('module_id','=',$purchaseorder['id'])
@@ -187,6 +190,7 @@ class PurchaseordersController extends Controller {
 										'purchaseorder'=>$purchaseorder,
 										'address'=>$address,
 										'oums'=>$oums,
+										'producttypes'=>$producttypes,
 										'view_list_product'=>$view_list_product
 									]);
 	}
@@ -521,13 +525,12 @@ class PurchaseordersController extends Controller {
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
+			// pr($mproduct);
+			// die;
 			$id_product = $mproduct->product_id;
 			$quantity = $mproduct->quantity;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
-				$product = Product::find($id_product);
-				$product->in_stock = $product->in_stock - $quantity;
-				$product->save();
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';

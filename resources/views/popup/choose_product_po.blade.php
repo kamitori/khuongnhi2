@@ -212,7 +212,6 @@
 						id : [id]
 					},
 					success:function(data){
-						console.log(data)
 						$(".chk_product").prop('disabled',false);
 					}
 				});
@@ -224,7 +223,6 @@
 						id : [id]
 					},
 					success:function(data){
-						console.log(data)
 						$(".chk_product").prop('disabled',false);
 					}
 				});

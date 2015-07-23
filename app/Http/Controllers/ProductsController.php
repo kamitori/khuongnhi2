@@ -93,6 +93,22 @@ class ProductsController extends Controller {
 		return redirect('products');
 	}
 
+	public function postCreateProduct(Request $request)
+	{
+		$arr_return = array('status' => 'error');
+		$product = new Product;
+		$product->name = $request->has('name') ? $request->input('name') : '';
+		$product->sku = $request->has('sku') ? $request->input('sku') : '';
+		$product->product_type = $request->has('product_type') ? $request->input('product_type') : 0;
+		$product->status=1;
+		if($product->save()){
+			$arr_return = array('status' => 'success');
+		}else{
+			$arr_return = array('message' => 'Creating fail!');
+		}
+		return $arr_return;
+	}
+
 	public function anyDelete(Request $request)
 	{
 		$arr_return = [

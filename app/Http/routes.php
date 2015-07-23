@@ -13,10 +13,12 @@ use Illuminate\Http\Request;
 */
 
 
+Route::get('/exports/try','ExportsController@getTry');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
 
 
 Route::get('/',[ 'middleware' => 'auth','uses' =>'HomeController@index']);
@@ -74,4 +76,7 @@ Route::controllers([
 		]);
 Route::controllers([
 	   'revenues' => 'RevenuesController',
+		]);
+Route::controllers([
+	   'exports' => 'ExportsController',
 		]);
