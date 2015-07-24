@@ -2,7 +2,8 @@
 	<div class="buttons pull-left">
 		<a href="{{URL}}/products/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
 		<a href="{{URL}}/products/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="{{URL}}/products/export-pdf" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
+		<!-- <a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a> -->
 	</div>
 	<div class="buttons span4" style="line-height: 30px;"><h5>Tổng vốn lưu: {{number_format($sum_invest)}}</h5></div>
 	<div class="buttons pull-right">

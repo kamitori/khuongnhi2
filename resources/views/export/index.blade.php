@@ -10,22 +10,29 @@
 		body{
 			box-shadow: 2px 5px 15px 2px #999;
 		}
+		.section{
+			padding: 30px;
+		}
 	</style>
 	<style type="text/css" media="all">
 		*{
 			line-height: 1.6;
 		}
 		.section{
-			padding: 30px;
 			margin:10px;
 		}
 		body{
-			width:800px;
-			min-height:993px;
+			@if($orential=='potrait')
+			width:740px;
+			min-height: 1000px;
+			@else
+			min-height:600px;
+			width: 1100px;
+			@endif
 			margin: auto;
 			margin-top:20px;
 			margin-bottom:30px;
-			font-family:arial,helvetica,sans-serif
+			font-family:arial,helvetica,sans-serif;
 		}
 		table.table_list{
 			border-collapse: collapse;
@@ -49,10 +56,16 @@
 			text-align: right;
 			font-weight: bolder;
 		}
+		table.table_list tr.sum td{
+			text-align: right;
+			font-weight: bold;
+			font-size: 120%;
+		}
 	</style>
 </head>
 <body>
 	<div class="section">
+
 		<?php echo isset($content) ? $content : '' ?>	
 	</div>
 </body>

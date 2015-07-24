@@ -12,3 +12,5 @@ composer.phar
 /app/Http/routes.php.BASE.php
 /app/Http/routes.php.LOCAL.php
 /app/Http/routes.php.REMOTE.php
+/public/cache/*.html
+/public/upload/*.pdf

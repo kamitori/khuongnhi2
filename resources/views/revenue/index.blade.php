@@ -20,7 +20,6 @@
 								@for($i=intval($min_year);$i<=intval($current_year);$i++)
 								<option value="{{$i}}">{{$i}}</option>
 								@endfor
-								<option value="2014">2014</option>
 							</select>
 						</div>
 					</a>

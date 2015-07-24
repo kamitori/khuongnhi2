@@ -58,29 +58,12 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 
 <p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
 
-<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
-<tbody>
-<tr>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người lập</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
-</tr>
-<tr>
-<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
-</tr>
-</tbody>
-</table>
-
 <p>&nbsp;</p>
 ',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:22:28',
-				'updated_at' => '2015-07-23 10:59:30',
+				'updated_at' => '2015-07-24 10:51:51',
 			),
 			2 => 
 			array (
@@ -142,11 +125,30 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+&nbsp;
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>Người lập</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+</tr>
+</tbody>
+</table>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:43',
-				'updated_at' => '2015-07-23 13:45:13',
+				'updated_at' => '2015-07-24 10:52:13',
 			),
 			5 => 
 			array (

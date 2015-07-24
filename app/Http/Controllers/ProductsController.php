@@ -323,7 +323,7 @@ class ProductsController extends Controller {
 			if($key=='company_id'){
 				$list_product = $list_product->orderBy('companies.name',$value);
 			}elseif($key=='oum_id'){
-				$list_product = $list_product->leftJoin('oums','oums.id','=','m_products.oum_id')->orderBy('oums.name',$value);
+				$list_product = $list_product->orderBy('oums.name',$value);
 			}elseif($key=='id'){
 				$list_product = $list_product->orderBy('products.id',$value);
 			}elseif($key=='specification'){
@@ -338,10 +338,15 @@ class ProductsController extends Controller {
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}
-		
+
+		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
+
+
 		$list_product = $list_product->paginate(100);
 		// pr(DB::getQueryLog());die;
 		// pr($list_product->toArray());die;
+
+		
 
 		$this->layout->content=view('product.list', [
 								'distributes'		=>$distributes,
@@ -775,5 +780,58 @@ class ProductsController extends Controller {
 								'arr_sort' 		=> $arr_sort,
 								'arr_filter' 		=> $arr_filter
 							        ]);
+	}
+
+	public function anyExportPdf(){
+		$id_template = 2;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'sku',
+								'name',
+								'company_name',
+								'oum_name',
+								'specification',
+								'ton_kho',
+								'origin_price',
+								'invest'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã','class'=>''],
+								['text'=>'Tên sản phẩm','class'=>''],
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Đơn vị','class'=>''],
+								['text'=>'Quy cách','class'=>''],
+								['text'=>'Tồn kho','class'=>''],
+								['text'=>'Giá gốc','class'=>'money'],
+								['text'=>'Vốn lưu','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_product'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_product'.\Auth::user()->id);
+			$sum_invest = 0;
+			foreach ($arr_cache as $key => $value) {
+				$sum_invest += $value['invest'];
+				$arr_cache[$key]['ton_kho'] = floor($value['in_stock'] / $value['specification']).' '.$value['oum_name'];
+				if($value['in_stock']%$value['specification'] && $value['specification']!=1){
+					$sodu = $value['in_stock']%$value['specification'];
+					$arr_cache[$key]['ton_kho'] .= ' + '.$sodu.' '.'cái';
+				}
+			}
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng vốn lưu:','colspan'=>'7'],
+				['value'=>$sum_invest]
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_san_pham','landscape');
+			return redirect($link);
+		}
+		die;
 	}
 }

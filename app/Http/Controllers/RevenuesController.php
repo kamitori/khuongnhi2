@@ -22,6 +22,9 @@ class RevenuesController extends Controller {
 		$tong_thu = ReceiptMonth::where('type_receipt','=','customer')->sum('sum_amount');
 		$tong_chi = ReceiptMonth::where('type_receipt','=','distribute')->sum('sum_amount');
 		$chi_khac = RevenueOther::sum('sum_amount');
+		if(!$min_year){
+			$min_year = date('Y');
+		}
 		$current_year = date('Y');
 		$list_chart = self::getListRevenue($current_year);
 		$this->layout->content = view('revenue.index',[
