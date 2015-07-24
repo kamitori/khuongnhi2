@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ProductsTableSeeder');
 		$this->call('CompaniesTableSeeder');
 		$this->call('AddressesTableSeeder');
-		// $this->call('PurchaseordersTableSeeder');
-		// $this->call('SaleordersTableSeeder');
-		// $this->call('ReturnPurchaseordersTableSeeder');
-		// $this->call('ReturnSaleordersTableSeeder');
+		$this->call('PurchaseordersTableSeeder1');
+		$this->call('SaleordersTableSeeder1');
+		$this->call('ReturnPurchaseordersTableSeeder1');
+		$this->call('ReturnSaleordersTableSeeder1');
 		$this->call('MProductsTableSeeder');
 		$this->call('SellPricesTableSeeder');
 		//$this->call('PaidsTableSeeder');

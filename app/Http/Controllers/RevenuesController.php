@@ -540,4 +540,291 @@ class RevenuesController extends Controller {
 		}
 		return $arr_return;
 	}
+
+	public function getDistribute(){
+		$distributes = Company::getDistributeList()->get()->toArray();
+		$this->layout->content = view('revenue.revenue-distribute',[
+							'distributes'	=>	$distributes,
+						]);
+	}
+
+
+	public function postListRevenueDistribute(Request $request){
+		$list_order = array();
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$month = $request->has('month')?$request->input('month'):0;
+		$year = $request->has('year')?$request->input('year'):0;
+		if($month!='all'){
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1'.'-'.($month+1).'-'.$year));
+		}else{
+			$begin = date('Y-m-d H:i:s',strtotime('1-1-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1-1-'.($year+1)));
+		}
+		$key_order = 1;
+		$list_so = Mproduct::select('m_products.*','products.name','products.id','saleorders.date')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('saleorders',function($join){
+						$join->on('saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\Saleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->where('ncc.company_id','=',$company_id)
+					->where('saleorders.date','>=',$begin)
+					->where('saleorders.date','<',$end)
+					->where('saleorders.status','=',1)
+					->groupBy('product_id')
+					->get()->toArray();
+		foreach ($list_so as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['name'] = $value['name'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
+			$list_order[$key_order]['khoang_giam'] =  0;
+			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['updated_at'] = $value['updated_at'];
+			$arr_product[$key_order] = $value['id'];
+			$key_order++;
+		}
+		$list_rso = Mproduct::select('m_products.*','products.name','products.id','return_saleorders.date')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('return_saleorders',function($join){
+						$join->on('return_saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\ReturnSaleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->where('ncc.company_id','=',$company_id)
+					->where('return_saleorders.date','>=',$begin)
+					->where('return_saleorders.date','<',$end)
+					->where('return_saleorders.status','=',1)
+					->groupBy('product_id')
+					->get()->toArray();
+		foreach ($list_rso as $key => $value) {
+			$check_in_array = array_search($value['id'], $arr_product);
+			if($check_in_array){
+				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
+				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
+				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+			}else{
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['name'] = $value['name'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
+				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
+				$list_order[$key_order]['lai_thuc'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['updated_at'] = $value['updated_at'];
+				$key_order++;
+			}
+			
+		}
+		$date = array();
+		foreach ($list_order as $key => $value) {
+			$date[$key] = $value['date'];
+		}
+		array_multisort($date,SORT_ASC,$list_order);
+		return view('revenue.list-revenue-distribute',[
+				'list_order' => $list_order
+			]);
+	}
+
+	public function getDistributeMonth(){
+		$min_year = ReceiptMonth::min('year');
+
+		$arr_month_year = ReceiptMonth::select('year','month')
+						->groupBy('year','month')
+						->where('type_receipt','=','customer')
+						->orderBy('year','DESC')
+						->orderBy('month','DESC')
+						->get()->toArray();
+
+		$this->layout->content = view('revenue.revenue-distribute-month',[	
+							'arr_month_year' 	=> 	$arr_month_year,
+							'min_year'		=>	$min_year
+						]);
+	}
+
+	public function postListRevenueDistributeMonth(Request $request){
+		DB::enableQueryLog();
+		$list_order = array();
+
+		$month = $request->has('month')?$request->input('month'):0;
+		$year = $request->has('year')?$request->input('year'):0;
+		if($month!='all'){
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1'.'-'.($month+1).'-'.$year));
+		}else{
+			$begin = date('Y-m-d H:i:s',strtotime('1-1-'.$year));
+			$end = date('Y-m-d H:i:s',strtotime('1-1-'.($year+1)));
+		}
+		$key_order = 1;
+		$arr_company = array();
+		$list_so = Mproduct::select('m_products.*','companies.name','products.id','saleorders.date','ncc.company_id')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					
+					->leftJoin('saleorders',function($join){
+						$join->on('saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\Saleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->leftJoin('companies','companies.id','=','ncc.company_id')
+					->where('saleorders.date','>=',$begin)
+					->where('saleorders.date','<',$end)
+					->where('saleorders.status','=',1)
+					->groupBy('ncc.company_id')
+					->get()->toArray();
+		foreach ($list_so as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['name'] = $value['name'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
+			$list_order[$key_order]['khoang_giam'] =  0;
+			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['updated_at'] = $value['updated_at'];
+			$arr_company[$key_order] = $value['company_id'];
+			$key_order++;
+		}
+		$list_rso = Mproduct::select('m_products.*','products.name','products.id','return_saleorders.date','ncc.company_id')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('return_saleorders',function($join){
+						$join->on('return_saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\ReturnSaleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->leftJoin('companies','companies.id','=','ncc.company_id')
+					->where('return_saleorders.date','>=',$begin)
+					->where('return_saleorders.date','<',$end)
+					->where('return_saleorders.status','=',1)
+					->groupBy('ncc.company_id')
+					->get()->toArray();
+		foreach ($list_rso as $key => $value) {
+			$check_in_array = array_search($value['company_id'], $arr_company);
+			if($check_in_array){
+				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
+				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
+				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+			}else{
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['name'] = $value['name'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
+				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
+				$list_order[$key_order]['lai_thuc'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['updated_at'] = $value['updated_at'];
+				$key_order++;
+			}
+		}
+
+		$date = array();
+		foreach ($list_order as $key => $value) {
+			$date[$key] = $value['date'];
+		}
+		array_multisort($date,SORT_ASC,$list_order);
+		return view('revenue.list-revenue-distribute-month',[
+				'list_order' => $list_order
+			]);
+	}
+
+	public function getDistributeYear(){
+		$min_year = ReceiptMonth::min('year');
+
+
+		$this->layout->content = view('revenue.revenue-distribute-year',[	
+							'min_year'		=>	$min_year
+						]);
+	}
+
+	public function postListRevenueDistributeYear(Request $request){
+		DB::enableQueryLog();
+		$list_order = array();
+		$year = $request->has('year')?$request->input('year'):0;
+		$begin = date('Y-m-d H:i:s',strtotime('1-1-'.$year));
+		$end = date('Y-m-d H:i:s',strtotime('1-1-'.($year+1)));
+		$key_order = 1;
+		$arr_company = array();
+		$list_so = Mproduct::select('m_products.*','companies.name','products.id','saleorders.date','ncc.company_id')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					
+					->leftJoin('saleorders',function($join){
+						$join->on('saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\Saleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->leftJoin('companies','companies.id','=','ncc.company_id')
+					->where('saleorders.date','>=',$begin)
+					->where('saleorders.date','<',$end)
+					->where('saleorders.status','=',1)
+					->groupBy('ncc.company_id')
+					->get()->toArray();
+		foreach ($list_so as $key => $value) {
+			$list_order[$key_order]['id'] = $value['id'];
+			$list_order[$key_order]['name'] = $value['name'];
+			$list_order[$key_order]['date'] =  $value['date'];
+			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
+			$list_order[$key_order]['khoang_giam'] =  0;
+			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['updated_at'] = $value['updated_at'];
+			$arr_company[$key_order] = $value['company_id'];
+			$key_order++;
+		}
+		$list_rso = Mproduct::select('m_products.*','products.name','products.id','return_saleorders.date','ncc.company_id')
+					->addSelect(DB::raw(' sum(amount) as sum_amount , sum(invest) as sum_invest'))
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('return_saleorders',function($join){
+						$join->on('return_saleorders.id','=','m_products.module_id')
+							->where('module_type','=','App\ReturnSaleorder');
+					})
+					->leftJoin(DB::raw('(select id,company_id from m_products where module_type="App\\\\Purchaseorder" or module_type="in_stock") as ncc'),'ncc.id','=','m_products.m_product_id')
+					->leftJoin('companies','companies.id','=','ncc.company_id')
+					->where('return_saleorders.date','>=',$begin)
+					->where('return_saleorders.date','<',$end)
+					->where('return_saleorders.status','=',1)
+					->groupBy('ncc.company_id')
+					->get()->toArray();
+		foreach ($list_rso as $key => $value) {
+			$check_in_array = array_search($value['company_id'], $arr_company);
+			if($check_in_array){
+				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
+				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
+				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+			}else{
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['name'] = $value['name'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
+				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
+				$list_order[$key_order]['lai_thuc'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['updated_at'] = $value['updated_at'];
+				$key_order++;
+			}
+		}
+
+		$date = array();
+		foreach ($list_order as $key => $value) {
+			$date[$key] = $value['date'];
+		}
+		array_multisort($date,SORT_ASC,$list_order);
+		return view('revenue.list-revenue-distribute-year',[
+				'list_order' => $list_order
+			]);
+	}
 }

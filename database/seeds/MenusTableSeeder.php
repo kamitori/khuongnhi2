@@ -171,7 +171,7 @@ class MenusTableSeeder extends Seeder {
 			11 => 
 			array (
 				'id' => 12,
-				'name' => 'Trả hàng NCC',
+				'name' => 'Đại lý trả',
 				'icon_class' => 'fa fa-undo',
 				'link' => 'returnsaleorders',
 				'order_no' => 10,
@@ -180,7 +180,7 @@ class MenusTableSeeder extends Seeder {
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '2015-07-14 13:50:01',
+				'updated_at' => '2015-07-24 15:40:00',
 			),
 			12 => 
 			array (
@@ -213,7 +213,7 @@ class MenusTableSeeder extends Seeder {
 			14 => 
 			array (
 				'id' => 15,
-				'name' => 'Đại lý trả',
+				'name' => 'Trả hàng NCC',
 				'icon_class' => 'fa fa-undo',
 				'link' => 'returnpurchaseorders',
 				'order_no' => 13,
@@ -222,7 +222,7 @@ class MenusTableSeeder extends Seeder {
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '2015-07-14 13:50:15',
+				'updated_at' => '2015-07-24 15:40:15',
 			),
 			15 => 
 			array (

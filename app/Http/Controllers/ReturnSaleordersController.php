@@ -234,8 +234,8 @@ class ReturnSaleordersController extends Controller {
 			foreach ($arr_mproduct as $key => $mproduct) {
 				$returnsaleorder->sum_amount = $returnsaleorder->sum_amount + $mproduct['amount'];
 				$returnsaleorder->sum_invest = $returnsaleorder->sum_invest + $mproduct['invest'];
-				$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-				$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
+				// $mproduct_po = Mproduct::find();
+				$product_stock = ProductStock::where('m_product_id','=',$mproduct['m_product_id'])->first();
 				$product_stock->in_stock = $product_stock->in_stock + ($mproduct['quantity']*$mproduct['specification']);
 				if($product_stock->in_stock < 0){ 
 					$check_save_in_stock = false;
@@ -250,8 +250,8 @@ class ReturnSaleordersController extends Controller {
 								->leftJoin('products','products.id','=','m_products.product_id')
 								->get()->toArray();
 				foreach ($arr_mproduct as $key => $mproduct) {
-					$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-					$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
+					// $mproduct_po = Mproduct::find($mproduct['m_product_id']);
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct['m_product_id'])->first();
 					$product_stock->in_stock = $product_stock->in_stock - ($mproduct['quantity']*$mproduct['specification']);
 					$product_stock->save();
 				}
@@ -262,8 +262,8 @@ class ReturnSaleordersController extends Controller {
 			if($returnsaleorder->save()){
 				if($returnsaleorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
-						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
-						$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->m_product_id)->first();
+						//$mproduct_po = Mproduct::find($mproduct['m_product_id']);
+						$product_stock = ProductStock::where('m_product_id','=',$mproduct['m_product_id'])->first();
 						$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
 						$product_stock->save();
 					}
@@ -411,7 +411,7 @@ class ReturnSaleordersController extends Controller {
 				
 				$mproduct = new MProduct;
 				$mproduct->product_id		=	$product->product_id;
-				$mproduct->m_product_id	=	$product->id;
+				$mproduct->m_product_id	=	$product->m_product_id;
 				$mproduct->module_id		= 	$module_id;
 				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
