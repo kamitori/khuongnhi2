@@ -22,6 +22,7 @@
 			margin:10px;
 		}
 		body{
+			<?php if(!isset($orential)) $orential = 'potrait'; ?>
 			@if($orential=='potrait')
 			width:740px;
 			min-height: 1000px;
@@ -65,7 +66,6 @@
 </head>
 <body>
 	<div class="section">
-
 		<?php echo isset($content) ? $content : '' ?>	
 	</div>
 </body>

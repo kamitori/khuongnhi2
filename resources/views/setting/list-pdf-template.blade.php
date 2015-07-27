@@ -35,6 +35,7 @@
 				<div class="center">
 					<button class="btn btn-primary" onclick="save_template()">Lưu</button>
 					<button class="btn btn-primary" onclick="print_template()">In Thử</button>
+					<img src="images/load.gif" alt="Printing" id="loading" style="display:none;">
 				</div>
 			</div>
 		</div>
@@ -59,6 +60,7 @@
 	
 
 	function pdf_detail(obj){
+		save_template();
 		$("#module_name").text($(obj).attr('data-name'));
 		$("#id_template").val($(obj).attr('data-id'));
 		$.ajax({
@@ -73,25 +75,27 @@
 	function save_template(){
 		var template = CKEDITOR.instances['edit_pdf'].getData();
 		var id = $("#id_template").val()?$("#id_template").val():0;
-		console.log(id);
-		$.ajax({
-			url : '{{URL}}/settings/save-template',
-			type : 'POST',
-			data : {
-				'id' : id,
-				'template' : template
-			},
-			success: function(data){
-				if(data.status == 'success'){
-					toastr['success']('Save success');
-				}else{
-					toastr['error'](data.message);
+		if(id){
+			$.ajax({
+				url : '{{URL}}/settings/save-template',
+				type : 'POST',
+				data : {
+					'id' : id,
+					'template' : template
+				},
+				success: function(data){
+					if(data.status == 'success'){
+						toastr['success']('Save success');
+					}else{
+						toastr['error'](data.message);
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 
 	function print_template(){
+		$("#loading").css('display','inline-block');
 		event.preventDefault();
 		var id = $("#id_template").val()?$("#id_template").val():0;
 		var name = $("#module_name").text()?$("#module_name").text():'';
@@ -108,6 +112,8 @@
 				}else{
 					toastr['error'](data.message);
 				}
+				$("#loading").css('display','none');
+
 			}
 		});
 	}

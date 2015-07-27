@@ -208,7 +208,7 @@
 							@if(!$returnpurchaseorder['status'])
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							@endif
-							<button class="btn btn-primary btn-small btn-icon"><i class="fa fa-print"></i>Xuất PDF</button>
+							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
 						</div>
 					</div>
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-edit">
@@ -278,6 +278,10 @@
 				"show":false,
 				"container":"body"
 			});
+			var old_company_id =0;
+			$("#country_id").on('focusin',function(){
+				old_company_id = $(this).val()
+			})
 			$("#country_id").on('change',function(){
 				// alert(123);
 				var provinces = $("#country_id option[value="+$("#country_id").val()+"]").attr('data-province');
@@ -299,7 +303,6 @@
 			$("#company_id").on("change",function(e){
 				var company = $("#company_id option[value="+$(this).val()+"]").attr('data-company');
 				company = JSON.parse(company);
-				e.preventDefault();
 				$("[name=company_phone]").val( company.phone );
 				$("[name=company_email]").val( company.email );
 				$("[name=address]").val( company.address[0].address );
@@ -312,8 +315,9 @@
 			})
 
 			$("#country_id").trigger('change');
+			
 
-			$("#form_entry input,#form_entry select").on("change",function(e){
+			$("#form_entry input,#form_entry select").not("#country_id, #company_id").on("change",function(e){
 				var name = $(this).attr('name');
 				e.preventDefault();
 				var data = $("#form_entry").serialize();
@@ -325,9 +329,22 @@
 						if(data.status=='success'){
 							if(data.name != '')
 								$("#product_name").text(data.name);
-							toastr['success']('Saving success !');
-							if(name == 'status')
-								window.location.reload();
+								toastr['success']('Saving success !');
+								if(name == 'status'){
+									window.location.reload();
+								}else{
+									if(old_company_id != $("#company_id").val()){
+										$.ajax({
+											url : '{{URL}}/returnpurchaseorders/list-product',
+											type :'GET',
+											success:function(html){
+												$("#list_product").html(html);
+												$("#modal_add_product").modal('hide');
+												$(window).trigger('resize');
+											}
+										})
+									}
+								}
 						}else{
 							if(name == 'status'){
 								$('input[name=status]').data("bs.toggle").off(true);
@@ -441,6 +458,10 @@
 			})
 			sum_invest = sum_invest.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			$("#sum_invest").text(sum_invest);
+		}
+
+		function print_pdf(){
+			window.open('{{URL}}/returnpurchaseorders/export-pdf','_blank');
 		}
 
 	</script>

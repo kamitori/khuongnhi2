@@ -6,10 +6,13 @@ use App\MProduct;
 use App\Company;
 use App\Country;
 use App\Province;
+use App\ReceiptMonth;
 use App\User;
 use App\Oum;
 use App\ProductStock;
 use App\ReturnPurchaseorder;
+use App\Purchaseorder;
+use App\Paid;
 use App\Address;
 use App\SellPrice;
 use Datatables;
@@ -200,6 +203,7 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder->save();
 			session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 		}
+		$old_company_id = $returnpurchaseorder->company_id;
 		if($returnpurchaseorder->status == 0){
 			$returnpurchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 			$returnpurchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
@@ -269,9 +273,17 @@ class ReturnPurchaseordersController extends Controller {
 						$product_stock->save();
 					}
 				}
-				Mproduct::where('module_id', '=', $returnpurchaseorder->id)
+
+				if($old_company_id != $returnpurchaseorder->company_id){
+					// Mproduct::where('module_id', '=', $returnpurchaseorder->id)
+					// 	->where('module_type', '=', 'App\ReturnPurchaseorder')
+					// 	->where('company_id','=',$old_company_id)
+					// 	->delete();
+				}else{
+					Mproduct::where('module_id', '=', $returnpurchaseorder->id)
 						->where('module_type', '=', 'App\ReturnPurchaseorder')
 						->update(['company_id' => $returnpurchaseorder->company_id ]);
+				}
 				$arr_return['status']= 'success';
 			}else{
 				$arr_return['message']= 'Saving fail !';
@@ -330,7 +342,7 @@ class ReturnPurchaseordersController extends Controller {
 		}
 		$list_date = array_unique($list_date);
 
-		$list_returnpurchaseorder = ReturnPurchaseorder::select('return_purchaseorders.*','suminvest.*')->with('company')
+		$list_returnpurchaseorder = ReturnPurchaseorder::select('return_purchaseorders.*','suminvest.*','companies.name as company_name')->with('company')
 					->leftJoin(
 							DB::raw(' (
 									select module_id, module_type,sum(invest) as sum_invest 
@@ -338,10 +350,11 @@ class ReturnPurchaseordersController extends Controller {
 								    ) as suminvest'), function($join){
 								$join->on('return_purchaseorders.id', '=', 'module_id');
 							}
-						);
+						)
+					->leftJoin('companies','companies.id','=','return_purchaseorders.company_id');
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
-				$list_returnpurchaseorder = $list_returnpurchaseorder->leftJoin('companies','companies.id','=','return_purchaseorders.company_id')->orderBy('companies.name',$value);
+				$list_returnpurchaseorder = $list_returnpurchaseorder->orderBy('companies.name',$value);
 			}else{
 				$list_returnpurchaseorder = $list_returnpurchaseorder->orderBy($key,$value);
 			}
@@ -364,15 +377,21 @@ class ReturnPurchaseordersController extends Controller {
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}
+		
 		$list_returnpurchaseorder = $list_returnpurchaseorder->paginate(20);
+		foreach($list_returnpurchaseorder as $key => $rpo){
+			$list_returnpurchaseorder[$key]['date'] = date('d-m-Y',strtotime($rpo['date']));
+		}
+		\Cache::put('list_returnpurchaseorder'.\Auth::user()->id, $list_returnpurchaseorder, 30);
+
 
 		// var_dump(DB::getQueryLog());die;
 		$this->layout->content=view('returnpurchaseorder.list', [
-								'distributes'		=>	$distributes,
-								'arr_sort' 		=> 	$arr_sort,
-								'arr_filter' 		=> 	$arr_filter,
-								'list_id' 		=>	$list_id,
-								'list_date' 		=>	$list_date,
+								'distributes'			=>	$distributes,
+								'arr_sort' 			=> 	$arr_sort,
+								'arr_filter' 			=> 	$arr_filter,
+								'list_id' 				=>	$list_id,
+								'list_date' 			=>	$list_date,
 								'list_returnpurchaseorder'	=>	$list_returnpurchaseorder
 							        ]);
 	}
@@ -441,6 +460,7 @@ class ReturnPurchaseordersController extends Controller {
 
 	public function getListProduct(){
 		$id = session('current_returnpurchaseorder');
+		$returnpurchaseorder = ReturnPurchaseorder::select('status','company_id')->where('id','=',$id)->first()->toArray();
 		//Init array
 		$distributes = array();
 		$oums = array();
@@ -451,9 +471,19 @@ class ReturnPurchaseordersController extends Controller {
 		$oums = Oum::get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\ReturnPurchaseorder')
 						->where('module_id','=',$id)
+						->where('company_id','=',$returnpurchaseorder['company_id'])
 						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->get()->toArray();
-		$returnpurchaseorder = ReturnPurchaseorder::select('status')->where('id','=',$id)->first()->toArray();
+
+
+		Session::forget('product_of_rpo'.session('current_returnpurchaseorder'));
+		foreach ($list_product as $key => $value) {
+			Session::put('product_of_rpo'.session('current_returnpurchaseorder').".".$value['id'] , $value['id']);
+		}
+
+		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30);
 		return view('returnpurchaseorder.list-product',[	'distributes'=>$distributes,
 							'oums'=>$oums,
 							'list_product'=>$list_product,
@@ -473,9 +503,9 @@ class ReturnPurchaseordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity);
+			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity)*$mproduct->specification;
 			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
-			// if($product_stock->in_stock >=0){
+			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
 						$arr_return['status'] = 'success';
@@ -486,10 +516,25 @@ class ReturnPurchaseordersController extends Controller {
 				}else{
 					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
 				}
-			// }else{
-			// 	$arr_return['message'] = 'Số lượng nhập thấp hơn số lượng đã bán';
-			// }
+			}else{
+				$arr_return['message'] = 'Số lượng trả '.$mproduct->name.' lớn hơn số lượng đã nhập';
+			}
 		}
+
+		$id = session('current_returnpurchaseorder');
+		//Init array
+		$list_product = array();
+
+		//Get value
+		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\ReturnPurchaseorder')
+						->where('module_id','=',$id)
+						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
+						->get()->toArray();
+		$returnpurchaseorder = ReturnPurchaseorder::select('status')->where('id','=',$id)->first()->toArray();
+		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30);
+
 		return $arr_return;
 	}
 
@@ -512,5 +557,189 @@ class ReturnPurchaseordersController extends Controller {
 			}
 		}
 		return $arr_return;
+	}
+
+	public function anyExportPdf(){
+		$id_template = 3;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'sku',
+								'name',
+								'oum_name',
+								'specification',
+								'quantity',
+								'origin_price',
+								'invest'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã','class'=>''],
+								['text'=>'Tên sản phẩm','class'=>''],
+								['text'=>'Đơn vị','class'=>''],
+								['text'=>'Quy cách','class'=>''],
+								['text'=>'Số lượng','class'=>''],
+								['text'=>'Đơn giá','class'=>'money'],
+								['text'=>'Thành tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+							'id'=>session('current_returnpurchaseorder')
+						]
+				];	
+		if (\Cache::has('list_product_rpo'.\Auth::user()->id)){
+			$rpo = ReturnPurchaseorder::select('return_purchaseorders.*','companies.name')->where('return_purchaseorders.id','=',session('current_returnpurchaseorder'))
+							->leftJoin('companies','companies.id','=','return_purchaseorders.company_id')->get()->first();
+			$month = intval(date('m',strtotime($rpo->date)));
+			$year = intval(date('Y',strtotime($rpo->date)));
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = $rpo->date;
+			$list_order = array();
+			$key_order = 1;
+			$arr_print['arr_data']['date'] = date('d-m-Y',strtotime($rpo->date));
+			$arr_print['arr_data']['company_name'] = $rpo->name;
+			$arr_print['arr_data']['phone'] = $rpo->company_phone;
+			$arr_print['arr_data']['address'] = '';
+			$arr_dress = Address::select('addresses.*','provinces.name as province_name')
+						->where('addresses.id','=',$rpo->address_id)
+						->leftJoin('provinces','provinces.id','=','addresses.province_id')
+						->get()->first();
+			$arr_print['arr_data']['address'] .= $arr_dress->address?$arr_dress->address.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
+
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+								->where('company_id','=',$rpo->company_id)
+								->where(function($query) use ($month,$year){
+									$query->where(function($query2) use ($month,$year){
+										$query2->where('month','<',$month)
+											->where('year','=',$year);
+									})->orWhere(function($query2) use ($month,$year){
+										$query2->where('year','<',$year);
+									});
+								})
+								->orderBy('year','desc')
+								->orderBy('month','desc')
+								->limit(1);
+			$receipt_month_prev = $receipt_month_prev->first();
+			if($receipt_month_prev){
+				$arr_print['arr_data']['no_cu'] = $receipt_month_prev->con_lai;
+			}else{
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
+			
+			$list_po = Purchaseorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$rpo->company_id)
+					->get()->toArray();
+			foreach ($list_po as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+				$key_order++;
+			}
+			$list_rpo = ReturnPurchaseorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$rpo->company_id)
+					->get()->toArray();
+
+			foreach ($list_rpo as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$key_order++;
+			}
+
+			$list_paid = Paid::where('date','>=',$begin)
+						->where('date','<',$end)
+						->where('company_id','=',$rpo->company_id)
+						->where('type_paid','=','distribute')
+						->get()->toArray();
+			foreach ($list_paid as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_paid'];
+				$key_order++;
+			}
+			$date = array();
+			foreach ($list_order as $key => $value) {
+				$date[$key] = $value['date'];
+			}
+			array_multisort($date,SORT_ASC,$list_order);
+			foreach ($list_order as $key => $value) {
+				$arr_print['arr_data']['no_cu']+=$value['sum_amount'];
+			}
+
+			$arr_cache = \Cache::get('list_product_rpo'.\Auth::user()->id);
+			$sum_invest = 0;
+			foreach ($arr_cache as $key => $value) {
+				$sum_invest += $value['invest'];
+			}
+			$arr_print['arr_data']['toa_moi'] = $sum_invest;
+			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] - $arr_print['arr_data']['toa_moi'];
+
+			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
+			$arr_print['arr_data']['toa_moi'] = number_format(-$arr_print['arr_data']['toa_moi']);
+			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'6'],
+				['value'=>$sum_invest]
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_so_'.$rpo->id,'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfList(){
+		$id_template = 10;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'id',
+								'company_name',
+								'date',
+								'status',
+								'sum_amount'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã HĐ','class'=>''],
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Ngày trả hàng','class'=>''],
+								['text'=>'Tình trạng','class'=>''],
+								['text'=>'Tổng tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_returnpurchaseorder'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_returnpurchaseorder'.\Auth::user()->id);
+			$total_sum_amount = 0;
+			foreach ($arr_cache as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				
+				if($value['status']){
+					$arr_cache[$key]['status'] = 'Hoàn thành';
+				}else{
+					$arr_cache[$key]['status'] = 'Mới';
+				}
+			}
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'4'],
+				['value'=>$total_sum_amount],
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_tra_hang_ncc','potrait');
+			return redirect($link);
+		}
+		die;
 	}
 }

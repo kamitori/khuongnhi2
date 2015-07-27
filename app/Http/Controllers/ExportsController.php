@@ -11,7 +11,23 @@ use DB;
 
 class ExportsController extends Controller {
 	protected $layout = 'export.index';
-	protected $table_list = '<table class="table_list">
+
+	public function __construct()
+	{
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
+	}
+	public function getIndex(Request $request){
+		
+	}
+
+	public function getTry($id_pdf=0){
+		if($id_pdf){
+			$pdf = PdfTemplate::find($id_pdf)->toArray();
+			$don_gia1 = rand(30,100)*1000;
+			$don_gia2 = rand(30,100)*1000;
+			$so_luong1 = rand(1,10)*10;
+			$so_luong2 = rand(1,10)*10;
+			$table_list = '<table class="table_list">
 					<thead>
 						<tr>
 							<th>Mã</th>
@@ -25,33 +41,45 @@ class ExportsController extends Controller {
 						<tr>
 							<td>A1234</td>
 							<td>Quần áo trẻ em</td>
-							<td  class="money">50000</td>
-							<td>10</td>
-							<td  class="money">500000</td>
+							<td  class="money">'.$don_gia1.'</td>
+							<td>'.$so_luong1.'</td>
+							<td  class="money">'.($don_gia1*$so_luong1).'</td>
 						</tr>
 						<tr>
 							<td>A6789</td>
 							<td>Đồ dùng trẻ em</td>
-							<td  class="money">150000</td>
-							<td>10</td>
-							<td  class="money">1500000</td>
-						</tr>
-					</tbody>
+							<td  class="money">'.$don_gia2.'</td>
+							<td>'.$so_luong2.'</td>
+							<td  class="money">'.($don_gia2*$so_luong2).'</td>
+						</tr>';
+			$table_list .=		'<tr class="sum">
+							<td colspan="4">Tổng cộng</td>
+							<td class="money">'.(($don_gia1*$so_luong1)+($don_gia2*$so_luong2)).'</td>
+						</tr>';
+			$table_list .=		'</tbody>
 				</table>';
-	public function __construct()
-	{
-		date_default_timezone_set('Asia/Ho_Chi_Minh');
-	}
-	public function getIndex(Request $request){
-		
-	}
-
-	public function getTry($id=0){
-		if($id){
+			$id = rand(1,500);
+			$toa_moi = ($don_gia1*$so_luong1)+($don_gia2*$so_luong2);
+			$no_cu = $toa_moi *rand(50,500)/100;
+			$tong_cong = $no_cu + $toa_moi;
+			$date = date('d-m-Y');
 			$date_print = date('d-m-Y');
-			$pdf = PdfTemplate::find($id)->toArray();
-			$pdf = str_replace('{{$table_list}}',$this->table_list,$pdf);
+			$company_name = 'Cơ sở may Khương Nhi';
+			$address = '33/6 Đường số 19, P5, Gò Vấp';
+			$phone = '08. 35171589';
+
+
+			$pdf = str_replace('{{$table_list}}',$table_list,$pdf);
 			$pdf = str_replace('{{$date_print}}',$date_print,$pdf);
+			$pdf = str_replace('{{$toa_moi}}',number_format($toa_moi),$pdf);
+			$pdf = str_replace('{{$no_cu}}',number_format($no_cu),$pdf);
+			$pdf = str_replace('{{$tong_cong}}',number_format($tong_cong),$pdf);
+			$pdf = str_replace('{{$date}}',$date,$pdf);
+			$pdf = str_replace('{{$id}}',$id,$pdf);
+			$pdf = str_replace('{{$company_name}}',$company_name,$pdf);
+			$pdf = str_replace('{{$address}}',$address,$pdf);
+			$pdf = str_replace('{{$phone}}',$phone,$pdf);
+
 			$this->layout->content = $pdf['template'];
 		}else{
 			$this->layout->content =  "<h1>Not found template</h1>";
@@ -84,7 +112,7 @@ class ExportsController extends Controller {
 		$arr_head = $arr_print['arr_list']['arr_head'];
 		$arr_key = $arr_print['arr_list']['arr_key'];
 		$arr_data = $arr_print['arr_data'];
-		if(count($arr_body)){
+		// if(count($arr_body)){
 			$table_list = 	'<table class="table_list">
 						<thead>
 							<tr>';
@@ -114,12 +142,13 @@ class ExportsController extends Controller {
 					</table>';
 			$pdf = str_replace('{{$table_list}}',$table_list,$pdf);
 			foreach ($arr_data as $key => $value) {
-				$pdf['template'] = str_replace('{{'.$key.'}}',$value,$pdf);
+				$pdf = str_replace('{{$'.$key.'}}',$value,$pdf);
 			}
 			
-		}else{
-			$pdf = str_replace('{{$table_list}}',$this->table_list,$pdf);
-		}
+		// }else{
+
+		// 	$pdf = str_replace('{{$table_list}}',$table_list,$pdf);
+		// }
 		$content =  view('export.index',[
 						'content'=>$pdf['template'],
 						'orential'=>$orential
@@ -127,12 +156,11 @@ class ExportsController extends Controller {
 		$time = time();
 		$file_name = md5($time).'.html';
 		file_put_contents(public_path().'\\cache\\'.$file_name, $content);
-		if($orential=='potrait')
-			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 740px*1100px 0.96';
-		else
+		if($orential=='landscape')
 			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 1100px*740px 0.96';
+		else
+			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 740px*1100px 0.96';
 		if(exec($cmd)){
-			echo URL.'/cache/'.$file_name.'<br/>';
 			return   URL.'/upload/'.$name.'_'.$time.'.pdf';
 		}
 	}

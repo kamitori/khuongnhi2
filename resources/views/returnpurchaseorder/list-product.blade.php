@@ -62,8 +62,10 @@
 	$(function(){
 		datatype_currency();
 		datatype_number();
-
-		
+		var old_value = 0;
+		$("#list_product input#quantity").on('focusin', function(){
+			old_value = $(this).val();
+		});
 		$("#list_product select, #list_product input").on('change',function(e){
 			e.preventDefault();
 			var id = $(this).parent().parent().attr('data-id');
@@ -90,6 +92,7 @@
 						sum_invest();
 					}else{
 						toastr['error'](data.message);
+						$("tr[data-id="+id+"] #quantity").val(old_value);
 					}
 					
 				}

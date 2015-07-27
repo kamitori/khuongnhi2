@@ -666,6 +666,7 @@ class ProductsController extends Controller {
 						->where('purchaseorders.status','=',1);
 					})
 					->where('purchaseorders.status','=',1)
+					->where('m_products.module_type','=','App\\Purchaseorder')
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
 					->where('m_products.company_id','=',$current_rpo->company_id);
@@ -694,7 +695,7 @@ class ProductsController extends Controller {
 								'distributes'		=>$distributes,
 								'oums'			=>$oums,
 								'list_product'		=> $list_product,
-								'list_all_product'	=>$list_all_product,
+								'list_all_product'		=>$list_all_product,
 								'arr_sort' 		=> $arr_sort,
 								'arr_filter' 		=> $arr_filter
 							        ]);

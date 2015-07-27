@@ -63,7 +63,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:22:28',
-				'updated_at' => '2015-07-24 10:51:51',
+				'updated_at' => '2015-07-27 10:02:29',
 			),
 			2 => 
 			array (
@@ -81,11 +81,55 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:24px"><strong><span style="color:#FF0000">Đ</span>ơn&nbsp;<span style="color:#B22222">T</span>rả&nbsp;<span style="color:#B22222">H</span>&agrave;ng&nbsp;<span style="color:#FF0000">S</span>ố {{$id}}</strong></span><br />
+<span style="font-size:18px"><strong>Ng&agrave;y: {{$date}}</strong></span></p>
+
+<p><span style="font-size:18px"><strong>T&ecirc;n nh&agrave; cung cấp:</strong> {{$company_name}} - <strong>ĐC:</strong> {{$address}} - <strong>ĐT:</strong> {{$phone}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%">&nbsp;</td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Nợ cũ</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Toa mới</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Tổng cộng</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center">&nbsp;</td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$no_cu}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$toa_moi}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$tong_cong}}</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align: center;">&nbsp;</div>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người lập</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+</tr>
+</tbody>
+</table>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:03',
-				'updated_at' => '2015-07-23 13:45:41',
+				'updated_at' => '2015-07-27 14:14:38',
 			),
 			3 => 
 			array (
@@ -103,11 +147,53 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:24px"><strong><span style="color:#FF0000">Đ</span>ơn <span style="color:#FF0000">M</span>ua <span style="color:#FF0000">H</span>&agrave;ng <span style="color:#FF0000">S</span>ố {{$id}}</strong></span><br />
+<span style="font-size:18px"><strong>Ng&agrave;y: {{$date}}</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%">&nbsp;</td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Nợ cũ</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Toa mới</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Tổng cộng</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center">&nbsp;</td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$no_cu}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$toa_moi}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$tong_cong}}</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align: center;">&nbsp;</div>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người lập</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+</tr>
+</tbody>
+</table>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:27',
-				'updated_at' => '2015-07-23 13:45:31',
+				'updated_at' => '2015-07-27 11:26:50',
 			),
 			4 => 
 			array (
@@ -126,15 +212,38 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 </tr>
 </tbody>
 </table>
-&nbsp;
+
+<p style="text-align:center"><span style="font-size:24px"><strong>Đơn&nbsp;<span style="color:#B22222">T</span>rả&nbsp;<span style="color:#B22222">H</span>&agrave;ng&nbsp;Số {{$id}}</strong></span><br />
+<span style="font-size:18px"><strong>Ng&agrave;y: {{$date}}</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Người lập</strong></span></td>
-<td style="text-align:center"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
+<td style="text-align:center; width:25%">&nbsp;</td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Nợ cũ</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Toa mới</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Tổng cộng</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center">&nbsp;</td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$no_cu}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$toa_moi}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$tong_cong}}</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align: center;">&nbsp;</div>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người lập</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
 </tr>
 <tr>
 <td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
@@ -148,7 +257,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:43',
-				'updated_at' => '2015-07-24 10:52:13',
+				'updated_at' => '2015-07-27 10:56:09',
 			),
 			5 => 
 			array (
@@ -166,11 +275,53 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:24px"><strong>Đơn&nbsp;<span style="color:#B22222">T</span>rả&nbsp;<span style="color:#B22222">H</span>&agrave;ng&nbsp;Số {{$id}}</strong></span><br />
+<span style="font-size:18px"><strong>Ng&agrave;y: {{$date}}</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%">&nbsp;</td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Nợ cũ</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Toa mới</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:20px"><strong>Tổng cộng</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center">&nbsp;</td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$no_cu}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$toa_moi}}</strong></span></td>
+<td style="text-align:center"><span style="font-size:20px"><strong>{{$tong_cong}}</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align: center;">&nbsp;</div>
+
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người nhận h&agrave;ng</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người thu tiền</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Người lập</strong></span></td>
+<td style="text-align:center; width:25%"><span style="font-size:16px"><strong>Trưởng đơn vị</strong></span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+<td style="text-align:center"><span style="font-size:16px"><strong>(K&yacute;, họ t&ecirc;n)</strong></span></td>
+</tr>
+</tbody>
+</table>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:37:01',
-				'updated_at' => '2015-07-23 13:45:22',
+				'updated_at' => '2015-07-27 10:56:01',
 			),
 			6 => 
 			array (
@@ -254,11 +405,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:24px"><strong><span style="color:#B22222">D</span>anh <span style="color:#B22222">S</span>&aacute;ch <span style="color:#B22222">T</span>rả <span style="color:#B22222">H</span>&agrave;ng NCC</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:21',
-				'updated_at' => '2015-07-23 13:42:21',
+				'updated_at' => '2015-07-27 14:52:11',
 			),
 			10 => 
 			array (

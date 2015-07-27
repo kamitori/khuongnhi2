@@ -2,7 +2,7 @@
 	<div class="buttons pull-left">
 		<a href="{{URL}}/returnpurchaseorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
 		<a href="{{URL}}/returnpurchaseorders/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="javascript:window.open('{{URL}}/returnpurchaseorders/export-pdf-list','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
 	</div>
 	<div class="buttons pull-right">
 
@@ -21,7 +21,7 @@
 		<tr class="small">
 			<th style="width: 10%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>Mã hóa đơn</th>
 			<th style="width: 39%" data-column="company_id" {{ isset($arr_sort['company_id'])?'data-sort='.$arr_sort['company_id']:'' }}>Nhà cung cấp</th>
-			<th style="width: 13%" data-column="date" {{ isset($arr_sort['date'])?'data-sort='.$arr_sort['date']:'' }}>Ngày đặt hàng</th>
+			<th style="width: 13%" data-column="date" {{ isset($arr_sort['date'])?'data-sort='.$arr_sort['date']:'' }}>Ngày trả hàng</th>
 			<th style="width: 20%" data-column="sum_invest" {{ isset($arr_sort['sum_invest'])?'data-sort='.$arr_sort['sum_invest']:'' }}>Tổng tiền trả hàng</th>
 			<th style="width: 13%" data-column="status" {{ isset($arr_sort['status'])?'data-sort='.$arr_sort['status']:'' }}>Tình trạng</th>
 			<th style="width: 5%" class="no-sort">&nbsp;</th>
