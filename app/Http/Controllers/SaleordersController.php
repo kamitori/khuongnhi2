@@ -9,7 +9,10 @@ use App\Province;
 use App\User;
 use App\Oum;
 use App\ProductStock;
+use App\ReturnSaleorder;
+use App\ReceiptMonth;
 use App\Saleorder;
+use App\Paid;
 use App\Address;
 use App\SellPrice;
 use Datatables;
@@ -411,10 +414,10 @@ class SaleordersController extends Controller {
 			if(!in_array($product_id, $arr_product_of_so)){
 				$product = MProduct::find($product_id);
 				$mproduct = new MProduct;
-				$mproduct->product_id	=	$product->product_id;
+				$mproduct->product_id		=	$product->product_id;
 				$mproduct->m_product_id	=	$product->id;
-				$mproduct->module_id	= 	$module_id;
-				$mproduct->company_id	= 	$product->company_id;
+				$mproduct->module_id		= 	$module_id;
+				$mproduct->company_id	= 	$company_id;
 				$mproduct->module_type	=	$module_type;
 				$mproduct->specification	=	$product->specification;
 				$mproduct->oum_id		=	$product->oum_id;
@@ -442,6 +445,7 @@ class SaleordersController extends Controller {
 
 	public function getListProduct(){
 		$id = session('current_saleorder');
+		$saleorder = Saleorder::select('status','company_id')->where('id','=',$id)->first()->toArray();
 		//Init array
 		$distributes = array();
 		$oums = array();
@@ -452,10 +456,13 @@ class SaleordersController extends Controller {
 		$oums = Oum::get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Saleorder')
 						->where('module_id','=',$id)
+						->where('company_id','=',$saleorder['company_id'])
 						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->with('getsellprices')
 						->get()->toArray();
-		$saleorder = Saleorder::select('status')->where('id','=',$id)->first()->toArray();
+		\Cache::put('list_product_so'.\Auth::user()->id, $list_product, 30);
 		return view('saleorder.list-product',[	'distributes'=>$distributes,
 							'oums'=>$oums,
 							'list_product'=>$list_product,
@@ -516,5 +523,190 @@ class SaleordersController extends Controller {
 			}
 		}
 		return $arr_return;
+	}
+
+	public function anyExportPdf(){
+		$id_template = 5;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'sku',
+								'name',
+								'oum_name',
+								'specification',
+								'quantity',
+								'sell_price',
+								'amount'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã','class'=>''],
+								['text'=>'Tên sản phẩm','class'=>''],
+								['text'=>'Đơn vị','class'=>''],
+								['text'=>'Quy cách','class'=>''],
+								['text'=>'Số lượng','class'=>''],
+								['text'=>'Đơn giá','class'=>'money'],
+								['text'=>'Thành tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+							'id'=>session('current_saleorder')
+						]
+				];	
+		if (\Cache::has('list_product_so'.\Auth::user()->id)){
+			$so = Saleorder::select('saleorders.*','companies.name')
+							->where('saleorders.id','=',session('current_saleorder'))
+							->leftJoin('companies','companies.id','=','saleorders.company_id')->get()->first();
+			$month = intval(date('m',strtotime($so->date)));
+			$year = intval(date('Y',strtotime($so->date)));
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = $so->date;
+			$list_order = array();
+			$key_order = 1;
+			$arr_print['arr_data']['date'] = date('d-m-Y',strtotime($so->date));
+			$arr_print['arr_data']['company_name'] = $so->name;
+			$arr_print['arr_data']['phone'] = $so->company_phone;
+			$arr_print['arr_data']['address'] = '';
+			$arr_dress = Address::select('addresses.*','provinces.name as province_name')
+						->where('addresses.id','=',$so->address_id)
+						->leftJoin('provinces','provinces.id','=','addresses.province_id')
+						->get()->first();
+			$arr_print['arr_data']['address'] .= $arr_dress->address?$arr_dress->address.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
+
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+								->where('company_id','=',$so->company_id)
+								->where(function($query) use ($month,$year){
+									$query->where(function($query2) use ($month,$year){
+										$query2->where('month','<',$month)
+											->where('year','=',$year);
+									})->orWhere(function($query2) use ($month,$year){
+										$query2->where('year','<',$year);
+									});
+								})
+								->orderBy('year','desc')
+								->orderBy('month','desc')
+								->limit(1);
+			$receipt_month_prev = $receipt_month_prev->first();
+			if($receipt_month_prev){
+				$arr_print['arr_data']['no_cu'] = $receipt_month_prev->con_lai;
+			}else{
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
+			
+			$list_po = Saleorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$so->company_id)
+					->get()->toArray();
+			foreach ($list_po as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+				$key_order++;
+			}
+			$list_so = ReturnSaleorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$so->company_id)
+					->get()->toArray();
+
+			foreach ($list_so as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$key_order++;
+			}
+
+			$list_paid = Paid::where('date','>=',$begin)
+						->where('date','<',$end)
+						->where('company_id','=',$so->company_id)
+						->where('type_paid','=','distribute')
+						->get()->toArray();
+			foreach ($list_paid as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_paid'];
+				$key_order++;
+			}
+			$date = array();
+			foreach ($list_order as $key => $value) {
+				$date[$key] = $value['date'];
+			}
+			array_multisort($date,SORT_ASC,$list_order);
+			foreach ($list_order as $key => $value) {
+				$arr_print['arr_data']['no_cu']+=$value['sum_amount'];
+			}
+
+			$arr_cache = \Cache::get('list_product_so'.\Auth::user()->id);
+			$sum_amount = 0;
+			foreach ($arr_cache as $key => $value) {
+				$sum_amount += $value['amount'];
+			}
+			$arr_print['arr_data']['toa_moi'] = $sum_amount;
+			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];
+
+			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
+			$arr_print['arr_data']['toa_moi'] = number_format($arr_print['arr_data']['toa_moi']);
+			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'6'],
+				['value'=>$sum_amount]
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_so_'.$so->id,'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfList(){
+		$id_template = 8;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'id',
+								'company_name',
+								'date',
+								'status',
+								'sum_amount'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã HĐ','class'=>''],
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Ngày trả hàng','class'=>''],
+								['text'=>'Tình trạng','class'=>''],
+								['text'=>'Tổng tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_saleorder'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_saleorder'.\Auth::user()->id);
+			$total_sum_amount = 0;
+			foreach ($arr_cache as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				
+				if($value['status']){
+					$arr_cache[$key]['status'] = 'Hoàn thành';
+				}else{
+					$arr_cache[$key]['status'] = 'Mới';
+				}
+			}
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'4'],
+				['value'=>$total_sum_amount],
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_dai_ly_tra_hang','potrait');
+			return redirect($link);
+		}
+		die;
 	}
 }

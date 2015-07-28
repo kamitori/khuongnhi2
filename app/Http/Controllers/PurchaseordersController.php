@@ -11,6 +11,9 @@ use App\User;
 use App\Oum;
 use App\ProductStock;
 use App\Purchaseorder;
+use App\ReturnPurchaseorder;
+use App\Paid;
+use App\ReceiptMonth;
 use App\Address;
 use App\SellPrice;
 use Datatables;
@@ -339,7 +342,7 @@ class PurchaseordersController extends Controller {
 		}
 		$list_date = array_unique($list_date);
 
-		$list_purchaseorder = Purchaseorder::select('purchaseorders.*','suminvest.*')->with('company')
+		$list_purchaseorder = Purchaseorder::select('purchaseorders.*','suminvest.*','companies.name as company_name')->with('company')
 					->leftJoin(
 							DB::raw(' (
 									select module_id, module_type,sum(invest) as sum_invest 
@@ -347,10 +350,10 @@ class PurchaseordersController extends Controller {
 								    ) as suminvest'), function($join){
 								$join->on('purchaseorders.id', '=', 'module_id');
 							}
-						);
+						)->leftJoin('companies','companies.id','=','purchaseorders.company_id');
 		foreach ($arr_sort as $key => $value) {
-			if($key=='id'){
-				$list_purchaseorder = $list_purchaseorder->leftJoin('companies','companies.id','=','purchaseorders.id')->orderBy('companies.name',$value);
+			if($key=='company_id'){
+				$list_purchaseorder = $list_purchaseorder->orderBy('companies.name',$value);
 			}else{
 				$list_purchaseorder = $list_purchaseorder->orderBy($key,$value);
 			}
@@ -374,6 +377,10 @@ class PurchaseordersController extends Controller {
 			$arr_filter['status'] = '';
 		}
 		$list_purchaseorder = $list_purchaseorder->paginate(20);
+		foreach($list_purchaseorder as $key => $rpo){
+			$list_purchaseorder[$key]['date'] = date('d-m-Y',strtotime($rpo['date']));
+		}
+		\Cache::put('list_purchaseorder'.\Auth::user()->id, $list_purchaseorder, 30);
 
 		// var_dump(DB::getQueryLog());die;
 		$this->layout->content=view('purchaseorder.list', [
@@ -480,8 +487,12 @@ class PurchaseordersController extends Controller {
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Purchaseorder')
 						->where('module_id','=',$id)
 						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->get()->toArray();
 		$purchaseorder = Purchaseorder::select('status')->where('id','=',$id)->first()->toArray();
+
+		\Cache::put('list_product_po'.\Auth::user()->id, $list_product, 30);
 		return view('purchaseorder.list-product',[	'distributes'=>$distributes,
 							'oums'=>$oums,
 							'list_product'=>$list_product,
@@ -537,5 +548,189 @@ class PurchaseordersController extends Controller {
 			}
 		}
 		return $arr_return;
+	}
+
+	public function anyExportPdf(){
+		$id_template = 4;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'sku',
+								'name',
+								'oum_name',
+								'specification',
+								'quantity',
+								'origin_price',
+								'invest'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã','class'=>''],
+								['text'=>'Tên sản phẩm','class'=>''],
+								['text'=>'Đơn vị','class'=>''],
+								['text'=>'Quy cách','class'=>''],
+								['text'=>'Số lượng','class'=>''],
+								['text'=>'Đơn giá','class'=>'money'],
+								['text'=>'Thành tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+							'id'=>session('current_purchaseorder')
+						]
+				];	
+		if (\Cache::has('list_product_po'.\Auth::user()->id)){
+			$po = Purchaseorder::select('purchaseorders.*','companies.name')->where('purchaseorders.id','=',session('current_purchaseorder'))
+							->leftJoin('companies','companies.id','=','purchaseorders.company_id')->get()->first();
+			$month = intval(date('m',strtotime($po->date)));
+			$year = intval(date('Y',strtotime($po->date)));
+			$begin = date('Y-m-d H:i:s',strtotime('1'.'-'.$month.'-'.$year));
+			$end = $po->date;
+			$list_order = array();
+			$key_order = 1;
+			$arr_print['arr_data']['date'] = date('d-m-Y',strtotime($po->date));
+			$arr_print['arr_data']['company_name'] = $po->name;
+			$arr_print['arr_data']['phone'] = $po->company_phone;
+			$arr_print['arr_data']['address'] = '';
+			$arr_dress = Address::select('addresses.*','provinces.name as province_name')
+						->where('addresses.id','=',$po->address_id)
+						->leftJoin('provinces','provinces.id','=','addresses.province_id')
+						->get()->first();
+			$arr_print['arr_data']['address'] .= $arr_dress->address?$arr_dress->address.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
+			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
+
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+								->where('company_id','=',$po->company_id)
+								->where(function($query) use ($month,$year){
+									$query->where(function($query2) use ($month,$year){
+										$query2->where('month','<',$month)
+											->where('year','=',$year);
+									})->orWhere(function($query2) use ($month,$year){
+										$query2->where('year','<',$year);
+									});
+								})
+								->orderBy('year','desc')
+								->orderBy('month','desc')
+								->limit(1);
+			$receipt_month_prev = $receipt_month_prev->first();
+			if($receipt_month_prev){
+				$arr_print['arr_data']['no_cu'] = $receipt_month_prev->con_lai;
+			}else{
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
+			
+			$list_po = Purchaseorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$po->company_id)
+					->get()->toArray();
+			foreach ($list_po as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
+				$key_order++;
+			}
+			$list_rpo = ReturnPurchaseorder::where('date','>=',$begin)
+					->where('date','<',$end)
+					->where('status','=',1)
+					->where('company_id','=',$po->company_id)
+					->get()->toArray();
+
+			foreach ($list_rpo as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
+				$key_order++;
+			}
+
+			$list_paid = Paid::where('date','>=',$begin)
+						->where('date','<',$end)
+						->where('company_id','=',$po->company_id)
+						->where('type_paid','=','distribute')
+						->get()->toArray();
+			foreach ($list_paid as $key => $value) {
+				$list_order[$key_order]['id'] = $value['id'];
+				$list_order[$key_order]['date'] =  $value['date'];
+				$list_order[$key_order]['sum_amount'] =  -$value['sum_paid'];
+				$key_order++;
+			}
+			$date = array();
+			foreach ($list_order as $key => $value) {
+				$date[$key] = $value['date'];
+			}
+			array_multisort($date,SORT_ASC,$list_order);
+			foreach ($list_order as $key => $value) {
+				$arr_print['arr_data']['no_cu']+=$value['sum_amount'];
+			}
+
+			$arr_cache = \Cache::get('list_product_po'.\Auth::user()->id);
+			$sum_invest = 0;
+			foreach ($arr_cache as $key => $value) {
+				$sum_invest += $value['invest'];
+			}
+			$arr_print['arr_data']['toa_moi'] = $sum_invest;
+			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];
+
+			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
+			$arr_print['arr_data']['toa_moi'] = number_format($arr_print['arr_data']['toa_moi']);
+			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'6'],
+				['value'=>$sum_invest]
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_so_'.$po->id,'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfList(){
+		$id_template = 9;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'id',
+								'company_name',
+								'date',
+								'status',
+								'sum_amount'
+								],
+						'arr_head' => 	[
+								['text'=>'Mã HĐ','class'=>''],
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Ngày trả hàng','class'=>''],
+								['text'=>'Tình trạng','class'=>''],
+								['text'=>'Tổng tiền','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_purchaseorder'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_purchaseorder'.\Auth::user()->id);
+			$total_sum_amount = 0;
+			foreach ($arr_cache as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				
+				if($value['status']){
+					$arr_cache[$key]['status'] = 'Hoàn thành';
+				}else{
+					$arr_cache[$key]['status'] = 'Mới';
+				}
+			}
+			$arr_print['arr_list']['arr_sum'] = [
+				['value'=>'Tổng cộng:','colspan'=>'4'],
+				['value'=>$total_sum_amount],
+			];
+			$arr_print['arr_list']['arr_body'] = $arr_cache;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_tra_hang_ncc','potrait');
+			return redirect($link);
+		}
+		die;
 	}
 }

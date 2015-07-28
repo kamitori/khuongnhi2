@@ -2,7 +2,7 @@
 	<div class="buttons pull-left">
 		<a href="{{URL}}/returnsaleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
 		<a href="{{URL}}/returnsaleorders/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="javascript:window.open('{{URL}}/returnsaleorders/export-pdf-list','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
 	</div>
 	<div class="buttons pull-right">
 

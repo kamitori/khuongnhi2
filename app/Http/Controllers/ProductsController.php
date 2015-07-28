@@ -749,6 +749,7 @@ class ProductsController extends Controller {
 						$join->on('saleorders.id','=','m_products.module_id')
 						->where('saleorders.status','=',1);
 					})
+					->where('m_products.module_type','=','App\\Saleorder')
 					->where('saleorders.status','=',1)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->where('m_products.company_id','=',$current_rpo->company_id);

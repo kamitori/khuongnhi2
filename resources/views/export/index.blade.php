@@ -45,7 +45,7 @@
 		table.table_list tr th,table.table_list tr td{
 			border: 1px solid #777;
 			padding: 4px;
-			font-size: 16px;
+			font-size: 18px;
 			font-family:arial,helvetica,sans-serif;
 			text-align: center;
 		}
@@ -60,7 +60,10 @@
 		table.table_list tr.sum td{
 			text-align: right;
 			font-weight: bold;
-			font-size: 120%;
+			font-size: 125%;
+		}
+		table.table_list tr.sum td.money{
+			letter-spacing: -1px;
 		}
 	</style>
 </head>

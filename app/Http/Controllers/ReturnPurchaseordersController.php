@@ -275,10 +275,10 @@ class ReturnPurchaseordersController extends Controller {
 				}
 
 				if($old_company_id != $returnpurchaseorder->company_id){
-					// Mproduct::where('module_id', '=', $returnpurchaseorder->id)
-					// 	->where('module_type', '=', 'App\ReturnPurchaseorder')
-					// 	->where('company_id','=',$old_company_id)
-					// 	->delete();
+					Mproduct::where('module_id', '=', $returnpurchaseorder->id)
+						->where('module_type', '=', 'App\ReturnPurchaseorder')
+						->where('company_id','=',$old_company_id)
+						->delete();
 				}else{
 					Mproduct::where('module_id', '=', $returnpurchaseorder->id)
 						->where('module_type', '=', 'App\ReturnPurchaseorder')

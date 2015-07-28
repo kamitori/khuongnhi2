@@ -4,7 +4,7 @@
 	</div>
 </div>
 <?php
-	$session_product = session('product_of_so'.session('current_saleorder'));
+	$session_product = session('product_of_rso'.session('current_returnsaleorder'));
 ?>
 
 <form action="{{URL}}/products/list" method="POST" accept-charset="utf-8" id="form-list">

@@ -1,5 +1,6 @@
 <?php 
 	$sum_amount = 0;
+	
 ?>
 @foreach ($list_product as $product)
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">

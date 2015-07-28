@@ -209,7 +209,7 @@
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_createproduct();"><i class="fa fa-plus"></i>Tạo mới sản phẩm</button>
 							@endif
-							<button class="btn btn-primary btn-small btn-icon"><i class="fa fa-print"></i>Xuất PDF</button>
+							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
 						</div>
 					</div>
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-edit">
@@ -370,7 +370,7 @@
 
 			$("#country_id").trigger('change');
 
-			$("#form_entry input,#form_entry select").on("change",function(e){
+			$("#form_entry input,#form_entry select").not("#country_id, #company_id").on("change",function(e){
 				var name = $(this).attr('name');
 				e.preventDefault();
 				var data = $("#form_entry").serialize();
@@ -521,6 +521,10 @@
 					}
 				}
 			})
+		}
+
+		function print_pdf(){
+			window.open('{{URL}}/purchaseorders/export-pdf','_blank');
 		}
 
 	</script>
