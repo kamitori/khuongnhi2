@@ -400,6 +400,34 @@ class SaleordersController extends Controller {
 		return '';
 	}
 
+	public function anyAddProductQuick(Request $request){
+		$arr_return = array(
+			"status"=>'success'
+		);
+		$m_product_id = $request->has('m_product_id')?$request->input('m_product_id'):0;
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$module_id = session('current_saleorder');
+		$module_type = 'App\Saleorder';
+		$arr_product = session('product_of_so'.session('current_saleorder'));
+		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
+						->where('module_type','=',$module_type)
+						->lists('product_id');
+		if(!in_array($m_product_id, $arr_product_of_so)){
+			$product = MProduct::find($m_product_id);
+			$mproduct = new MProduct;
+			$mproduct->product_id		=	$product->product_id;
+			$mproduct->m_product_id	=	$product->id;
+			$mproduct->module_id		= 	$module_id;
+			$mproduct->company_id	= 	$company_id;
+			$mproduct->module_type	=	$module_type;
+			$mproduct->specification	=	$product->specification;
+			$mproduct->oum_id		=	$product->oum_id;
+			$mproduct->origin_price	=	$product->origin_price;
+			$mproduct->save();
+		}
+		return $arr_return;
+	}
+
 	public function anyAddProduct(Request $request){
 		$arr_return = array(
 			"status"=>'success'
@@ -410,7 +438,7 @@ class SaleordersController extends Controller {
 		$arr_product = session('product_of_so'.session('current_saleorder'));
 		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->lists('product_id');
+						->lists('m_product_id');
 
 
 		foreach ($arr_product as $key => $product_id) {

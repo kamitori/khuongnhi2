@@ -230,6 +230,19 @@
 							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
+					@if(!$saleorder['status'])
+					<div class="control-group" style="margin-top: 10px;width:400px;">
+						<label class="control-label">SKU/Tên SP:</label>
+						<div class="controls">
+							<input type="text" name="sku_quick" id="sku_quick" maxlength="50" style="width:190px;">
+						</div>
+					</div>
+					<div id="list_product_quick">
+						<span class="close"><i class="fa fa-remove"></i></span>
+						<ul class="unstyled">
+						</ul>
+					</div>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -267,6 +280,37 @@
 	#modal_add_product.modal.fade.in{
 		width: 80%;
 		left: 28%;
+	}
+	#list_product_quick{
+		width:450px;
+		background-color: #fff;
+		position: absolute;
+		border:1px solid #ddd;
+		display: none;
+		height: 300px;
+		margin-top: -350px;
+		overflow-y: auto;
+	}
+	#list_product_quick ul{
+		margin-bottom: 0 !important;
+		margin-top:10px;
+	}
+	#list_product_quick strong{
+		margin: 20px;
+	}
+	#list_product_quick ul li{
+		padding: 10px;
+		cursor: pointer;
+	}
+	#list_product_quick ul li:hover{
+		background: #bbb;
+	}
+	#list_product_quick span.close{
+		position: absolute;
+		top: 0;
+		right: 5px;
+		cursor: pointer;
+		padding: 5px;
 	}
 </style>
 
@@ -354,9 +398,73 @@
 				});
 			});
 
-			
+			$("#sku_quick").keypress(function(e){
+				if(e.keyCode==13){
+					var key = $(this).val();
+					$.ajax({
+						url : '{{URL}}/products/search-product-stock',
+						type : 'POST',
+						data : {
+							key : key
+						},
+						success : function(data){
+							if(data.length){
+								var html='';
+								for(i=0;i<data.length;i++){
+									var tonkho = Math.floor((data[i]['in_stock']/data[i]['specification']))+' '+data[i]['oum_name']+'('+data[i]['specification']+')';
+									if(data[i]['in_stock']%data[i]['specification'] && data[i]['specification'] > 1){
+										tonkho +='+'+data[i]['in_stock']%data[i]['specification']+' cái';
+									}
+									html+='<li onclick="add_product_quick('+data[i]['id']+')">'+data[i]['sku']+'&nbsp;&nbsp;-&nbsp;&nbsp;'+data[i]['name']+'&nbsp;&nbsp;-&nbsp;&nbsp;'+tonkho+'&nbsp;&nbsp;-&nbsp;&nbsp;'+data[i]['date']+'</li>';
+								}
+								console.log(data);
+								$("#list_product_quick ul").html(html);
+								$(window).trigger('resize');
+								$("#list_product_quick").css('display','block');
+							}else{
+								$("#list_product_quick ul").html('<strong>Không tìm thấy sản phẩm</strong>');
+								$(window).trigger('resize');
+								$("#list_product_quick").css('display','block');
+							}
+						}
+					})
+				}
+			});
+
+			$("#list_product_quick .close").on("click",function(){
+				$("#list_product_quick ul").html('');
+				$("#list_product_quick").css('display','none');
+				$(window).trigger('resize');
+			})
 
 		}) // End Jquery
+		function add_product_quick(id){
+			$("#list_product_quick").css('display','none');
+			$.ajax({
+				url : '{{URL}}/saleorders/add-product-quick',
+				type : 'POST',
+				data:{
+					company_id : $("#company_id").val(),
+					m_product_id : id
+				},
+				success:function(data){
+					if(data.status=='success'){
+						toastr['success']('Add success');
+						$.ajax({
+							url : '{{URL}}/saleorders/list-product',
+							type :'GET',
+							success:function(html){
+								$("#list_product").html(html);
+								$(window).trigger('resize');
+							}
+						})
+						
+					}else{
+						toastr['error'](data.message);
+					}
+				}
+			});
+		}
 
 		function popup_product(){
 			$.ajax({

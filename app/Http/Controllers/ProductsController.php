@@ -848,6 +848,63 @@ class ProductsController extends Controller {
 		return $arr_return;
 	}
 
+	public function anySearchProductStock(Request $request){
+		$arr_return = array();
+		$key = $request->has('key')?$request->input('key'):'';
+		$key = '%'.$key.'%';
+		$module_id = session('current_saleorder');
+		$module_type = 'App\Purchaseorder';
+		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
+						->where('module_type','=',$module_type)
+						->lists('m_product_id');
+
+		$arr_return = MProduct::select(
+					'm_products.id',
+					'products.name',
+					'products.sku',
+					'm_products.product_id',
+					'm_products.oum_id',
+					'm_products.specification',
+					'm_products.origin_price',
+					'm_products.invest',
+					'product_stocks.in_stock',
+					'companies.name as company_name',
+					'oums.name as oum_name',
+					'm_products.module_id',
+					'purchaseorders.date'
+		                                )
+					->addSelect(DB::raw('product_stocks.in_stock/m_products.specification as real_in_stock'))
+					->leftJoin('oums','oums.id','=','m_products.oum_id')
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('purchaseorders',function($join){
+						$join->on('purchaseorders.id','=','m_products.module_id')
+						->where('purchaseorders.status','=',1);
+					})
+					->where(function ($query){
+						$query->where('purchaseorders.status', '=', 1)
+							->orWhere('m_products.module_type', '=', 'in_stock');
+					})
+					->where('product_stocks.in_stock','>',0)
+					->where(function($query) use ($key){
+						$query->where('products.sku','like',$key)
+						->orWhere('products.name','like',$key);
+					})
+					->whereNotIn('m_products.m_product_id',$arr_product_of_so)
+					->leftJoin('companies','companies.id','=','m_products.company_id')
+					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
+					->limit(15)
+					->get()->toArray();
+		foreach ($arr_return as $key => $value) {
+			if($value['date']==''){
+				$arr_return[$key]['date'] = 'Tồn kho';
+			}else{
+				$arr_return[$key]['date'] = date('d/m/Y',strtotime($value['date']));
+			}
+			
+		}
+		return $arr_return;
+	}
+
 
 	public function anyExportPdf(){
 		$id_template = 2;

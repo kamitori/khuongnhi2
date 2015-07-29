@@ -231,6 +231,7 @@
 							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
+					@if(!$purchaseorder['status'])
 					<div class="control-group" style="margin-top: 10px;width:400px;">
 						<label class="control-label">SKU/Tên SP:</label>
 						<div class="controls">
@@ -242,6 +243,7 @@
 						<ul class="unstyled">
 						</ul>
 					</div>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -334,10 +336,13 @@
 		background-color: #fff;
 		position: absolute;
 		border:1px solid #ddd;
-		opacity:0;
+		display:none;
 		height: 300px;
 		margin-top: -350px;
 		overflow-y: auto;
+	}
+	#list_product_quick strong{
+		margin: 20px;
 	}
 	#list_product_quick ul{
 		margin-bottom: 0 !important;
@@ -467,8 +472,12 @@
 									html+='<li onclick="add_product_quick('+data[i]['id']+')">'+data[i]['sku']+' - '+data[i]['name']+'</li>';
 								}
 								$("#list_product_quick ul").html(html);
-								$(window).resize();
-								$("#list_product_quick").css('opacity',1);
+								$(window).trigger('resize');
+								$("#list_product_quick").css('display','block');
+							}else{
+								$("#list_product_quick ul").html('<strong>Không tìm thấy sản phẩm</strong>');
+								$(window).trigger('resize');
+								$("#list_product_quick").css('display','block');
 							}
 						}
 					})
@@ -477,13 +486,14 @@
 
 			$("#list_product_quick .close").on("click",function(){
 				$("#list_product_quick ul").html('');
-				$("#list_product_quick").css('opacity',0);
-				$(window).resize();
+				$("#list_product_quick").css('display','none');
+				$(window).trigger('resize');
 			})
 			
 
 		}) // End Jquery
 		function add_product_quick(id){
+			$("#list_product_quick").css('display','none');
 			$.ajax({
 				url : '{{URL}}/purchaseorders/add-product-quick',
 				type : 'POST',
@@ -500,8 +510,6 @@
 							success:function(html){
 								$("#list_product").html(html);
 								$(window).trigger('resize');
-								$("#list_product_quick").css('opacity',0);
-								$(window).resize();
 							}
 						})
 						
