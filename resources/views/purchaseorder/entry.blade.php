@@ -231,6 +231,17 @@
 							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
+					<div class="control-group" style="margin-top: 10px;width:400px;">
+						<label class="control-label">SKU/Tên SP:</label>
+						<div class="controls">
+							<input type="text" name="sku_quick" id="sku_quick" maxlength="50" style="width:190px;">
+						</div>
+					</div>
+					<div id="list_product_quick">
+						<span class="close"><i class="fa fa-remove"></i></span>
+						<ul class="unstyled">
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -317,6 +328,34 @@
 	#modal_create_product.modal.fade.in{
 		width: 40%;
 		left: 52%;
+	}
+	#list_product_quick{
+		width:350px;
+		background-color: #fff;
+		position: absolute;
+		border:1px solid #ddd;
+		opacity:0;
+		height: 300px;
+		margin-top: -350px;
+		overflow-y: auto;
+	}
+	#list_product_quick ul{
+		margin-bottom: 0 !important;
+		margin-top:10px;
+	}
+	#list_product_quick ul li{
+		padding: 10px;
+		cursor: pointer;
+	}
+	#list_product_quick ul li:hover{
+		background: #bbb;
+	}
+	#list_product_quick span.close{
+		position: absolute;
+		top: 0;
+		right: 5px;
+		cursor: pointer;
+		padding: 5px;
 	}
 </style>
 
@@ -412,10 +451,66 @@
 				});
 			});
 
+			$("#sku_quick").keypress(function(e){
+				if(e.keyCode==13){
+					var key = $(this).val();
+					$.ajax({
+						url : '{{URL}}/products/search-product',
+						type : 'POST',
+						data : {
+							key : key
+						},
+						success : function(data){
+							if(data.length){
+								var html='';
+								for(i=0;i<data.length;i++){
+									html+='<li onclick="add_product_quick('+data[i]['id']+')">'+data[i]['sku']+' - '+data[i]['name']+'</li>';
+								}
+								$("#list_product_quick ul").html(html);
+								$(window).resize();
+								$("#list_product_quick").css('opacity',1);
+							}
+						}
+					})
+				}
+			});
+
+			$("#list_product_quick .close").on("click",function(){
+				$("#list_product_quick ul").html('');
+				$("#list_product_quick").css('opacity',0);
+				$(window).resize();
+			})
 			
 
 		}) // End Jquery
-
+		function add_product_quick(id){
+			$.ajax({
+				url : '{{URL}}/purchaseorders/add-product-quick',
+				type : 'POST',
+				data:{
+					company_id : $("#company_id").val(),
+					product_id : id
+				},
+				success:function(data){
+					if(data.status=='success'){
+						toastr['success']('Add success');
+						$.ajax({
+							url : '{{URL}}/purchaseorders/list-product',
+							type :'GET',
+							success:function(html){
+								$("#list_product").html(html);
+								$(window).trigger('resize');
+								$("#list_product_quick").css('opacity',0);
+								$(window).resize();
+							}
+						})
+						
+					}else{
+						toastr['error'](data.message);
+					}
+				}
+			});
+		}
 		function popup_product(){
 			$.ajax({
 				url : '{{URL}}/products/list-popup/po',

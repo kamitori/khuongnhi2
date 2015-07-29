@@ -277,7 +277,7 @@ class ProductsController extends Controller {
 					'm_products.oum_id',
 					'm_products.specification',
 					'm_products.origin_price',
-					'm_products.invest',
+					// 'm_products.invest',
 					'product_stocks.in_stock',
 					'companies.name as company_name',
 					'oums.name as oum_name',
@@ -318,7 +318,7 @@ class ProductsController extends Controller {
 
 			}
 		}
-		$sum_invest =  $list_product->sum('invest');
+
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
 				$list_product = $list_product->orderBy('companies.name',$value);
@@ -338,9 +338,12 @@ class ProductsController extends Controller {
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}
-
 		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
+		$sum_invest =  0;
 
+		foreach ($list_product->get()->toArray() as $key => $value) {
+			$sum_invest += $value['origin_price'] * $value['in_stock'];
+		}
 
 		$list_product = $list_product->paginate(100);
 		// pr(DB::getQueryLog());die;
@@ -353,7 +356,7 @@ class ProductsController extends Controller {
 								'oums'			=>$oums,
 								'producttypes'		=>$producttypes,
 								'list_product'		=> $list_product,
-								'list_all_product'	=>$list_all_product,
+								'list_all_product'		=>$list_all_product,
 								'arr_sort' 		=> $arr_sort,
 								'arr_filter' 		=> $arr_filter,
 								'sum_invest'		=>$sum_invest
@@ -704,6 +707,7 @@ class ProductsController extends Controller {
 
 	public function anyListPopupRso(Request $request)
 	{
+		DB::enableQueryLog();
 		if($request->has('input-sort')){
 			$arr_sort = $request->input('input-sort');
 			$arr_sort = (array)json_decode($arr_sort);
@@ -732,7 +736,7 @@ class ProductsController extends Controller {
 		$oums = Oum::get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
-		$current_rpo = ReturnSaleorder::find(session('current_returnsaleorder'));
+		$current_rso = ReturnSaleorder::find(session('current_returnsaleorder'));
 
 		$list_product = MProduct::select('products.name',
 		                                'products.sku',
@@ -752,7 +756,31 @@ class ProductsController extends Controller {
 					->where('m_products.module_type','=','App\\Saleorder')
 					->where('saleorders.status','=',1)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
-					->where('m_products.company_id','=',$current_rpo->company_id);
+					->where('m_products.company_id','=',$current_rso->company_id);
+
+		$list_product_id_so = MProduct::select('m_products.id')
+					->leftJoin('saleorders',function($join){
+						$join->on('saleorders.id','=','m_products.module_id')
+						->where('saleorders.status','=',1);
+					})
+					->where('m_products.module_type','=','App\\Saleorder')
+					->where('saleorders.status','=',1)
+					->where('m_products.company_id','=',$current_rso->company_id)
+					->lists('m_products.id');
+
+		$list_product_rso = MProduct::select('m_products.id',
+		                                'm_products.m_product_id_so',
+		                                'm_products.specification',
+		                                'm_products.quantity'
+		                                )
+					->leftJoin('return_saleorders',function($join){
+						$join->on('return_saleorders.id','=','m_products.module_id')
+						->where('return_saleorders.status','=',1);
+					})
+					->where('m_products.module_type','=','App\\ReturnSaleorder')
+					->where('return_saleorders.status','=',1)
+					->whereIn('m_product_id_so',$list_product_id_so)
+					->where('m_products.company_id','=',$current_rso->company_id)->get();
 		if(count($arr_sort)==0){
 			$list_product = $list_product->orderBy('products.id','asc');
 		}
@@ -774,15 +802,52 @@ class ProductsController extends Controller {
 				}
 			}
 		$list_product = $list_product->paginate(20);
+		foreach ($list_product as $key => $value) {
+			$list_product[$key]->so_le = 0;
+			foreach ($list_product_rso as $key1 => $value1) {
+				if($value1->m_product_id_so==$value->id){
+					$so_luong_con = ($list_product[$key]->quantity * $list_product[$key]->specification) + $list_product[$key]->so_le - ($value1->quantity * $value1->specification);
+					$list_product[$key]->quantity = floor($so_luong_con/$list_product[$key]->specification);
+					$list_product[$key]->so_le = $so_luong_con%$list_product[$key]->specification;
+				}
+			}
+		}
+		// pr($list_product->toArray());
+		// die;
+		// echo $current_rso->company_id;
+		// print_r(DB::getQueryLog());
+		// pr($list_product->toArray());die;
 		return view('popup.choose_product_rso', [
-								'distributes'		=>$distributes,
-								'oums'			=>$oums,
+								'distributes'		=> $distributes,
+								'oums'			=> $oums,
 								'list_product'		=> $list_product,
-								'list_all_product'	=>$list_all_product,
+								'list_all_product'		=> $list_all_product,
 								'arr_sort' 		=> $arr_sort,
 								'arr_filter' 		=> $arr_filter
 							        ]);
 	}
+
+	public function anySearchProduct(Request $request){
+		$arr_return = array();
+		$key = $request->has('key')?$request->input('key'):'';
+		$key = '%'.$key.'%';
+		$module_id = session('current_purchaseorder');
+		$module_type = 'App\Purchaseorder';
+		$arr_product_of_po = Mproduct::where('module_id','=',$module_id)
+						->where('module_type','=',$module_type)
+						->lists('product_id');
+
+		$arr_return = Product::select('id','sku','name')
+				->where(function($query) use ($key){
+					$query->where('sku','like',$key)
+						->orWhere('name','like',$key);
+				})
+				->whereNotIn('id',$arr_product_of_po)
+				->limit(15)
+				->get()->toArray();
+		return $arr_return;
+	}
+
 
 	public function anyExportPdf(){
 		$id_template = 2;

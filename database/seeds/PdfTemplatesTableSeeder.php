@@ -63,7 +63,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:22:28',
-				'updated_at' => '2015-07-27 15:59:43',
+				'updated_at' => '2015-07-28 13:57:57',
 			),
 			2 => 
 			array (
@@ -385,11 +385,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>Danh S&aacute;ch Đại L&yacute; Trả</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:37:52',
-				'updated_at' => '2015-07-23 13:41:56',
+				'updated_at' => '2015-07-28 13:58:10',
 			),
 			7 => 
 			array (
@@ -407,11 +412,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>Danh S&aacute;ch Đơn H&agrave;ng</strong></span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:01',
-				'updated_at' => '2015-07-23 13:42:03',
+				'updated_at' => '2015-07-28 13:58:23',
 			),
 			8 => 
 			array (
@@ -438,7 +448,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:13',
-				'updated_at' => '2015-07-27 15:59:28',
+				'updated_at' => '2015-07-28 13:57:55',
 			),
 			9 => 
 			array (
@@ -465,7 +475,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:21',
-				'updated_at' => '2015-07-27 15:58:54',
+				'updated_at' => '2015-07-28 13:58:02',
 			),
 			10 => 
 			array (

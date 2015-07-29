@@ -409,6 +409,52 @@ class PurchaseordersController extends Controller {
 		return '';
 	}
 
+	public function postAddProductQuick(Request $request){
+		$arr_return = array(
+			"status"=>'success'
+		);
+
+		$product_id = $request->has('product_id')?$request->input('product_id'):0;
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$module_id = session('current_purchaseorder');
+		$module_type = 'App\Purchaseorder';
+		$arr_product = session('product_of_po'.session('current_purchaseorder'));
+		$arr_product_of_po = Mproduct::where('module_id','=',$module_id)
+						->where('module_type','=',$module_type)
+						->lists('product_id');
+		if(!in_array($product_id, $arr_product_of_po)){
+			$product = Product::find($product_id);
+			$mproduct = new MProduct;
+			$mproduct->product_id		=	$product_id;
+			$mproduct->company_id	=	$company_id;
+			$mproduct->module_id		= 	$module_id;
+			$mproduct->module_type	=	$module_type;
+			$mproduct->specification	=	0;
+			$mproduct->oum_id		=	0;
+			$mproduct->origin_price	=	0;
+			$mproduct->save();
+			Session::put('product_of_po'.session('current_purchaseorder').".".$mproduct , $mproduct);
+			$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
+			if($last_sellprice){
+				$arr_sellprice = SellPrice::where('m_product_id','=',$last_sellprice->m_product_id)->get()->toArray();
+				foreach ($arr_sellprice as $key => $value) {
+					$sellprice = new SellPrice;
+					$sellprice->name = $value['name'];
+					$sellprice->price = $value['price'];
+					$sellprice->m_product_id = $mproduct->id;
+					$sellprice->product_id = $value['product_id'];
+					$sellprice->save();
+				}
+			}
+			$product = Product::find($product_id);
+			if(!$product->check_in_stock){
+				$product->check_in_stock = 1;
+				$product->save();
+			}
+		}
+		return $arr_return;
+	}
+
 	public function anyAddProduct(Request $request){
 		$arr_return = array(
 			"status"=>'success'

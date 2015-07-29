@@ -72,9 +72,13 @@
 	$(function(){
 		datatype_currency();
 		datatype_number();
-
+		var old_quantity = 0;
+		var old_specification = 0;
 		$("#list_product input#quantity").on('focusin', function(){
-			old_value = $(this).val();
+			old_quantity = $(this).val();
+		});
+		$("#list_product input#specification").on('focusin', function(){
+			old_specification = $(this).val();
 		});
 
 		$("#list_product select, #list_product input").on('change',function(e){
@@ -103,7 +107,8 @@
 						sum_amount();
 					}else{
 						toastr['error'](data.message);
-						$("tr[data-id="+id+"] #quantity").val(old_value);
+						$("tr[data-id="+id+"]").find("#quantity").val(old_quantity);
+						$("tr[data-id="+id+"]").find("#specification").val(old_specification);
 					}
 					
 				}

@@ -92,7 +92,7 @@
 						sum_invest();
 					}else{
 						toastr['error'](data.message);
-						$("tr[data-id="+id+"] #quantity").val(old_value);
+						$("tr[data-id="+id+"]").find("#quantity").val(old_value);
 					}
 					
 				}

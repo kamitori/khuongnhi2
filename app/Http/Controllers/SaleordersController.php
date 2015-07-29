@@ -334,7 +334,7 @@ class SaleordersController extends Controller {
 		}
 		$list_date = array_unique($list_date);
 
-		$list_saleorder = Saleorder::select('saleorders.*','suminvest.*')->with('company')
+		$list_saleorder = Saleorder::select('saleorders.*','suminvest.*','companies.name as company_name')->with('company')
 					->leftJoin(
 							DB::raw(' (
 									select module_id, module_type,sum(invest) as sum_invest 
@@ -342,10 +342,10 @@ class SaleordersController extends Controller {
 								    ) as suminvest'), function($join){
 								$join->on('saleorders.id', '=', 'module_id');
 							}
-						);
+						)->leftJoin('companies','companies.id','=','saleorders.company_id');
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
-				$list_saleorder = $list_saleorder->leftJoin('companies','companies.id','=','saleorders.company_id')->orderBy('companies.name',$value);
+				$list_saleorder = $list_saleorder->orderBy('companies.name',$value);
 			}else{
 				$list_saleorder = $list_saleorder->orderBy($key,$value);
 			}
@@ -369,7 +369,10 @@ class SaleordersController extends Controller {
 			$arr_filter['status'] = '';
 		}
 		$list_saleorder = $list_saleorder->paginate(20);
-
+		foreach($list_saleorder as $key => $so){
+			$list_saleorder[$key]['date'] = date('d-m-Y',strtotime($so['date']));
+		}
+		\Cache::put('list_saleorder'.\Auth::user()->id, $list_saleorder, 30);
 		// var_dump(DB::getQueryLog());die;
 		$this->layout->content=view('saleorder.list', [
 								'distributes'		=>	$distributes,

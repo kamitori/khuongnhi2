@@ -93,6 +93,10 @@
 			<td>{{$product['oum_name']}}</td>
 			<td>{{$product['specification']}}</td>
 			<?php
+				
+				if($product['specification'] ==0 ){
+					pr($product->toArray());die;
+				}
 				$tonkho = floor($product['in_stock']/$product['specification']);
 				$view_tonkho = $tonkho.' '.$product['oum_name'];
 				if($product['in_stock']%$product['specification'] && $product['specification']!=1){

@@ -66,6 +66,12 @@
 	$(function(){
 		datatype_currency();
 		datatype_number();
+		var old_quantity = 0;
+		var old_specification = 0;
+		$("#list_product input#quantity , #list_product input#specification").on('focusin', function(){
+			old_quantity = $("#list_product input#quantity").val();
+			old_specification = $("#list_product input#specification").val();
+		});
 
 		
 		$("#list_product select, #list_product input").on('change',function(e){
@@ -94,6 +100,8 @@
 						sum_invest();
 					}else{
 						toastr['error'](data.message);
+						$("tr[data-id="+id+"]").find("#quantity").val(old_quantity);
+						$("tr[data-id="+id+"]").find("#specification").val(old_specification);
 					}
 					
 				}

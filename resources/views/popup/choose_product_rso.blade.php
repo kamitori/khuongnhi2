@@ -75,10 +75,9 @@
 				<td>{{$product['specification']}}</td>
 				<?php
 					$view_tonkho = $product['quantity'].' '.$product['oum']['name'];
-					// if($product['quantity']%$product['specification'] && $product['specification']!=1){
-					// 	$sodu = $product['quantity']%$product['specification'];
-					// 	$view_tonkho .= ' + '.$sodu.' '.'cái';
-					// }
+					if($product['so_le'] && $product['specification']!=1){
+						$view_tonkho .= ' + '.$product['so_le'].' '.'cái';
+					}
 				?>
 				<td>{{$view_tonkho}}</td>
 			</tr>

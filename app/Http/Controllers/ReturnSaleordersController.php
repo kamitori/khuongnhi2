@@ -376,8 +376,8 @@ class ReturnSaleordersController extends Controller {
 			$arr_filter['status'] = '';
 		}
 		$list_returnsaleorder = $list_returnsaleorder->paginate(20);
-		foreach($list_returnsaleorder as $key => $rpo){
-			$list_returnsaleorder[$key]['date'] = date('d-m-Y',strtotime($rpo['date']));
+		foreach($list_returnsaleorder as $key => $rso){
+			$list_returnsaleorder[$key]['date'] = date('d-m-Y',strtotime($rso['date']));
 		}
 		\Cache::put('list_returnsaleorder'.\Auth::user()->id, $list_returnsaleorder, 30);
 
@@ -424,10 +424,10 @@ class ReturnSaleordersController extends Controller {
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_rso)){
 				$product = MProduct::find($product_id);
-				
 				$mproduct = new MProduct;
 				$mproduct->product_id		=	$product->product_id;
 				$mproduct->m_product_id	=	$product->m_product_id;
+				$mproduct->m_product_id_so	=	$product->id;
 				$mproduct->module_id		= 	$module_id;
 				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
@@ -495,12 +495,21 @@ class ReturnSaleordersController extends Controller {
 							->where('module_type','=','App\\Saleorder')
 							->where('company_id','=',$mproduct->company_id)
 							->get()->first();
+			$mproduct_rso_before = Mproduct::where('m_product_id_so','=',$mproduct_so->id)
+							->where('module_type','=','App\\ReturnSaleorder')
+							->where('company_id','=',$mproduct->company_id)
+							->get();
+			$mproduct_so->con_lai = $mproduct_so->quantity * $mproduct_so->specification;
+			foreach ($mproduct_rso_before as $key => $value) {
+				$mproduct_so->con_lai -=  $value->quantity * $value->specification;
+			}
+					
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->sell_price =  $request->has('sell_price')?$request->input('sell_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
-			$check_return = ($mproduct_so->quantity*$mproduct_so->specification - $mproduct->quantity*$mproduct->specification) >=0;
+			$check_return = ($mproduct_so->con_lai - $mproduct->quantity*$mproduct->specification) >=0;
 
 			// echo $mproduct_so->quantity*$mproduct_so->specification."<br/><br/>";
 			// echo ($mproduct_so->quantity*$mproduct_so->specification - $mproduct->quantity*$mproduct->specification);
