@@ -941,14 +941,15 @@ class ProductsController extends Controller {
 			$arr_cache = \Cache::get('list_product'.\Auth::user()->id);
 			$sum_invest = 0;
 			foreach ($arr_cache as $key => $value) {
-				$sum_invest += $value['invest'];
+				$sum_invest += $value['origin_price']*$value['in_stock'];
 				$arr_cache[$key]['ton_kho'] = floor($value['in_stock'] / $value['specification']).' '.$value['oum_name'];
+				$arr_cache[$key]['invest'] = $value['origin_price']*$value['in_stock'];
 				if($value['in_stock']%$value['specification'] && $value['specification']!=1){
 					$sodu = $value['in_stock']%$value['specification'];
 					$arr_cache[$key]['ton_kho'] .= ' + '.$sodu.' '.'cái';
 				}
 			}
-			$arr_print['arr_list']['arr_sum'] = [
+			$arr_print['arr_list']['arr_sum'][] = [
 				['value'=>'Tổng vốn lưu:','colspan'=>'7'],
 				['value'=>$sum_invest]
 			];

@@ -63,6 +63,7 @@
 		datatype_currency();
 		datatype_number();
 		var old_value = 0;
+		datatype_quantity();
 		$("#list_product input#quantity").on('focusin', function(){
 			old_value = $(this).val();
 		});

@@ -98,8 +98,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$key_order++;
 		}
@@ -114,8 +114,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-			$list_order[$key_order]['lai_thuc'] =  0;
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  0;
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$key_order++;
 		}
@@ -124,6 +124,19 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+
+		$company_name = Company::find($company_id);
+		$company_name = $company_name->name;
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'company_name'=>$company_name,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_revenue_customer'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('revenue.list-revenue-customer',[
 				'list_order' => $list_order
 			]);
@@ -160,8 +173,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$key_order++;
 		}
@@ -177,8 +190,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-			$list_order[$key_order]['lai_thuc'] =  0;
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  0;
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$key_order++;
 		}
@@ -187,6 +200,17 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+		$user_name = User::find($user_id);
+		$user_name = $user_name->name;
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'user_name'=>$user_name,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_revenue_user'.\Auth::user()->id, $arr_cache, 30);
 		return view('revenue.list-revenue-customer',[
 				'list_order' => $list_order
 			]);
@@ -241,8 +265,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_product[$key_order] = $value['id'];
 			$key_order++;
@@ -265,7 +289,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -273,8 +297,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -285,12 +309,19 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'list_order'=>$list_order,
+				];
+
+		\Cache::put('list_revenue_product'.\Auth::user()->id, $arr_cache, 30);
 		return view('revenue.list-revenue-product',[
 				'list_order' => $list_order
 			]);
 	}
 
-	public function getMonth(){
+	public function getCustomerMonth(){
 		$min_year = ReceiptMonth::min('year');
 
 		$arr_month_year = ReceiptMonth::select('year','month')
@@ -300,13 +331,13 @@ class RevenuesController extends Controller {
 						->orderBy('month','DESC')
 						->get()->toArray();
 
-		$this->layout->content = view('revenue.revenue-month',[	
+		$this->layout->content = view('revenue.revenue-customer-month',[	
 							'arr_month_year' 	=> 	$arr_month_year,
 							'min_year'		=>	$min_year
 						]);
 	}
 
-	public function postListRevenueMonth(Request $request){
+	public function postListRevenueCustomerMonth(Request $request){
 		DB::enableQueryLog();
 		$list_order = array();
 
@@ -336,8 +367,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_product[$key_order] = $value['id'];
 			$key_order++;
@@ -356,7 +387,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -364,8 +395,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -376,21 +407,33 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
-		return view('revenue.list-revenue-month',[
-				'list_order' => $list_order
+		$chi_khac = RevenueOther::where('date','>=',$begin)
+					->where('date','<',$end)
+					->sum('sum_amount');
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'list_order'=>$list_order,
+					'chi_khac'=>$chi_khac
+				];
+
+		\Cache::put('list_revenue_customer_month'.\Auth::user()->id, $arr_cache, 30);
+
+		return view('revenue.list-revenue-customer-month',[
+				'list_order' => $list_order,
+				'chi_khac'  => $chi_khac
 			]);
 	}
 
-	public function getYear(){
+	public function getCustomerYear(){
 		$min_year = ReceiptMonth::min('year');
-
-
-		$this->layout->content = view('revenue.revenue-year',[	
+		$this->layout->content = view('revenue.revenue-customer-year',[	
 							'min_year'		=>	$min_year
 						]);
 	}
 
-	public function postListRevenueYear(Request $request){
+	public function postListRevenueCustomerYear(Request $request){
 		DB::enableQueryLog();
 		$list_order = array();
 		$year = $request->has('year')?$request->input('year'):0;
@@ -413,8 +456,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_product[$key_order] = $value['id'];
 			$key_order++;
@@ -433,7 +476,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -441,8 +484,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -453,8 +496,21 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
-		return view('revenue.list-revenue-year',[
-				'list_order' => $list_order
+		$chi_khac = RevenueOther::where('date','>=',$begin)
+					->where('date','<',$end)
+					->sum('sum_amount');
+
+		$arr_cache = [
+					'year'=>$year,
+					'list_order'=>$list_order,
+					'chi_khac'=>$chi_khac
+				];
+
+		\Cache::put('list_revenue_customer_year'.\Auth::user()->id, $arr_cache, 30);
+
+		return view('revenue.list-revenue-customer-year',[
+				'list_order' => $list_order,
+				'chi_khac'  => $chi_khac
 			]);
 	}
 
@@ -583,8 +639,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_product[$key_order] = $value['id'];
 			$key_order++;
@@ -609,7 +665,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -617,8 +673,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -629,6 +685,16 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+		$company_name = Company::find($company_id);
+		$company_name = $company_name->name;
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'company_name'=>$company_name,
+					'list_order'=>$list_order
+				];
+		\Cache::put('list_revenue_distribute'.\Auth::user()->id, $arr_cache, 30);
 		return view('revenue.list-revenue-distribute',[
 				'list_order' => $list_order
 			]);
@@ -687,8 +753,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_company[$key_order] = $value['company_id'];
 			$key_order++;
@@ -713,7 +779,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -721,8 +787,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -733,6 +799,14 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'list_order'=>$list_order,
+				];
+
+		\Cache::put('list_revenue_distribute_month'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('revenue.list-revenue-distribute-month',[
 				'list_order' => $list_order
 			]);
@@ -777,8 +851,8 @@ class RevenuesController extends Controller {
 			$list_order[$key_order]['sum_amount'] =  $value['sum_amount'];
 			$list_order[$key_order]['sum_invest'] =  $value['sum_invest'];
 			$list_order[$key_order]['khoang_giam'] =  0;
-			$list_order[$key_order]['lai_thuc'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
-			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] - $list_order[$key_order]['khoang_giam'];
+			$list_order[$key_order]['lai'] =  $list_order[$key_order]['sum_amount'] - $list_order[$key_order]['sum_invest'];
+			$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] - $list_order[$key_order]['khoang_giam'];
 			$list_order[$key_order]['updated_at'] = $value['updated_at'];
 			$arr_company[$key_order] = $value['company_id'];
 			$key_order++;
@@ -803,7 +877,7 @@ class RevenuesController extends Controller {
 				$list_order[$check_in_array]['sum_amount'] -=  $value['sum_amount'];
 				$list_order[$check_in_array]['sum_invest'] -=  $value['sum_invest'];
 				$list_order[$check_in_array]['khoang_giam'] -=  (abs($value['sum_amount']) - abs($value['sum_invest']));
-				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai_thuc'] + $list_order[$check_in_array]['khoang_giam'];
+				$list_order[$check_in_array]['loi_nhuan'] = $list_order[$check_in_array]['lai'] + $list_order[$check_in_array]['khoang_giam'];
 			}else{
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['name'] = $value['name'];
@@ -811,8 +885,8 @@ class RevenuesController extends Controller {
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_amount'];
 				$list_order[$key_order]['sum_invest'] =  -$value['sum_invest'];
 				$list_order[$key_order]['khoang_giam'] =  - (abs($list_order[$key_order]['sum_amount']) - abs($list_order[$key_order]['sum_invest']));
-				$list_order[$key_order]['lai_thuc'] =  0;
-				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai_thuc'] + $list_order[$key_order]['khoang_giam'];
+				$list_order[$key_order]['lai'] =  0;
+				$list_order[$key_order]['loi_nhuan'] = $list_order[$key_order]['lai'] + $list_order[$key_order]['khoang_giam'];
 				$list_order[$key_order]['updated_at'] = $value['updated_at'];
 				$key_order++;
 			}
@@ -823,8 +897,561 @@ class RevenuesController extends Controller {
 			$date[$key] = $value['date'];
 		}
 		array_multisort($date,SORT_ASC,$list_order);
+
+		$arr_cache = [
+					'year'=>$year,
+					'list_order'=>$list_order,
+				];
+
+		\Cache::put('list_revenue_distribute_year'.\Auth::user()->id, $arr_cache, 30);
 		return view('revenue.list-revenue-distribute-year',[
 				'list_order' => $list_order
 			]);
+	}
+
+
+	public function anyExportPdfCustomer(){
+		$id_template = 17;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'date',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Ngày','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_customer'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_customer'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$arr_print['arr_data']['company_name'] = $arr_cache['company_name'];
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_thu_khach_hang_'.str_replace('-','_',\Str::slug($arr_cache['company_name'])).'_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfCustomerMonth(){
+		$id_template = 18;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Công ty','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_customer_month'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_customer_month'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Chi khác:','colspan'=>'6'],
+				['value'=>-$arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Lãi thực:','colspan'=>'6'],
+				['value'=>$total_loi_nhuan - $arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_thu_khach_hang_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfCustomerYear(){
+		$id_template = 19;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Công ty','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_customer_year'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_customer_year'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Chi khác:','colspan'=>'6'],
+				['value'=>-$arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Lãi thực:','colspan'=>'6'],
+				['value'=>$total_loi_nhuan - $arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_thu_khach_hang_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfUser(){
+		$id_template = 20;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'date',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Ngày','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_user'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_user'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$arr_print['arr_data']['user_name'] = $arr_cache['user_name'];
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_so_nhan_vien_'.str_replace('-','_',\Str::slug($arr_cache['user_name'])).'_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfProduct(){
+		$id_template = 21;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Sản phẩm','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_product'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_product'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_so_san_pham_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfDistribute(){
+		$id_template = 22;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Sản phẩm','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_distribute'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_distribute'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$arr_print['arr_data']['company_name'] = $arr_cache['company_name'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_so_nha_cung_cap_'.str_replace('-','_',\Str::slug($arr_cache['company_name'])).'_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfDistributeMonth(){
+		$id_template = 23;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Công ty','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_distribute_month'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_distribute_month'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_so_nha_cung_cap_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfDistributeYear(){
+		$id_template = 24;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'name',
+								'sum_invest',
+								'sum_amount',
+								'khoang_giam',
+								'lai',
+								'ty_le_lai',
+								'loi_nhuan'
+								],
+						'arr_head' => 	[
+								['text'=>'Công ty','class'=>''],
+								['text'=>'Giá vốn','class'=>'money'],
+								['text'=>'Doanh thu','class'=>'money'],
+								['text'=>'Khoảng giảm','class'=>'money'],
+								['text'=>'Lãi','class'=>'money'],
+								['text'=>'Tỷ lệ lãi','class'=>'right strong'],
+								['text'=>'Lợi nhuận','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_revenue_distribute_year'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_revenue_distribute_year'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+
+			$total_sum_amount = 0;
+			$total_sum_invest = 0;
+			$total_khoang_giam = 0;
+			$total_lai = 0;
+			$total_loi_nhuan = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$list_order[$key]['ty_le_lai'] = number_format(($value['lai']/$value['sum_invest'])*100,2).'%';
+				$total_sum_invest += $value['sum_invest'];
+				$total_sum_amount += $value['sum_amount'];
+				$total_lai += $value['lai'];
+				$total_loi_nhuan += $value['loi_nhuan'];
+				$total_khoang_giam +=  $value['khoang_giam'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_invest],
+				['value'=>$total_sum_amount],
+				['value'=>$total_khoang_giam],
+				['value'=>$total_lai],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_loi_nhuan]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Chi khác:','colspan'=>'6'],
+				['value'=>-$arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Lãi thực:','colspan'=>'6'],
+				['value'=>$total_loi_nhuan - $arr_cache['chi_khac']]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'doanh_so_nha_cung_cap_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
 	}
 }

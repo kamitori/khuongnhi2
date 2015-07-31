@@ -63,6 +63,8 @@ class ExportsController extends Controller {
 			$no_cu = $toa_moi *rand(50,500)/100;
 			$tong_cong = $no_cu + $toa_moi;
 			$date = date('d-m-Y');
+			$month = date('m');
+			$year = date('Y');
 			$date_print = date('d-m-Y');
 			$company_name = 'Cơ sở may Khương Nhi';
 			$address = '33/6 Đường số 19, P5, Gò Vấp';
@@ -75,6 +77,8 @@ class ExportsController extends Controller {
 			$pdf = str_replace('{{$no_cu}}',number_format($no_cu),$pdf);
 			$pdf = str_replace('{{$tong_cong}}',number_format($tong_cong),$pdf);
 			$pdf = str_replace('{{$date}}',$date,$pdf);
+			$pdf = str_replace('{{$month}}',$month,$pdf);
+			$pdf = str_replace('{{$year}}',$year,$pdf);
 			$pdf = str_replace('{{$id}}',$id,$pdf);
 			$pdf = str_replace('{{$company_name}}',$company_name,$pdf);
 			$pdf = str_replace('{{$address}}',$address,$pdf);
@@ -129,15 +133,21 @@ class ExportsController extends Controller {
 				}
 				$table_list.='		</tr>';
 			}
-			$table_list.='			<tr class="sum">';
-			foreach ($arr_sum as $key => $value) {
-				if($key==0){
-					$table_list.='		<td colspan="'.$value['colspan'].'">'.$value['value'].'</td>';
-				}else{
-					$table_list.='		<td class="money">'.$value['value'].'</td>';
+			
+			foreach ($arr_sum as $key => $sum) {
+				$table_list.='			<tr class="sum">';
+				foreach ($sum as $key2 => $value){
+					// pr($value['colspan']);die;
+					$class = isset($value['class'])?$value['class']:'money';
+					if($key2==0){
+						$table_list.='		<td colspan="'.$value['colspan'].'">'.$value['value'].'</td>';
+					}else{
+						$table_list.='		<td class="'.$class.'">'.$value['value'].'</td>';
+					}
 				}
+				$table_list.='			</tr>';
 			}
-			$table_list.='			</tr>';
+			
 			$table_list.= '		</tbody>
 					</table>';
 			$pdf = str_replace('{{$table_list}}',$table_list,$pdf);

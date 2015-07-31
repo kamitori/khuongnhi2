@@ -5,7 +5,7 @@
 	</div>
 	<div class="buttons pull-right">
 		<a href="javascript:addPaid()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm thanh toán</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
+		<a href="javascript:window.open('{{URL}}/receipts/export-pdf-customer','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Xuất Excel</a>
 	</div>
 </div>
@@ -113,7 +113,6 @@
 							<label class="control-label">Công ty:</label>
 							<div class="controls">
 								<select id="company_paid" width="auto" data-type="select2">
-									<option value="all">&nbsp;</option>
 									@foreach($customers as $company)
 									<option value="{{$company['id']}}">{{$company['name']}}</option>
 									@endforeach
@@ -146,7 +145,6 @@
 							<label class="control-label">Người thu:</label>
 							<div class="controls">
 								<select id="user_paid" width="auto" data-type="select2">
-									<option value="all">&nbsp;</option>
 									@foreach($users as $user)
 									<option value="{{$user['id']}}">{{$user['name']}}</option>
 									@endforeach
@@ -265,6 +263,7 @@
 		$(".left-list").css({'overflow-y':'auto','overflow-x':'hidden'});
 	}
 	function addPaid(){
+		$("#form_paid")[0].reset();
 		$("#paid_id").val(0);
 		$("#modal_paid").modal("show");
 	}

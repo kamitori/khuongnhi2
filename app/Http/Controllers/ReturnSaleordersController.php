@@ -681,12 +681,12 @@ class ReturnSaleordersController extends Controller {
 			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
 			$arr_print['arr_data']['toa_moi'] = number_format(-$arr_print['arr_data']['toa_moi']);
 			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
-			$arr_print['arr_list']['arr_sum'] = [
+			$arr_print['arr_list']['arr_sum'][] = [
 				['value'=>'Tổng cộng:','colspan'=>'6'],
 				['value'=>$sum_amount]
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
-			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_so_'.$rso->id,'potrait');
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_dai_ly_tra_hang_so_'.$rso->id,'potrait');
 			return redirect($link);
 		}
 		die;
@@ -729,7 +729,7 @@ class ReturnSaleordersController extends Controller {
 					$arr_cache[$key]['status'] = 'Mới';
 				}
 			}
-			$arr_print['arr_list']['arr_sum'] = [
+			$arr_print['arr_list']['arr_sum'][] = [
 				['value'=>'Tổng cộng:','colspan'=>'4'],
 				['value'=>$total_sum_amount],
 			];

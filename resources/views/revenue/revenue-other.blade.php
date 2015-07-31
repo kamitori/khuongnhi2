@@ -1,7 +1,6 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/revenues/revenue-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
-		<a href="{{URL}}/revenues/revenue-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
+		
 	</div>
 	<div class="buttons pull-right">
 		<a href="javascript:addOther()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm chi khác</a>

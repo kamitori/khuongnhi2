@@ -148,6 +148,19 @@ class ReceiptsController extends Controller {
 			}
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+
+		$company_name = Company::find($company_id);
+		$company_name = $company_name->name;
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'company_name'=>$company_name,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_distribute'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('receipt.list-receipt-distribute',[
 					'list_order' =>$list_order
 			]);
@@ -279,6 +292,17 @@ class ReceiptsController extends Controller {
 			}
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+		$company_name = Company::find($company_id);
+		$company_name = $company_name->name;
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'company_name'=>$company_name,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_customer'.\Auth::user()->id, $arr_cache, 30);
 		return view('receipt.list-receipt-customer',[
 					'list_order' =>$list_order
 			]);
@@ -324,6 +348,15 @@ class ReceiptsController extends Controller {
 						]);
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_distribute_month'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('receipt.list-receipt-distribute-month',[
 					'list_order' =>$list_order
 			]);
@@ -369,6 +402,15 @@ class ReceiptsController extends Controller {
 						]);
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+
+		$arr_cache = [
+					'month'=>$month,
+					'year'=>$year,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_customer_month'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('receipt.list-receipt-customer-month',[
 					'list_order' =>$list_order
 			]);
@@ -405,6 +447,12 @@ class ReceiptsController extends Controller {
 			$list_order[$key]['no_cu'] = $receipt_month_last['no_cu'];
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+		$arr_cache = [
+					'year'=>$year,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_distribute_year'.\Auth::user()->id, $arr_cache, 30);
 		return view('receipt.list-receipt-distribute-year',[
 					'list_order' =>$list_order
 			]);
@@ -441,6 +489,12 @@ class ReceiptsController extends Controller {
 			$list_order[$key]['no_cu'] = $receipt_month_last['no_cu'];
 			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
 		}
+		$arr_cache = [
+					'year'=>$year,
+					'list_order'=>$list_order
+				];
+
+		\Cache::put('list_receipt_customer_year'.\Auth::user()->id, $arr_cache, 30);
 		return view('receipt.list-receipt-customer-year',[
 					'list_order' =>$list_order
 			]);
@@ -487,5 +541,320 @@ class ReceiptsController extends Controller {
 			$arr_return['message'] = 'Not found';
 		}
 		return $arr_return;
+	}
+
+
+	public function anyExportPdfDistribute(){
+		$id_template = 11;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'date',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Ngày','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_distribute'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_distribute'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$arr_print['arr_data']['company_name'] = $arr_cache['company_name'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai = $value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_khach_hang_'.str_replace('-','_',\Str::slug($arr_cache['company_name'])).'_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfDistributeMonth(){
+		$id_template = 12;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'company_name',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_distribute_month'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_distribute_month'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai += $value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_nha_cung_cap_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfDistributeYear(){
+		$id_template = 13;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'company_name',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_distribute_year'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_distribute_year'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai = +$value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_nha_cung_cap_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfCustomer(){
+		$id_template = 16;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'date',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Ngày','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_customer'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_customer'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$arr_print['arr_data']['company_name'] = $arr_cache['company_name'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai = $value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_khach_hang_'.str_replace('-','_',\Str::slug($arr_cache['company_name'])).'_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfCustomerMonth(){
+		$id_template = 15;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'company_name',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_customer_month'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_customer_month'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['month'] = $arr_cache['month'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai += $value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_khach_hang_thang_'.$arr_cache['month'].'_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
+	}
+
+	public function anyExportPdfCustomerYear(){
+		$id_template = 14;
+		$arr_print = 	[
+				'arr_list' =>	[
+						'arr_key' => 	[
+								'company_name',
+								'sum_amount',
+								'paid',
+								'no_cu',
+								'con_lai'
+								],
+						'arr_head' => 	[
+								['text'=>'Nhà cung cấp','class'=>''],
+								['text'=>'Tổng tiền toa','class'=>'money'],
+								['text'=>'Tiền thanh toán','class'=>'money'],
+								['text'=>'Nợ cũ','class'=>'money'],
+								['text'=>'Còn lại','class'=>'money']
+								],
+						'arr_body'=>[],
+						'arr_sum'=>[]
+						],
+				'arr_data'=>	[
+
+						]
+				];	
+		if (\Cache::has('list_receipt_customer_year'.\Auth::user()->id)){
+			$arr_cache = \Cache::get('list_receipt_customer_year'.\Auth::user()->id);
+			$list_order = $arr_cache['list_order'];
+			$arr_print['arr_data']['year'] = $arr_cache['year'];
+			$total_sum_amount = 0;
+			$total_sum_paid = 0;
+			$total_con_lai = 0;
+			foreach ($list_order as $key => $value) {
+				$total_sum_amount += $value['sum_amount'];
+				$total_sum_paid += $value['paid'];
+				$total_con_lai += $value['con_lai'];
+			}
+			$arr_print['arr_list']['arr_sum'][] = [
+				['value'=>'Tổng:','colspan'=>'1'],
+				['value'=>$total_sum_amount],
+				['value'=>$total_sum_paid],
+				['value'=>'','class'=>'center'],
+				['value'=>$total_con_lai]
+			];
+			$arr_print['arr_list']['arr_body'] = $list_order;
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'cong_no_khach_hang_nam_'.$arr_cache['year'],'potrait');
+			return redirect($link);
+		}
+		die;
 	}
 }	

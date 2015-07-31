@@ -1,10 +1,9 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/revenues/revenue-month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
-		<a href="{{URL}}/revenues/revenue-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
+		
 	</div>
 	<div class="buttons pull-right">
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Xuất PDF</a>
+		<a href="javascript:window.open('{{URL}}/revenues/export-pdf-user','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Xuất Excel</a>
 	</div>
 </div>
@@ -79,7 +78,7 @@
 									<th class="center">Giá vốn</th>
 									<th class="center">Doanh Thu</th>
 									<th class="center">Khoảng giảm</th>
-									<th class="center">Lãi thực</th>
+									<th class="center">Lãi</th>
 									<th class="center">Tỷ lệ lãi</th>
 									<th class="center">Lợi nhuận</th>
 								</tr>

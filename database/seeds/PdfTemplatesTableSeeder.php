@@ -30,11 +30,12 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:19:19',
-				'updated_at' => '2015-07-23 13:41:47',
+				'updated_at' => '2015-07-31 08:56:35',
 			),
 			1 => 
 			array (
@@ -394,7 +395,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:37:52',
-				'updated_at' => '2015-07-28 13:58:10',
+				'updated_at' => '2015-07-31 08:56:38',
 			),
 			7 => 
 			array (
@@ -421,7 +422,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:01',
-				'updated_at' => '2015-07-28 13:58:23',
+				'updated_at' => '2015-07-31 08:56:41',
 			),
 			8 => 
 			array (
@@ -475,7 +476,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:21',
-				'updated_at' => '2015-07-28 13:58:02',
+				'updated_at' => '2015-07-30 09:25:18',
 			),
 			10 => 
 			array (
@@ -493,11 +494,17 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>C&ocirc;ng nợ&nbsp;nh&agrave; cung cấp {{$company_name}}</strong><br />
+Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:13',
-				'updated_at' => '2015-07-23 13:41:22',
+				'updated_at' => '2015-07-30 09:27:01',
 			),
 			11 => 
 			array (
@@ -515,11 +522,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">C&ocirc;ng nợ&nbsp;nh&agrave; cung cấp&nbsp;th&aacute;ng {{$month}} năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:45',
-				'updated_at' => '2015-07-23 13:41:40',
+				'updated_at' => '2015-07-30 10:26:45',
 			),
 			12 => 
 			array (
@@ -537,11 +549,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">C&ocirc;ng nợ&nbsp;nh&agrave; cung cấp năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:52',
-				'updated_at' => '2015-07-23 13:41:28',
+				'updated_at' => '2015-07-30 10:38:42',
 			),
 			13 => 
 			array (
@@ -559,11 +576,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">C&ocirc;ng nợ&nbsp;kh&aacute;ch h&agrave;ng&nbsp;năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:05',
-				'updated_at' => '2015-07-23 13:41:08',
+				'updated_at' => '2015-07-30 13:53:56',
 			),
 			14 => 
 			array (
@@ -581,11 +603,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">C&ocirc;ng nợ&nbsp;kh&aacute;ch h&agrave;ng&nbsp;th&aacute;ng {{$month}} năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:09',
-				'updated_at' => '2015-07-23 13:41:15',
+				'updated_at' => '2015-07-30 13:54:14',
 			),
 			15 => 
 			array (
@@ -603,11 +630,17 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>C&ocirc;ng nợ&nbsp;kh&aacute;ch h&agrave;ng&nbsp;{{$company_name}}</strong><br />
+Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:14',
-				'updated_at' => '2015-07-23 13:41:00',
+				'updated_at' => '2015-07-30 13:53:15',
 			),
 			16 => 
 			array (
@@ -625,11 +658,17 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>Doanh thu kh&aacute;ch h&agrave;ng&nbsp;{{$company_name}}</strong><br />
+Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:44',
-				'updated_at' => '2015-07-23 13:44:46',
+				'updated_at' => '2015-07-31 08:57:09',
 			),
 			17 => 
 			array (
@@ -647,11 +686,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">Doanh số&nbsp;nh&agrave; cung cấp&nbsp;th&aacute;ng {{$month}} năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:50',
-				'updated_at' => '2015-07-23 13:44:52',
+				'updated_at' => '2015-07-31 15:32:08',
 			),
 			18 => 
 			array (
@@ -669,11 +713,16 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">Doanh thu kh&aacute;ch h&agrave;ng&nbsp;năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:56',
-				'updated_at' => '2015-07-23 13:45:05',
+				'updated_at' => '2015-07-31 08:57:29',
 			),
 			19 => 
 			array (
@@ -691,11 +740,17 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>Doanh số nh&acirc;n vi&ecirc;n&nbsp;{{$user_name}}</strong><br />
+Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:52:08',
-				'updated_at' => '2015-07-23 13:42:31',
+				'updated_at' => '2015-07-31 11:23:10',
 			),
 			20 => 
 			array (
@@ -713,11 +768,98 @@ Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</stro
 Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
 </tr>
 </tbody>
-</table>',
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">Doanh số sản phẩm&nbsp;th&aacute;ng {{$month}} năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:52:15',
-				'updated_at' => '2015-07-23 13:42:41',
+				'updated_at' => '2015-07-31 11:33:23',
+			),
+			21 => 
+			array (
+				'id' => 22,
+				'name' => 'Doanh số NCC',
+				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
+<span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
+<strong>SHOP KHƯƠNG NHI</strong><br />
+ĐC: 5 ĐINH TI&Ecirc;N HO&Agrave;NG, P3, B&Igrave;NH THẠNH - ĐT&nbsp;<strong>08.&nbsp;35171589</strong><br />
+Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</strong><br />
+Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align:center"><span style="font-size:28px"><strong>Doanh số nh&agrave; cung cấp&nbsp;{{$company_name}}</strong><br />
+Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '2015-07-31 14:41:14',
+			),
+			22 => 
+			array (
+				'id' => 23,
+				'name' => 'Doanh số NCC tháng',
+				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
+<span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
+<strong>SHOP KHƯƠNG NHI</strong><br />
+ĐC: 5 ĐINH TI&Ecirc;N HO&Agrave;NG, P3, B&Igrave;NH THẠNH - ĐT&nbsp;<strong>08.&nbsp;35171589</strong><br />
+Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</strong><br />
+Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">Doanh số&nbsp;nh&agrave; cung cấp&nbsp;th&aacute;ng {{$month}} năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '2015-07-31 15:30:20',
+			),
+			23 => 
+			array (
+				'id' => 24,
+				'name' => 'Doanh số NCC năm',
+				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+<tbody>
+<tr>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
+<span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
+<strong>SHOP KHƯƠNG NHI</strong><br />
+ĐC: 5 ĐINH TI&Ecirc;N HO&Agrave;NG, P3, B&Igrave;NH THẠNH - ĐT&nbsp;<strong>08.&nbsp;35171589</strong><br />
+Li&ecirc;n hệ trực tiếp:&nbsp;<strong>KHƯƠNG NHI&nbsp;0903 681 447</strong><br />
+Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></span></td>
+</tr>
+</tbody>
+</table>
+
+<p style="text-align:center"><strong><span style="font-size:28px">Doanh số nh&agrave; cung cấp&nbsp;năm {{$year}}</span></strong></p>
+
+<p style="text-align:center"><span style="font-size:26px">{{$table_list}}</span></p>
+',
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '0000-00-00 00:00:00',
+				'updated_at' => '2015-07-31 15:32:25',
 			),
 		));
 	}

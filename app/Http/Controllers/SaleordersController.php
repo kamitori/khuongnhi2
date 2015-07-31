@@ -682,12 +682,12 @@ class SaleordersController extends Controller {
 			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
 			$arr_print['arr_data']['toa_moi'] = number_format($arr_print['arr_data']['toa_moi']);
 			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
-			$arr_print['arr_list']['arr_sum'] = [
+			$arr_print['arr_list']['arr_sum'][] = [
 				['value'=>'Tổng cộng:','colspan'=>'6'],
 				['value'=>$sum_amount]
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
-			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_so_'.$so->id,'potrait');
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'don_hang_so_'.$so->id,'potrait');
 			return redirect($link);
 		}
 		die;
@@ -730,12 +730,12 @@ class SaleordersController extends Controller {
 					$arr_cache[$key]['status'] = 'Mới';
 				}
 			}
-			$arr_print['arr_list']['arr_sum'] = [
+			$arr_print['arr_list']['arr_sum'][] = [
 				['value'=>'Tổng cộng:','colspan'=>'4'],
 				['value'=>$total_sum_amount],
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
-			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_dai_ly_tra_hang','potrait');
+			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'danh_sach_don_hang','potrait');
 			return redirect($link);
 		}
 		die;
