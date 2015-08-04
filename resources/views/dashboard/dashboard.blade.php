@@ -2,25 +2,25 @@
 	<div class="span9">
 		<div class="row-fluid pages">
 			<ul>
-				<li class="span3 primary">
+				<li class="span3 primary" data-link="{{URL}}/saleorders/entry">
 					<i class="fa fa-file-text-o"></i>
 					<strong>Đơn hàng</strong>
-					<strong>2</strong>
+					<strong>{{$new_so}}</strong>
 				</li>
-				<li class="span3 primary">
+				<li class="span3 primary" data-link="{{URL}}/returnsaleorders/entry">
 					<i class="fa fa-undo"></i>
 					<strong>Đại lý trả</strong>
-					<strong>2</strong>
+					<strong>{{$new_rso}}</strong>
 				</li>
-				<li class="span3 primary">
+				<li class="span3 primary" data-link="{{URL}}/purchaseorders/entry">
 					<i class="fa fa-file-text-o"></i>
 					<strong>Mua hàng</strong>
-					<strong>2</strong>
+					<strong>{{$new_po}}</strong>
 				</li>
-				<li class="span3 primary">
+				<li class="span3 primary" data-link="{{URL}}/returnpurchaseorders/entry">
 					<i class="fa fa-undo"></i>
 					<strong>Trả NCC</strong>
-					<strong>2</strong>
+					<strong>{{$new_rpo}}</strong>
 				</li>
 			</ul>
 		</div>
@@ -48,16 +48,20 @@
 				</div>
 				<div class="widget-body list">
 					<ul>
-						<li><span class="count">350,254</span> <strong>Tổng sản phẩm</strong></li>
-						<li><span class="count">120,103</span> Visitors</li>
-						<li><span class="count">5,156,392</span> Pageviews</li>
+						<li><span class="count">{{number_format($tong_san_pham)}}</span> <strong>Tổng sản phẩm</strong></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+@section('pageCSS')
+	<style type="text/css" media="screen">
+		.pages .span3{
+			cursor: pointer;
+		}
+	</style>
+@stop
 @section('pageJS')
 <script src="{{URL}}/scripts/canvasjs/canvasjs.min.js" type="text/javascript"></script>
 <script>
@@ -97,10 +101,13 @@
 			]
 
 		});
-
 		chart.render();
-		
 		$("a.canvasjs-chart-credit").remove();
+		chart.render();
+
+		$(".pages .span3").on("click",function(){
+			window.location = $(this).attr('data-link');
+		})
 
 	});
 

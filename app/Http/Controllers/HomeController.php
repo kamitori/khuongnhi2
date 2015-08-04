@@ -1,10 +1,23 @@
 <?php namespace App\Http\Controllers;
-
-use App\Photo;
-use App\VideoAlbum;
-use App\PhotoAlbum;
-use Illuminate\Database\Eloquent;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Product;
+use App\ProductType;
+use App\MProduct;
+use App\Company;
+use App\Country;
+use App\Province;
+use App\User;
+use App\Oum;
+use App\ProductStock;
+use App\Purchaseorder;
+use App\ReturnPurchaseorder;
+use App\Saleorder;
+use App\ReturnSaleorder;
+use App\Paid;
+use App\ReceiptMonth;
+use App\Address;
+use App\SellPrice;
+use DB;
 
 class HomeController extends Controller {
 	protected $layout = 'layout.index';
@@ -37,7 +50,27 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$this->layout->content = view('dashboard.dashboard');
+		$new_so = Saleorder::where('status','=','0')->count();
+		$new_rso = ReturnSaleorder::where('status','=','0')->count();
+		$new_po = Purchaseorder::where('status','=','0')->count();
+		$new_rpo = ReturnPurchaseorder::where('status','=','0')->count();
+		$tong_san_pham = Product::count();
+		$begin = date('Y-m-d H:i:s',strtotime(date('d-m-Y')));
+		$end = date('Y-m-d H:i:s',strtotime(date('d-m-Y'))-15*86400);
+
+		$list_receipt = DB::raw("
+				select * from(
+						select a.Date as mydate
+					)
+			");
+
+		$this->layout->content = view('dashboard.dashboard',[
+							'new_so'	=>	$new_so,
+							'new_rso'	=>	$new_rso,
+							'new_po'	=>	$new_po,
+							'new_rpo'	=>	$new_rpo,
+							'tong_san_pham'=>	$tong_san_pham
+						]);
 	}
 
 }
