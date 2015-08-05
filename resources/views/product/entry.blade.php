@@ -298,7 +298,7 @@
 							<td class="center" >{{ $instock['specification'] }}</td>
 							<td class="right" data-type="currency">{{ $instock['origin_price'] }}</td>
 							<td class="center" >{{ $instock['quantity'] }}</td>
-							<td class="right" data-type="currency">{{ $instock['quantity']*$instock['specification']*$instock['origin_price']  }}</td>
+							<td class="right" data-type="currency">{{ $instock['invest']  }}</td>
 						</tr>
 						@endforeach
 					@else

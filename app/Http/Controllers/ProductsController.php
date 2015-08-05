@@ -11,6 +11,7 @@ use App\ProductType;
 use App\Purchaseorder;
 use App\ReturnPurchaseorder;
 use App\ReturnSaleorder;
+use App\Log;
 use Datatables;
 use Illuminate\Http\Request;
 use Session;
@@ -48,6 +49,7 @@ class ProductsController extends Controller {
 					$product = new Product;
 					$product->save();
 					session(['current_product' => $product->id]);
+					$product->toArray();
 				}
 			}
 		}
@@ -75,6 +77,17 @@ class ProductsController extends Controller {
 		}
 		$view_list_po = self::getListPo();
 
+		$arr_create = Product::select('users.name','products.created_at')
+					->leftJoin('users','users.id','=','products.created_by')
+					->where('products.id','=',$product['id'])
+					->get()->first()->toArray();
+
+		$arr_update = Product::select('users.name','products.updated_at')
+					->leftJoin('users','users.id','=','products.updated_by')
+					->where('products.id','=',$product['id'])
+					->get()->first()->toArray();
+		$this->layout->arr_create = $arr_create;
+		$this->layout->arr_update = $arr_update;
 		$this->layout->content=view('product.entry', ['distributes'=>$distributes,
 								'oums'=>$oums,
 								'producttypes'=>$producttypes,
@@ -87,7 +100,9 @@ class ProductsController extends Controller {
 	public function anyCreate(Request $request)
 	{
 		$product = new Product;
+		$product->created_by = \Auth::user()->id;
 		if($product->save()){
+			Log::create_log(\Auth::user()->id,'App\Product','Tạo mới sản phẩm số '.$product->id);
 			session(['current_product' => $product->id]);
 		}
 		return redirect('products');
@@ -101,7 +116,9 @@ class ProductsController extends Controller {
 		$product->sku = $request->has('sku') ? $request->input('sku') : '';
 		$product->product_type = $request->has('product_type') ? $request->input('product_type') : 0;
 		$product->status=1;
+		$product->created_by = \Auth::user()->id;
 		if($product->save()){
+			Log::create_log(\Auth::user()->id,'App\Product','Tạo mới sản phẩm số '.$product->id);
 			$arr_return = array('status' => 'success');
 		}else{
 			$arr_return = array('message' => 'Creating fail!');
@@ -119,14 +136,16 @@ class ProductsController extends Controller {
 
 			$product = MProduct::where('product_id','=',$id_product)
 						->leftJoin('purchaseorders',function($join){
-							$join->on('m_products.module_id','=','purchaseorders.id')
-								->where('module_type','=','App\Purchaseorder');
-						})->first();
+							$join->on('m_products.module_id','=','purchaseorders.id');
+						})
+						->where('module_type','=','App\Purchaseorder')
+						->first();
 			if($product){
 				$arr_return['message'] = 'Sản phẩm đã được tạo hóa đơn.<br/> Xin vui lòng xóa hết hóa đơn để có thể xóa sản phẩm.';
 			}else{
 				$product = Product::find($id_product);
 				if($product->delete()){
+					Log::create_log(\Auth::user()->id,'App\Product','Xóa sản phẩm số '.$id_product);
 					MProduct::where('product_id','=',$id_product)->delete();
 					SellPrice::where('product_id','=',$id_product)->delete();
 					ProductStock::where('product_id','=',$id_product)->delete();
@@ -162,14 +181,32 @@ class ProductsController extends Controller {
 			$product->save();
 			session(['current_product' => $product->id]);
 		}
-
+		$log = '';
 		if($product->status == 0){
+			if($request->has('name')  && $product->name != $request->input('name')){
+				$log .= 'tên sản phẩm từ "'.$product->name.'" thành "'.$request->input('name').'" ';
+			}
+			if($request->has('sku')  && $product->sku != $request->input('sku')){
+				$log .= 'SKU từ "'.$product->sku.'" thành "'.$request->input('sku').'" ';
+			}
+			if($product->product_type && $request->has('product_type')  && $product->product_type != $request->input('product_type')){
+				$old = ProductType::find($product->product_type);
+				$new = ProductType::find($request->input('product_type'));
+				$log .= 'loại sản phẩm từ "'.$old->name .'" thành "'.$new->name .'" ';
+			}
 			$product->name = $request->has('name') ? $request->input('name') : '';
 			$product->sku = $request->has('sku') ? $request->input('sku') : '';
 			$product->product_type = $request->has('product_type') ? $request->input('product_type') : 0;
+			
+		}
+		if($product->status != $request->has('status')){
+			$log .= 'trạng thái từ "'.($product->status?'Hoàn thành':'Mới').'" thành "'.($request->has('status')?'Hoàn thành':'Mới').'" ';
 		}
 		$product->status = $request->has('status')?1:0;
+		
+		$product->updated_by = \Auth::user()->id;
 		if($product->save()){
+			Log::create_log(\Auth::user()->id,'App\Product','Cập nhật '.$log.' sản phẩm số '.$product->id);
 			$arr_return['status']= 'success';
 			$arr_return['name']= $product->name;
 		}else{
@@ -184,16 +221,37 @@ class ProductsController extends Controller {
 					'status' => 'error'
 		);
 		$id = $request->has('id')?$request->input('id'):0;
+		$log = '';
 		if($id){
 			$sell_price = SellPrice::find($id);
 		}else{
 			$sell_price = new SellPrice;
+			$log= "Tạo mới giá bán cho sản phẩm số ".session('current_product').' - '.$request->input('product_id');
+			Log::create_log(\Auth::user()->id,'App\Product',$log);
 		}
+		$check_log = false;
+		if($log==''){
+			if($request->has('name')  && $sell_price->name != $request->input('name')){
+				$log .= ' tên giá bán từ "'.$sell_price->name.'" thành "'.$request->input('name').'" ';
+			}
+			if($request->has('price')  && $sell_price->price != intval(str_replace(",","",$request->input('price')))){
+				$log .= ' giá bán từ "'.$sell_price->price.'" thành "'.intval(str_replace(",","",$request->input('price'))).'" ';
+			}
+			$check_log = true;
+		}
+
 		$sell_price->m_product_id = $request->has('product_id')?$request->input('product_id'):0;
 		$sell_price->product_id = session('current_product');
 		$sell_price->name =  $request->has('name')?$request->input('name'):'';
 		$sell_price->price =  $request->has('price') ? intval(str_replace(",","",$request->input('price'))) : 0;
+		
 		if($sell_price->save()){
+			if($check_log){
+				if($log==""){
+					$log = 'giá bán';
+				}
+				Log::create_log(\Auth::user()->id,'App\Product','Cập nhật '.$log.' sản phẩm số '.session('current_product').' - '.$request->input('product_id'));
+			}
 			$arr_return['status']= 'success';
 		}else{
 			$arr_return['message']= 'Saving fail !';
@@ -294,6 +352,7 @@ class ProductsController extends Controller {
 						$query->where('purchaseorders.status', '=', 1)
 							->orWhere('m_products.module_type', '=', 'in_stock');
 					})
+					->where('in_stock','>',0)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
 
@@ -493,13 +552,14 @@ class ProductsController extends Controller {
 				$mproduct->module_type	=	'in_stock';
 				$mproduct->specification	=	$value->specification;
 				$mproduct->oum_id		=	$value->oum_id;
-				$mproduct->origin_price	=	$value->origin_price;
+				$mproduct->origin_price	=	intval(str_replace(",","",$value->origin_price));
 				$mproduct->quantity		=	$value->quantity;
-				$mproduct->invest		=	intval($value->origin_price)*intval($value->quantity)*intval($value->specification);
+				$mproduct->invest		=	intval(str_replace(",","",$value->origin_price))*intval($value->quantity)*intval($value->specification);
 				$check = $check && $mproduct->save();
 		}
 		$check = $check && Product::where('id','=',$product_id)->update(['check_in_stock'=>1]);
 		if($check){
+			Log::create_log(\Auth::user()->id,'App\Product','Thêm tồn kho ban đầu cho sản phẩm số '.$product_id);
 			$arr_return['status'] = 'success';
 		}else{
 			$arr_return['status'] = 'error';

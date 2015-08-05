@@ -2,26 +2,28 @@
 <div id="footer" class="hide">
 	<div class="wrap">
 		<div class="span3 pull-left">
+			@if(isset($arr_create))
 			<ul>
-				<li>Ngày tạo: 26/06/2015</li>
-				<li>14:35</li>
-				<li>Bởi: An Vũ</li>
+				<li>Thêm: {{date('d/m/Y',strtotime($arr_create['created_at']))}}</li>
+				<li>{{date('H:i',strtotime($arr_create['created_at']))}}</li>
+				<li>bởi: {{$arr_create['name']}}</li>
 			</ul>
+			@endif
 		</div>
 		<div class="span3 pull-left">
+			@if(isset($arr_update))
 			<ul>
-				<li>Ngày sửa: 26/06/2015</li>
-				<li>17:25</li>
-				<li>Bởi: An Vũ</li>
+				<li>Sửa: {{date('d/m/Y',strtotime($arr_update['updated_at']))}}</li>
+				<li>{{date('H:i',strtotime($arr_update['updated_at']))}}</li>
+				<li>bởi: {{$arr_update['name']}}</li>
 			</ul>
+			@endif
 		</div>
 		<div class="span6 pull-right">
 			<ul>
-				<li><a href="#">Trang chủ</a></li>
-				<li><a href="#">Lịch</a></li>
-				<li><a href="#">Bảng điều khiển</a></li>
-				<li><a href="#">Thông báo</a></li>
-				<li><a href="#">An Vũ</a></li>
+				<li><a href="{{URL}}">Trang chủ</a></li>
+				<li><a href="{{URL}}/settings">Bảng điều khiển</a></li>
+				<li><a href="#">{{\Auth::user()->name}}</a></li>
 			</ul>
 		</div>
 	</div>
