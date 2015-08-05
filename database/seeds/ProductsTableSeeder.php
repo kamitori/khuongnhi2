@@ -24,8 +24,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:32',
-				'updated_at' => '2015-08-05 08:51:32',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			1 => 
 			array (
@@ -37,8 +37,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			2 => 
 			array (
@@ -50,8 +50,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			3 => 
 			array (
@@ -63,8 +63,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			4 => 
 			array (
@@ -76,8 +76,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			5 => 
 			array (
@@ -89,8 +89,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			6 => 
 			array (
@@ -102,8 +102,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			7 => 
 			array (
@@ -115,8 +115,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			8 => 
 			array (
@@ -128,8 +128,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			9 => 
 			array (
@@ -141,8 +141,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			10 => 
 			array (
@@ -154,8 +154,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			11 => 
 			array (
@@ -167,8 +167,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			12 => 
 			array (
@@ -180,8 +180,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			13 => 
 			array (
@@ -193,8 +193,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			14 => 
 			array (
@@ -206,8 +206,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			15 => 
 			array (
@@ -219,8 +219,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			16 => 
 			array (
@@ -232,8 +232,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			17 => 
 			array (
@@ -245,8 +245,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			18 => 
 			array (
@@ -258,8 +258,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			19 => 
 			array (
@@ -271,8 +271,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			20 => 
 			array (
@@ -284,8 +284,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			21 => 
 			array (
@@ -297,8 +297,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			22 => 
 			array (
@@ -310,8 +310,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:18',
+				'updated_at' => '2015-08-05 09:56:18',
 			),
 			23 => 
 			array (
@@ -323,8 +323,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			24 => 
 			array (
@@ -336,8 +336,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			25 => 
 			array (
@@ -349,8 +349,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			26 => 
 			array (
@@ -362,8 +362,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			27 => 
 			array (
@@ -375,8 +375,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			28 => 
 			array (
@@ -388,8 +388,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			29 => 
 			array (
@@ -401,8 +401,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			30 => 
 			array (
@@ -414,8 +414,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			31 => 
 			array (
@@ -427,8 +427,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			32 => 
 			array (
@@ -440,8 +440,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:33',
-				'updated_at' => '2015-08-05 08:51:33',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			33 => 
 			array (
@@ -453,8 +453,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			34 => 
 			array (
@@ -466,8 +466,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			35 => 
 			array (
@@ -479,8 +479,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			36 => 
 			array (
@@ -492,8 +492,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			37 => 
 			array (
@@ -505,8 +505,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			38 => 
 			array (
@@ -518,8 +518,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			39 => 
 			array (
@@ -531,8 +531,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			40 => 
 			array (
@@ -544,8 +544,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			41 => 
 			array (
@@ -557,8 +557,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			42 => 
 			array (
@@ -570,8 +570,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			43 => 
 			array (
@@ -583,8 +583,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			44 => 
 			array (
@@ -596,8 +596,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			45 => 
 			array (
@@ -609,8 +609,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			46 => 
 			array (
@@ -622,8 +622,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			47 => 
 			array (
@@ -635,8 +635,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			48 => 
 			array (
@@ -648,8 +648,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			49 => 
 			array (
@@ -661,8 +661,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			50 => 
 			array (
@@ -674,8 +674,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			51 => 
 			array (
@@ -687,8 +687,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			52 => 
 			array (
@@ -700,8 +700,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			53 => 
 			array (
@@ -713,8 +713,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			54 => 
 			array (
@@ -726,8 +726,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			55 => 
 			array (
@@ -739,8 +739,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			56 => 
 			array (
@@ -752,8 +752,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			57 => 
 			array (
@@ -765,8 +765,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			58 => 
 			array (
@@ -778,8 +778,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			59 => 
 			array (
@@ -791,8 +791,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			60 => 
 			array (
@@ -804,8 +804,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			61 => 
 			array (
@@ -817,8 +817,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			62 => 
 			array (
@@ -830,8 +830,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			63 => 
 			array (
@@ -843,8 +843,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			64 => 
 			array (
@@ -856,8 +856,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			65 => 
 			array (
@@ -869,8 +869,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			66 => 
 			array (
@@ -882,8 +882,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			67 => 
 			array (
@@ -895,8 +895,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			68 => 
 			array (
@@ -908,8 +908,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			69 => 
 			array (
@@ -921,8 +921,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			70 => 
 			array (
@@ -934,8 +934,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			71 => 
 			array (
@@ -947,8 +947,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			72 => 
 			array (
@@ -960,8 +960,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			73 => 
 			array (
@@ -973,8 +973,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			74 => 
 			array (
@@ -986,8 +986,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			75 => 
 			array (
@@ -999,8 +999,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			76 => 
 			array (
@@ -1012,8 +1012,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			77 => 
 			array (
@@ -1025,8 +1025,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			78 => 
 			array (
@@ -1038,8 +1038,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			79 => 
 			array (
@@ -1051,8 +1051,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			80 => 
 			array (
@@ -1064,8 +1064,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			81 => 
 			array (
@@ -1077,8 +1077,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			82 => 
 			array (
@@ -1090,8 +1090,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			83 => 
 			array (
@@ -1103,8 +1103,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			84 => 
 			array (
@@ -1116,8 +1116,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			85 => 
 			array (
@@ -1129,8 +1129,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			86 => 
 			array (
@@ -1142,8 +1142,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			87 => 
 			array (
@@ -1155,8 +1155,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			88 => 
 			array (
@@ -1168,8 +1168,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:34',
-				'updated_at' => '2015-08-05 08:51:34',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			89 => 
 			array (
@@ -1181,8 +1181,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			90 => 
 			array (
@@ -1194,8 +1194,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			91 => 
 			array (
@@ -1207,8 +1207,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			92 => 
 			array (
@@ -1220,8 +1220,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			93 => 
 			array (
@@ -1233,8 +1233,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			94 => 
 			array (
@@ -1246,8 +1246,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			95 => 
 			array (
@@ -1259,8 +1259,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			96 => 
 			array (
@@ -1272,8 +1272,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			97 => 
 			array (
@@ -1285,8 +1285,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			98 => 
 			array (
@@ -1298,8 +1298,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			99 => 
 			array (
@@ -1311,8 +1311,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			100 => 
 			array (
@@ -1324,8 +1324,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			101 => 
 			array (
@@ -1337,8 +1337,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			102 => 
 			array (
@@ -1350,8 +1350,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			103 => 
 			array (
@@ -1363,8 +1363,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			104 => 
 			array (
@@ -1376,8 +1376,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:19',
+				'updated_at' => '2015-08-05 09:56:19',
 			),
 			105 => 
 			array (
@@ -1389,8 +1389,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			106 => 
 			array (
@@ -1402,8 +1402,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			107 => 
 			array (
@@ -1415,8 +1415,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			108 => 
 			array (
@@ -1428,8 +1428,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			109 => 
 			array (
@@ -1441,8 +1441,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			110 => 
 			array (
@@ -1454,8 +1454,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			111 => 
 			array (
@@ -1467,8 +1467,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			112 => 
 			array (
@@ -1480,8 +1480,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			113 => 
 			array (
@@ -1493,8 +1493,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			114 => 
 			array (
@@ -1506,8 +1506,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			115 => 
 			array (
@@ -1519,8 +1519,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			116 => 
 			array (
@@ -1532,8 +1532,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			117 => 
 			array (
@@ -1545,8 +1545,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			118 => 
 			array (
@@ -1558,8 +1558,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			119 => 
 			array (
@@ -1571,8 +1571,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			120 => 
 			array (
@@ -1584,8 +1584,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			121 => 
 			array (
@@ -1597,8 +1597,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			122 => 
 			array (
@@ -1610,8 +1610,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			123 => 
 			array (
@@ -1623,8 +1623,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			124 => 
 			array (
@@ -1636,8 +1636,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			125 => 
 			array (
@@ -1649,8 +1649,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			126 => 
 			array (
@@ -1662,8 +1662,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			127 => 
 			array (
@@ -1675,8 +1675,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			128 => 
 			array (
@@ -1688,8 +1688,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			129 => 
 			array (
@@ -1701,8 +1701,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			130 => 
 			array (
@@ -1714,8 +1714,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			131 => 
 			array (
@@ -1727,8 +1727,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			132 => 
 			array (
@@ -1740,8 +1740,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			133 => 
 			array (
@@ -1753,8 +1753,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			134 => 
 			array (
@@ -1766,8 +1766,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			135 => 
 			array (
@@ -1779,8 +1779,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			136 => 
 			array (
@@ -1792,8 +1792,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			137 => 
 			array (
@@ -1805,8 +1805,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			138 => 
 			array (
@@ -1818,8 +1818,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			139 => 
 			array (
@@ -1831,8 +1831,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			140 => 
 			array (
@@ -1844,8 +1844,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			141 => 
 			array (
@@ -1857,8 +1857,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			142 => 
 			array (
@@ -1870,8 +1870,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			143 => 
 			array (
@@ -1883,8 +1883,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			144 => 
 			array (
@@ -1896,8 +1896,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			145 => 
 			array (
@@ -1909,8 +1909,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			146 => 
 			array (
@@ -1922,8 +1922,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			147 => 
 			array (
@@ -1935,8 +1935,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			148 => 
 			array (
@@ -1948,8 +1948,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			149 => 
 			array (
@@ -1961,8 +1961,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			150 => 
 			array (
@@ -1974,8 +1974,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			151 => 
 			array (
@@ -1987,8 +1987,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			152 => 
 			array (
@@ -2000,8 +2000,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			153 => 
 			array (
@@ -2013,8 +2013,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			154 => 
 			array (
@@ -2026,8 +2026,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			155 => 
 			array (
@@ -2039,8 +2039,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			156 => 
 			array (
@@ -2052,8 +2052,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			157 => 
 			array (
@@ -2065,8 +2065,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			158 => 
 			array (
@@ -2078,8 +2078,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			159 => 
 			array (
@@ -2091,8 +2091,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			160 => 
 			array (
@@ -2104,8 +2104,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			161 => 
 			array (
@@ -2117,8 +2117,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			162 => 
 			array (
@@ -2130,8 +2130,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			163 => 
 			array (
@@ -2143,8 +2143,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			164 => 
 			array (
@@ -2156,8 +2156,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			165 => 
 			array (
@@ -2169,8 +2169,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			166 => 
 			array (
@@ -2182,8 +2182,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			167 => 
 			array (
@@ -2195,8 +2195,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			168 => 
 			array (
@@ -2208,8 +2208,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			169 => 
 			array (
@@ -2221,8 +2221,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			170 => 
 			array (
@@ -2234,8 +2234,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			171 => 
 			array (
@@ -2247,8 +2247,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			172 => 
 			array (
@@ -2260,8 +2260,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			173 => 
 			array (
@@ -2273,8 +2273,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			174 => 
 			array (
@@ -2286,8 +2286,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			175 => 
 			array (
@@ -2299,8 +2299,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			176 => 
 			array (
@@ -2312,8 +2312,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			177 => 
 			array (
@@ -2325,8 +2325,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			178 => 
 			array (
@@ -2338,8 +2338,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			179 => 
 			array (
@@ -2351,8 +2351,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			180 => 
 			array (
@@ -2364,8 +2364,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			181 => 
 			array (
@@ -2377,8 +2377,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			182 => 
 			array (
@@ -2390,8 +2390,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			183 => 
 			array (
@@ -2403,8 +2403,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			184 => 
 			array (
@@ -2416,8 +2416,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			185 => 
 			array (
@@ -2429,8 +2429,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			186 => 
 			array (
@@ -2442,8 +2442,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			187 => 
 			array (
@@ -2455,8 +2455,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			188 => 
 			array (
@@ -2468,8 +2468,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			189 => 
 			array (
@@ -2481,8 +2481,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			190 => 
 			array (
@@ -2494,8 +2494,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			191 => 
 			array (
@@ -2507,8 +2507,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			192 => 
 			array (
@@ -2520,8 +2520,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			193 => 
 			array (
@@ -2533,8 +2533,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			194 => 
 			array (
@@ -2546,8 +2546,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			195 => 
 			array (
@@ -2559,8 +2559,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			196 => 
 			array (
@@ -2572,8 +2572,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			197 => 
 			array (
@@ -2585,8 +2585,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			198 => 
 			array (
@@ -2598,8 +2598,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			199 => 
 			array (
@@ -2611,8 +2611,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			200 => 
 			array (
@@ -2624,8 +2624,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			201 => 
 			array (
@@ -2637,8 +2637,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			202 => 
 			array (
@@ -2650,8 +2650,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			203 => 
 			array (
@@ -2663,8 +2663,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			204 => 
 			array (
@@ -2676,8 +2676,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			205 => 
 			array (
@@ -2689,8 +2689,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			206 => 
 			array (
@@ -2702,8 +2702,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			207 => 
 			array (
@@ -2715,8 +2715,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			208 => 
 			array (
@@ -2728,8 +2728,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			209 => 
 			array (
@@ -2741,8 +2741,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			210 => 
 			array (
@@ -2754,8 +2754,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			211 => 
 			array (
@@ -2767,8 +2767,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			212 => 
 			array (
@@ -2780,8 +2780,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			213 => 
 			array (
@@ -2793,8 +2793,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			214 => 
 			array (
@@ -2806,8 +2806,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			215 => 
 			array (
@@ -2819,8 +2819,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			216 => 
 			array (
@@ -2832,8 +2832,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			217 => 
 			array (
@@ -2845,8 +2845,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			218 => 
 			array (
@@ -2858,8 +2858,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			219 => 
 			array (
@@ -2871,8 +2871,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			220 => 
 			array (
@@ -2884,8 +2884,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			221 => 
 			array (
@@ -2897,8 +2897,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			222 => 
 			array (
@@ -2910,8 +2910,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			223 => 
 			array (
@@ -2923,8 +2923,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			224 => 
 			array (
@@ -2936,8 +2936,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			225 => 
 			array (
@@ -2949,8 +2949,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			226 => 
 			array (
@@ -2962,8 +2962,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			227 => 
 			array (
@@ -2975,8 +2975,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			228 => 
 			array (
@@ -2988,8 +2988,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			229 => 
 			array (
@@ -3001,8 +3001,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			230 => 
 			array (
@@ -3014,8 +3014,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			231 => 
 			array (
@@ -3027,8 +3027,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			232 => 
 			array (
@@ -3040,8 +3040,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			233 => 
 			array (
@@ -3053,8 +3053,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			234 => 
 			array (
@@ -3066,8 +3066,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			235 => 
 			array (
@@ -3079,8 +3079,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			236 => 
 			array (
@@ -3092,8 +3092,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			237 => 
 			array (
@@ -3105,8 +3105,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			238 => 
 			array (
@@ -3118,8 +3118,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			239 => 
 			array (
@@ -3131,8 +3131,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			240 => 
 			array (
@@ -3144,8 +3144,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			241 => 
 			array (
@@ -3157,8 +3157,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			242 => 
 			array (
@@ -3170,8 +3170,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			243 => 
 			array (
@@ -3183,8 +3183,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			244 => 
 			array (
@@ -3196,8 +3196,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			245 => 
 			array (
@@ -3209,8 +3209,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			246 => 
 			array (
@@ -3222,8 +3222,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			247 => 
 			array (
@@ -3235,8 +3235,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			248 => 
 			array (
@@ -3248,8 +3248,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			249 => 
 			array (
@@ -3261,8 +3261,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			250 => 
 			array (
@@ -3274,8 +3274,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			251 => 
 			array (
@@ -3287,8 +3287,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			252 => 
 			array (
@@ -3300,8 +3300,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			253 => 
 			array (
@@ -3313,8 +3313,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			254 => 
 			array (
@@ -3326,8 +3326,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			255 => 
 			array (
@@ -3339,8 +3339,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			256 => 
 			array (
@@ -3352,8 +3352,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			257 => 
 			array (
@@ -3365,8 +3365,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			258 => 
 			array (
@@ -3378,8 +3378,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			259 => 
 			array (
@@ -3391,8 +3391,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			260 => 
 			array (
@@ -3404,8 +3404,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			261 => 
 			array (
@@ -3417,8 +3417,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			262 => 
 			array (
@@ -3430,8 +3430,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			263 => 
 			array (
@@ -3443,8 +3443,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			264 => 
 			array (
@@ -3456,8 +3456,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			265 => 
 			array (
@@ -3469,8 +3469,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			266 => 
 			array (
@@ -3482,8 +3482,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			267 => 
 			array (
@@ -3495,8 +3495,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			268 => 
 			array (
@@ -3508,8 +3508,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			269 => 
 			array (
@@ -3521,8 +3521,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			270 => 
 			array (
@@ -3534,8 +3534,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			271 => 
 			array (
@@ -3547,8 +3547,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			272 => 
 			array (
@@ -3560,8 +3560,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			273 => 
 			array (
@@ -3573,8 +3573,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			274 => 
 			array (
@@ -3586,8 +3586,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			275 => 
 			array (
@@ -3599,8 +3599,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			276 => 
 			array (
@@ -3612,8 +3612,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			277 => 
 			array (
@@ -3625,8 +3625,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			278 => 
 			array (
@@ -3638,8 +3638,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			279 => 
 			array (
@@ -3651,8 +3651,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			280 => 
 			array (
@@ -3664,8 +3664,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			281 => 
 			array (
@@ -3677,8 +3677,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			282 => 
 			array (
@@ -3690,8 +3690,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			283 => 
 			array (
@@ -3703,8 +3703,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			284 => 
 			array (
@@ -3716,8 +3716,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			285 => 
 			array (
@@ -3729,8 +3729,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			286 => 
 			array (
@@ -3742,8 +3742,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			287 => 
 			array (
@@ -3755,8 +3755,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			288 => 
 			array (
@@ -3768,8 +3768,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			289 => 
 			array (
@@ -3781,8 +3781,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			290 => 
 			array (
@@ -3794,8 +3794,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			291 => 
 			array (
@@ -3807,8 +3807,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			292 => 
 			array (
@@ -3820,8 +3820,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			293 => 
 			array (
@@ -3833,8 +3833,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			294 => 
 			array (
@@ -3846,8 +3846,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			295 => 
 			array (
@@ -3859,8 +3859,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			296 => 
 			array (
@@ -3872,8 +3872,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			297 => 
 			array (
@@ -3885,8 +3885,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			298 => 
 			array (
@@ -3898,8 +3898,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			299 => 
 			array (
@@ -3911,8 +3911,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			300 => 
 			array (
@@ -3924,8 +3924,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			301 => 
 			array (
@@ -3937,8 +3937,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			302 => 
 			array (
@@ -3950,8 +3950,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			303 => 
 			array (
@@ -3963,8 +3963,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			304 => 
 			array (
@@ -3976,8 +3976,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			305 => 
 			array (
@@ -3989,8 +3989,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			306 => 
 			array (
@@ -4002,8 +4002,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			307 => 
 			array (
@@ -4015,8 +4015,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			308 => 
 			array (
@@ -4028,8 +4028,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			309 => 
 			array (
@@ -4041,8 +4041,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			310 => 
 			array (
@@ -4054,8 +4054,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			311 => 
 			array (
@@ -4067,8 +4067,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			312 => 
 			array (
@@ -4080,8 +4080,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			313 => 
 			array (
@@ -4093,8 +4093,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			314 => 
 			array (
@@ -4106,8 +4106,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			315 => 
 			array (
@@ -4119,8 +4119,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			316 => 
 			array (
@@ -4132,8 +4132,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			317 => 
 			array (
@@ -4145,8 +4145,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			318 => 
 			array (
@@ -4158,8 +4158,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			319 => 
 			array (
@@ -4171,8 +4171,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			320 => 
 			array (
@@ -4184,8 +4184,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			321 => 
 			array (
@@ -4197,8 +4197,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			322 => 
 			array (
@@ -4210,8 +4210,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			323 => 
 			array (
@@ -4223,8 +4223,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			324 => 
 			array (
@@ -4236,8 +4236,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			325 => 
 			array (
@@ -4249,8 +4249,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			326 => 
 			array (
@@ -4262,8 +4262,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			327 => 
 			array (
@@ -4275,8 +4275,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			328 => 
 			array (
@@ -4288,8 +4288,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			329 => 
 			array (
@@ -4301,8 +4301,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			330 => 
 			array (
@@ -4314,8 +4314,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			331 => 
 			array (
@@ -4327,8 +4327,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			332 => 
 			array (
@@ -4340,8 +4340,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			333 => 
 			array (
@@ -4353,8 +4353,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			334 => 
 			array (
@@ -4366,8 +4366,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			335 => 
 			array (
@@ -4379,8 +4379,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			336 => 
 			array (
@@ -4392,8 +4392,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			337 => 
 			array (
@@ -4405,8 +4405,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			338 => 
 			array (
@@ -4418,8 +4418,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			339 => 
 			array (
@@ -4431,8 +4431,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			340 => 
 			array (
@@ -4444,8 +4444,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			341 => 
 			array (
@@ -4457,8 +4457,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			342 => 
 			array (
@@ -4470,8 +4470,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			343 => 
 			array (
@@ -4483,8 +4483,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			344 => 
 			array (
@@ -4496,8 +4496,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			345 => 
 			array (
@@ -4509,8 +4509,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			346 => 
 			array (
@@ -4522,8 +4522,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			347 => 
 			array (
@@ -4535,8 +4535,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			348 => 
 			array (
@@ -4548,8 +4548,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			349 => 
 			array (
@@ -4561,8 +4561,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			350 => 
 			array (
@@ -4574,8 +4574,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			351 => 
 			array (
@@ -4587,8 +4587,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			352 => 
 			array (
@@ -4600,8 +4600,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			353 => 
 			array (
@@ -4613,8 +4613,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			354 => 
 			array (
@@ -4626,8 +4626,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			355 => 
 			array (
@@ -4639,8 +4639,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			356 => 
 			array (
@@ -4652,8 +4652,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			357 => 
 			array (
@@ -4665,8 +4665,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			358 => 
 			array (
@@ -4678,8 +4678,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			359 => 
 			array (
@@ -4691,8 +4691,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			360 => 
 			array (
@@ -4704,8 +4704,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			361 => 
 			array (
@@ -4717,8 +4717,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			362 => 
 			array (
@@ -4730,8 +4730,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			363 => 
 			array (
@@ -4743,8 +4743,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			364 => 
 			array (
@@ -4756,8 +4756,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			365 => 
 			array (
@@ -4769,8 +4769,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			366 => 
 			array (
@@ -4782,8 +4782,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			367 => 
 			array (
@@ -4795,8 +4795,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			368 => 
 			array (
@@ -4808,8 +4808,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			369 => 
 			array (
@@ -4821,8 +4821,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			370 => 
 			array (
@@ -4834,8 +4834,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			371 => 
 			array (
@@ -4847,8 +4847,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			372 => 
 			array (
@@ -4860,8 +4860,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			373 => 
 			array (
@@ -4873,8 +4873,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			374 => 
 			array (
@@ -4886,8 +4886,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			375 => 
 			array (
@@ -4899,8 +4899,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			376 => 
 			array (
@@ -4912,8 +4912,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:35',
-				'updated_at' => '2015-08-05 08:51:35',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			377 => 
 			array (
@@ -4925,8 +4925,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			378 => 
 			array (
@@ -4938,8 +4938,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			379 => 
 			array (
@@ -4951,8 +4951,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			380 => 
 			array (
@@ -4964,8 +4964,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			381 => 
 			array (
@@ -4977,8 +4977,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			382 => 
 			array (
@@ -4990,8 +4990,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			383 => 
 			array (
@@ -5003,8 +5003,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			384 => 
 			array (
@@ -5016,8 +5016,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			385 => 
 			array (
@@ -5029,8 +5029,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			386 => 
 			array (
@@ -5042,8 +5042,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			387 => 
 			array (
@@ -5055,8 +5055,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			388 => 
 			array (
@@ -5068,8 +5068,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			389 => 
 			array (
@@ -5081,8 +5081,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			390 => 
 			array (
@@ -5094,8 +5094,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			391 => 
 			array (
@@ -5107,8 +5107,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			392 => 
 			array (
@@ -5120,8 +5120,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			393 => 
 			array (
@@ -5133,8 +5133,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			394 => 
 			array (
@@ -5146,8 +5146,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			395 => 
 			array (
@@ -5159,8 +5159,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			396 => 
 			array (
@@ -5172,8 +5172,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			397 => 
 			array (
@@ -5185,8 +5185,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			398 => 
 			array (
@@ -5198,8 +5198,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			399 => 
 			array (
@@ -5211,8 +5211,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			400 => 
 			array (
@@ -5224,8 +5224,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			401 => 
 			array (
@@ -5237,8 +5237,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			402 => 
 			array (
@@ -5250,8 +5250,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			403 => 
 			array (
@@ -5263,8 +5263,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			404 => 
 			array (
@@ -5276,8 +5276,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			405 => 
 			array (
@@ -5289,8 +5289,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			406 => 
 			array (
@@ -5302,8 +5302,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			407 => 
 			array (
@@ -5315,8 +5315,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			408 => 
 			array (
@@ -5328,8 +5328,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			409 => 
 			array (
@@ -5341,8 +5341,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			410 => 
 			array (
@@ -5354,8 +5354,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			411 => 
 			array (
@@ -5367,8 +5367,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			412 => 
 			array (
@@ -5380,8 +5380,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			413 => 
 			array (
@@ -5393,8 +5393,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			414 => 
 			array (
@@ -5406,8 +5406,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			415 => 
 			array (
@@ -5419,8 +5419,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			416 => 
 			array (
@@ -5432,8 +5432,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			417 => 
 			array (
@@ -5445,8 +5445,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			418 => 
 			array (
@@ -5458,8 +5458,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			419 => 
 			array (
@@ -5471,8 +5471,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			420 => 
 			array (
@@ -5484,8 +5484,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			421 => 
 			array (
@@ -5497,8 +5497,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			422 => 
 			array (
@@ -5510,8 +5510,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			423 => 
 			array (
@@ -5523,8 +5523,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			424 => 
 			array (
@@ -5536,8 +5536,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			425 => 
 			array (
@@ -5549,8 +5549,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			426 => 
 			array (
@@ -5562,8 +5562,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			427 => 
 			array (
@@ -5575,8 +5575,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			428 => 
 			array (
@@ -5588,8 +5588,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			429 => 
 			array (
@@ -5601,8 +5601,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			430 => 
 			array (
@@ -5614,8 +5614,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			431 => 
 			array (
@@ -5627,8 +5627,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			432 => 
 			array (
@@ -5640,8 +5640,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			433 => 
 			array (
@@ -5653,8 +5653,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			434 => 
 			array (
@@ -5666,8 +5666,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			435 => 
 			array (
@@ -5679,8 +5679,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			436 => 
 			array (
@@ -5692,8 +5692,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			437 => 
 			array (
@@ -5705,8 +5705,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			438 => 
 			array (
@@ -5718,8 +5718,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			439 => 
 			array (
@@ -5731,8 +5731,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			440 => 
 			array (
@@ -5744,8 +5744,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			441 => 
 			array (
@@ -5757,8 +5757,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			442 => 
 			array (
@@ -5770,8 +5770,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			443 => 
 			array (
@@ -5783,8 +5783,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			444 => 
 			array (
@@ -5796,8 +5796,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			445 => 
 			array (
@@ -5809,8 +5809,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			446 => 
 			array (
@@ -5822,8 +5822,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			447 => 
 			array (
@@ -5835,8 +5835,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			448 => 
 			array (
@@ -5848,8 +5848,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			449 => 
 			array (
@@ -5861,8 +5861,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			450 => 
 			array (
@@ -5874,8 +5874,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			451 => 
 			array (
@@ -5887,8 +5887,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			452 => 
 			array (
@@ -5900,8 +5900,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			453 => 
 			array (
@@ -5913,8 +5913,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			454 => 
 			array (
@@ -5926,8 +5926,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			455 => 
 			array (
@@ -5939,8 +5939,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			456 => 
 			array (
@@ -5952,8 +5952,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			457 => 
 			array (
@@ -5965,8 +5965,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			458 => 
 			array (
@@ -5978,8 +5978,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			459 => 
 			array (
@@ -5991,8 +5991,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			460 => 
 			array (
@@ -6004,8 +6004,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			461 => 
 			array (
@@ -6017,8 +6017,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			462 => 
 			array (
@@ -6030,8 +6030,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			463 => 
 			array (
@@ -6043,8 +6043,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			464 => 
 			array (
@@ -6056,8 +6056,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			465 => 
 			array (
@@ -6069,8 +6069,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			466 => 
 			array (
@@ -6082,8 +6082,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			467 => 
 			array (
@@ -6095,8 +6095,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			468 => 
 			array (
@@ -6108,8 +6108,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			469 => 
 			array (
@@ -6121,8 +6121,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			470 => 
 			array (
@@ -6134,8 +6134,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			471 => 
 			array (
@@ -6147,8 +6147,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			472 => 
 			array (
@@ -6160,8 +6160,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			473 => 
 			array (
@@ -6173,8 +6173,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			474 => 
 			array (
@@ -6186,8 +6186,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			475 => 
 			array (
@@ -6199,8 +6199,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			476 => 
 			array (
@@ -6212,8 +6212,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			477 => 
 			array (
@@ -6225,8 +6225,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			478 => 
 			array (
@@ -6238,8 +6238,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			479 => 
 			array (
@@ -6251,8 +6251,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			480 => 
 			array (
@@ -6264,8 +6264,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			481 => 
 			array (
@@ -6277,8 +6277,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			482 => 
 			array (
@@ -6290,8 +6290,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			483 => 
 			array (
@@ -6303,8 +6303,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			484 => 
 			array (
@@ -6316,8 +6316,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			485 => 
 			array (
@@ -6329,8 +6329,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			486 => 
 			array (
@@ -6342,8 +6342,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			487 => 
 			array (
@@ -6355,8 +6355,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			488 => 
 			array (
@@ -6368,8 +6368,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			489 => 
 			array (
@@ -6381,8 +6381,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			490 => 
 			array (
@@ -6394,8 +6394,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			491 => 
 			array (
@@ -6407,8 +6407,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			492 => 
 			array (
@@ -6420,8 +6420,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			493 => 
 			array (
@@ -6433,8 +6433,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			494 => 
 			array (
@@ -6446,8 +6446,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			495 => 
 			array (
@@ -6459,8 +6459,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			496 => 
 			array (
@@ -6472,8 +6472,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			497 => 
 			array (
@@ -6485,8 +6485,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			498 => 
 			array (
@@ -6498,8 +6498,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			499 => 
 			array (
@@ -6511,8 +6511,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 		));
 		\DB::table('products')->insert(array (
@@ -6526,8 +6526,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			1 => 
 			array (
@@ -6539,8 +6539,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			2 => 
 			array (
@@ -6552,8 +6552,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			3 => 
 			array (
@@ -6565,8 +6565,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			4 => 
 			array (
@@ -6578,8 +6578,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			5 => 
 			array (
@@ -6591,8 +6591,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			6 => 
 			array (
@@ -6604,8 +6604,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			7 => 
 			array (
@@ -6617,8 +6617,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			8 => 
 			array (
@@ -6630,8 +6630,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			9 => 
 			array (
@@ -6643,8 +6643,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			10 => 
 			array (
@@ -6656,8 +6656,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			11 => 
 			array (
@@ -6669,8 +6669,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			12 => 
 			array (
@@ -6682,8 +6682,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			13 => 
 			array (
@@ -6695,8 +6695,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			14 => 
 			array (
@@ -6708,8 +6708,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			15 => 
 			array (
@@ -6721,8 +6721,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			16 => 
 			array (
@@ -6734,8 +6734,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			17 => 
 			array (
@@ -6747,8 +6747,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			18 => 
 			array (
@@ -6760,8 +6760,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			19 => 
 			array (
@@ -6773,8 +6773,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			20 => 
 			array (
@@ -6786,8 +6786,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			21 => 
 			array (
@@ -6799,8 +6799,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			22 => 
 			array (
@@ -6812,8 +6812,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			23 => 
 			array (
@@ -6825,8 +6825,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			24 => 
 			array (
@@ -6838,8 +6838,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			25 => 
 			array (
@@ -6851,8 +6851,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			26 => 
 			array (
@@ -6864,8 +6864,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			27 => 
 			array (
@@ -6877,8 +6877,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			28 => 
 			array (
@@ -6890,8 +6890,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			29 => 
 			array (
@@ -6903,8 +6903,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			30 => 
 			array (
@@ -6916,8 +6916,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			31 => 
 			array (
@@ -6929,8 +6929,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			32 => 
 			array (
@@ -6942,8 +6942,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			33 => 
 			array (
@@ -6955,8 +6955,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			34 => 
 			array (
@@ -6968,8 +6968,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			35 => 
 			array (
@@ -6981,8 +6981,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			36 => 
 			array (
@@ -6994,8 +6994,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			37 => 
 			array (
@@ -7007,8 +7007,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			38 => 
 			array (
@@ -7020,8 +7020,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			39 => 
 			array (
@@ -7033,8 +7033,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			40 => 
 			array (
@@ -7046,8 +7046,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			41 => 
 			array (
@@ -7059,8 +7059,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			42 => 
 			array (
@@ -7072,8 +7072,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			43 => 
 			array (
@@ -7085,8 +7085,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			44 => 
 			array (
@@ -7098,8 +7098,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			45 => 
 			array (
@@ -7111,8 +7111,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			46 => 
 			array (
@@ -7124,8 +7124,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			47 => 
 			array (
@@ -7137,8 +7137,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			48 => 
 			array (
@@ -7150,8 +7150,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			49 => 
 			array (
@@ -7163,8 +7163,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			50 => 
 			array (
@@ -7176,8 +7176,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			51 => 
 			array (
@@ -7189,8 +7189,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			52 => 
 			array (
@@ -7202,8 +7202,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			53 => 
 			array (
@@ -7215,8 +7215,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			54 => 
 			array (
@@ -7228,8 +7228,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			55 => 
 			array (
@@ -7241,8 +7241,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			56 => 
 			array (
@@ -7254,8 +7254,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			57 => 
 			array (
@@ -7267,8 +7267,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			58 => 
 			array (
@@ -7280,8 +7280,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			59 => 
 			array (
@@ -7293,8 +7293,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			60 => 
 			array (
@@ -7306,8 +7306,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			61 => 
 			array (
@@ -7319,8 +7319,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			62 => 
 			array (
@@ -7332,8 +7332,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			63 => 
 			array (
@@ -7345,8 +7345,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			64 => 
 			array (
@@ -7358,8 +7358,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			65 => 
 			array (
@@ -7371,8 +7371,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			66 => 
 			array (
@@ -7384,8 +7384,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			67 => 
 			array (
@@ -7397,8 +7397,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			68 => 
 			array (
@@ -7410,8 +7410,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			69 => 
 			array (
@@ -7423,8 +7423,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			70 => 
 			array (
@@ -7436,8 +7436,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			71 => 
 			array (
@@ -7449,8 +7449,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			72 => 
 			array (
@@ -7462,8 +7462,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			73 => 
 			array (
@@ -7475,8 +7475,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			74 => 
 			array (
@@ -7488,8 +7488,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			75 => 
 			array (
@@ -7501,8 +7501,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			76 => 
 			array (
@@ -7514,8 +7514,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			77 => 
 			array (
@@ -7527,8 +7527,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			78 => 
 			array (
@@ -7540,8 +7540,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			79 => 
 			array (
@@ -7553,8 +7553,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			80 => 
 			array (
@@ -7566,8 +7566,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			81 => 
 			array (
@@ -7579,8 +7579,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			82 => 
 			array (
@@ -7592,8 +7592,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			83 => 
 			array (
@@ -7605,8 +7605,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			84 => 
 			array (
@@ -7618,8 +7618,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			85 => 
 			array (
@@ -7631,8 +7631,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			86 => 
 			array (
@@ -7644,8 +7644,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			87 => 
 			array (
@@ -7657,8 +7657,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			88 => 
 			array (
@@ -7670,8 +7670,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			89 => 
 			array (
@@ -7683,8 +7683,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			90 => 
 			array (
@@ -7696,8 +7696,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			91 => 
 			array (
@@ -7709,8 +7709,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			92 => 
 			array (
@@ -7722,8 +7722,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			93 => 
 			array (
@@ -7735,8 +7735,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			94 => 
 			array (
@@ -7748,8 +7748,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			95 => 
 			array (
@@ -7761,8 +7761,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			96 => 
 			array (
@@ -7774,8 +7774,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			97 => 
 			array (
@@ -7787,8 +7787,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			98 => 
 			array (
@@ -7800,8 +7800,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			99 => 
 			array (
@@ -7813,8 +7813,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			100 => 
 			array (
@@ -7826,8 +7826,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			101 => 
 			array (
@@ -7839,8 +7839,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			102 => 
 			array (
@@ -7852,8 +7852,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			103 => 
 			array (
@@ -7865,8 +7865,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			104 => 
 			array (
@@ -7878,8 +7878,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			105 => 
 			array (
@@ -7891,8 +7891,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			106 => 
 			array (
@@ -7904,8 +7904,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			107 => 
 			array (
@@ -7917,8 +7917,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			108 => 
 			array (
@@ -7930,8 +7930,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			109 => 
 			array (
@@ -7943,8 +7943,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			110 => 
 			array (
@@ -7956,8 +7956,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			111 => 
 			array (
@@ -7969,8 +7969,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			112 => 
 			array (
@@ -7982,8 +7982,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			113 => 
 			array (
@@ -7995,8 +7995,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			114 => 
 			array (
@@ -8008,8 +8008,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			115 => 
 			array (
@@ -8021,8 +8021,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			116 => 
 			array (
@@ -8034,8 +8034,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			117 => 
 			array (
@@ -8047,8 +8047,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			118 => 
 			array (
@@ -8060,8 +8060,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			119 => 
 			array (
@@ -8073,8 +8073,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			120 => 
 			array (
@@ -8086,8 +8086,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			121 => 
 			array (
@@ -8099,8 +8099,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			122 => 
 			array (
@@ -8112,8 +8112,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			123 => 
 			array (
@@ -8125,8 +8125,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			124 => 
 			array (
@@ -8138,8 +8138,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			125 => 
 			array (
@@ -8151,8 +8151,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			126 => 
 			array (
@@ -8164,8 +8164,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			127 => 
 			array (
@@ -8177,8 +8177,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			128 => 
 			array (
@@ -8190,8 +8190,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			129 => 
 			array (
@@ -8203,8 +8203,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			130 => 
 			array (
@@ -8216,8 +8216,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			131 => 
 			array (
@@ -8229,8 +8229,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			132 => 
 			array (
@@ -8242,8 +8242,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			133 => 
 			array (
@@ -8255,8 +8255,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			134 => 
 			array (
@@ -8268,8 +8268,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			135 => 
 			array (
@@ -8281,8 +8281,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			136 => 
 			array (
@@ -8294,8 +8294,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			137 => 
 			array (
@@ -8307,8 +8307,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			138 => 
 			array (
@@ -8320,8 +8320,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			139 => 
 			array (
@@ -8333,8 +8333,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			140 => 
 			array (
@@ -8346,8 +8346,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			141 => 
 			array (
@@ -8359,8 +8359,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			142 => 
 			array (
@@ -8372,8 +8372,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			143 => 
 			array (
@@ -8385,8 +8385,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			144 => 
 			array (
@@ -8398,8 +8398,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			145 => 
 			array (
@@ -8411,8 +8411,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			146 => 
 			array (
@@ -8424,8 +8424,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			147 => 
 			array (
@@ -8437,8 +8437,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			148 => 
 			array (
@@ -8450,8 +8450,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			149 => 
 			array (
@@ -8463,8 +8463,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			150 => 
 			array (
@@ -8476,8 +8476,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			151 => 
 			array (
@@ -8489,8 +8489,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			152 => 
 			array (
@@ -8502,8 +8502,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			153 => 
 			array (
@@ -8515,8 +8515,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			154 => 
 			array (
@@ -8528,8 +8528,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			155 => 
 			array (
@@ -8541,8 +8541,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			156 => 
 			array (
@@ -8554,8 +8554,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			157 => 
 			array (
@@ -8567,8 +8567,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			158 => 
 			array (
@@ -8580,8 +8580,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			159 => 
 			array (
@@ -8593,8 +8593,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			160 => 
 			array (
@@ -8606,8 +8606,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			161 => 
 			array (
@@ -8619,8 +8619,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			162 => 
 			array (
@@ -8632,8 +8632,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			163 => 
 			array (
@@ -8645,8 +8645,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			164 => 
 			array (
@@ -8658,8 +8658,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			165 => 
 			array (
@@ -8671,8 +8671,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			166 => 
 			array (
@@ -8684,8 +8684,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			167 => 
 			array (
@@ -8697,8 +8697,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			168 => 
 			array (
@@ -8710,8 +8710,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			169 => 
 			array (
@@ -8723,8 +8723,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			170 => 
 			array (
@@ -8736,8 +8736,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			171 => 
 			array (
@@ -8749,8 +8749,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			172 => 
 			array (
@@ -8762,8 +8762,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			173 => 
 			array (
@@ -8775,8 +8775,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			174 => 
 			array (
@@ -8788,8 +8788,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			175 => 
 			array (
@@ -8801,8 +8801,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			176 => 
 			array (
@@ -8814,8 +8814,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			177 => 
 			array (
@@ -8827,8 +8827,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			178 => 
 			array (
@@ -8840,8 +8840,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			179 => 
 			array (
@@ -8853,8 +8853,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			180 => 
 			array (
@@ -8866,8 +8866,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:20',
+				'updated_at' => '2015-08-05 09:56:20',
 			),
 			181 => 
 			array (
@@ -8879,8 +8879,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			182 => 
 			array (
@@ -8892,8 +8892,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			183 => 
 			array (
@@ -8905,8 +8905,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			184 => 
 			array (
@@ -8918,8 +8918,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			185 => 
 			array (
@@ -8931,8 +8931,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			186 => 
 			array (
@@ -8944,8 +8944,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			187 => 
 			array (
@@ -8957,8 +8957,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			188 => 
 			array (
@@ -8970,8 +8970,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			189 => 
 			array (
@@ -8983,8 +8983,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			190 => 
 			array (
@@ -8996,8 +8996,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			191 => 
 			array (
@@ -9009,8 +9009,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			192 => 
 			array (
@@ -9022,8 +9022,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			193 => 
 			array (
@@ -9035,8 +9035,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			194 => 
 			array (
@@ -9048,8 +9048,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			195 => 
 			array (
@@ -9061,8 +9061,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			196 => 
 			array (
@@ -9074,8 +9074,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			197 => 
 			array (
@@ -9087,8 +9087,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			198 => 
 			array (
@@ -9100,8 +9100,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			199 => 
 			array (
@@ -9113,8 +9113,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			200 => 
 			array (
@@ -9126,8 +9126,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			201 => 
 			array (
@@ -9139,8 +9139,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			202 => 
 			array (
@@ -9152,8 +9152,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			203 => 
 			array (
@@ -9165,8 +9165,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			204 => 
 			array (
@@ -9178,8 +9178,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			205 => 
 			array (
@@ -9191,8 +9191,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			206 => 
 			array (
@@ -9204,8 +9204,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			207 => 
 			array (
@@ -9217,8 +9217,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			208 => 
 			array (
@@ -9230,8 +9230,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			209 => 
 			array (
@@ -9243,8 +9243,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			210 => 
 			array (
@@ -9256,8 +9256,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			211 => 
 			array (
@@ -9269,8 +9269,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			212 => 
 			array (
@@ -9282,8 +9282,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			213 => 
 			array (
@@ -9295,8 +9295,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			214 => 
 			array (
@@ -9308,8 +9308,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			215 => 
 			array (
@@ -9321,8 +9321,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			216 => 
 			array (
@@ -9334,8 +9334,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			217 => 
 			array (
@@ -9347,8 +9347,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			218 => 
 			array (
@@ -9360,8 +9360,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			219 => 
 			array (
@@ -9373,8 +9373,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			220 => 
 			array (
@@ -9386,8 +9386,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			221 => 
 			array (
@@ -9399,8 +9399,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			222 => 
 			array (
@@ -9412,8 +9412,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			223 => 
 			array (
@@ -9425,8 +9425,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			224 => 
 			array (
@@ -9438,8 +9438,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			225 => 
 			array (
@@ -9451,8 +9451,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			226 => 
 			array (
@@ -9464,8 +9464,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			227 => 
 			array (
@@ -9477,8 +9477,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			228 => 
 			array (
@@ -9490,8 +9490,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			229 => 
 			array (
@@ -9503,8 +9503,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			230 => 
 			array (
@@ -9516,8 +9516,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			231 => 
 			array (
@@ -9529,8 +9529,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			232 => 
 			array (
@@ -9542,8 +9542,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			233 => 
 			array (
@@ -9555,8 +9555,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			234 => 
 			array (
@@ -9568,8 +9568,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			235 => 
 			array (
@@ -9581,8 +9581,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			236 => 
 			array (
@@ -9594,8 +9594,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			237 => 
 			array (
@@ -9607,8 +9607,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			238 => 
 			array (
@@ -9620,8 +9620,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			239 => 
 			array (
@@ -9633,8 +9633,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			240 => 
 			array (
@@ -9646,8 +9646,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			241 => 
 			array (
@@ -9659,8 +9659,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			242 => 
 			array (
@@ -9672,8 +9672,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			243 => 
 			array (
@@ -9685,8 +9685,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			244 => 
 			array (
@@ -9698,8 +9698,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			245 => 
 			array (
@@ -9711,8 +9711,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			246 => 
 			array (
@@ -9724,8 +9724,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			247 => 
 			array (
@@ -9737,8 +9737,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			248 => 
 			array (
@@ -9750,8 +9750,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			249 => 
 			array (
@@ -9763,8 +9763,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			250 => 
 			array (
@@ -9776,8 +9776,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			251 => 
 			array (
@@ -9789,8 +9789,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			252 => 
 			array (
@@ -9802,8 +9802,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			253 => 
 			array (
@@ -9815,8 +9815,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			254 => 
 			array (
@@ -9828,8 +9828,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			255 => 
 			array (
@@ -9841,8 +9841,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			256 => 
 			array (
@@ -9854,8 +9854,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			257 => 
 			array (
@@ -9867,8 +9867,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			258 => 
 			array (
@@ -9880,8 +9880,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			259 => 
 			array (
@@ -9893,8 +9893,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			260 => 
 			array (
@@ -9906,8 +9906,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			261 => 
 			array (
@@ -9919,8 +9919,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			262 => 
 			array (
@@ -9932,8 +9932,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			263 => 
 			array (
@@ -9945,8 +9945,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			264 => 
 			array (
@@ -9958,8 +9958,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			265 => 
 			array (
@@ -9971,8 +9971,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			266 => 
 			array (
@@ -9984,8 +9984,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			267 => 
 			array (
@@ -9997,8 +9997,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			268 => 
 			array (
@@ -10010,8 +10010,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			269 => 
 			array (
@@ -10023,8 +10023,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			270 => 
 			array (
@@ -10036,8 +10036,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			271 => 
 			array (
@@ -10049,8 +10049,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			272 => 
 			array (
@@ -10062,8 +10062,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			273 => 
 			array (
@@ -10075,8 +10075,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			274 => 
 			array (
@@ -10088,8 +10088,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			275 => 
 			array (
@@ -10101,8 +10101,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			276 => 
 			array (
@@ -10114,8 +10114,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			277 => 
 			array (
@@ -10127,8 +10127,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			278 => 
 			array (
@@ -10140,8 +10140,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			279 => 
 			array (
@@ -10153,8 +10153,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			280 => 
 			array (
@@ -10166,8 +10166,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			281 => 
 			array (
@@ -10179,8 +10179,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			282 => 
 			array (
@@ -10192,8 +10192,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			283 => 
 			array (
@@ -10205,8 +10205,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			284 => 
 			array (
@@ -10218,8 +10218,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			285 => 
 			array (
@@ -10231,8 +10231,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			286 => 
 			array (
@@ -10244,8 +10244,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			287 => 
 			array (
@@ -10257,8 +10257,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			288 => 
 			array (
@@ -10270,8 +10270,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			289 => 
 			array (
@@ -10283,8 +10283,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			290 => 
 			array (
@@ -10296,8 +10296,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			291 => 
 			array (
@@ -10309,8 +10309,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			292 => 
 			array (
@@ -10322,8 +10322,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			293 => 
 			array (
@@ -10335,8 +10335,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			294 => 
 			array (
@@ -10348,8 +10348,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			295 => 
 			array (
@@ -10361,8 +10361,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			296 => 
 			array (
@@ -10374,8 +10374,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			297 => 
 			array (
@@ -10387,8 +10387,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			298 => 
 			array (
@@ -10400,8 +10400,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			299 => 
 			array (
@@ -10413,8 +10413,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			300 => 
 			array (
@@ -10426,8 +10426,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			301 => 
 			array (
@@ -10439,8 +10439,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			302 => 
 			array (
@@ -10452,8 +10452,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			303 => 
 			array (
@@ -10465,8 +10465,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			304 => 
 			array (
@@ -10478,8 +10478,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			305 => 
 			array (
@@ -10491,8 +10491,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			306 => 
 			array (
@@ -10504,8 +10504,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			307 => 
 			array (
@@ -10517,8 +10517,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			308 => 
 			array (
@@ -10530,8 +10530,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			309 => 
 			array (
@@ -10543,8 +10543,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			310 => 
 			array (
@@ -10556,8 +10556,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			311 => 
 			array (
@@ -10569,8 +10569,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			312 => 
 			array (
@@ -10582,8 +10582,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			313 => 
 			array (
@@ -10595,8 +10595,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			314 => 
 			array (
@@ -10608,8 +10608,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			315 => 
 			array (
@@ -10621,8 +10621,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			316 => 
 			array (
@@ -10634,8 +10634,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			317 => 
 			array (
@@ -10647,8 +10647,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			318 => 
 			array (
@@ -10660,8 +10660,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			319 => 
 			array (
@@ -10673,8 +10673,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			320 => 
 			array (
@@ -10686,8 +10686,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			321 => 
 			array (
@@ -10699,8 +10699,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			322 => 
 			array (
@@ -10712,8 +10712,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			323 => 
 			array (
@@ -10725,8 +10725,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			324 => 
 			array (
@@ -10738,8 +10738,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			325 => 
 			array (
@@ -10751,8 +10751,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			326 => 
 			array (
@@ -10764,8 +10764,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			327 => 
 			array (
@@ -10777,8 +10777,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			328 => 
 			array (
@@ -10790,8 +10790,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			329 => 
 			array (
@@ -10803,8 +10803,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			330 => 
 			array (
@@ -10816,8 +10816,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			331 => 
 			array (
@@ -10829,8 +10829,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			332 => 
 			array (
@@ -10842,8 +10842,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			333 => 
 			array (
@@ -10855,8 +10855,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			334 => 
 			array (
@@ -10868,8 +10868,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			335 => 
 			array (
@@ -10881,8 +10881,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			336 => 
 			array (
@@ -10894,8 +10894,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			337 => 
 			array (
@@ -10907,8 +10907,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			338 => 
 			array (
@@ -10920,8 +10920,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			339 => 
 			array (
@@ -10933,8 +10933,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			340 => 
 			array (
@@ -10946,8 +10946,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:36',
-				'updated_at' => '2015-08-05 08:51:36',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			341 => 
 			array (
@@ -10959,8 +10959,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			342 => 
 			array (
@@ -10972,8 +10972,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			343 => 
 			array (
@@ -10985,8 +10985,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			344 => 
 			array (
@@ -10998,8 +10998,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			345 => 
 			array (
@@ -11011,8 +11011,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			346 => 
 			array (
@@ -11024,8 +11024,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			347 => 
 			array (
@@ -11037,8 +11037,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			348 => 
 			array (
@@ -11050,8 +11050,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			349 => 
 			array (
@@ -11063,8 +11063,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			350 => 
 			array (
@@ -11076,8 +11076,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			351 => 
 			array (
@@ -11089,8 +11089,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			352 => 
 			array (
@@ -11102,8 +11102,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			353 => 
 			array (
@@ -11115,8 +11115,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			354 => 
 			array (
@@ -11128,8 +11128,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			355 => 
 			array (
@@ -11141,8 +11141,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			356 => 
 			array (
@@ -11154,8 +11154,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			357 => 
 			array (
@@ -11167,8 +11167,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			358 => 
 			array (
@@ -11180,8 +11180,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			359 => 
 			array (
@@ -11193,8 +11193,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			360 => 
 			array (
@@ -11206,8 +11206,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			361 => 
 			array (
@@ -11219,8 +11219,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			362 => 
 			array (
@@ -11232,8 +11232,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			363 => 
 			array (
@@ -11245,8 +11245,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			364 => 
 			array (
@@ -11258,8 +11258,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			365 => 
 			array (
@@ -11271,8 +11271,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			366 => 
 			array (
@@ -11284,8 +11284,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			367 => 
 			array (
@@ -11297,8 +11297,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			368 => 
 			array (
@@ -11310,8 +11310,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			369 => 
 			array (
@@ -11323,8 +11323,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			370 => 
 			array (
@@ -11336,8 +11336,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			371 => 
 			array (
@@ -11349,8 +11349,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			372 => 
 			array (
@@ -11362,8 +11362,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			373 => 
 			array (
@@ -11375,8 +11375,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			374 => 
 			array (
@@ -11388,8 +11388,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			375 => 
 			array (
@@ -11401,8 +11401,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			376 => 
 			array (
@@ -11414,8 +11414,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			377 => 
 			array (
@@ -11427,8 +11427,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			378 => 
 			array (
@@ -11440,8 +11440,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			379 => 
 			array (
@@ -11453,8 +11453,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			380 => 
 			array (
@@ -11466,8 +11466,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			381 => 
 			array (
@@ -11479,8 +11479,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			382 => 
 			array (
@@ -11492,8 +11492,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			383 => 
 			array (
@@ -11505,8 +11505,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			384 => 
 			array (
@@ -11518,8 +11518,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			385 => 
 			array (
@@ -11531,8 +11531,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			386 => 
 			array (
@@ -11544,8 +11544,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			387 => 
 			array (
@@ -11557,8 +11557,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			388 => 
 			array (
@@ -11570,8 +11570,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			389 => 
 			array (
@@ -11583,8 +11583,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			390 => 
 			array (
@@ -11596,8 +11596,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			391 => 
 			array (
@@ -11609,8 +11609,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			392 => 
 			array (
@@ -11622,8 +11622,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			393 => 
 			array (
@@ -11635,8 +11635,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			394 => 
 			array (
@@ -11648,8 +11648,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			395 => 
 			array (
@@ -11661,8 +11661,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			396 => 
 			array (
@@ -11674,8 +11674,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			397 => 
 			array (
@@ -11687,8 +11687,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			398 => 
 			array (
@@ -11700,8 +11700,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			399 => 
 			array (
@@ -11713,8 +11713,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			400 => 
 			array (
@@ -11726,8 +11726,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			401 => 
 			array (
@@ -11739,8 +11739,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			402 => 
 			array (
@@ -11752,8 +11752,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			403 => 
 			array (
@@ -11765,8 +11765,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			404 => 
 			array (
@@ -11778,8 +11778,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			405 => 
 			array (
@@ -11791,8 +11791,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			406 => 
 			array (
@@ -11804,8 +11804,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			407 => 
 			array (
@@ -11817,8 +11817,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			408 => 
 			array (
@@ -11830,8 +11830,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			409 => 
 			array (
@@ -11843,8 +11843,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			410 => 
 			array (
@@ -11856,8 +11856,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			411 => 
 			array (
@@ -11869,8 +11869,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			412 => 
 			array (
@@ -11882,8 +11882,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			413 => 
 			array (
@@ -11895,8 +11895,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			414 => 
 			array (
@@ -11908,8 +11908,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			415 => 
 			array (
@@ -11921,8 +11921,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			416 => 
 			array (
@@ -11934,8 +11934,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			417 => 
 			array (
@@ -11947,8 +11947,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			418 => 
 			array (
@@ -11960,8 +11960,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			419 => 
 			array (
@@ -11973,8 +11973,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			420 => 
 			array (
@@ -11986,8 +11986,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			421 => 
 			array (
@@ -11999,8 +11999,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			422 => 
 			array (
@@ -12012,8 +12012,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			423 => 
 			array (
@@ -12025,8 +12025,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			424 => 
 			array (
@@ -12038,8 +12038,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			425 => 
 			array (
@@ -12051,8 +12051,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			426 => 
 			array (
@@ -12064,8 +12064,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			427 => 
 			array (
@@ -12077,8 +12077,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			428 => 
 			array (
@@ -12090,8 +12090,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			429 => 
 			array (
@@ -12103,8 +12103,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			430 => 
 			array (
@@ -12116,8 +12116,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			431 => 
 			array (
@@ -12129,8 +12129,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			432 => 
 			array (
@@ -12142,8 +12142,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			433 => 
 			array (
@@ -12155,8 +12155,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			434 => 
 			array (
@@ -12168,8 +12168,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			435 => 
 			array (
@@ -12181,8 +12181,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			436 => 
 			array (
@@ -12194,8 +12194,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			437 => 
 			array (
@@ -12207,8 +12207,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			438 => 
 			array (
@@ -12220,8 +12220,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			439 => 
 			array (
@@ -12233,8 +12233,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			440 => 
 			array (
@@ -12246,8 +12246,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			441 => 
 			array (
@@ -12259,8 +12259,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			442 => 
 			array (
@@ -12272,8 +12272,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			443 => 
 			array (
@@ -12285,8 +12285,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			444 => 
 			array (
@@ -12298,8 +12298,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			445 => 
 			array (
@@ -12311,8 +12311,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			446 => 
 			array (
@@ -12324,8 +12324,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			447 => 
 			array (
@@ -12337,8 +12337,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			448 => 
 			array (
@@ -12350,8 +12350,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			449 => 
 			array (
@@ -12363,8 +12363,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			450 => 
 			array (
@@ -12376,8 +12376,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			451 => 
 			array (
@@ -12389,8 +12389,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			452 => 
 			array (
@@ -12402,8 +12402,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			453 => 
 			array (
@@ -12415,8 +12415,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			454 => 
 			array (
@@ -12428,8 +12428,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			455 => 
 			array (
@@ -12441,8 +12441,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			456 => 
 			array (
@@ -12454,8 +12454,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			457 => 
 			array (
@@ -12467,8 +12467,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			458 => 
 			array (
@@ -12480,8 +12480,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			459 => 
 			array (
@@ -12493,8 +12493,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			460 => 
 			array (
@@ -12506,8 +12506,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			461 => 
 			array (
@@ -12519,8 +12519,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			462 => 
 			array (
@@ -12532,8 +12532,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			463 => 
 			array (
@@ -12545,8 +12545,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			464 => 
 			array (
@@ -12558,8 +12558,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			465 => 
 			array (
@@ -12571,8 +12571,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			466 => 
 			array (
@@ -12584,8 +12584,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			467 => 
 			array (
@@ -12597,8 +12597,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			468 => 
 			array (
@@ -12610,8 +12610,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			469 => 
 			array (
@@ -12623,8 +12623,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			470 => 
 			array (
@@ -12636,8 +12636,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			471 => 
 			array (
@@ -12649,8 +12649,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			472 => 
 			array (
@@ -12662,8 +12662,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			473 => 
 			array (
@@ -12675,8 +12675,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			474 => 
 			array (
@@ -12688,8 +12688,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			475 => 
 			array (
@@ -12701,8 +12701,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			476 => 
 			array (
@@ -12714,8 +12714,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			477 => 
 			array (
@@ -12727,8 +12727,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			478 => 
 			array (
@@ -12740,8 +12740,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			479 => 
 			array (
@@ -12753,8 +12753,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			480 => 
 			array (
@@ -12766,8 +12766,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			481 => 
 			array (
@@ -12779,8 +12779,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			482 => 
 			array (
@@ -12792,8 +12792,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			483 => 
 			array (
@@ -12805,8 +12805,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			484 => 
 			array (
@@ -12818,8 +12818,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			485 => 
 			array (
@@ -12831,8 +12831,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			486 => 
 			array (
@@ -12844,8 +12844,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			487 => 
 			array (
@@ -12857,8 +12857,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			488 => 
 			array (
@@ -12870,8 +12870,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			489 => 
 			array (
@@ -12883,8 +12883,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			490 => 
 			array (
@@ -12896,8 +12896,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			491 => 
 			array (
@@ -12909,8 +12909,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			492 => 
 			array (
@@ -12922,8 +12922,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			493 => 
 			array (
@@ -12935,8 +12935,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			494 => 
 			array (
@@ -12948,8 +12948,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			495 => 
 			array (
@@ -12961,8 +12961,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			496 => 
 			array (
@@ -12974,8 +12974,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			497 => 
 			array (
@@ -12987,8 +12987,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			498 => 
 			array (
@@ -13000,8 +13000,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			499 => 
 			array (
@@ -13013,8 +13013,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 		));
 		\DB::table('products')->insert(array (
@@ -13028,8 +13028,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			1 => 
 			array (
@@ -13041,8 +13041,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			2 => 
 			array (
@@ -13054,8 +13054,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			3 => 
 			array (
@@ -13067,8 +13067,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			4 => 
 			array (
@@ -13080,8 +13080,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			5 => 
 			array (
@@ -13093,8 +13093,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			6 => 
 			array (
@@ -13106,8 +13106,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			7 => 
 			array (
@@ -13119,8 +13119,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			8 => 
 			array (
@@ -13132,8 +13132,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			9 => 
 			array (
@@ -13145,8 +13145,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			10 => 
 			array (
@@ -13158,8 +13158,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			11 => 
 			array (
@@ -13171,8 +13171,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			12 => 
 			array (
@@ -13184,8 +13184,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			13 => 
 			array (
@@ -13197,8 +13197,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			14 => 
 			array (
@@ -13210,8 +13210,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			15 => 
 			array (
@@ -13223,8 +13223,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			16 => 
 			array (
@@ -13236,8 +13236,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			17 => 
 			array (
@@ -13249,8 +13249,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			18 => 
 			array (
@@ -13262,8 +13262,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			19 => 
 			array (
@@ -13275,8 +13275,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			20 => 
 			array (
@@ -13288,8 +13288,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			21 => 
 			array (
@@ -13301,8 +13301,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			22 => 
 			array (
@@ -13314,8 +13314,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			23 => 
 			array (
@@ -13327,8 +13327,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			24 => 
 			array (
@@ -13340,8 +13340,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			25 => 
 			array (
@@ -13353,8 +13353,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			26 => 
 			array (
@@ -13366,8 +13366,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			27 => 
 			array (
@@ -13379,8 +13379,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			28 => 
 			array (
@@ -13392,8 +13392,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			29 => 
 			array (
@@ -13405,8 +13405,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			30 => 
 			array (
@@ -13418,8 +13418,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			31 => 
 			array (
@@ -13431,8 +13431,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			32 => 
 			array (
@@ -13444,8 +13444,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			33 => 
 			array (
@@ -13457,8 +13457,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			34 => 
 			array (
@@ -13470,8 +13470,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			35 => 
 			array (
@@ -13483,8 +13483,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			36 => 
 			array (
@@ -13496,8 +13496,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			37 => 
 			array (
@@ -13509,8 +13509,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			38 => 
 			array (
@@ -13522,8 +13522,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			39 => 
 			array (
@@ -13535,8 +13535,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			40 => 
 			array (
@@ -13548,8 +13548,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			41 => 
 			array (
@@ -13561,8 +13561,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			42 => 
 			array (
@@ -13574,8 +13574,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			43 => 
 			array (
@@ -13587,8 +13587,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			44 => 
 			array (
@@ -13600,8 +13600,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			45 => 
 			array (
@@ -13613,8 +13613,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			46 => 
 			array (
@@ -13626,12 +13626,25 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 			47 => 
 			array (
 				'id' => 1048,
+				'sku' => '2904',
+				'name' => 'Váy jean 1/7',
+				'product_type' => 1,
+				'check_in_stock' => 0,
+				'status' => 0,
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
+			),
+			48 => 
+			array (
+				'id' => 1049,
 				'sku' => '2892',
 				'name' => 'Áo thun trai đại in Hilfiger',
 				'product_type' => 1,
@@ -13639,12 +13652,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			48 => 
+			49 => 
 			array (
-				'id' => 1049,
+				'id' => 1050,
 				'sku' => '2888',
 				'name' => 'Bộ thun lửng gái thêu CAT 12/16',
 				'product_type' => 1,
@@ -13652,12 +13665,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			49 => 
+			50 => 
 			array (
-				'id' => 1050,
+				'id' => 1051,
 				'sku' => '2891',
 				'name' => 'Quần lửng Jean đại Zara',
 				'product_type' => 1,
@@ -13665,12 +13678,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			50 => 
+			51 => 
 			array (
-				'id' => 1051,
+				'id' => 1052,
 				'sku' => '2893',
 				'name' => 'Quần ngắn Kaki gái thêu thỏ',
 				'product_type' => 1,
@@ -13678,12 +13691,25 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			51 => 
+			52 => 
 			array (
-				'id' => 1052,
+				'id' => 1053,
+				'sku' => '2905',
+				'name' => 'Quần lững jean trai sọc',
+				'product_type' => 1,
+				'check_in_stock' => 0,
+				'status' => 0,
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
+			),
+			53 => 
+			array (
+				'id' => 1054,
 				'sku' => '2890',
 				'name' => 'Quần lửng Jean Cồ Zara',
 				'product_type' => 1,
@@ -13691,12 +13717,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			52 => 
+			54 => 
 			array (
-				'id' => 1053,
+				'id' => 1055,
 				'sku' => '2889',
 				'name' => 'Bộ thun lửng gái thêu gấu 8/12',
 				'product_type' => 1,
@@ -13704,12 +13730,38 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			53 => 
+			55 => 
 			array (
-				'id' => 1054,
+				'id' => 1056,
+				'sku' => '2903',
+				'name' => 'Đầm thun in sọc đại 8/12',
+				'product_type' => 1,
+				'check_in_stock' => 0,
+				'status' => 0,
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
+			),
+			56 => 
+			array (
+				'id' => 1057,
+				'sku' => '2902',
+				'name' => 'Đầm thun túi thêu gấu 1/7',
+				'product_type' => 1,
+				'check_in_stock' => 0,
+				'status' => 0,
+				'created_by' => 0,
+				'updated_by' => 0,
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
+			),
+			57 => 
+			array (
+				'id' => 1058,
 				'sku' => '2896',
 				'name' => 'Áo khoác thêu Kity 8/12',
 				'product_type' => 1,
@@ -13717,12 +13769,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			54 => 
+			58 => 
 			array (
-				'id' => 1055,
+				'id' => 1059,
 				'sku' => '2897',
 				'name' => 'Áo khoác thêu Kity 1/7',
 				'product_type' => 1,
@@ -13730,12 +13782,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			55 => 
+			59 => 
 			array (
-				'id' => 1056,
+				'id' => 1060,
 				'sku' => '2898',
 				'name' => 'Áo thun trai trung in Hilfiger 2/8',
 				'product_type' => 1,
@@ -13743,12 +13795,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			56 => 
+			60 => 
 			array (
-				'id' => 1057,
+				'id' => 1061,
 				'sku' => '2899',
 				'name' => 'Áo thun trai nhí in Hilfiger 1/4',
 				'product_type' => 1,
@@ -13756,12 +13808,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			57 => 
+			61 => 
 			array (
-				'id' => 1058,
+				'id' => 1062,
 				'sku' => '2901',
 				'name' => 'Quần ngắn Kaki gái thêu 1/7',
 				'product_type' => 1,
@@ -13769,12 +13821,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			58 => 
+			62 => 
 			array (
-				'id' => 1059,
+				'id' => 1063,
 				'sku' => '2900',
 				'name' => 'Quần lửng kaki trai đại',
 				'product_type' => 1,
@@ -13782,12 +13834,12 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
-			59 => 
+			63 => 
 			array (
-				'id' => 1060,
+				'id' => 1064,
 				'sku' => '2895',
 				'name' => 'Áo Sơ mi ren tay ngắn',
 				'product_type' => 1,
@@ -13795,8 +13847,8 @@ class ProductsTableSeeder extends Seeder {
 				'status' => 0,
 				'created_by' => 0,
 				'updated_by' => 0,
-				'created_at' => '2015-08-05 08:51:37',
-				'updated_at' => '2015-08-05 08:51:37',
+				'created_at' => '2015-08-05 09:56:21',
+				'updated_at' => '2015-08-05 09:56:21',
 			),
 		));
 	}
