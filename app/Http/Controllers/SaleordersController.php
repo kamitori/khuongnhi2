@@ -157,7 +157,7 @@ class SaleordersController extends Controller {
 
 		//Get value array
 		$distributes = Company::getCustomerList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$users = User::get();
 		$countries = Country::with('provinces')->get()->toArray();
 
@@ -484,7 +484,7 @@ class SaleordersController extends Controller {
 
 		//Get value
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Saleorder')
 						->where('module_id','=',$id)
 						->where('company_id','=',$saleorder['company_id'])
@@ -673,6 +673,30 @@ class SaleordersController extends Controller {
 
 			$arr_cache = \Cache::get('list_product_so'.\Auth::user()->id);
 			$sum_amount = 0;
+			$arr_check_idproduct = array();
+			$arr_check_mproduct = array();
+
+			foreach ($arr_cache as $key => $value) {
+				if(!in_array($value['product_id'],$arr_check_idproduct)){
+					$arr_check_idproduct[] = $value['product_id'];
+					$arr_check_mproduct[$value['product_id']][]=$value;
+					$arr_cache_tmp[$value['product_id']]=$value;
+				}else{
+					foreach ($arr_check_mproduct[$value['product_id']] as $key2 => $m_product) {
+						if($value['oum_id']==$m_product['oum_id'] && $value['specification']==$m_product['specification'] && $value['sell_price']==$m_product['sell_price']){
+							$arr_check_mproduct[$value['product_id']][$key2]['quantity']+= $value['quantity'];
+						}else{
+							$arr_check_mproduct[$value['product_id']][]=$value;
+						}
+					}
+				}
+			}
+			$arr_cache = array();
+			foreach ($arr_check_mproduct as $key => $value) {
+				foreach ($value as $key2 => $value2) {
+					$arr_cache[] = $value2;
+				}
+			}
 			foreach ($arr_cache as $key => $value) {
 				$sum_amount += $value['amount'];
 			}

@@ -169,7 +169,7 @@ class PurchaseordersController extends Controller {
 
 		//Get value array
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$users = User::get();
 		$countries = Country::with('provinces')->get()->toArray();
 		$producttypes = ProductType::get()->toArray();
@@ -529,7 +529,7 @@ class PurchaseordersController extends Controller {
 
 		//Get value
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Purchaseorder')
 						->where('module_id','=',$id)
 						->leftJoin('products','products.id','=','m_products.product_id')

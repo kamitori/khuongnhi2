@@ -595,7 +595,7 @@ class ProductsController extends Controller {
 		$list_sku = array();
 
 		$distributes = Company::getDistributeList()->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
 		$list_product = MProduct::select(
@@ -708,7 +708,7 @@ class ProductsController extends Controller {
 		$list_sku = array();
 
 		$distributes = Company::getDistributeList()->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
 		$current_rpo = ReturnPurchaseorder::find(session('current_returnpurchaseorder'));
@@ -793,7 +793,7 @@ class ProductsController extends Controller {
 		$list_sku = array();
 
 		$distributes = Company::getDistributeList()->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
 
 		$current_rso = ReturnSaleorder::find(session('current_returnsaleorder'));
@@ -909,15 +909,17 @@ class ProductsController extends Controller {
 	}
 
 	public function anySearchProductStock(Request $request){
+		// DB::enableQueryLog();
 		$arr_return = array();
 		$key = $request->has('key')?$request->input('key'):'';
 		$key = '%'.$key.'%';
 		$module_id = session('current_saleorder');
-		$module_type = 'App\Purchaseorder';
+		$module_type = 'App\Saleorder';
 		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->lists('m_product_id');
-
+		$arr_product_of_so = array_values($arr_product_of_so);
+		// pr($arr_product_of_so);die;
 		$arr_return = MProduct::select(
 					'm_products.id',
 					'products.name',
@@ -949,11 +951,14 @@ class ProductsController extends Controller {
 						$query->where('products.sku','like',$key)
 						->orWhere('products.name','like',$key);
 					})
-					->whereNotIn('m_products.m_product_id',$arr_product_of_so)
+					->whereNotIn('m_products.id',$arr_product_of_so)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
 					->limit(15)
 					->get()->toArray();
+
+		// pr(DB::getQueryLog());
+
 		foreach ($arr_return as $key => $value) {
 			if($value['date']==''){
 				$arr_return[$key]['date'] = 'Tồn kho';
@@ -1018,5 +1023,15 @@ class ProductsController extends Controller {
 			return redirect($link);
 		}
 		die;
+	}
+
+	public function anyLog(){
+		$list_log = Log::select('logs.*','users.name')
+				->where('module_type','=','App\Product')
+				->leftJoin('users','users.id','=','logs.user_id')
+				->orderBy('id','desc')
+				->paginate(50);
+
+		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
 	}
 }

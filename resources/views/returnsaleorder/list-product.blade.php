@@ -18,7 +18,13 @@
 		@else
 		<select class="oum_id" name="oum_id" id="oum_id">
 			@foreach($oums as $oum)
-			<option value="{{$oum['id']}}"  {{$product['oum_id']==$oum['id']?'selected':''}}>
+			<option value="{{$oum['id']}}"  
+					<?php 
+						if ($product['oum_id']==$oum['id']) echo 'selected';
+						elseif($oum['name']=='Cái') echo 'selected'; 
+						else echo ''; 
+					?> 
+			>
 				{{$oum['name']}}
 			</option>
 		 	@endforeach
@@ -75,8 +81,10 @@
 			data['id'] = row.find("#id").val();
 			data['oum_id'] = row.find("#oum_id").val();
 			sell_price = row.find("#sell_price").text();
-			while(sell_price.indexOf(',')>0){
-				sell_price = sell_price.replace(',','')
+			if(sell_price){
+				while(sell_price.indexOf(',')>0){
+					sell_price = sell_price.replace(',','')
+				}
 			}
 			data['sell_price'] = sell_price;
 			data['specification'] = row.find("#specification").val();

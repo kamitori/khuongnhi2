@@ -157,7 +157,7 @@ class ReturnPurchaseordersController extends Controller {
 
 		//Get value array
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$users = User::get();
 		$countries = Country::with('provinces')->get()->toArray();
 
@@ -468,7 +468,7 @@ class ReturnPurchaseordersController extends Controller {
 
 		//Get value
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
-		$oums = Oum::get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\ReturnPurchaseorder')
 						->where('module_id','=',$id)
 						->where('company_id','=',$returnpurchaseorder['company_id'])
