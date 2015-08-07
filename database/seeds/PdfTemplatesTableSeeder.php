@@ -21,7 +21,7 @@ class PdfTemplatesTableSeeder extends Seeder {
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -35,7 +35,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:19:19',
-				'updated_at' => '2015-07-31 08:56:35',
+				'updated_at' => '2015-08-07 16:38:23',
 			),
 			1 => 
 			array (
@@ -44,7 +44,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -64,7 +64,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:22:28',
-				'updated_at' => '2015-07-28 13:57:57',
+				'updated_at' => '2015-08-07 16:38:59',
 			),
 			2 => 
 			array (
@@ -73,7 +73,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -140,7 +140,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:03',
-				'updated_at' => '2015-07-28 11:50:32',
+				'updated_at' => '2015-08-07 16:40:54',
 			),
 			3 => 
 			array (
@@ -149,7 +149,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -216,7 +216,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:27',
-				'updated_at' => '2015-07-28 11:50:26',
+				'updated_at' => '2015-08-07 16:40:43',
 			),
 			4 => 
 			array (
@@ -225,7 +225,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -292,7 +292,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:36:43',
-				'updated_at' => '2015-07-28 11:49:25',
+				'updated_at' => '2015-08-07 16:40:16',
 			),
 			5 => 
 			array (
@@ -301,7 +301,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -368,7 +368,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:37:01',
-				'updated_at' => '2015-07-28 11:49:50',
+				'updated_at' => '2015-08-07 16:40:25',
 			),
 			6 => 
 			array (
@@ -377,7 +377,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -395,7 +395,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:37:52',
-				'updated_at' => '2015-07-31 08:56:38',
+				'updated_at' => '2015-08-07 16:38:32',
 			),
 			7 => 
 			array (
@@ -404,7 +404,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -422,7 +422,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:01',
-				'updated_at' => '2015-07-31 08:56:41',
+				'updated_at' => '2015-08-07 16:38:43',
 			),
 			8 => 
 			array (
@@ -431,7 +431,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -449,7 +449,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:13',
-				'updated_at' => '2015-07-28 13:57:55',
+				'updated_at' => '2015-08-07 16:38:50',
 			),
 			9 => 
 			array (
@@ -458,7 +458,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -476,7 +476,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:38:21',
-				'updated_at' => '2015-07-30 09:25:18',
+				'updated_at' => '2015-08-07 16:39:09',
 			),
 			10 => 
 			array (
@@ -485,7 +485,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -504,7 +504,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:13',
-				'updated_at' => '2015-07-30 09:27:01',
+				'updated_at' => '2015-08-07 16:37:55',
 			),
 			11 => 
 			array (
@@ -513,7 +513,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -531,7 +531,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:45',
-				'updated_at' => '2015-07-30 10:26:45',
+				'updated_at' => '2015-08-07 16:38:11',
 			),
 			12 => 
 			array (
@@ -540,7 +540,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -558,7 +558,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:50:52',
-				'updated_at' => '2015-07-30 10:38:42',
+				'updated_at' => '2015-08-07 16:38:03',
 			),
 			13 => 
 			array (
@@ -567,7 +567,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -585,7 +585,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:05',
-				'updated_at' => '2015-07-30 13:53:56',
+				'updated_at' => '2015-08-07 16:37:17',
 			),
 			14 => 
 			array (
@@ -594,7 +594,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -612,7 +612,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:09',
-				'updated_at' => '2015-07-30 13:54:14',
+				'updated_at' => '2015-08-07 16:37:43',
 			),
 			15 => 
 			array (
@@ -621,7 +621,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -640,7 +640,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:14',
-				'updated_at' => '2015-07-30 13:53:15',
+				'updated_at' => '2015-08-07 16:37:02',
 			),
 			16 => 
 			array (
@@ -649,7 +649,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -668,7 +668,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:51:44',
-				'updated_at' => '2015-07-31 08:57:09',
+				'updated_at' => '2015-08-07 16:40:09',
 			),
 			17 => 
 			array (
@@ -731,7 +731,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -750,7 +750,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:52:08',
-				'updated_at' => '2015-07-31 11:23:10',
+				'updated_at' => '2015-08-07 16:39:50',
 			),
 			20 => 
 			array (
@@ -759,7 +759,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -777,7 +777,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '2015-07-22 09:52:15',
-				'updated_at' => '2015-07-31 11:33:23',
+				'updated_at' => '2015-08-07 16:40:02',
 			),
 			21 => 
 			array (
@@ -786,7 +786,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -805,7 +805,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '2015-07-31 14:41:14',
+				'updated_at' => '2015-08-07 16:39:19',
 			),
 			22 => 
 			array (
@@ -814,7 +814,7 @@ Th&aacute;ng {{$month}} Năm {{$year}}</span></p>
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -832,7 +832,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '2015-07-31 15:30:20',
+				'updated_at' => '2015-08-07 16:39:43',
 			),
 			23 => 
 			array (
@@ -841,7 +841,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'template' => '<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 <tbody>
 <tr>
-<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="http://khuongnhi2.com/upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
+<td style="height:151px; width:211px"><span style="font-size:20px"><img alt="" src="upload/64817163917fef09563ef756685a88d9.jpg" style="float:left; height:151px; width:191px" /></span></td>
 <td style="vertical-align:baseline"><span style="font-size:20px"><strong>CƠ SỞ MAY KHƯƠNG NHI</strong></span><br />
 <span style="font-size:16px">ĐC: 33/6 ĐƯỜNG SỐ 19, P5, G&Ograve; VẤP<br />
 <strong>SHOP KHƯƠNG NHI</strong><br />
@@ -859,7 +859,7 @@ Chăm s&oacute;c kh&aacute;ch h&agrave;ng:&nbsp;<strong>091 88 44 179</strong></
 				'created_by' => 0,
 				'updated_by' => 0,
 				'created_at' => '0000-00-00 00:00:00',
-				'updated_at' => '2015-07-31 15:32:25',
+				'updated_at' => '2015-08-07 16:39:35',
 			),
 		));
 	}
