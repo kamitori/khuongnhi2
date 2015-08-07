@@ -68,6 +68,8 @@
 	$(function(){
 		datatype_currency();
 		datatype_number();
+		datatype_quantity();
+		select_table();
 		var old_value = 0;
 		datatype_quantity();
 		$("#list_product input#quantity").on('focusin', function(){

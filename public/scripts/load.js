@@ -995,22 +995,22 @@ $(function()
 	{
 		$(".datepicker").datepicker({
 			dateFormat: "dd-mm-yy",
-			// beforeShow :function(input){
-			// 	var date = $(input).val();
-			// 	var month = date.substr(2);
-			// 	var number_of_month = date.substr(3,2);
-			// 	var number_of_year = date.substr(6,4);
-			// 	maxDate = new Date(number_of_year,number_of_month,0);
-			// 	var options = {
-			// 		year: "numeric", month: "numeric",day: "numeric"
-			// 	}
-			// 	maxDate = maxDate.toLocaleDateString('fr',options);
-			// 	maxDate = maxDate.replace('/','-');
-			// 	maxDate = maxDate.replace('/','-');
-			// 	$(input).datepicker("option", "minDate", '01'+month);
-			// 	$(input).datepicker("option", "maxDate", maxDate);
+			beforeShow :function(input){
+				var date = $(input).val();
+				var month = date.substr(2);
+				var number_of_month = date.substr(3,2);
+				var number_of_year = date.substr(6,4);
+				maxDate = new Date(number_of_year,number_of_month,0);
+				var options = {
+					year: "numeric", month: "numeric",day: "numeric"
+				}
+				maxDate = maxDate.toLocaleDateString('fr',options);
+				maxDate = maxDate.replace('/','-');
+				maxDate = maxDate.replace('/','-');
+				$(input).datepicker("option", "minDate", '01'+month);
+				$(input).datepicker("option", "maxDate", maxDate);
 				
-			// },
+			},
 			dayNamesMin : ["CN","T2","T3","T4","T5","T6","T7"],
 			monthNames : ["Tháng 1 - ","Tháng 2 - ","Tháng 3 - ","Tháng 4 - ","Tháng 5 - ","Tháng 6 - ","Tháng 7 - ","Tháng 8 - ","Tháng 9 - ","Tháng 10 - ","Tháng 11 - ","Tháng 12 -"]
 		});
@@ -1396,6 +1396,55 @@ function confirms(content,callback){
 	$("#modal_confirm").modal('show');
 	document.getElementById("ok_confirm").addEventListener("click", callback);
 }
+
+function select_table(){
+	$(".table-list-edit tbody tr td input,.table-list-edit tbody tr td select").keydown(function(e){
+		var prev = 37;
+		var up = 38;
+		var next = 39;
+		var down = 40;
+		var key = e.keyCode;
+		switch(key){
+			case prev:
+				e.preventDefault();
+				if(
+					($(this).parent().prev().children().length>0 && $(this).parent().prev().children(0).get(0).tagName == "INPUT") || 
+					($(this).parent().prev().children().length>0 && $(this).parent().prev().children(0).get(0).tagName == "SELECT")
+				){
+					$(this).parent().prev().children(0).focus();
+				}
+				else{
+					$(this).parent().parent().prev().find($("td").has("input, select")).last().children(0).focus()
+				}
+				break;
+			case up:
+				e.preventDefault();
+				var index = $(this).parent().index();
+				$(this).parent().parent().prev().find($("td:nth-child("+(index+1)+")")).children(0).focus();
+				break;
+			case next:
+				e.preventDefault();
+				if(
+					($(this).parent().next().children().length>0  && $(this).parent().next().children(0).get(0).tagName == "INPUT") || 
+					($(this).parent().next().children().length>0  && $(this).parent().next().children(0).get(0).tagName == "SELECT")
+				){
+					$(this).parent().next().children(0).focus();
+				}
+				else{
+					$(this).parent().parent().next().find($("td").has("input, select")).first().children(0).focus()
+				}
+				break;
+			case down:
+				e.preventDefault();
+				var index = $(this).parent().index();
+				$(this).parent().parent().next().find($("td:nth-child("+(index+1)+")")).children(0).focus();
+				break;
+			default:
+				break;
+		}
+	});
+}
+
 
 function datatype_currency(){
 	$("[data-type=currency]").each(function(){

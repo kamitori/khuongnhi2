@@ -47,7 +47,9 @@ class ProductsController extends Controller {
 					session(['current_product' => $product['id']]);
 				}else{
 					$product = new Product;
+					$product->created_by = \Auth::user()->id;
 					$product->save();
+					Log::create_log(\Auth::user()->id,'App\Product','Tạo mới sản phẩm số '.$product->id);
 					session(['current_product' => $product->id]);
 					$product->toArray();
 				}

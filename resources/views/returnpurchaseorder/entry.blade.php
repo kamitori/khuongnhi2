@@ -272,6 +272,7 @@
 
 @section('pageJS')
 	<script>
+
 		$(function(){
 			$("#modal_add_product").modal({
 				"backdrop":true,
