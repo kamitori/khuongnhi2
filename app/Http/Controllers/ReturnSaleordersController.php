@@ -168,10 +168,18 @@ class ReturnSaleordersController extends Controller {
 
 		$view_list_product = self::getListProduct();
 
-		// $view_list_product = '';
+		$arr_create = ReturnSaleorder::select('users.name','return_saleorders.created_at')
+					->leftJoin('users','users.id','=','return_saleorders.created_by')
+					->where('return_saleorders.id','=',$returnsaleorder['id'])
+					->get()->first()->toArray();
 
+		$arr_update = ReturnSaleorder::select('users.name','return_saleorders.updated_at')
+					->leftJoin('users','users.id','=','return_saleorders.updated_by')
+					->where('return_saleorders.id','=',$returnsaleorder['id'])
+					->get()->first()->toArray();
+		$this->layout->arr_create = $arr_create;
+		$this->layout->arr_update = $arr_update;
 
-		// pr($list_product);die;
 		$this->layout->content=view('returnsaleorder.entry',[	'distributes'=>$distributes,
 										'users'=>$users,
 										'countries'=>$countries,
@@ -211,37 +219,51 @@ class ReturnSaleordersController extends Controller {
 				$new = Company::find($request->input('company_id'));
 				$log .= 'công ty từ "'.$old->name.'" thành "'.$new->name.'" ';
 			}
-			if($request->has('user_id')  && $returnsaleorder->user_id != $request->input('user_id')){
-				$old = User::find($returnsaleorder->user_id);
-				$new = User::find($request->input('user_id'));
-				$log .= 'người liên hệ từ "'.$old->name.'" thành "'.$new->name.'" ';
-			}
-			if($request->has('date')  && $returnsaleorder->date != $request->input('date')){
-				$old =date("Y-m-d H:i:s",strtotime($returnsaleorder->date));
-				$new = date("Y-m-d H:i:s",strtotime($request->input('date')));
-				$log .= 'ngày từ "'.$old.'" thành "'.$new.'" ';
-			}
+			if($returnsaleorder->company_id == $request->input('company_id')){
 
-			if($request->has('company_phone')  && $returnsaleorder->company_phone != $request->input('company_phone')){
-				$log .= 'số điện thoại từ "'.$returnsaleorder->company_phone.'" thành "'.$request->input('company_phone').'" ';
-			}
+				if($request->has('user_id')  && $returnsaleorder->user_id != $request->input('user_id')){
+					$old = User::find($returnsaleorder->user_id);
+					$new = User::find($request->input('user_id'));
+					$log .= 'người liên hệ từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+				if($request->has('date')  && $returnsaleorder->date != $request->input('date')){
+					$old =date("Y-m-d H:i:s",strtotime($returnsaleorder->date));
+					$new = date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time));
+					$log .= 'ngày từ "'.$old.'" thành "'.$new.'" ';
+				}
 
-			if($request->has('company_email')  && $returnsaleorder->company_email != $request->input('company_email')){
-				$log .= 'email từ "'.$returnsaleorder->company_email.'" thành "'.$request->input('company_email').'" ';
-			}
-			if($request->has('address')  && $returnsaleorder->address != $request->input('address')){
-				$log .= 'địa chỉ từ "'.$returnsaleorder->address.'" thành "'.$request->input('address').'" ';
-			}
-			if($request->has('town_city')  && $returnsaleorder->town_city != $request->input('town_city')){
-				$log .= 'quận huyện từ "'.$returnsaleorder->town_city.'" thành "'.$request->input('town_city').'" ';
-			}
+				if($request->has('company_phone')  && $returnsaleorder->company_phone != $request->input('company_phone')){
+					$log .= 'số điện thoại từ "'.$returnsaleorder->company_phone.'" thành "'.$request->input('company_phone').'" ';
+				}
 
-			if($request->has('province_id')  && $returnsaleorder->province_id != $request->input('province_id')){
-				$old = User::find($returnsaleorder->province_id);
-				$new = User::find($request->input('province_id'));
-				$log .= 'tỉnh thành từ "'.$old->name.'" thành "'.$new->name.'" ';
-			}
+				if($request->has('company_email')  && $returnsaleorder->company_email != $request->input('company_email')){
+					$log .= 'email từ "'.$returnsaleorder->company_email.'" thành "'.$request->input('company_email').'" ';
+				}
+				if($request->has('address')  && $returnsaleorder->address != $request->input('address')){
+					$log .= 'địa chỉ từ "'.$returnsaleorder->address.'" thành "'.$request->input('address').'" ';
+				}
+				if($request->has('town_city')  && $returnsaleorder->town_city != $request->input('town_city')){
+					$log .= 'quận huyện từ "'.$returnsaleorder->town_city.'" thành "'.$request->input('town_city').'" ';
+				}
 
+				if($request->has('province_id')  && $returnsaleorder->province_id != $request->input('province_id')){
+					$old = Province::find($returnsaleorder->province_id);
+					$new = Province::find($request->input('province_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'tỉnh thành từ "'.isset($old->name)?$old->name:''.'" thành "'.$new->name.'" ';
+				}
+				if($request->has('country_id')  && $returnsaleorder->country_id != $request->input('country_id')){
+					$old = Country::find($returnsaleorder->country_id);
+					$new = Country::find($request->input('country_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'quốc gia từ "'.isset($old->name)?$old->name:''.'" thành "'.$new->name.'" ';
+				}
+			}
+			
 			$returnsaleorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 			$returnsaleorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 			$returnsaleorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
@@ -506,7 +528,10 @@ class ReturnSaleordersController extends Controller {
 				}
 			}
 		}
-		Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
+		if($log_delete !="")
+			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
+		else
+			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.'vào đơn hàng đại lý trả số '.session('current_returnsaleorder'));
 		$returnsaleorder = ReturnSaleorder::find(session('current_returnsaleorder'));
 		$returnsaleorder->updated_by = \Auth::user()->id;
 		$returnsaleorder->save();
@@ -546,6 +571,7 @@ class ReturnSaleordersController extends Controller {
 	public function postUpdateMproduct(Request $request){
 		$arr_return= array('status'=>'error','amount'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
+		$log="";
 		if($id){
 			$mproduct = MProduct::find($id);
 			$mproduct_po = Mproduct::find($mproduct->m_product_id);
@@ -561,7 +587,21 @@ class ReturnSaleordersController extends Controller {
 			foreach ($mproduct_rso_before as $key => $value) {
 				$mproduct_so->con_lai -=  $value->quantity * $value->specification;
 			}
-					
+			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
+				$old = Oum::find($mproduct->oum_id);
+				$new = Oum::find($request->input('oum_id'));
+				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
+				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
+			}
+			if($request->has('specification')  && $mproduct->specification != $request->input('specification')){
+				$log .= 'quy cách từ "'.$mproduct->specification.'" thành "'.$request->input('specification').'" ';
+			}
+			if($request->has('quantity')  && $mproduct->quantity != $request->input('quantity')){
+				$log .= 'số lượng từ "'.$mproduct->quantity.'" thành "'.$request->input('quantity').'" ';
+			}
+
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->sell_price =  $request->has('sell_price')?$request->input('sell_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
@@ -579,7 +619,7 @@ class ReturnSaleordersController extends Controller {
 				if( $check_return ){
 					if($mproduct->save()){
 						$product = Product::find($mproduct->product_id);
-						Log::create_log(\Auth::user()->id,'App\ReturnSaleorder','sản phẩm '.$product->sku.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
+						Log::create_log(\Auth::user()->id,'App\ReturnSaleorder','cập nhật '.$log.' sản phẩm '.$product->sku.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
 						$arr_return['status'] = 'success';
 						$arr_return['amount'] = number_format( $mproduct->amount );
 					}else{ 
@@ -611,6 +651,8 @@ class ReturnSaleordersController extends Controller {
 				// $product = ProductStock::find($id_product);
 				// $product->in_stock = $product->in_stock - $quantity*$specification;
 				// $product->save();
+				$product = Product::find($mproduct->product_id);
+				Log::create_log(\Auth::user()->id,'App\ReturnSaleorder','Xóa sản phẩm '.$product->sku.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';
@@ -753,6 +795,7 @@ class ReturnSaleordersController extends Controller {
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
 			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_dai_ly_tra_hang_so_'.$rso->id,'potrait');
+			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder','In đơn hàng đại lý trả số '.session('current_returnsaleorder'));
 			return redirect($link);
 		}
 		die;

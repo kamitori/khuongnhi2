@@ -17,7 +17,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-				<h4 id="product_name">&nbsp;Hóa đơn trả hàng mua số {{$returnsaleorder['id']}}</h4>
+				<h4 id="product_name">&nbsp;Đơn hàng đại lý trả số {{$returnsaleorder['id']}}</h4>
 			</a>
 		</div>
 		<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
