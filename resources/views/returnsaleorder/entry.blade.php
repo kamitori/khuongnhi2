@@ -6,7 +6,7 @@
 		@endif
 		<a href="{{URL}}/returnsaleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/returnsaleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="{{URL}}/returnsaleorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 	</div>
 	<div class="buttons pull-right">
 		

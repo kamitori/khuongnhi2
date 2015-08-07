@@ -848,4 +848,14 @@ class ReturnSaleordersController extends Controller {
 		}
 		die;
 	}
+
+	public function anyLog(){
+		$list_log = Log::select('logs.*','users.name')
+				->where('module_type','=','App\ReturnSaleorder')
+				->leftJoin('users','users.id','=','logs.user_id')
+				->orderBy('id','desc')
+				->paginate(50);
+
+		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
+	}
 }

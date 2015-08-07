@@ -1,9 +1,8 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
-		<a href="{{URL}}/products/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
-		<a href="{{URL}}/products/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
-		<a href="{{URL}}/products/export-pdf" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
-		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		<a href="create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
+		<a href="entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
+		<a href="list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
 	</div>
 	<div class="buttons pull-right">
 
