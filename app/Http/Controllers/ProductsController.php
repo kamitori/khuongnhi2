@@ -337,13 +337,13 @@ class ProductsController extends Controller {
 					'm_products.oum_id',
 					'm_products.specification',
 					'm_products.origin_price',
-					// 'm_products.invest',
-					'product_stocks.in_stock',
+					// 'product_stocks.in_stock',
 					'companies.name as company_name',
 					'oums.name as oum_name',
 					'm_products.module_id'
 		                                )
 					->addSelect(DB::raw('product_stocks.in_stock/m_products.specification as real_in_stock'))
+					->addSelect(DB::raw('sum(product_stocks.in_stock) as in_stock'))
 					->leftJoin('oums','oums.id','=','m_products.oum_id')
 					->leftJoin('products','products.id','=','m_products.product_id')
 					->leftJoin('purchaseorders',function($join){
@@ -354,7 +354,8 @@ class ProductsController extends Controller {
 						$query->where('purchaseorders.status', '=', 1)
 							->orWhere('m_products.module_type', '=', 'in_stock');
 					})
-					->where('in_stock','>',0)
+					// ->where('purchaseorders.status','=',1)
+					->groupBy('products.id','m_products.company_id','m_products.oum_id','m_products.specification','m_products.origin_price')
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
 
@@ -401,7 +402,7 @@ class ProductsController extends Controller {
 		}
 		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
 		$sum_invest =  0;
-
+		// pr($list_product->get()->toArray() );die;
 		foreach ($list_product->get()->toArray() as $key => $value) {
 			$sum_invest += $value['origin_price'] * $value['in_stock'];
 		}

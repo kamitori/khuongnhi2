@@ -678,6 +678,7 @@ class PurchaseordersController extends Controller {
 			// if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
+						$product = Product::find($mproduct->product_id);
 						Log::create_log(\Auth::user()->id,'App\Purchaseorder','cập nhật '.$log.' sản phẩm '.$product->sku.' đơn hàng mua số '.session('current_purchaseorder'));
 						$arr_return['status'] = 'success';
 						$arr_return['invest'] = number_format( $mproduct->invest );
