@@ -328,7 +328,7 @@ class ProductsController extends Controller {
 		$oums = Oum::orderBy('name')->get()->toArray();
 		$producttypes = ProductType::get()->toArray();
 		$list_all_product = Product::select('sku','name')->get()->toArray();
-
+		DB::enableQueryLog();
 		$list_product = MProduct::select(
 					'products.id',
 					'products.name',
@@ -346,15 +346,18 @@ class ProductsController extends Controller {
 					->addSelect(DB::raw('sum(product_stocks.in_stock) as in_stock'))
 					->leftJoin('oums','oums.id','=','m_products.oum_id')
 					->leftJoin('products','products.id','=','m_products.product_id')
-					->leftJoin('purchaseorders',function($join){
+					->rightJoin('purchaseorders',function($join){
 						$join->on('purchaseorders.id','=','m_products.module_id')
 						->where('purchaseorders.status','=',1);
 					})
+					// ->where(function ($query){
+					// 	$query->where('purchaseorders.status', '=', 1)
+					// 		->orWhere('m_products.module_type', '=', 'in_stock');
+					// })
 					->where(function ($query){
-						$query->where('purchaseorders.status', '=', 1)
+						$query->where('m_products.module_type', '=', 'App\Purchaseorder')
 							->orWhere('m_products.module_type', '=', 'in_stock');
 					})
-					// ->where('purchaseorders.status','=',1)
 					->groupBy('products.id','m_products.company_id','m_products.oum_id','m_products.specification','m_products.origin_price')
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id');
