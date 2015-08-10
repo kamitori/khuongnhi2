@@ -16,10 +16,10 @@
 				<th style="width: 4%">
 					Chọn
 				</th>
-				<th style="width: 4%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
+				<th style="width: 6%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
 				<th style="width: 12%" data-column="sku" {{ isset($arr_sort['sku'])?'data-sort='.$arr_sort['sku']:'' }}>SKU</th>
 				<th style="width: 27%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
-				<th style="width: 27%">Nhà cung cấp</th>
+				<th style="width: 25%">Nhà cung cấp</th>
 				<th style="width: 8%">ĐVT</th>
 				<th style="width: 8%">Quy cách</th>
 				<th style="width: 10%">Số lượng</th>
@@ -28,7 +28,7 @@
 				<th style="width: 4%" class="center no-sort">
 					<input type="checkbox" id="check_all" value="">
 				</th>
-				<th style="width: 4%">
+				<th style="width: 6%">
 				</th>
 				<th style="width: 12%">
 					<select name="input-filter[sku]" id="sku" data-type="select2">
@@ -46,7 +46,7 @@
 						@endforeach
 					</select>
 				</th>
-				<th style="width:27%">
+				<th style="width:25%">
 					
 				</th>
 				<th style="width:8%">

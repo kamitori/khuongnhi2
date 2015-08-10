@@ -346,7 +346,7 @@ class ProductsController extends Controller {
 					->addSelect(DB::raw('sum(product_stocks.in_stock) as in_stock'))
 					->leftJoin('oums','oums.id','=','m_products.oum_id')
 					->leftJoin('products','products.id','=','m_products.product_id')
-					->rightJoin('purchaseorders',function($join){
+					->leftJoin('purchaseorders',function($join){
 						$join->on('purchaseorders.id','=','m_products.module_id')
 						->where('purchaseorders.status','=',1);
 					})
@@ -734,11 +734,15 @@ class ProductsController extends Controller {
 						$join->on('purchaseorders.id','=','m_products.module_id')
 						->where('purchaseorders.status','=',1);
 					})
-					->where('purchaseorders.status','=',1)
-					->where('m_products.module_type','=','App\\Purchaseorder')
+					->where(function ($query){
+						$query->where('m_products.module_type','=','App\\Purchaseorder')
+							->orWhere('m_products.module_type', '=', 'in_stock');
+					})
+					->where('product_stocks.in_stock','>',0)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
 					->where('m_products.company_id','=',$current_rpo->company_id);
+
 		if(count($arr_sort)==0){
 			$list_product = $list_product->orderBy('products.id','asc');
 		}
