@@ -13,6 +13,7 @@ use App\ProductStock;
 use App\ReturnPurchaseorder;
 use App\Purchaseorder;
 use App\Paid;
+use App\Log;
 use App\Address;
 use App\SellPrice;
 use Datatables;
@@ -42,18 +43,10 @@ class ReturnPurchaseordersController extends Controller {
 	{
 		$returnpurchaseorder = new ReturnPurchaseorder;
 		$returnpurchaseorder->date = date("Y-m-d H:i:s");
-		$returnpurchaseorder->save();
-		session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
-		// $address = new Address;
-		// 
-		// if($returnpurchaseorder->save()){
-		// 	session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
-		// 	$address->module_id  = $returnpurchaseorder['id'];
-		// 	$address->module_type  = 'App\ReturnPurchaseorder';
-		// 	$address->save();
-		// 	$returnpurchaseorder->address_id = $address->id;
-		// 	$returnpurchaseorder->save();
-		// }	
+		$returnpurchaseorder->created_by = \Auth::user()->id;
+		if($returnpurchaseorder->save()){
+			session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
+		}
 		return redirect('returnpurchaseorders');
 	}
 
@@ -70,6 +63,7 @@ class ReturnPurchaseordersController extends Controller {
 									->where('module_type','=','App\ReturnPurchaseorder')
 									->lists('id');
 					MProduct::whereIn('id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Xóa đơn hàng trả nhà cung cấp số '.$returnpurchaseorder->id);
 					$arr_return['status'] = 'success';
 				}else{
 					$arr_return['message'] = 'Delete fail !';
@@ -99,6 +93,7 @@ class ReturnPurchaseordersController extends Controller {
 									->where('module_type','=','App\ReturnPurchaseorder')
 									->lists('id');
 					MProduct::whereIn('id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Xóa đơn hàng trả nhà cung cấp số '.$returnpurchaseorder->id);
 				}
 			}
 		}
@@ -128,7 +123,9 @@ class ReturnPurchaseordersController extends Controller {
 				}else{
 					$returnpurchaseorder = new ReturnPurchaseorder;
 					$returnpurchaseorder->date = date("Y-m-d H:i:s");
+					$returnpurchaseorder->created_by = \Auth::user()->id;
 					$returnpurchaseorder->save();
+					Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Tạo mới đơn hàng trả nhà cung cấp số '.$returnpurchaseorder->id);
 					session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 				}
 			}
@@ -171,10 +168,19 @@ class ReturnPurchaseordersController extends Controller {
 		}
 
 		$view_list_product = self::getListProduct();
-		// $view_list_product = '';
 
+		$arr_create = ReturnPurchaseorder::select('users.name','return_purchaseorders.created_at')
+					->leftJoin('users','users.id','=','return_purchaseorders.created_by')
+					->where('return_purchaseorders.id','=',$returnpurchaseorder['id'])
+					->get()->first()->toArray();
 
-		// pr($list_product);die;
+		$arr_update = ReturnPurchaseorder::select('users.name','return_purchaseorders.updated_at')
+					->leftJoin('users','users.id','=','return_purchaseorders.updated_by')
+					->where('return_purchaseorders.id','=',$returnpurchaseorder['id'])
+					->get()->first()->toArray();
+		$this->layout->arr_create = $arr_create;
+		$this->layout->arr_update = $arr_update;
+
 		$this->layout->content=view('returnpurchaseorder.entry',[	'distributes'=>$distributes,
 										'users'=>$users,
 										'countries'=>$countries,
@@ -200,11 +206,73 @@ class ReturnPurchaseordersController extends Controller {
 		}else{
 
 			$returnpurchaseorder = new ReturnPurchaseorder;
+			$returnpurchaseorder->date = date("Y-m-d H:i:s");
+			$returnpurchaseorder->created_by = \Auth::user()->id;
 			$returnpurchaseorder->save();
+			Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Tạo mới đơn hàng trả nhà cung cấp số '.$returnpurchaseorder->id);
 			session(['current_returnpurchaseorder' => $returnpurchaseorder->id]);
 		}
+		$log = '';
 		$old_company_id = $returnpurchaseorder->company_id;
 		if($returnpurchaseorder->status == 0){
+			$address = Address::where('module_id','=',$returnpurchaseorder->id)
+						->where('module_type','=','App\ReturnPurchaseorder')->first();
+			if($request->has('company_id')  && $returnpurchaseorder->company_id != $request->input('company_id')){
+				$old = Company::find($returnpurchaseorder->company_id);
+				if(!$old){
+					$old = (object) ['name'=>''];
+				}
+				$new = Company::find($request->input('company_id'));
+				$log .= 'công ty từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($returnpurchaseorder->company_id == $request->input('company_id')){
+
+				if($request->has('user_id')  && $returnpurchaseorder->user_id != $request->input('user_id')){
+					$old = User::find($returnpurchaseorder->user_id);
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$new = User::find($request->input('user_id'));
+					$log .= 'người liên hệ từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+
+				$old_date=date("Y-m-d",strtotime($returnpurchaseorder->date));
+				$new_date = date("Y-m-d",strtotime($request->input('date')));
+				if($request->has('date')  && $old_date != $new_date){
+					$log .= 'ngày từ "'.$old_date.'" thành "'.$new_date.'" ';
+				}
+
+				if($request->has('company_phone')  && $returnpurchaseorder->company_phone != $request->input('company_phone')){
+					$log .= 'số điện thoại từ "'.$returnpurchaseorder->company_phone.'" thành "'.$request->input('company_phone').'" ';
+				}
+
+				if($request->has('company_email')  && $returnpurchaseorder->company_email != $request->input('company_email')){
+					$log .= 'email từ "'.$returnpurchaseorder->company_email.'" thành "'.$request->input('company_email').'" ';
+				}
+				if($request->has('address')  && $address->address != $request->input('address')){
+					$log .= 'địa chỉ từ "'.$address->address.'" thành "'.$request->input('address').'" ';
+				}
+				if($request->has('town_city')  && $address->town_city != $request->input('town_city')){
+					$log .= 'quận huyện từ "'.$address->town_city.'" thành "'.$request->input('town_city').'" ';
+				}
+
+				if($request->has('province_id')  && $address->province_id != $request->input('province_id')){
+					$old = Province::find($address->province_id);
+					$new = Province::find($request->input('province_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'tỉnh thành từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+				if($request->has('country_id')  && $address->country_id != $request->input('country_id')){
+					$old = Country::find($address->country_id);
+					$new = Country::find($request->input('country_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'quốc gia từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+			}
 			$returnpurchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 			$returnpurchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 			$returnpurchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
@@ -212,8 +280,7 @@ class ReturnPurchaseordersController extends Controller {
 			$returnpurchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 			$address_id = isset($returnpurchaseorder->address_id) ? $returnpurchaseorder->address_id : 0;
 
-			$address = Address::where('module_id','=',$returnpurchaseorder->id)
-						->where('module_type','=','App\ReturnPurchaseorder')->first();
+			
 
 			$address->module_id  = $returnpurchaseorder->id;
 			$address->module_type  = 'App\ReturnPurchaseorder';
@@ -264,7 +331,9 @@ class ReturnPurchaseordersController extends Controller {
 		}
 
 		if($check_save_in_stock){
+			$returnpurchaseorder->updated_by = \Auth::user()->id;
 			if($returnpurchaseorder->save()){
+				Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Cập nhật '.$log.' đơn hàng trả nhà cung cấp số '.$returnpurchaseorder->id);
 				if($returnpurchaseorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
 						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
@@ -424,7 +493,7 @@ class ReturnPurchaseordersController extends Controller {
 						->where('module_type','=',$module_type)
 						->lists('product_id');
 
-
+		$log = "";
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_rpo)){
 				$product = MProduct::find($product_id);
@@ -438,10 +507,16 @@ class ReturnPurchaseordersController extends Controller {
 				$mproduct->oum_id		=	$product->oum_id;
 				$mproduct->origin_price	=	$product->origin_price;
 				$mproduct->save();
+				$product = Product::find($mproduct->product_id);
+				if($log==""){
+					$log .= "Thêm sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
 
-
+		$log_delete = "";
 		foreach ($arr_product_of_rpo as $key => $product_id) {
 			if(!in_array($product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
@@ -453,8 +528,21 @@ class ReturnPurchaseordersController extends Controller {
 				$check = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->delete();
+				$product = Product::find($mproduct['product_id']);
+				if($log==""){
+					$log .= "xóa sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
+		if($log_delete !="")
+			Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder',$log.' và .'.$log_delete.' đơn hàng trả nhà cung cấp số '.session('current_returnpurchaseorder'));
+		else
+			Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder',$log.' vào đơn hàng trả nhà cung cấp số '.session('current_returnpurchaseorder'));
+		$returnpurchaseorder = ReturnPurchaseorder::find(session('current_returnpurchaseorder'));
+		$returnpurchaseorder->updated_by = \Auth::user()->id;
+		$returnpurchaseorder->save();
 		return $arr_return;
 	}
 
@@ -494,9 +582,24 @@ class ReturnPurchaseordersController extends Controller {
 	public function postUpdateMproduct(Request $request){
 		$arr_return= array('status'=>'error','invest'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
+		$log="";
 		if($id){
 			$mproduct = MProduct::find($id);
 			$mproduct_po = Mproduct::find($mproduct->m_product_id);
+			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
+				$old = Oum::find($mproduct->oum_id);
+				$new = Oum::find($request->input('oum_id'));
+				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
+				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
+			}
+			if($request->has('specification')  && $mproduct->specification != $request->input('specification')){
+				$log .= 'quy cách từ "'.$mproduct->specification.'" thành "'.$request->input('specification').'" ';
+			}
+			if($request->has('quantity')  && $mproduct->quantity != $request->input('quantity')){
+				$log .= 'số lượng từ "'.$mproduct->quantity.'" thành "'.$request->input('quantity').'" ';
+			}
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->origin_price =  $request->has('origin_price')?$request->input('origin_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
@@ -508,6 +611,8 @@ class ReturnPurchaseordersController extends Controller {
 			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
+						$product = Product::find($mproduct->product_id);
+						Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','cập nhật '.$log.' sản phẩm '.$product->sku.' đơn hàng trả nhà cung cấp số '.session('current_returnpurchaseorder'));
 						$arr_return['status'] = 'success';
 						$arr_return['invest'] = number_format( $mproduct->invest );
 					}else{
@@ -526,8 +631,10 @@ class ReturnPurchaseordersController extends Controller {
 		$list_product = array();
 
 		//Get value
+		$returnpurchaseorder = ReturnPurchaseorder::find(session('current_returnpurchaseorder'));
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\ReturnPurchaseorder')
 						->where('module_id','=',$id)
+						->where('company_id','=',$returnpurchaseorder['company_id'])
 						->leftJoin('products','products.id','=','m_products.product_id')
 						->addSelect('oums.name as oum_name')
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
@@ -535,6 +642,9 @@ class ReturnPurchaseordersController extends Controller {
 		$returnpurchaseorder = ReturnPurchaseorder::select('status')->where('id','=',$id)->first()->toArray();
 		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30);
 
+		
+		$returnpurchaseorder->updated_by = \Auth::user()->id;
+		$returnpurchaseorder->save();
 		return $arr_return;
 	}
 
@@ -551,6 +661,8 @@ class ReturnPurchaseordersController extends Controller {
 				// $product = ProductStock::find($id_product);
 				// $product->in_stock = $product->in_stock + $quantity*$specification;
 				// $product->save();
+				$product = Product::find($mproduct->product_id);
+				Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','Xóa sản phẩm '.$product->sku.' đơn hàng trả nhà cung cấp số '.session('current_returnpurchaseorder'));
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';
@@ -690,6 +802,7 @@ class ReturnPurchaseordersController extends Controller {
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
 			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_tra_hang_ncc_so_'.$rpo->id,'potrait');
+			Log::create_log(\Auth::user()->id,'App\ReturnPurchaseorder','In đơn hàng trả nhà cung cấp số '.session('current_returnpurchaseorder'));
 			return redirect($link);
 		}
 		die;
@@ -741,5 +854,15 @@ class ReturnPurchaseordersController extends Controller {
 			return redirect($link);
 		}
 		die;
+	}
+
+	public function anyLog(){
+		$list_log = Log::select('logs.*','users.name')
+				->where('module_type','=','App\ReturnPurchaseorder')
+				->leftJoin('users','users.id','=','logs.user_id')
+				->orderBy('id','desc')
+				->paginate(50);
+
+		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
 	}
 }

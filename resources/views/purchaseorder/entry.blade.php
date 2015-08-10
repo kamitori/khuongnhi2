@@ -6,7 +6,7 @@
 		@endif
 		<a href="{{URL}}/purchaseorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/purchaseorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="{{URL}}/purchaseorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 	</div>
 	<div class="buttons pull-right">
 		
@@ -411,7 +411,7 @@
 				$("#province_id").trigger("change");
 				$("[name=zip_postcode]").val( company.address[0].zip_postcode );
 			})
-
+			
 			$("#country_id").trigger('change');
 
 			$("#form_entry input,#form_entry select").not("#country_id, #company_id").on("change",function(e){
@@ -438,6 +438,9 @@
 					}
 				})
 			})
+			@if(!$purchaseorder['company_id'])
+				$("#company_id").trigger("change");
+			@endif
 			$("#delete_purchaseorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
 					$.ajax({

@@ -311,7 +311,7 @@
 				$("#province_id").trigger("change");
 				$("[name=zip_postcode]").val( company.address[0].zip_postcode );
 			})
-
+			
 			$("#country_id").trigger('change');
 
 			$("#form_entry input,#form_entry select").not("#country_id, #company_id").on("change",function(e){
@@ -338,6 +338,9 @@
 					}
 				})
 			})
+			@if(!$returnsaleorder['company_id'])
+				$("#company_id").trigger("change");
+			@endif
 			$("#delete_returnsaleorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
 					$.ajax({

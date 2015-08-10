@@ -13,6 +13,7 @@ use App\ProductStock;
 use App\Purchaseorder;
 use App\ReturnPurchaseorder;
 use App\Paid;
+use App\Log;
 use App\ReceiptMonth;
 use App\Address;
 use App\SellPrice;
@@ -43,18 +44,11 @@ class PurchaseordersController extends Controller {
 	{
 		$purchaseorder = new Purchaseorder;
 		$purchaseorder->date = date("Y-m-d H:i:s");
-		$purchaseorder->save();
-		session(['current_purchaseorder' => $purchaseorder->id]);
-		// $address = new Address;
-		// $purchaseorder->date = date("Y-m-d H:i:s");
-		// if($purchaseorder->save()){
-		// 	session(['current_purchaseorder' => $purchaseorder->id]);
-		// 	$address->module_id  = $purchaseorder['id'];
-		// 	$address->module_type  = 'App\Purchaseorder';
-		// 	$address->save();
-		// 	$purchaseorder->address_id = $address->id;
-		// 	$purchaseorder->save();
-		// }	
+		$purchaseorder->created_by = \Auth::user()->id;
+		if($purchaseorder->save()){
+			Log::create_log(\Auth::user()->id,'App\Purchaseorder','Tạo mới đơn mua hàng số '.$purchaseorder->id);
+			session(['current_purchaseorder' => $purchaseorder->id]);
+		}
 		return redirect('purchaseorders');
 	}
 
@@ -66,13 +60,15 @@ class PurchaseordersController extends Controller {
 			$purchaseorder = Purchaseorder::find($id_purchaseorder);
 			if(!$purchaseorder->status){
 				if($purchaseorder->delete()){
-					// Address::where('module_id','=',$id_purchaseorder)->where('module_type','=','App\Purchaseorder')->delete();
+					
+
 					$list_mproduct = Mproduct::where('module_id','=',$id_purchaseorder)
 									->where('module_type','=','App\Purchaseorder')
 									->lists('id');
 					MProduct::whereIn('id',$list_mproduct)->delete();
 					SellPrice::whereIn('m_product_id',$list_mproduct)->delete();
 					ProductStock::whereIn('m_product_id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\Purchaseorder','Xóa đơn mua hàng số '.$purchaseorder->id);
 					$arr_return['status'] = 'success';
 				}else{
 					$arr_return['message'] = 'Delete fail !';
@@ -103,6 +99,7 @@ class PurchaseordersController extends Controller {
 					MProduct::whereIn('id',$list_mproduct)->delete();
 					SellPrice::whereIn('m_product_id',$list_mproduct)->delete();
 					ProductStock::whereIn('m_product_id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\Purchaseorder','Xóa đơn mua hàng số '.$purchaseorder->id);
 
 				}
 			}
@@ -133,7 +130,10 @@ class PurchaseordersController extends Controller {
 				}else{
 					$purchaseorder = new Purchaseorder;
 					$purchaseorder->date = date("Y-m-d H:i:s");
+					$purchaseorder->created_by = \Auth::user()->id;
 					$purchaseorder->save();
+					session(['current_purchaseorder' => $purchaseorder->id]);
+					Log::create_log(\Auth::user()->id,'App\Purchaseorder','Tạo mới đơn mua hàng số '.$purchaseorder->id);
 					session(['current_purchaseorder' => $purchaseorder->id]);
 				}
 			}
@@ -183,10 +183,19 @@ class PurchaseordersController extends Controller {
 		}
 
 		$view_list_product = self::getListProduct();
-		// $view_list_product = '';
+		
+		$arr_create = Purchaseorder::select('users.name','purchaseorders.created_at')
+					->leftJoin('users','users.id','=','purchaseorders.created_by')
+					->where('purchaseorders.id','=',$purchaseorder['id'])
+					->get()->first()->toArray();
 
+		$arr_update = Purchaseorder::select('users.name','purchaseorders.updated_at')
+					->leftJoin('users','users.id','=','purchaseorders.updated_by')
+					->where('purchaseorders.id','=',$purchaseorder['id'])
+					->get()->first()->toArray();
+		$this->layout->arr_create = $arr_create;
+		$this->layout->arr_update = $arr_update;
 
-		// pr($list_product);die;
 		$this->layout->content=view('purchaseorder.entry',[	'distributes'=>$distributes,
 										'users'=>$users,
 										'countries'=>$countries,
@@ -213,18 +222,79 @@ class PurchaseordersController extends Controller {
 		}else{
 
 			$purchaseorder = new Purchaseorder;
+			$purchaseorder->date = date("Y-m-d H:i:s");
+			$purchaseorder->created_by = \Auth::user()->id;
 			$purchaseorder->save();
+			Log::create_log(\Auth::user()->id,'App\Purchaseorder','Tạo mới đơn hàng mua số '.$purchaseorder->id);
 			session(['current_purchaseorder' => $purchaseorder->id]);
 		}
+		$log = '';
 		if($purchaseorder->status == 0){
+			$address = Address::where('module_id','=',$purchaseorder->id)
+						->where('module_type','=','App\Purchaseorder')->first();
+			if($request->has('company_id')  && $purchaseorder->company_id != $request->input('company_id')){
+				$old = Company::find($purchaseorder->company_id);
+				if(!$old){
+					$old = (object) ['name'=>''];
+				}
+				$new = Company::find($request->input('company_id'));
+				$log .= 'công ty từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($purchaseorder->company_id == $request->input('company_id')){
+
+				if($request->has('user_id')  && $purchaseorder->user_id != $request->input('user_id')){
+					$old = User::find($purchaseorder->user_id);
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$new = User::find($request->input('user_id'));
+					$log .= 'người liên hệ từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+
+				$old_date=date("Y-m-d",strtotime($purchaseorder->date));
+				$new_date = date("Y-m-d",strtotime($request->input('date')));
+				if($request->has('date')  && $old_date != $new_date){
+					$log .= 'ngày từ "'.$old_date.'" thành "'.$new_date.'" ';
+				}
+
+				if($request->has('company_phone')  && $purchaseorder->company_phone != $request->input('company_phone')){
+					$log .= 'số điện thoại từ "'.$purchaseorder->company_phone.'" thành "'.$request->input('company_phone').'" ';
+				}
+
+				if($request->has('company_email')  && $purchaseorder->company_email != $request->input('company_email')){
+					$log .= 'email từ "'.$purchaseorder->company_email.'" thành "'.$request->input('company_email').'" ';
+				}
+				if($request->has('address')  && $address->address != $request->input('address')){
+					$log .= 'địa chỉ từ "'.$address->address.'" thành "'.$request->input('address').'" ';
+				}
+				if($request->has('town_city')  && $address->town_city != $request->input('town_city')){
+					$log .= 'quận huyện từ "'.$address->town_city.'" thành "'.$request->input('town_city').'" ';
+				}
+
+				if($request->has('province_id')  && $address->province_id != $request->input('province_id')){
+					$old = Province::find($address->province_id);
+					$new = Province::find($request->input('province_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'tỉnh thành từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+				if($request->has('country_id')  && $address->country_id != $request->input('country_id')){
+					$old = Country::find($address->country_id);
+					$new = Country::find($request->input('country_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'quốc gia từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+			}
 			$purchaseorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 			$purchaseorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 			$purchaseorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
 			$purchaseorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
 			$purchaseorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 
-			$address = Address::where('module_id','=',$purchaseorder->id)
-						->where('module_type','=','App\Purchaseorder')->first();
+			
 
 			$address->module_id  = $purchaseorder->id;
 			$address->module_type  = 'App\Purchaseorder';
@@ -240,6 +310,9 @@ class PurchaseordersController extends Controller {
 			$purchaseorder->sum_invest = 0;
 		}
 		$old_status = $purchaseorder->status;
+		if($purchaseorder->status != $request->has('status')){
+			$log .= 'trạng thái từ "'.($purchaseorder->status?'Hoàn thành':'Mới').'" thành "'.($request->has('status')?'Hoàn thành':'Mới').'" ';
+		}
 		$purchaseorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($purchaseorder->status){
@@ -273,7 +346,9 @@ class PurchaseordersController extends Controller {
 		}
 
 		if($check_save_in_stock){
+			$purchaseorder->updated_by = \Auth::user()->id;
 			if($purchaseorder->save()){
+				Log::create_log(\Auth::user()->id,'App\Purchaseorder','Cập nhật '.$log.' đơn hàng mua số '.$purchaseorder->id);
 				if($purchaseorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
 						$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
@@ -422,16 +497,18 @@ class PurchaseordersController extends Controller {
 		$arr_product_of_po = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->lists('product_id');
+		$log = "";
 		if(!in_array($product_id, $arr_product_of_po)){
+			$last_mproduct = Mproduct::where('product_id','=',$product_id)->get()->last();
 			$product = Product::find($product_id);
 			$mproduct = new MProduct;
 			$mproduct->product_id		=	$product_id;
 			$mproduct->company_id	=	$company_id;
 			$mproduct->module_id		= 	$module_id;
 			$mproduct->module_type	=	$module_type;
-			$mproduct->specification	=	0;
-			$mproduct->oum_id		=	0;
-			$mproduct->origin_price	=	0;
+			$mproduct->specification	=	$last_mproduct->specification;
+			$mproduct->oum_id		=	$last_mproduct->oum_id;
+			$mproduct->origin_price	=	$last_mproduct->origin_price;
 			$mproduct->save();
 			Session::put('product_of_po'.session('current_purchaseorder').".".$mproduct , $mproduct);
 			$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
@@ -451,7 +528,9 @@ class PurchaseordersController extends Controller {
 				$product->check_in_stock = 1;
 				$product->save();
 			}
+			$log .= "Thêm sản phẩm ".$product->sku;
 		}
+		Log::create_log(\Auth::user()->id,'App\Purchaseorder',$log.' vào đơn hàng mua số '.session('current_purchaseorder'));
 		return $arr_return;
 	}
 
@@ -460,25 +539,27 @@ class PurchaseordersController extends Controller {
 			"status"=>'success'
 		);
 		$id = $request->has('id')?$request->input('id'):0;
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
 		$module_id = session('current_purchaseorder');
 		$module_type = 'App\Purchaseorder';
 		$arr_product = session('product_of_po'.session('current_purchaseorder'));
 		$arr_product_of_po = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->lists('product_id');
-
-
+		$log = "";
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_po)){
 				$product = Product::find($product_id);
+				$last_mproduct = Mproduct::where('product_id','=',$product_id)->get()->last();
 				$mproduct = new MProduct;
+				$mproduct->company_id	=	$company_id;
 				$mproduct->product_id	=	$product_id;
 				$mproduct->module_id	= 	$module_id;
 				$mproduct->id	= 	$id;
 				$mproduct->module_type	=	$module_type;
-				$mproduct->specification	=	0;
-				$mproduct->oum_id		=	0;
-				$mproduct->origin_price	=	0;
+				$mproduct->specification	=	$last_mproduct->specification;
+				$mproduct->oum_id		=	$last_mproduct->oum_id;
+				$mproduct->origin_price	=	$last_mproduct->origin_price;
 				$mproduct->save();
 				$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
 				if($last_sellprice){
@@ -497,10 +578,15 @@ class PurchaseordersController extends Controller {
 					$product->check_in_stock = 1;
 					$product->save();
 				}
+				if($log==""){
+					$log .= "Thêm sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
 
-
+		$log_delete = "";
 		foreach ($arr_product_of_po as $key => $product_id) {
 			if(!in_array($product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
@@ -515,8 +601,20 @@ class PurchaseordersController extends Controller {
 				if($check){
 					$product_stock = ProductStock::where($m_product_id,'=',$mproduct['id'])->delete();
 				}
+				if($log==""){
+					$log .= "xóa sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
+		if($log_delete !="")
+			Log::create_log(\Auth::user()->id,'App\Purchaseorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_purchaseorder'));
+		else
+			Log::create_log(\Auth::user()->id,'App\Purchaseorder',$log.'vào đơn hàng mua số '.session('current_purchaseorder'));
+		$purchaseorder = Purchaseorder::find(session('current_purchaseorder'));
+		$purchaseorder->updated_by = \Auth::user()->id;
+		$purchaseorder->save();
 		return $arr_return;
 	}
 
@@ -528,15 +626,18 @@ class PurchaseordersController extends Controller {
 		$list_product = array();
 
 		//Get value
+		$purchaseorder = Purchaseorder::select('company_id','status')->where('id','=',$id)->first()->toArray();
+
 		$distributes = Company::getDistributeList()->with('address')->get()->toArray();
 		$oums = Oum::orderBy('name')->get()->toArray();
 		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Purchaseorder')
 						->where('module_id','=',$id)
+						->where('company_id','=',$purchaseorder['company_id'])
 						->leftJoin('products','products.id','=','m_products.product_id')
 						->addSelect('oums.name as oum_name')
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->get()->toArray();
-		$purchaseorder = Purchaseorder::select('status')->where('id','=',$id)->first()->toArray();
+		
 
 		\Cache::put('list_product_po'.\Auth::user()->id, $list_product, 30);
 		return view('purchaseorder.list-product',[	'distributes'=>$distributes,
@@ -549,8 +650,23 @@ class PurchaseordersController extends Controller {
 	public function postUpdateMproduct(Request $request){
 		$arr_return= array('status'=>'error','invest'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
+		$log="";
 		if($id){
 			$mproduct = MProduct::find($id);
+			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
+				$old = Oum::find($mproduct->oum_id);
+				$new = Oum::find($request->input('oum_id'));
+				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
+				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
+			}
+			if($request->has('specification')  && $mproduct->specification != $request->input('specification')){
+				$log .= 'quy cách từ "'.$mproduct->specification.'" thành "'.$request->input('specification').'" ';
+			}
+			if($request->has('quantity')  && $mproduct->quantity != $request->input('quantity')){
+				$log .= 'số lượng từ "'.$mproduct->quantity.'" thành "'.$request->input('quantity').'" ';
+			}
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->origin_price =  $request->has('origin_price')?$request->input('origin_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
@@ -562,6 +678,7 @@ class PurchaseordersController extends Controller {
 			// if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
+						Log::create_log(\Auth::user()->id,'App\Purchaseorder','cập nhật '.$log.' sản phẩm '.$product->sku.' đơn hàng mua số '.session('current_purchaseorder'));
 						$arr_return['status'] = 'success';
 						$arr_return['invest'] = number_format( $mproduct->invest );
 					}else{
@@ -574,6 +691,21 @@ class PurchaseordersController extends Controller {
 			// 	$arr_return['message'] = 'Số lượng nhập thấp hơn số lượng đã bán';
 			// }
 		}
+		//Init array
+		$list_product = array();
+
+		//Get value
+		$purchaseorder = Purchaseorder::find(session('current_purchaseorder'));
+		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Purchaseorder')
+						->where('module_id','=',$id)
+						->where('company_id','=',$purchaseorder['company_id'])
+						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
+						->get()->toArray();
+		\Cache::put('list_product_po'.\Auth::user()->id, $list_product, 30);
+		$purchaseorder->updated_by = \Auth::user()->id;
+		$purchaseorder->save();
 		return $arr_return;
 	}
 
@@ -588,11 +720,15 @@ class PurchaseordersController extends Controller {
 			$quantity = $mproduct->quantity;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
+				Log::create_log(\Auth::user()->id,'App\Purchaseorder','Xóa sản phẩm '.$product->sku.' đơn hàng mua số '.session('current_purchaseorder'));
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';
 			}
 		}
+		$purchaseorder = Purchaseorder::find(session('current_purchaseorder'));
+		$purchaseorder->updated_by = \Auth::user()->id;
+		$purchaseorder->save();
 		return $arr_return;
 	}
 
@@ -727,6 +863,7 @@ class PurchaseordersController extends Controller {
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
 			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'phieu_mua_hang_so_'.$po->id,'potrait');
+			Log::create_log(\Auth::user()->id,'App\Purchaseorder','In đơn hàng số '.session('current_purchaseorder'));
 			return redirect($link);
 		}
 		die;
@@ -778,5 +915,15 @@ class PurchaseordersController extends Controller {
 			return redirect($link);
 		}
 		die;
+	}
+
+	public function anyLog(){
+		$list_log = Log::select('logs.*','users.name')
+				->where('module_type','=','App\Purchaseorder')
+				->leftJoin('users','users.id','=','logs.user_id')
+				->orderBy('id','desc')
+				->paginate(50);
+
+		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
 	}
 }

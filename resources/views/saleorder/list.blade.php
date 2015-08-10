@@ -3,6 +3,7 @@
 		<a href="{{URL}}/saleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
 		<a href="{{URL}}/saleorders/entry" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list-alt"></i> Chi tiết</a>
 		<a href="javascript:window.open('{{URL}}/saleorders/export-pdf-list','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
+		<a href="{{URL}}/saleorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 	</div>
 	<div class="buttons pull-right">
 

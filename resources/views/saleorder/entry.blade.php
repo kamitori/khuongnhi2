@@ -6,7 +6,7 @@
 		@endif
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
-		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-cogs"></i> Mục lục</a>
+		<a href="{{URL}}/saleorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 	</div>
 	<div class="buttons pull-right">
 		
@@ -382,6 +382,9 @@
 					}
 				})
 			})
+			@if(!$saleorder['company_id'])
+				$("#company_id").trigger("change");
+			@endif
 			$("#delete_saleorder").on("click",function(){
 				confirms('Xóa hóa đơn này ?', function(){
 					$.ajax({

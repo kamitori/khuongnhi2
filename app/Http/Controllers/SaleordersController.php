@@ -13,6 +13,7 @@ use App\ReturnSaleorder;
 use App\ReceiptMonth;
 use App\Saleorder;
 use App\Paid;
+use App\Log;
 use App\Address;
 use App\SellPrice;
 use Datatables;
@@ -42,18 +43,11 @@ class SaleordersController extends Controller {
 	{
 		$saleorder = new Saleorder;
 		$saleorder->date = date("Y-m-d H:i:s");
-		$saleorder->save();
-		session(['current_saleorder' => $saleorder->id]);
-		// $address = new Address;
-		// $saleorder->date = date("Y-m-d H:i:s");
-		// if($saleorder->save()){
-		// 	session(['current_saleorder' => $saleorder->id]);
-		// 	$address->module_id  = $saleorder['id'];
-		// 	$address->module_type  = 'App\Saleorder';
-		// 	$address->save();
-		// 	$saleorder->address_id = $address->id;
-		// 	$saleorder->save();
-		// }	
+		$saleorder->created_by = \Auth::user()->id;
+		if($saleorder->save()){
+			Log::create_log(\Auth::user()->id,'App\Saleorder','Tạo mới đơn hàng số '.$saleorder->id);
+			session(['current_saleorder' => $saleorder->id]);
+		}
 		return redirect('saleorders');
 	}
 
@@ -70,6 +64,7 @@ class SaleordersController extends Controller {
 									->where('module_type','=','App\Saleorder')
 									->lists('id');
 					MProduct::whereIn('id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\Saleorder','Xóa đơn hàng số '.$saleorder->id);
 					$arr_return['status'] = 'success';
 				}else{
 					$arr_return['message'] = 'Delete fail !';
@@ -99,6 +94,7 @@ class SaleordersController extends Controller {
 									->where('module_type','=','App\Saleorder')
 									->lists('id');
 					MProduct::whereIn('id',$list_mproduct)->delete();
+					Log::create_log(\Auth::user()->id,'App\Saleorder','Xóa đơn hàng số '.$saleorder->id);
 				}
 			}
 		}
@@ -128,7 +124,9 @@ class SaleordersController extends Controller {
 				}else{
 					$saleorder = new Saleorder;
 					$saleorder->date = date("Y-m-d H:i:s");
+					$saleorder->created_by = \Auth::user()->id;
 					$saleorder->save();
+					Log::create_log(\Auth::user()->id,'App\Saleorder','Tạo mới đơn hàng số '.$saleorder->id);
 					session(['current_saleorder' => $saleorder->id]);
 				}
 			}
@@ -171,10 +169,20 @@ class SaleordersController extends Controller {
 		}
 
 		$view_list_product = self::getListProduct();
-		// $view_list_product = '';
+		
+		$arr_create = Saleorder::select('users.name','saleorders.created_at')
+					->leftJoin('users','users.id','=','saleorders.created_by')
+					->where('saleorders.id','=',$saleorder['id'])
+					->get()->first()->toArray();
+
+		$arr_update = Saleorder::select('users.name','saleorders.updated_at')
+					->leftJoin('users','users.id','=','saleorders.updated_by')
+					->where('saleorders.id','=',$saleorder['id'])
+					->get()->first()->toArray();
+		$this->layout->arr_create = $arr_create;
+		$this->layout->arr_update = $arr_update;
 
 
-		// pr($list_product);die;
 		$this->layout->content=view('saleorder.entry',[	'distributes'=>$distributes,
 										'users'=>$users,
 										'countries'=>$countries,
@@ -200,10 +208,72 @@ class SaleordersController extends Controller {
 		}else{
 
 			$saleorder = new Saleorder;
+			$saleorder->date = date("Y-m-d H:i:s");
+			$saleorder->created_by = \Auth::user()->id;
 			$saleorder->save();
+			Log::create_log(\Auth::user()->id,'App\Saleorder','Tạo mới đơn hàng số '.$saleorder->id);
 			session(['current_saleorder' => $saleorder->id]);
 		}
+		$log = '';
 		if($saleorder->status == 0){
+			$address = Address::where('module_id','=',$saleorder->id)
+						->where('module_type','=','App\Saleorder')->first();
+			if($request->has('company_id')  && $saleorder->company_id != $request->input('company_id')){
+				$old = Company::find($saleorder->company_id);
+				if(!$old){
+					$old = (object) ['name'=>''];
+				}
+				$new = Company::find($request->input('company_id'));
+				$log .= 'công ty từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($saleorder->company_id == $request->input('company_id')){
+
+				if($request->has('user_id')  && $saleorder->user_id != $request->input('user_id')){
+					$old = User::find($saleorder->user_id);
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$new = User::find($request->input('user_id'));
+					$log .= 'người liên hệ từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+
+				$old_date=date("Y-m-d",strtotime($saleorder->date));
+				$new_date = date("Y-m-d",strtotime($request->input('date')));
+				if($request->has('date')  && $old_date != $new_date){
+					$log .= 'ngày từ "'.$old_date.'" thành "'.$new_date.'" ';
+				}
+
+				if($request->has('company_phone')  && $saleorder->company_phone != $request->input('company_phone')){
+					$log .= 'số điện thoại từ "'.$saleorder->company_phone.'" thành "'.$request->input('company_phone').'" ';
+				}
+
+				if($request->has('company_email')  && $saleorder->company_email != $request->input('company_email')){
+					$log .= 'email từ "'.$saleorder->company_email.'" thành "'.$request->input('company_email').'" ';
+				}
+				if($request->has('address')  && $address->address != $request->input('address')){
+					$log .= 'địa chỉ từ "'.$address->address.'" thành "'.$request->input('address').'" ';
+				}
+				if($request->has('town_city')  && $address->town_city != $request->input('town_city')){
+					$log .= 'quận huyện từ "'.$address->town_city.'" thành "'.$request->input('town_city').'" ';
+				}
+
+				if($request->has('province_id')  && $address->province_id != $request->input('province_id')){
+					$old = Province::find($address->province_id);
+					$new = Province::find($request->input('province_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'tỉnh thành từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+				if($request->has('country_id')  && $address->country_id != $request->input('country_id')){
+					$old = Country::find($address->country_id);
+					$new = Country::find($request->input('country_id'));
+					if(!$old){
+						$old = (object) ['name'=>''];
+					}
+					$log .= 'quốc gia từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}
+			}
 			$saleorder->company_id = $request->has('company_id') ? $request->input('company_id') : 0;
 			$saleorder->user_id = $request->has('user_id') ? $request->input('user_id') : 0;
 			$saleorder->date = $request->has('date') ? date("Y-m-d H:i:s",strtotime($request->input('date').' '.$time)) : date("Y-m-d H:i:s");
@@ -211,8 +281,7 @@ class SaleordersController extends Controller {
 			$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 			$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
 
-			$address = Address::where('module_id','=',$saleorder->id)
-						->where('module_type','=','App\Saleorder')->first();
+			
 
 			$address->module_id  = $saleorder->id;
 			$address->module_type  = 'App\Saleorder';
@@ -228,6 +297,9 @@ class SaleordersController extends Controller {
 			$saleorder->sum_invest = 0;
 		}
 		$old_status = $saleorder->status;
+		if($saleorder->status != $request->has('status')){
+			$log .= 'trạng thái từ "'.($saleorder->status?'Hoàn thành':'Mới').'" thành "'.($request->has('status')?'Hoàn thành':'Mới').'" ';
+		}
 		$saleorder->status = $request->has('status')?1:0;
 		$check_save_in_stock = true;
 		if($saleorder->status){
@@ -244,7 +316,7 @@ class SaleordersController extends Controller {
 				$product_stock->in_stock = $product_stock->in_stock -  ($mproduct['quantity']*$mproduct['specification']);
 				if($product_stock->in_stock < 0){
 					$check_save_in_stock = false;
-					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' nhập vào lớn hơn số lượng đã nhập<br/><br/>';
+					$arr_return['message'] .= 'Số lượng sản phẩm '.$mproduct['name'].' mua  lớn hơn số lượng đã nhập<br/><br/>';
 				}
 			}
 		}else{
@@ -264,7 +336,9 @@ class SaleordersController extends Controller {
 		}
 
 		if($check_save_in_stock){
+			$saleorder->updated_by = \Auth::user()->id;
 			if($saleorder->save()){
+				Log::create_log(\Auth::user()->id,'App\Saleorder','Cập nhật '.$log.' đơn hàng số '.$saleorder->id);
 				if($saleorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
 						$mproduct_po = Mproduct::find($mproduct['m_product_id']);
@@ -412,6 +486,7 @@ class SaleordersController extends Controller {
 		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->lists('product_id');
+		$log = "";
 		if(!in_array($m_product_id, $arr_product_of_so)){
 			$product = MProduct::find($m_product_id);
 			$mproduct = new MProduct;
@@ -424,7 +499,10 @@ class SaleordersController extends Controller {
 			$mproduct->oum_id		=	$product->oum_id;
 			$mproduct->origin_price	=	$product->origin_price;
 			$mproduct->save();
+			$product = Product::find($mproduct->product_id);
+			$log .= "Thêm sản phẩm ".$product->sku;
 		}
+		Log::create_log(\Auth::user()->id,'App\Saleorder',$log.' vào đơn hàng số '.session('current_saleorder'));
 		return $arr_return;
 	}
 
@@ -440,7 +518,7 @@ class SaleordersController extends Controller {
 						->where('module_type','=',$module_type)
 						->lists('m_product_id');
 
-
+		$log = "";
 		foreach ($arr_product as $key => $product_id) {
 			if(!in_array($product_id, $arr_product_of_so)){
 				$product = MProduct::find($product_id);
@@ -454,10 +532,16 @@ class SaleordersController extends Controller {
 				$mproduct->oum_id		=	$product->oum_id;
 				$mproduct->origin_price	=	$product->origin_price;
 				$mproduct->save();
+				$product = Product::find($mproduct->product_id);
+				if($log==""){
+					$log .= "Thêm sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
 
-
+		$log_delete = "";
 		foreach ($arr_product_of_so as $key => $product_id) {
 			if(!in_array($product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
@@ -469,8 +553,21 @@ class SaleordersController extends Controller {
 				$check = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->delete();
+				$product = Product::find($mproduct['product_id']);
+				if($log==""){
+					$log .= "xóa sản phẩm ".$product->sku;
+				}else{
+					$log .= ", ".$product->sku;
+				}
 			}
 		}
+		if($log_delete !="")
+			Log::create_log(\Auth::user()->id,'App\Saleorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_saleorder'));
+		else
+			Log::create_log(\Auth::user()->id,'App\Saleorder',$log.'vào đơn hàng số '.session('current_saleorder'));
+		$saleorder = Saleorder::find(session('current_saleorder'));
+		$saleorder->updated_by = \Auth::user()->id;
+		$saleorder->save();
 		return $arr_return;
 	}
 
@@ -504,9 +601,24 @@ class SaleordersController extends Controller {
 	public function postUpdateMproduct(Request $request){
 		$arr_return= array('status'=>'error','invest'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
+		$log="";
 		if($id){
 			$mproduct = MProduct::find($id);
 			$mproduct_po = Mproduct::find($mproduct->m_product_id);
+			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
+				$old = Oum::find($mproduct->oum_id);
+				$new = Oum::find($request->input('oum_id'));
+				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+			}
+			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
+				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
+			}
+			if($request->has('specification')  && $mproduct->specification != $request->input('specification')){
+				$log .= 'quy cách từ "'.$mproduct->specification.'" thành "'.$request->input('specification').'" ';
+			}
+			if($request->has('quantity')  && $mproduct->quantity != $request->input('quantity')){
+				$log .= 'số lượng từ "'.$mproduct->quantity.'" thành "'.$request->input('quantity').'" ';
+			}
 			$mproduct->oum_id =  $request->has('oum_id')?$request->input('oum_id'):0;
 			$mproduct->sell_price =  $request->has('sell_price')?$request->input('sell_price'):0;
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
@@ -520,6 +632,8 @@ class SaleordersController extends Controller {
 			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
 					if($mproduct->save()){
+						$product = Product::find($mproduct->product_id);
+						Log::create_log(\Auth::user()->id,'App\Saleorder','cập nhật '.$log.' sản phẩm '.$product->sku.' đơn hàng số '.session('current_saleorder'));
 						$arr_return['status'] = 'success';
 						$arr_return['amount'] = number_format( $mproduct->amount );
 					}else{
@@ -531,7 +645,23 @@ class SaleordersController extends Controller {
 			}else{
 				$arr_return['message'] = 'Số lượng mua lớn hơn số lượng tồn kho';
 			}
-		}
+		}//Init array
+		$list_product = array();
+
+		//Get value
+		$saleorder = Saleorder::find(session('current_saleorder'));
+		$list_product = MProduct::select('m_products.*','products.sku','products.name')->where('module_type','=','App\Saleorder')
+						->where('module_id','=',$id)
+						->where('company_id','=',$saleorder['company_id'])
+						->leftJoin('products','products.id','=','m_products.product_id')
+						->addSelect('oums.name as oum_name')
+						->leftJoin('oums','oums.id','=','m_products.oum_id')
+						->with('getsellprices')
+						->get()->toArray();
+		\Cache::put('list_product_so'.\Auth::user()->id, $list_product, 30);
+		
+		$saleorder->updated_by = \Auth::user()->id;
+		$saleorder->save();
 		return $arr_return;
 	}
 
@@ -545,14 +675,15 @@ class SaleordersController extends Controller {
 			$specification = $mproduct->specification;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
-				// $product = ProductStock::find($id_product);
-				// $product->in_stock = $product->in_stock + $quantity*$specification;
-				// $product->save();
+				Log::create_log(\Auth::user()->id,'App\Saleorder','Xóa sản phẩm '.$product->sku.' đơn hàng số '.session('current_saleorder'));
 				$arr_return['status'] = 'success';
 			}else{
 				$arr_return['message'] = 'Saving fail !';
 			}
 		}
+		$saleorder = Saleorder::find(session('current_saleorder'));
+		$saleorder->updated_by = \Auth::user()->id;
+		$saleorder->save();
 		return $arr_return;
 	}
 
@@ -712,6 +843,7 @@ class SaleordersController extends Controller {
 			];
 			$arr_print['arr_list']['arr_body'] = $arr_cache;
 			$link = ExportsController::getCreatePrintPdf($arr_print,$id_template,'don_hang_so_'.$so->id,'potrait');
+			Log::create_log(\Auth::user()->id,'App\Saleorder','In đơn hàng số '.session('current_saleorder'));
 			return redirect($link);
 		}
 		die;
@@ -763,5 +895,15 @@ class SaleordersController extends Controller {
 			return redirect($link);
 		}
 		die;
+	}
+
+	public function anyLog(){
+		$list_log = Log::select('logs.*','users.name')
+				->where('module_type','=','App\Saleorder')
+				->leftJoin('users','users.id','=','logs.user_id')
+				->orderBy('id','desc')
+				->paginate(50);
+
+		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
 	}
 }
