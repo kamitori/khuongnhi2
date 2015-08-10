@@ -16,6 +16,7 @@ class ExportsController extends Controller {
 	{
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 	}
+	
 	public function getIndex(Request $request){
 		
 	}
@@ -96,7 +97,7 @@ class ExportsController extends Controller {
 		$name = $request->has('name')?$request->input('name'):0;
 		$name = Str::slug($name,'_');
 		if($id){
-			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js http://khuongnhi2.com/exports/try/'.$id.'?phantomjs='.md5('phantomjs').' '.public_path().'\\upload\\'.$name.'.pdf 740px*1100px 0.96';
+			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/exports/try/'.$id.'?phantomjs='.md5('phantomjs').' '.public_path().'\\upload\\'.$name.'.pdf 740px*1100px 0.96';
 			if(exec($cmd)){
 				$arr_return['status'] = 'success';
 				$arr_return['link'] = URL.'/upload/'.$name.'.pdf';
