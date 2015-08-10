@@ -17,6 +17,7 @@ class CreatePdfTemplatesTable extends Migration {
 			$table->increments('id');
 			$table->string('name',50);
 			$table->text('template');
+			$table->text('orential');
 			$table->integer('created_by')->default(0);
 			$table->integer('updated_by')->default(0);
 			$table->timestamps();

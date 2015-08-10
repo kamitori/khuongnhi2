@@ -94,7 +94,7 @@
 			margin-left: 2%;
 			width: 80.55%;
 			height: 100%;
-			overflow-y: scroll;
+			overflow-y: auto;
 		}
 		@media (max-width: 1000px) {
 			.span3{

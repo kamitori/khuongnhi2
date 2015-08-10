@@ -506,9 +506,9 @@ class SettingController extends Controller {
    public function getGetTemplate($id){
    	$pdf = PdfTemplate::find($id);
    	if($pdf)
-   		return $pdf->template;
+   		return $pdf;
    	else
-   		return '';
+   		return array();
    }
    public function anySaveTemplate(Request $request){
    	$arr_return = array('status' => 'error');
@@ -516,6 +516,7 @@ class SettingController extends Controller {
    	$pdf = PdfTemplate::find($id);
    	if($pdf){
    		$pdf->template = $request->has('template')?$request->input('template'):'';
+   		$pdf->oriental = $request->has('oriental')?$request->input('oriental'):'';
    		if($pdf->save()){
    			$arr_return['status'] = 'success';
    		}else{

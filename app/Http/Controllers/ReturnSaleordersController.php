@@ -565,6 +565,7 @@ class ReturnSaleordersController extends Controller {
 						->leftJoin('products','products.id','=','m_products.product_id')
 						->addSelect('oums.name as oum_name')
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
+						->orderBy('sku')
 						->get()->toArray();
 
 		\Cache::put('list_product_rso'.\Auth::user()->id, $list_product, 30);

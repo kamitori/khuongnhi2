@@ -7,10 +7,10 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-	config.width = '780px';
-	config.height = $(window).height()/2+'px';
-	console.log(config.height);
+
 	config.resize_dir = 'vertical';
-	config.contentsCss = window.location+'/../scripts/ckeditor/contents.css';
+	config.contentsCss = 'http://'+window.location.host +'/scripts/ckeditor/contents.css';
 	config.enterMode = CKEDITOR.ENTER_BR;
+	config.font_defaultLabel = 'Arial';
+	config.fontSize_defaultLabel = '12px';   
 };

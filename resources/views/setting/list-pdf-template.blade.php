@@ -1,27 +1,5 @@
-<div class="row">
-	<div class="span6 quarter1">
-		<div class="widget widget-2 widget-white">
-			<div class="widget-head">
-				<span class="heading">
-					Template PDF
-				</span>
-			</div>
-			<div class="widget-body">
-				<div class="dd" id="list_menu">
-					<ol class="dd-list">
-						@foreach($pdf_templates as $pdf)
-							<li class="dd-item dd3-item">
-								<div class="dd3-content" onclick="pdf_detail(this)" data-id="{{$pdf['id']}}" data-name="{{$pdf['name']}}">
-									{{$pdf['name']}}
-								</div>
-							</li>
-						@endforeach
-					</ol>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="span6 quarter3">
+<div class="row-fluid">
+	<div class="span12">
 		<div class="widget widget-2 widget-white">
 			<div class="widget-head">
 				<span class="heading">
@@ -29,6 +7,17 @@
 				</span>
 			</div>
 			<div class="widget-body center" id="pdf_content">
+				<strong>Mẫu PDF:</strong> <select name="" onchange="pdf_detail(this)">
+					@foreach($pdf_templates as $pdf)
+						<option data-id="{{$pdf['id']}}" data-name="{{$pdf['name']}}">{{$pdf['name']}}</option>
+					@endforeach
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<strong>Kiểu in:</strong>
+				<select id="select_oriental" >
+					<option value="potrait" data-width="780">Kiểu đứng</option>
+					<option value="landscape" data-width="1100">Kiểu ngang</option>
+				</select>
 				<input type="hidden" value="" id="id_template">
 				<textarea id="edit_pdf"></textarea>
 				<br/>
@@ -53,21 +42,40 @@
 <script>
 	$(function(){
 		CKEDITOR.basePath = '{{URL}}/scripts/ckeditor/';
+		CKEDITOR.config.width = '780px';
+		CKEDITOR.config.height = '350px';
 		CKEDITOR.replace('edit_pdf', {
 			"filebrowserImageUploadUrl": "scripts/ckeditor/plugins/imgupload/imgupload.php"
 		});
+
+		$("#select_oriental").on("change",function(){
+			$("#cke_edit_pdf").width($(this).find("option:selected").attr('data-width'));
+		})
 	})
 	
 
 	function pdf_detail(obj){
 		save_template();
-		$("#module_name").text($(obj).attr('data-name'));
-		$("#id_template").val($(obj).attr('data-id'));
+		$("#module_name").text($(obj).find('option:selected').attr('data-name'));
+		$("#id_template").val($(obj).find('option:selected').attr('data-id'));
 		$.ajax({
-			url : '{{URL}}/settings/get-template/'+$(obj).attr('data-id'),
+			url : '{{URL}}/settings/get-template/'+$("#id_template").val(),
 			type : 'GET',
 			success: function(data){
-				CKEDITOR.instances['edit_pdf'].setData(data)
+				console.log(data);
+				CKEDITOR.instances['edit_pdf'].setData(data.template)
+				$("#select_oriental option").each(function(){
+
+					if(this.value == data.oriental){
+						$("#select_oriental option").attr("selected",false)
+						$(this).attr('selected',true);
+					}
+				})
+				if(data.oriental == 'landscape'){
+					$("#cke_edit_pdf").width("1100px");
+				}else{
+					$("#cke_edit_pdf").width("780px");
+				}
 			}
 		});
 	}
@@ -75,13 +83,15 @@
 	function save_template(){
 		var template = CKEDITOR.instances['edit_pdf'].getData();
 		var id = $("#id_template").val()?$("#id_template").val():0;
+		var oriental = $("#select_oriental").val()?$("#select_oriental").val():0;
 		if(id){
 			$.ajax({
 				url : '{{URL}}/settings/save-template',
 				type : 'POST',
 				data : {
 					'id' : id,
-					'template' : template
+					'template' : template,
+					'oriental' : oriental
 				},
 				success: function(data){
 					if(data.status == 'success'){
