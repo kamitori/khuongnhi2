@@ -599,7 +599,7 @@ class PurchaseordersController extends Controller {
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->delete();
 				if($check){
-					$product_stock = ProductStock::where($m_product_id,'=',$mproduct['id'])->delete();
+					$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->delete();
 				}
 				if($log==""){
 					$log .= "xóa sản phẩm ".$product->sku;

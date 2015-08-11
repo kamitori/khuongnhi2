@@ -155,8 +155,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-
-
+		'Zizaco\Entrust\EntrustServiceProvider',
 	],
 
 	/*
@@ -214,7 +213,7 @@ return [
 		'Datatables'  => 'yajra\Datatables\Datatables',
 		'Flash' => 'laracasts/Flash/Flash',
         		'Image' => 'Intervention\Image\Facades\Image',
-
+        		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
 	],
 
 ];
