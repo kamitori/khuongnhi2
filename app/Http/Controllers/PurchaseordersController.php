@@ -510,7 +510,7 @@ class PurchaseordersController extends Controller {
 			$mproduct->oum_id		=	$last_mproduct->oum_id;
 			$mproduct->origin_price	=	$last_mproduct->origin_price;
 			$mproduct->save();
-			Session::put('product_of_po'.session('current_purchaseorder').".".$mproduct , $mproduct);
+			Session::put('product_of_po'.session('current_purchaseorder').".".$product->id , $product->id);
 			$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
 			if($last_sellprice){
 				$arr_sellprice = SellPrice::where('m_product_id','=',$last_sellprice->m_product_id)->get()->toArray();
@@ -557,9 +557,16 @@ class PurchaseordersController extends Controller {
 				$mproduct->module_id	= 	$module_id;
 				$mproduct->id	= 	$id;
 				$mproduct->module_type	=	$module_type;
-				$mproduct->specification	=	$last_mproduct->specification;
-				$mproduct->oum_id		=	$last_mproduct->oum_id;
-				$mproduct->origin_price	=	$last_mproduct->origin_price;
+				if($last_mproduct){
+					$mproduct->specification	=	$last_mproduct->specification;
+					$mproduct->oum_id		=	$last_mproduct->oum_id;
+					$mproduct->origin_price	=	$last_mproduct->origin_price;
+				}else{
+					$mproduct->specification	=	0;
+					$mproduct->oum_id			=	0;
+					$mproduct->origin_price		=	0;
+				}
+
 				$mproduct->save();
 				$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
 				if($last_sellprice){
@@ -573,7 +580,7 @@ class PurchaseordersController extends Controller {
 						$sellprice->save();
 					}
 				}
-				$product = Product::find($product_id);
+
 				if(!$product->check_in_stock){
 					$product->check_in_stock = 1;
 					$product->save();
@@ -586,9 +593,11 @@ class PurchaseordersController extends Controller {
 			}
 		}
 
+
 		$log_delete = "";
 		foreach ($arr_product_of_po as $key => $product_id) {
 			if(!in_array($product_id, $arr_product)){
+				$product = Product::find($product_id);
 				$mproduct = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
 						->where('product_id','=',$product_id)->first()->toArray();
@@ -721,6 +730,7 @@ class PurchaseordersController extends Controller {
 			$quantity = $mproduct->quantity;
 			$check  = MProduct::where('id','=',$id)->delete();
 			if($check){
+				$product = Product::find($mproduct->product_id);
 				Log::create_log(\Auth::user()->id,'App\Purchaseorder','Xóa sản phẩm '.$product->sku.' đơn hàng mua số '.session('current_purchaseorder'));
 				$arr_return['status'] = 'success';
 			}else{
