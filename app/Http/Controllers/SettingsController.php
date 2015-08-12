@@ -18,7 +18,7 @@ use App\Http\Requests\Admin\DeleteRequest;
 use Datatables;
 
 
-class SettingController extends Controller {
+class SettingsController extends Controller {
 
 	protected $layout = 'setting.setting';
 	/*

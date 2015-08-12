@@ -51,7 +51,7 @@ Route::get('/{controller}/{id}',['middleware' => 'auth', function($controller,$i
 	'id'=>'[0-9]+'
 	]);
 Route::controllers([
-	   'settings' => 'SettingController',
+	   'settings' => 'SettingsController',
 		]);
 Route::controllers([
 	   'companies' => 'CompaniesController',
