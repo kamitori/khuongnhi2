@@ -1,12 +1,21 @@
+<?php 
+	$user = Auth::user();
+?>
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
+		@if($user->can("create-returnsaleorders"))
 		<a href="{{URL}}/returnsaleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
-		@if(!$returnsaleorder['status'])
+		@endif
+
+		@if(!$returnsaleorder['status'] && $user->can("delete-returnsaleorders"))
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_returnsaleorder"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
+
 		<a href="{{URL}}/returnsaleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/returnsaleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		@if($user->can("view-history"))
 		<a href="{{URL}}/returnsaleorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
+		@endif
 	</div>
 	<div class="buttons pull-right">
 		
@@ -28,7 +37,7 @@
 							<div class="control-group">
 								<label class="control-label">STT:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 									<span>{{$returnsaleorder['id']}}</span>
 									@else
 									<input type="text" name="stt" value="{{$returnsaleorder['id']}}" readonly="">
@@ -38,7 +47,7 @@
 							<div class="control-group">
 								<label class="control-label">Công ty:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 									<span>
 										@foreach($distributes as $distribute)
 											{{ isset($returnsaleorder['company_id']) && ($returnsaleorder['company_id'] == $distribute['id'])?$distribute['name']:'' }}
@@ -59,21 +68,21 @@
 							</div>
 
 							<div class="control-group">
-								<label class="control-label">Liên hệ:</label>
+								<label class="control-label">Liên hệ: </label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 									<span>
-										@foreach($users as $user)
-											{{isset($returnsaleorder['user_id']) && ($returnsaleorder['user_id'] == $user['id'])?$user['name']:''}}
+										@foreach($users as $user_name)
+											{{isset($returnsaleorder['user_id']) && ($returnsaleorder['user_id'] == $user_name['id'])?$user_name['name']:''}}
 										@endforeach
 									</span>
 									@else
 									<select name="user_id" id="user_id" data-type="select2">
-										@foreach($users as $user)
-										<option value="{{$user['id']}}"
-									{{isset($returnsaleorder['user_id']) && ($returnsaleorder['user_id'] == $user['id'])?'selected':''}}
+										@foreach($users as $user_name)
+										<option value="{{$user_name['id']}}"
+									{{isset($returnsaleorder['user_id']) && ($returnsaleorder['user_id'] == $user_name['id'])?'selected':''}}
 										>
-											{{$user['name']}}
+											{{$user_name['name']}}
 										</option>
 										@endforeach
 									</select>
@@ -81,11 +90,13 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Ngày:</label>
+								<label class="control-label">Ngày: </label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{ date('d-m-Y',strtotime($returnsaleorder['date']) ) }}</span>
 									@else
+
 									<input type="text" id="date" name="date" class="datepicker" value="{{ date('d-m-Y',strtotime($returnsaleorder['date']) ) }}" readonly="" style="background-color: #fff;">
 									@endif
 								</div>
@@ -95,7 +106,7 @@
 							<div class="control-group">
 								<label class="control-label">Điện thoại:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($returnsaleorder['company_phone'])?$returnsaleorder['company_phone']:''}}</span>
 									@else
 									<input type="text" name="company_phone" value="{{isset($returnsaleorder['company_phone'])?$returnsaleorder['company_phone']:''}}" >
@@ -105,7 +116,7 @@
 							<div class="control-group">
 								<label class="control-label">Email:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($returnsaleorder['company_email'])?$returnsaleorder['company_email']:''}}</span>
 									@else
 									<input type="text" name="company_email" value="{{isset($returnsaleorder['company_email'])?$returnsaleorder['company_email']:''}}" >
@@ -115,7 +126,7 @@
 							<div class="control-group">
 								<label class="control-label">Địa chỉ:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($address['address'])?$address['address']:''}}</span>
 									@else
 									<input type="text" name="address" value="{{isset($address['address'])?$address['address']:''}}" >
@@ -125,7 +136,7 @@
 							<div class="control-group">
 								<label class="control-label">Quận/Huyện:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($address['town_city'])?$address['town_city']:''}}</span>
 									@else
 									<input type="text" name="town_city" value="{{isset($address['town_city'])?$address['town_city']:''}}" >
@@ -138,7 +149,7 @@
 							<div class="control-group">
 								<label class="control-label">Tỉnh thành:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($returnsaleorder['province_name'])?$returnsaleorder['province_name']:''}}</span>
 									@else
 									<select name="province_id" id="province_id">
@@ -149,7 +160,7 @@
 							<div class="control-group">
 								<label class="control-label">Quốc gia:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{isset($returnsaleorder['country_name'])?$returnsaleorder['country_name']:''}}</span>
 									@else
 									<select name="country_id" id="country_id">
@@ -166,7 +177,7 @@
 							<div class="control-group">
 								<label class="control-label">Mã vùng:</label>
 								<div class="controls">
-									@if($returnsaleorder['status'])
+									@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 										<span>{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}</span>
 									@else
 									<input type="text" name="zip_postcode" maxlength="15" value="{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}">
@@ -174,10 +185,12 @@
 								</div>
 							</div>
 							<div class="control-group">
+								@if($user->can("complete-returnsaleorders"))
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
 									<input type="checkbox" name="status" {{isset($returnsaleorder['status']) && ($returnsaleorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="140">
 								</div>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -205,7 +218,7 @@
 				<div class="block row">
 					<div class="heading-buttons main-left">
 						<div class="buttons pull-left">
-							@if(!$returnsaleorder['status'])
+							@if(!$returnsaleorder['status'] && $user->can("edit-returnsaleorders"))
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							@endif
 							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
@@ -221,7 +234,7 @@
 								<th style="width:13%">Đơn giá</th>
 								<th style="width:7%">Số lượng</th>
 								<th style="width:20%" class="right">Thành tiền</th>
-								@if(!$returnsaleorder['status'])
+								@if(!$returnsaleorder['status'] && $user->can("edit-returnsaleorders"))
 								<th style="width:3%">&nbsp;</th>
 								@endif
 							</tr>

@@ -1,5 +1,6 @@
 <?php 
 	$sum_invest = 0;
+	$user = Auth::user();
 ?>
 @foreach ($list_product as $product)
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">
@@ -8,7 +9,7 @@
 	<td>{{$product['sku']}}</td>
 	<td>{{$product['name']}}</td>
 	<td>
-		@if($purchaseorder['status'])
+		@if($purchaseorder['status'] || !$user->can("edit-purchaseorders"))
 			
 			@foreach($oums as $oum)
 				{{$product['oum_id']==$oum['id']?$oum['name']:''}}
@@ -31,28 +32,28 @@
 		@endif
 	</td>
 	<td>
-		@if($purchaseorder['status'])
+		@if($purchaseorder['status'] || !$user->can("edit-purchaseorders"))
 		{{$product['specification']}}
 		@else
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="{{$purchaseorder['status']?'currency':''}}">
-		@if($purchaseorder['status'])
+		@if($purchaseorder['status'] || !$user->can("edit-purchaseorders"))
 			{{$product['origin_price']}}
 		@else
 		<input type="text" id="origin_price" name="origin_price" value="{{$product['origin_price']}}" data-type="number">
 		@endif
 	</td>
 	<td>
-		@if($purchaseorder['status'])
+		@if($purchaseorder['status'] || !$user->can("edit-purchaseorders"))
 		{{$product['quantity']}}
 		@else
 		<input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="currency" class="invest">{{$product['invest']}}</td>
-	@if(!$purchaseorder['status'])
+	@if(!$purchaseorder['status'] && $user->can("edit-purchaseorders"))
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
@@ -62,7 +63,7 @@
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
 	<td data-type="currency" class="right" id="sum_invest">{{$sum_invest}}</td>
-	@if(!$purchaseorder['status'])
+	@if(!$purchaseorder['status'] && $user->can("edit-purchaseorders"))
 	<td></td>
 	@endif
 </tr>

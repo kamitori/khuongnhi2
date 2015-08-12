@@ -1,6 +1,6 @@
 <?php 
 	$sum_amount = 0;
-	
+	$user = Auth::user();
 ?>
 @foreach ($list_product as $product)
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">
@@ -9,7 +9,7 @@
 	<td>{{$product['sku']}}</td>
 	<td>{{$product['name']}}</td>
 	<td>
-		@if($returnsaleorder['status'])
+		@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 			
 			@foreach($oums as $oum)
 				{{$product['oum_id']==$oum['id']?$oum['name']:''}}
@@ -32,7 +32,7 @@
 		@endif
 	</td>
 	<td>
-		@if($returnsaleorder['status'])
+		@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 		{{$product['specification']}}
 		@else
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
@@ -42,14 +42,14 @@
 			{{$product['sell_price']}}
 	</td>
 	<td>
-		@if($returnsaleorder['status'])
+		@if($returnsaleorder['status'] || !$user->can("edit-returnsaleorders"))
 		{{$product['quantity']}}
 		@else
 		<input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="currency" class="amount">{{$product['amount']}}</td>
-	@if(!$returnsaleorder['status'])
+	@if(!$returnsaleorder['status'] && $user->can("edit-returnsaleorders"))
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
@@ -59,7 +59,7 @@
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
 	<td data-type="currency" class="right" id="sum_amount">{{$sum_amount}}</td>
-	@if(!$returnsaleorder['status'])
+	@if(!$returnsaleorder['status'] && $user->can("edit-returnsaleorders"))
 	<td></td>
 	@endif
 </tr>

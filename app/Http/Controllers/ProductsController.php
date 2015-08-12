@@ -39,7 +39,22 @@ class ProductsController extends Controller {
 			$id_product = session('current_product') !== null ? session('current_product') : 0;
 			if($id_product){
 				$product = Product::find($id_product)->toArray();
-				session(['current_product' => $product['id']]);
+				if(count($product)){
+					session(['current_product' => $product['id']]);
+				}else{
+					$product = Product::get()->last();
+					if($product){
+						$product= $product->toArray();
+						session(['current_product' => $product['id']]);
+					}else{
+						$product = new Product;
+						$product->created_by = \Auth::user()->id;
+						$product->save();
+						Log::create_log(\Auth::user()->id,'App\Product','Tạo mới sản phẩm số '.$product->id);
+						session(['current_product' => $product->id]);
+						$product->toArray();
+					}
+				}
 			}else{
 				$product = Product::get()->last();
 				if($product){

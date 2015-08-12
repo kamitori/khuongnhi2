@@ -1,5 +1,6 @@
 <?php 
 	$sum_amount = 0;
+	$user = \Auth::user();
 ?>
 @foreach ($list_product as $product)
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}">
@@ -8,7 +9,7 @@
 	<td>{{$product['sku']}}</td>
 	<td>{{$product['name']}}</td>
 	<td>
-		@if($saleorder['status'])
+		@if($saleorder['status'] || !$user->can("edit-saleorders"))
 			
 			@foreach($oums as $oum)
 				{{$product['oum_id']==$oum['id']?$oum['name']:''}}
@@ -31,14 +32,14 @@
 		@endif
 	</td>
 	<td>
-		@if($saleorder['status'])
+		@if($saleorder['status'] || !$user->can("edit-saleorders"))
 		{{$product['specification']}}
 		@else
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="{{$saleorder['status']?'currency':''}}">
-		@if($saleorder['status'])
+		@if($saleorder['status'] || !$user->can("edit-saleorders"))
 			{{$product['sell_price']}}
 		@else
 		<select class="sell_price" name="sell_price" id="sell_price">
@@ -51,14 +52,14 @@
 		@endif
 	</td>
 	<td>
-		@if($saleorder['status'])
+		@if($saleorder['status'] || !$user->can("edit-saleorders"))
 		{{$product['quantity']}}
 		@else
 		<input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="currency" class="amount">{{$product['amount']}}</td>
-	@if(!$saleorder['status'])
+	@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
@@ -68,7 +69,7 @@
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
 	<td data-type="currency" class="right" id="sum_amount">{{$sum_amount}}</td>
-	@if(!$saleorder['status'])
+	@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 	<td></td>
 	@endif
 </tr>

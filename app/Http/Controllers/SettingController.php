@@ -10,6 +10,7 @@ use App\Province;
 use App\Country;
 use App\UserType;
 use App\Role;
+use App\Permission;
 use App\PdfTemplate;
 use App\Http\Requests\Admin\UserRequest;
 use App\Http\Requests\Admin\UserEditRequest;
@@ -108,7 +109,7 @@ class SettingController extends Controller {
 	public function anyCompanytypeSettings()
 	{
 		$companytypes = CompanyType::orderBy('name')->get();
-		return view('setting.list-companytype',["companytypes"=>$companytypes]);
+		return view('setting.list-companiestype',["companytypes"=>$companytypes]);
 	}
 
 	public function postUpdateCompanytype(Request $request)
@@ -151,7 +152,7 @@ class SettingController extends Controller {
 	public function anyProducttypeSettings()
 	{
 		$producttypes = ProductType::orderBy('name')->get();
-		return view('setting.list-productType',["producttypes"=>$producttypes]);
+		return view('setting.list-productsType',["producttypes"=>$producttypes]);
 	}
 
 	public function postUpdateProducttype(Request $request)
@@ -551,100 +552,100 @@ class SettingController extends Controller {
 
 	// tạo order
 	$createpo = new Permission();
-	$createpo->name         = 'create-po';
+	$createpo->name         = 'create-purchaseorders';
 	$createpo->display_name = 'Tạo đơn mua hàng'; // optional
 	$createpo->description  = 'Tạo đơn mua hàng'; // optional
 	$createpo->save();
 
 	$createso = new Permission();
-	$createso->name         = 'create-so';
+	$createso->name         = 'create-saleorders';
 	$createso->display_name = 'Tạo đơn hàng'; // optional
 	$createso->description  = 'Tạo đơn hàng'; // optional
 	$createso->save();
 
 	$createrpo = new Permission();
-	$createrpo->name         = 'create-rpo';
+	$createrpo->name         = 'create-returnpurchaseorders';
 	$createrpo->display_name = 'Tạo đơn hàng trả NCC'; // optional
 	$createrpo->description  = 'Tạo đơn hàng trả NCC'; // optional
 	$createrpo->save();
 
 	$createrso = new Permission();
-	$createrso->name         = 'create-rso';
+	$createrso->name         = 'create-returnsaleorders';
 	$createrso->display_name = 'Tạo đơn hàng đại lý trả'; // optional
 	$createrso->description  = 'Tạo đơn hàng đại lý trả'; // optional
 	$createrso->save();
 
 	// hoàn thành order
 	$completepo = new Permission();
-	$completepo->name         = 'complete-po';
+	$completepo->name         = 'complete-purchaseorders';
 	$completepo->display_name = 'Hoàn thành đơn mua hàng'; // optional
 	$completepo->description  = 'Hoàn thành đơn mua hàng'; // optional
 	$completepo->save();
 
 	$completeso = new Permission();
-	$completeso->name         = 'complete-so';
+	$completeso->name         = 'complete-saleorders';
 	$completeso->display_name = 'Hoàn thành đơn hàng'; // optional
 	$completeso->description  = 'Hoàn thành đơn hàng'; // optional
 	$completeso->save();
 
 	$completerpo = new Permission();
-	$completerpo->name         = 'complete-rpo';
+	$completerpo->name         = 'complete-returnpurchaseorders';
 	$completerpo->display_name = 'Hoàn thành đơn hàng trả NCC'; // optional
 	$completerpo->description  = 'Hoàn thành đơn hàng trả NCC'; // optional
 	$completerpo->save();
 
 	$completerso = new Permission();
-	$completerso->name         = 'complete-rso';
+	$completerso->name         = 'complete-returnsaleorders';
 	$completerso->display_name = 'Hoàn thành đơn hàng đại lý trả'; // optional
 	$completerso->description  = 'Hoàn thành đơn hàng đại lý trả'; // optional
 	$completerso->save();
 
 	// Cập nhật order
 	$editpo = new Permission();
-	$editpo->name         = 'edit-po';
+	$editpo->name         = 'edit-purchaseorders';
 	$editpo->display_name = 'Cập nhật đơn mua hàng'; // optional
 	$editpo->description  = 'Cập nhật đơn mua hàng'; // optional
 	$editpo->save();
 
 	$editso = new Permission();
-	$editso->name         = 'edit-so';
+	$editso->name         = 'edit-saleorders';
 	$editso->display_name = 'Cập nhật đơn hàng'; // optional
 	$editso->description  = 'Cập nhật đơn hàng'; // optional
 	$editso->save();
 
 	$editrpo = new Permission();
-	$editrpo->name         = 'edit-rpo';
+	$editrpo->name         = 'edit-returnpurchaseorders';
 	$editrpo->display_name = 'Cập nhật đơn hàng trả NCC'; // optional
 	$editrpo->description  = 'Cập nhật đơn hàng trả NCC'; // optional
 	$editrpo->save();
 
 	$editrso = new Permission();
-	$editrso->name         = 'edit-rso';
+	$editrso->name         = 'edit-returnsaleorders';
 	$editrso->display_name = 'Cập nhật đơn hàng đại lý trả'; // optional
 	$editrso->description  = 'Cập nhật đơn hàng đại lý trả'; // optional
 	$editrso->save();
 
 	// view order
 	$viewpo = new Permission();
-	$viewpo->name         = 'view-po';
+	$viewpo->name         = 'view-purchaseorders';
 	$viewpo->display_name = 'Xem đơn mua hàng'; // optional
 	$viewpo->description  = 'Xem đơn mua hàng'; // optional
 	$viewpo->save();
 
 	$viewso = new Permission();
-	$viewso->name         = 'view-so';
+	$viewso->name         = 'view-saleorders';
 	$viewso->display_name = 'Xem đơn hàng'; // optional
 	$viewso->description  = 'Xem đơn hàng'; // optional
 	$viewso->save();
 
 	$viewrpo = new Permission();
-	$viewrpo->name         = 'view-rpo';
+	$viewrpo->name         = 'view-returnpurchaseorders';
 	$viewrpo->display_name = 'Xem đơn hàng trả NCC'; // optional
 	$viewrpo->description  = 'Xem đơn hàng trả NCC'; // optional
 	$viewrpo->save();
 
 	$viewrso = new Permission();
-	$viewrso->name         = 'view-rso';
+	$viewrso->name         = 'view-returnsaleorders';
 	$viewrso->display_name = 'Xem đơn hàng đại lý trả'; // optional
 	$viewrso->description  = 'Xem đơn hàng đại lý trả'; // optional
 	$viewrso->save();
@@ -652,25 +653,25 @@ class SettingController extends Controller {
 
 	// Xóa order
 	$deletepo = new Permission();
-	$deletepo->name         = 'delete-po';
+	$deletepo->name         = 'delete-purchaseorders';
 	$deletepo->display_name = 'Xóa đơn mua hàng'; // optional
 	$deletepo->description  = 'Xóa đơn mua hàng'; // optional
 	$deletepo->save();
 
 	$deleteso = new Permission();
-	$deleteso->name         = 'delete-so';
+	$deleteso->name         = 'delete-saleorders';
 	$deleteso->display_name = 'Xóa đơn hàng'; // optional
 	$deleteso->description  = 'Xóa đơn hàng'; // optional
 	$deleteso->save();
 
 	$deleterpo = new Permission();
-	$deleterpo->name         = 'delete-rpo';
+	$deleterpo->name         = 'delete-returnpurchaseorders';
 	$deleterpo->display_name = 'Xóa đơn hàng trả NCC'; // optional
 	$deleterpo->description  = 'Xóa đơn hàng trả NCC'; // optional
 	$deleterpo->save();
 
 	$deleterso = new Permission();
-	$deleterso->name         = 'delete-rso';
+	$deleterso->name         = 'delete-returnsaleorders';
 	$deleterso->display_name = 'Xóa đơn hàng đại lý trả'; // optional
 	$deleterso->description  = 'Xóa đơn hàng đại lý trả'; // optional
 	$deleterso->save();
@@ -678,31 +679,31 @@ class SettingController extends Controller {
 	// Tạo mới, hoàn thành, xóa sản phẩm, thêm giá bán
 	
 	$createproduct = new Permission();
-	$createproduct->name         = 'create-product';
+	$createproduct->name         = 'create-products';
 	$createproduct->display_name = 'Tạo sản phẩm'; // optional
 	$createproduct->description  = 'Tạo sản phẩm'; // optional
 	$createproduct->save();
 
 	$deleteproduct = new Permission();
-	$deleteproduct->name         = 'delete-product';
+	$deleteproduct->name         = 'delete-products';
 	$deleteproduct->display_name = 'Xóa sản phẩm'; // optional
 	$deleteproduct->description  = 'Xóa sản phẩm'; // optional
 	$deleteproduct->save();
 
 	$sellpriceproduct = new Permission();
-	$sellpriceproduct->name         = 'sellprice-product';
+	$sellpriceproduct->name         = 'sellprice-products';
 	$sellpriceproduct->display_name = 'Thêm giá bán sản phẩm'; // optional
 	$sellpriceproduct->description  = 'Thêm giá bán sản phẩm'; // optional
 	$sellpriceproduct->save();
 
 	$viewproduct = new Permission();
-	$viewproduct->name         = 'view-product';
+	$viewproduct->name         = 'view-products';
 	$viewproduct->display_name = 'Xem sản phẩm'; // optional
 	$viewproduct->description  = 'Xem sản phẩm'; // optional
 	$viewproduct->save();
 
 	$editproduct = new Permission();
-	$editproduct->name         = 'edit-product';
+	$editproduct->name         = 'edit-products';
 	$editproduct->display_name = 'Cập nhật sản phẩm'; // optional
 	$editproduct->description  = 'Cập nhật sản phẩm'; // optional
 	$editproduct->save();
@@ -710,52 +711,130 @@ class SettingController extends Controller {
 	// Tạo mới, hoàn thành, xóa công ty
 	
 	$createcompany = new Permission();
-	$createcompany->name         = 'create-company';
+	$createcompany->name         = 'create-companies';
 	$createcompany->display_name = 'Tạo công ty'; // optional
 	$createcompany->description  = 'Tạo công ty'; // optional
 	$createcompany->save();
 
 	$deletecompany = new Permission();
-	$deletecompany->name         = 'delete-company';
+	$deletecompany->name         = 'delete-companies';
 	$deletecompany->display_name = 'Xóa công ty'; // optional
 	$deletecompany->description  = 'Xóa công ty'; // optional
 	$deletecompany->save();
 
 	$viewcompany = new Permission();
-	$viewcompany->name         = 'view-company';
+	$viewcompany->name         = 'view-companies';
 	$viewcompany->display_name = 'Xem công ty'; // optional
 	$viewcompany->description  = 'Xem công ty'; // optional
 	$viewcompany->save();
 
 	$editcompany = new Permission();
-	$editcompany->name         = 'edit-company';
+	$editcompany->name         = 'edit-companies';
 	$editcompany->display_name = 'Cập nhật công ty'; // optional
 	$editcompany->description  = 'Cập nhật công ty'; // optional
 	$editcompany->save();
 
 	// Setting
 	$viewsetting = new Permission();
-	$viewsetting->name         = 'view-setting';
+	$viewsetting->name         = 'view-settings';
 	$viewsetting->display_name = 'Truy cập bảng điều khiển'; // optional
 	$viewsetting->description  = 'Truy cập bảng điều khiển'; // optional
 	$viewsetting->save();
 
 	//Công nợ
 	$viewreceipt = new Permission();
-	$viewreceipt->name         = 'view-receipt';
+	$viewreceipt->name         = 'view-receipts';
 	$viewreceipt->display_name = 'Truy cập công nợ'; // optional
 	$viewreceipt->description  = 'Truy cập công nợ'; // optional
 	$viewreceipt->save();
 
 	//Doanh thu
 	$viewrevenue = new Permission();
-	$viewrevenue->name         = 'view-revenue';
+	$viewrevenue->name         = 'view-revenues';
 	$viewrevenue->display_name = 'Truy cập doanh thu'; // optional
 	$viewrevenue->description  = 'Truy cập doanh thu'; // optional
 	$viewrevenue->save();
 
+	//Doanh thu
+	$viewhistory = new Permission();
+	$viewhistory->name         = 'view-historys';
+	$viewhistory->display_name = 'Truy cập lịch sử'; // optional
+	$viewhistory->description  = 'Truy cập lịch sử'; // optional
+	$viewhistory->save();
 
+	// Add permission to role
 
+	$admin_role->attachPermissions(array(
+						$createpo,
+						$createso,
+						$createrpo,
+						$createrso,
+						$completepo,
+						$completeso,
+						$completerpo,
+						$completerso,
+						$editpo,
+						$editso,
+						$editrpo,
+						$editrso,
+						$viewpo,
+						$viewso,
+						$viewrpo,
+						$viewrso,
+						$deletepo,
+						$deleteso,
+						$deleterpo,
+						$deleterso,
+						$createproduct,
+						$deleteproduct,
+						$sellpriceproduct,
+						$viewproduct,
+						$editproduct,
+						$createcompany,
+						$deletecompany,
+						$viewcompany,
+						$editcompany,
+						$viewsetting,
+						$viewreceipt,
+						$viewrevenue,
+						$viewhistory
+					));
+
+	$user_role->attachPermissions(array(
+						$createpo,
+						$createso,
+						$createrpo,
+						$createrso,
+						// $completepo,
+						// $completeso,
+						// $completerpo,
+						// $completerso,
+						$editpo,
+						$editso,
+						$editrpo,
+						$editrso,
+						$viewpo,
+						$viewso,
+						$viewrpo,
+						$viewrso,
+						// $deletepo,
+						// $deleteso,
+						// $deleterpo,
+						// $deleterso,
+						$createproduct,
+						$deleteproduct,
+						$sellpriceproduct,
+						$viewproduct,
+						$editproduct,
+						$createcompany,
+						$deletecompany,
+						$viewcompany,
+						$editcompany,
+						// $viewsetting,
+						// $viewreceipt,
+						// $viewrevenue
+						// $viewhistory
+					));
 	echo "done";
 	die;
    }

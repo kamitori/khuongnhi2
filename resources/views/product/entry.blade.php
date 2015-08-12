@@ -1,12 +1,21 @@
+<?php 
+	$user = Auth::user();
+?>
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
+		@if($user->can("create-products"))
 		<a href="{{URL}}/products/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
-		@if(!$product['status'])
+		@endif
+
+		@if(!$product['status'] && $user->can("delete-products"))
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_product"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
+
 		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		@if($user->can("view-history"))
 		<a href="{{URL}}/products/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
+		@endif
 	</div>
 	<div class="buttons pull-right">
 
@@ -17,7 +26,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
-				<h4 id="product_name">{{ $product['name'] != '' ? $product['name'] : 'New product' }}</h4>
+				<h4 id="product_name">{{ $product['name'] != '' ? $product['name'] : 'Sản phẩm mới' }}</h4>
 			</a>
 		</div>
 		<div id="collapse1" class="accordion-body in collapse" style="height: auto;">
@@ -28,7 +37,7 @@
 							<div class="control-group">
 								<label class="control-label">STT:</label>
 								<div class="controls">
-									@if($product['status'])
+									@if($product['status'] || !$user->can("edit-products"))
 									<span>{{$product['id']}}</span>
 									@else
 									<input type="text" name="stt" value="{{$product['id']}}" readonly="">
@@ -39,7 +48,7 @@
 							<div class="control-group">
 								<label class="control-label">Mã sản phẩm:</label>
 								<div class="controls">
-									@if($product['status'])
+									@if($product['status'] || !$user->can("edit-products"))
 									<span>{{$product['sku']}}</span>
 									@else
 									<input type="text" name="sku" value="{{ $product['sku'] }}">
@@ -51,7 +60,7 @@
 							<div class="control-group">
 								<label class="control-label">Tên sản phẩm:</label>
 								<div class="controls">
-									@if($product['status'])
+									@if($product['status'] || !$user->can("edit-products"))
 									<span>{{$product['name']}}</span>
 									@else
 									<input type="text" name="name" value="{{$product['name']}}">
@@ -61,7 +70,7 @@
 							<div class="control-group">
 								<label class="control-label">Loại sản phẩm:</label>
 								<div class="controls">
-									@if($product['status'])
+									@if($product['status'] || !$user->can("edit-products"))
 									<span>
 										@foreach($producttypes as $producttype)
 										@if($producttype['id']==$product['product_type'])
@@ -89,17 +98,21 @@
 							<div class="control-group">
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">&nbsp;</label>
 								<div class="controls"  >
+									@if($user->can("edit-products"))
 									<button class="btn btn-primary" type="button" onclick="popup_instock()" title="Thêm tồn kho ban đầu cho sản phẩm" >
 										<i class="fa fa-cubes"></i>
 										Tồn kho ban đầu
 									</button>
+									@endif
 								</div>
 							</div>
 							<div class="control-group">
+								@if($user->can("edit-products"))
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
 									<input type="checkbox" name="status" {{$product['status']==1?'checked':''}} data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="140">
 								</div>
+								@endif
 							</div>
 
 						</div>
@@ -220,10 +233,11 @@
 			<!-- dialog body -->
 			<form  method="post" accept-charset="utf-8" id="form_oum">
 			<div class="modal-body">
+				<input type="hidden" name="mproduct_id" id="mproduct_id" value="">
+				@if($user->can("edit-products"))
 				<div class="row">
 					<div class="span3">
 						<div class="control-group">
-							<input type="hidden" name="mproduct_id" id="mproduct_id" value="">
 							<input type="hidden" name="id_sellprice" id="id_sellprice" value="0">
 							<label class="control-label">Nhãn:</label>
 							<div class="controls">
@@ -254,6 +268,7 @@
 						<button type="button" onclick="saveSellPrice()" class="btn btn-primary">Lưu</button>
 					</div>
 				</div>
+				@endif
 				<div id="list_price">
 					
 				</div>

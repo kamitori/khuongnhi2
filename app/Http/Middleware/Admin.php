@@ -47,14 +47,14 @@ class Admin implements Middleware {
 	{
         if ($this->auth->check())
         {
-            $admin = 0;
-            if($this->auth->user()->admin==1)
-            {
-                $admin=1;
-            }
-            if($admin==0){
-                return $this->response->redirectTo('/');
-            }
+            // $admin = 0;
+            // if($this->auth->user()->admin==1)
+            // {
+            //     $admin=1;
+            // }
+            // if($admin==0){
+            //     return $this->response->redirectTo('/');
+            // }
             return $next($request);
         }
         return $this->response->redirectTo('/');

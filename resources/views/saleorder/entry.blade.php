@@ -1,12 +1,19 @@
+<?php 
+	$user = Auth::user();
+?>
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
+		@if($user->can("create-saleorders"))
 		<a href="{{URL}}/saleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
-		@if(!$saleorder['status'])
+		@endif
+		@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_saleorder"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		@if($user->can("view-history"))
 		<a href="{{URL}}/saleorders/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
+		@endif
 	</div>
 	<div class="buttons pull-right">
 		
@@ -28,7 +35,7 @@
 							<div class="control-group">
 								<label class="control-label">STT:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 									<span>{{$saleorder['id']}}</span>
 									@else
 									<input type="text" name="stt" value="{{$saleorder['id']}}" readonly="">
@@ -38,7 +45,7 @@
 							<div class="control-group">
 								<label class="control-label">Công ty:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 									<span>
 										@foreach($distributes as $distribute)
 											{{ isset($saleorder['company_id']) && ($saleorder['company_id'] == $distribute['id'])?$distribute['name']:'' }}
@@ -61,19 +68,19 @@
 							<div class="control-group">
 								<label class="control-label">Liên hệ:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 									<span>
-										@foreach($users as $user)
-											{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user['id'])?$user['name']:''}}
+										@foreach($users as $user_name)
+											{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user_name['id'])?$user_name['name']:''}}
 										@endforeach
 									</span>
 									@else
 									<select name="user_id" id="user_id" data-type="select2">
-										@foreach($users as $user)
-										<option value="{{$user['id']}}"
-									{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user['id'])?'selected':''}}
+										@foreach($users as $user_name)
+										<option value="{{$user_name['id']}}"
+									{{isset($saleorder['user_id']) && ($saleorder['user_id'] == $user_name['id'])?'selected':''}}
 										>
-											{{$user['name']}}
+											{{$user_name['name']}}
 										</option>
 										@endforeach
 									</select>
@@ -83,7 +90,7 @@
 							<div class="control-group">
 								<label class="control-label">Ngày:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{ date('d-m-Y',strtotime($saleorder['date']) ) }}</span>
 									@else
 									<input type="text" id="date" name="date" class="datepicker" value="{{ date('d-m-Y',strtotime($saleorder['date']) ) }}" readonly="" style="background-color: #fff;">
@@ -95,7 +102,7 @@
 							<div class="control-group">
 								<label class="control-label">Điện thoại:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($saleorder['company_phone'])?$saleorder['company_phone']:''}}</span>
 									@else
 									<input type="text" name="company_phone" value="{{isset($saleorder['company_phone'])?$saleorder['company_phone']:''}}" >
@@ -105,7 +112,7 @@
 							<div class="control-group">
 								<label class="control-label">Email:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($saleorder['company_email'])?$saleorder['company_email']:''}}</span>
 									@else
 									<input type="text" name="company_email" value="{{isset($saleorder['company_email'])?$saleorder['company_email']:''}}" >
@@ -115,7 +122,7 @@
 							<div class="control-group">
 								<label class="control-label">Địa chỉ:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($address['address'])?$address['address']:''}}</span>
 									@else
 									<input type="text" name="address" value="{{isset($address['address'])?$address['address']:''}}" >
@@ -125,7 +132,7 @@
 							<div class="control-group">
 								<label class="control-label">Quận/Huyện:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($address['town_city'])?$address['town_city']:''}}</span>
 									@else
 									<input type="text" name="town_city" value="{{isset($address['town_city'])?$address['town_city']:''}}" >
@@ -138,7 +145,7 @@
 							<div class="control-group">
 								<label class="control-label">Tỉnh thành:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($saleorder['province_name'])?$saleorder['province_name']:''}}</span>
 									@else
 									<select name="province_id" id="province_id">
@@ -149,7 +156,7 @@
 							<div class="control-group">
 								<label class="control-label">Quốc gia:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{isset($saleorder['country_name'])?$saleorder['country_name']:''}}</span>
 									@else
 									<select name="country_id" id="country_id">
@@ -166,7 +173,7 @@
 							<div class="control-group">
 								<label class="control-label">Mã vùng:</label>
 								<div class="controls">
-									@if($saleorder['status'])
+									@if($saleorder['status'] || !$user->can("edit-saleorders"))
 										<span>{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}</span>
 									@else
 									<input type="text" name="zip_postcode" maxlength="15" value="{{ isset($address['zip_postcode'])?$address['zip_postcode']:'' }}">
@@ -174,10 +181,12 @@
 								</div>
 							</div>
 							<div class="control-group">
+								@if($user->can("complete-saleorders"))
 								<label class="control-label" style="vertical-align: bottom; margin-bottom:5px;">Trạng thái:</label>
 								<div class="controls">
 									<input type="checkbox" name="status" {{isset($saleorder['status']) && ($saleorder['status']==1)?'checked':''}}  data-toggle="toggle" data-onstyle="primary" data-on="Hoàn thành" data-off="Mới" data-height="15" data-width="140">
 								</div>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -205,7 +214,7 @@
 				<div class="block row">
 					<div class="heading-buttons main-left">
 						<div class="buttons pull-left">
-							@if(!$saleorder['status'])
+							@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							@endif
 							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
@@ -221,7 +230,7 @@
 								<th style="width:13%">Đơn giá</th>
 								<th style="width:7%">Số lượng</th>
 								<th style="width:20%" class="right">Thành tiền</th>
-								@if(!$saleorder['status'])
+								@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 								<th style="width:3%">&nbsp;</th>
 								@endif
 							</tr>
@@ -230,7 +239,7 @@
 							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
-					@if(!$saleorder['status'])
+					@if(!$saleorder['status'] && $user->can("delete-saleorders"))
 					<div class="control-group" style="margin-top: 10px;width:400px;">
 						<label class="control-label">SKU/Tên SP:</label>
 						<div class="controls">

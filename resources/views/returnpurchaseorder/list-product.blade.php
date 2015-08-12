@@ -8,7 +8,7 @@
 	<td>{{$product['sku']}}</td>
 	<td>{{$product['name']}}</td>
 	<td>
-		@if($returnpurchaseorder['status'])
+		@if($returnpurchaseorder['status'] || !$user->can("edit-returnpurchaseorders"))
 			
 			@foreach($oums as $oum)
 				{{$product['oum_id']==$oum['id']?$oum['name']:''}}
@@ -31,7 +31,7 @@
 		@endif
 	</td>
 	<td>
-		@if($returnpurchaseorder['status'])
+		@if($returnpurchaseorder['status'] || !$user->can("edit-returnpurchaseorders"))
 		{{$product['specification']}}
 		@else
 		<input type="text" id="specification" name="specification" value="{{$product['specification']}}" data-type="quantity">
@@ -41,14 +41,14 @@
 			{{$product['origin_price']}}
 	</td>
 	<td>
-		@if($returnpurchaseorder['status'])
+		@if($returnpurchaseorder['status'] || !$user->can("edit-returnpurchaseorders"))
 		{{$product['quantity']}}
 		@else
 		<input type="text" id="quantity" name="quantity" value="{{$product['quantity']}}" data-type="quantity">
 		@endif
 	</td>
 	<td data-type="currency" class="invest">{{$product['invest']}}</td>
-	@if(!$returnpurchaseorder['status'])
+	@if(!$returnpurchaseorder['status'] && $user->can("edit-returnpurchaseorders"))
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
@@ -58,7 +58,7 @@
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
 	<td data-type="currency" class="right" id="sum_invest">{{$sum_invest}}</td>
-	@if(!$returnpurchaseorder['status'])
+	@if(!$returnpurchaseorder['status'] && $user->can("edit-returnpurchaseorders"))
 	<td></td>
 	@endif
 </tr>

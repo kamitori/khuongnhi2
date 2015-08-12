@@ -18,6 +18,7 @@ abstract class Controller extends BaseController {
     {
         $this->middleware('auth');
         $this->middleware('admin');
+        $this->middleware('permission');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     }
