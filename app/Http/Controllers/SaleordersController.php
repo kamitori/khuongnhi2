@@ -463,7 +463,6 @@ class SaleordersController extends Controller {
 		foreach ($arr_id as $key => $value) {
 			Session::put('product_of_so'.session('current_saleorder').".".$value , $value);
 		}
-		var_dump( session('product_of_so'.session('current_saleorder')) );
 		return '';
 	}
 
@@ -504,7 +503,6 @@ class SaleordersController extends Controller {
 			$log .= "Thêm sản phẩm ".$product->sku;
 		}
 		Log::create_log(\Auth::user()->id,'App\Saleorder',$log.' vào đơn hàng số '.session('current_saleorder'));
-		Session::forget('product_of_so'.session('current_saleorder'));
 		return $arr_return;
 	}
 
@@ -572,7 +570,7 @@ class SaleordersController extends Controller {
 		$saleorder = Saleorder::find(session('current_saleorder'));
 		$saleorder->updated_by = \Auth::user()->id;
 		$saleorder->save();
-		Session::forget('product_of_so'.session('current_saleorder'));
+
 		return $arr_return;
 	}
 

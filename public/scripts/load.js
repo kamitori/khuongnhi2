@@ -1192,6 +1192,13 @@ $(function()
 
 	
 	$("input[data-type=quantity]").each(function(key,element){
+		$(element).prop('autocomplete','off');
+		$(element).prop('autocorrect','off');
+		$(element).prop('autocapitalize','off');
+		$(element).prop('spellcheck','false');
+		if(parseInt($(element).val())==0){
+			$(element).val('');
+		}
 		$(element).keydown(function(e){
 				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 					 // Allow: Ctrl+A
@@ -1209,6 +1216,10 @@ $(function()
 	});
 
 	$("input[data-type=number]").each(function(key,element){
+		$(element).prop('autocomplete','off');
+		$(element).prop('autocorrect','off');
+		$(element).prop('autocapitalize','off');
+		$(element).prop('spellcheck','false');
 		$(element).keydown(function(e){
 				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 					 // Allow: Ctrl+A
@@ -1281,6 +1292,10 @@ $(function()
 		$(this).text(value);
 	})
 	$("[data-type=currency]").each(function(){
+		$(this).prop('autocomplete','off');
+		$(this).prop('autocorrect','off');
+		$(this).prop('autocapitalize','off');
+		$(this).prop('spellcheck','false');
 		value = $(this).text().replace(',','')
 		while(value.indexOf(',')>0){
 			value = value.replace(',','')
@@ -1448,6 +1463,10 @@ function select_table(){
 
 function datatype_currency(){
 	$("[data-type=currency]").each(function(){
+		$(this).prop('autocomplete','off');
+		$(this).prop('autocorrect','off');
+		$(this).prop('autocapitalize','off');
+		$(this).prop('spellcheck','false');
 		value = $(this).text().replace(',','')
 		while(value.indexOf(',')>0){
 			value = value.replace(',','')
@@ -1461,6 +1480,10 @@ function datatype_currency(){
 function datatype_number(){
 
 	$("input[data-type=number]").each(function(key,element){
+		$(element).prop('autocomplete','off');
+		$(element).prop('autocorrect','off');
+		$(element).prop('autocapitalize','off');
+		$(element).prop('spellcheck','false');
 		$(element).keydown(function(e){
 				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 					 // Allow: Ctrl+A
@@ -1507,6 +1530,13 @@ function datatype_number(){
 
 function datatype_quantity(){
 	$("input[data-type=quantity]").each(function(key,element){
+		$(element).prop('autocomplete','off');
+		$(element).prop('autocorrect','off');
+		$(element).prop('autocapitalize','off');
+		$(element).prop('spellcheck','false');
+		if(parseInt($(element).val())==0){
+			$(element).val('');
+		}
 		$(element).keydown(function(e){
 				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
 					 // Allow: Ctrl+A
