@@ -39,11 +39,13 @@ class SettingsController extends Controller {
 
 	public function anyUserSettings(Request $request)
 	{
-		$users = User::select('users.*','user_types.name as type_name','user_types.id as type_id')->leftJoin('user_types',function($join){
-			$join->on("users.user_type_id","=","user_types.id");
-		});
+		$users = User::select('users.*','roles.name as type_name','roles.id as type_id')
+		->leftJoin('role_user',function($join){
+			$join->on("users.id","=","role_user.user_id");
+		})
+		->leftJoin('roles','role_user.role_id','=','roles.id');
 		$users = $users->paginate(5);
-		$user_types = UserType::get()->toArray();
+		$user_types = Role::get()->toArray();
 
 		$view = view('setting.list-user',['user_types' => $user_types,'users'=>$users]);
 		if( $request->ajax() ) {
@@ -209,7 +211,7 @@ class SettingsController extends Controller {
 		$user->save();
 	}
 
-/*    public function postCreateCountry(Request $request, $id)
+/* public function postCreateCountry(Request $request, $id)
     {
         $arr_return = array();
         $province = new Province();
@@ -217,13 +219,13 @@ class SettingsController extends Controller {
         $country_id = $id;
         if($province->save){
             $arr_return['status'] = 'success';
-        }else{
+     }else{
             $arr_return['message'] = 'Saving fail';
-        }
+     }
         return $arr_return;
-    }*/
+ }*/
 
-    public function getListProvince(Request $request, $country_id)
+ public function getListProvince(Request $request, $country_id)
     {
         $provinces = Province::getProvinceByCountry($country_id);
         $countries = Country::getCountry();
@@ -233,12 +235,12 @@ class SettingsController extends Controller {
                 $html.= '<li>';
                     $html.=$province['name'];
                 $html.='</li>';
-            }
+         }
         $html.='</ul>';
         return $html;*/
-    }
+ }
 
-    public function postUpdateProvince(Request $request)
+ public function postUpdateProvince(Request $request)
 	{
 		$arr_return = array(
 			"status"=>"error"
@@ -434,7 +436,7 @@ class SettingsController extends Controller {
 		}
 		return $arr_return;
 	}
-    public function postCreateProvince(Request $request)
+ public function postCreateProvince(Request $request)
     {
         $arr_return = array();
         $province = new Province();
@@ -444,13 +446,13 @@ class SettingsController extends Controller {
         $province->country_id = $country_id;
         if($province->save()){
             $arr_return['status'] = 'success';
-        }else{
+     }else{
             $arr_return['message'] = 'Saving fail';
-        }
+     }
         return $arr_return;
-    }
+ }
 
-   public function postMenuInfo(Request $request)
+public function postMenuInfo(Request $request)
    {
 		$arr_return = array();
 		$id = $request->has('id')?$request->input('id') : 0;
@@ -459,34 +461,38 @@ class SettingsController extends Controller {
 				$arr_return = $menu;
 		}
 		return $arr_return;
-   }
+}
 
-   public function anyUserTypeSettings()
+public function anyUserTypeSettings()
    {
-   		$usertypes = UserType::orderBy('name')->get();
+   		$usertypes = Role::orderBy('name')->get();
    		return view('setting.list-user-type',["usertypes" => $usertypes]);
-   }
+}
 
-   public function postUpdateUserTypeSettings(Request $request)
+public function postUpdateUserTypeSettings(Request $request)
    {
    		$arr_return = array("status" => "error");
    		$id= $request->has('id')?$request->input('id'):0;
    		$name = $request->has('name')?$request->input('name'):'';
+   		$description = $request->has('description')?$request->input('description'):'';
+   		$main = $request->has('main')?$request->input('main'):'';
    		if($id){
-   			$usertype = UserType::find($id);
+   			$usertype = Role::find($id);
    		}else{
-   			$usertype = new UserType;
+   			$usertype = new Role;
    		}
    		$usertype->name = $name;
+   		$usertype->description = $description;
+   		$usertype->main = $main;
    		if($usertype->save()){
    			$arr_return['status'] = 'success';
    		}else{
    			$arr_return['message'] = 'saving fail';
    		}
    		return $arr_return;
-   }
+}
 
-   public function anyDeleteUserType($id)
+public function anyDeleteUserType($id)
    {
    		$arr_return = array('status' => 'error');
    		$usertype = UserType::find($id);
@@ -496,23 +502,24 @@ class SettingsController extends Controller {
    			$arr_return['message'] = 'Delete fail';
    		}
    		return $arr_return;
-   }
+}
 
 
    // ========== PDF Setting ===========
-   public function anyPdfSettings(){
+public function anyPdfSettings(){
    	$pdf_templates = PdfTemplate::orderBy('name')->get()->toArray();
    	return view('setting.list-pdf-template',["pdf_templates" => $pdf_templates]);
-   }
+}
 
-   public function getGetTemplate($id){
+public function getGetTemplate($id){
    	$pdf = PdfTemplate::find($id);
    	if($pdf)
    		return $pdf;
    	else
    		return array();
-   }
-   public function anySaveTemplate(Request $request){
+}
+
+public function anySaveTemplate(Request $request){
    	$arr_return = array('status' => 'error');
    	$id = $request->has('id')?$request->input('id'):0;
    	$pdf = PdfTemplate::find($id);
@@ -528,10 +535,10 @@ class SettingsController extends Controller {
    	else
    		$arr_return['message'] = 'Not found';
    	return $arr_return;
-   }
+}
    // =============================
 
-   public function anyCreateRole(){
+public function anyCreateRole(){
    	// Create Role
 	$admin_role = new Role();
 	$admin_role->name         = 'admin';
@@ -548,7 +555,7 @@ class SettingsController extends Controller {
 	$user_role->save();
 
 
-//////////////////////////////   Create Permission    //////////////////////////////
+ 	//////////////////////////////   Create Permission    //////////////////////////////
 
 	// tạo order
 	$createpo = new Permission();
@@ -837,7 +844,7 @@ class SettingsController extends Controller {
 					));
 	echo "done";
 	die;
-   }
+}
 
 
 }

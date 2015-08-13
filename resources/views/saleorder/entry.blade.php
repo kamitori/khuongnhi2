@@ -6,7 +6,7 @@
 		@if($user->can("create-saleorders"))
 		<a href="{{URL}}/saleorders/create" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm</a>
 		@endif
-		@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+		@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_saleorder"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
 		<a href="{{URL}}/saleorders/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
@@ -214,7 +214,7 @@
 				<div class="block row">
 					<div class="heading-buttons main-left">
 						<div class="buttons pull-left">
-							@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+							@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							@endif
 							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
@@ -230,7 +230,7 @@
 								<th style="width:13%">Đơn giá</th>
 								<th style="width:7%">Số lượng</th>
 								<th style="width:20%" class="right">Thành tiền</th>
-								@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+								@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 								<th style="width:3%">&nbsp;</th>
 								@endif
 							</tr>
@@ -239,7 +239,7 @@
 							<?php echo $view_list_product; ?>
 						</tbody>
 					</table>
-					@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+					@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 					<div class="control-group" style="margin-top: 10px;width:400px;">
 						<label class="control-label">SKU/Tên SP:</label>
 						<div class="controls">

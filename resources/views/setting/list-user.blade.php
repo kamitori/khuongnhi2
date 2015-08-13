@@ -1,42 +1,35 @@
-<div class="widget widget-2 widget-white">
-	<!-- <div class="widget-head">
-		<span class="heading">User
-			<a href="#" onclick="popup_user();"><i class="fa fa-plus"></i></a>
-		</span>
-	</div> -->
-	<div class="widget-body">
-		<div class="pagination pagination-small pull-right" style="margin: 0;">
-			<?php echo $users->render(); ?>
-		</div>
-		<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>User type</th>
-					<th>Active user</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($users as $key => $value)
-				 <tr>
-					<td>{{$value['id']}}</td>
-					<td>{{$value['name']}}</td>
-					<td>{{$value['email']}}</td>
-					<td>{{$value['type_name']}}</td>
-					<td>@if($value['confirmed'])<span class="label label-success">Active</span>@else <span class="label">Inactive</span>@endif</td>
-					<td class="center">
-						<button class="btn btn-primary" data-value='{{ json_encode($value) }}' onclick="popup_edit_user(this)"><i class="fa fa-pencil"></i></button>
-						<button class="btn btn-danger" onclick="delete_user({{$value['id']}})"><i class="fa fa-remove"></i></button>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-	</div>
+
+<div class="pagination pagination-small pull-right" style="margin: 0;">
+	<?php echo $users->render(); ?>
 </div>
+<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>User type</th>
+			<th>Active user</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($users as $key => $value)
+		 <tr>
+			<td>{{$value['id']}}</td>
+			<td>{{$value['name']}}</td>
+			<td>{{$value['email']}}</td>
+			<td>{{$value['type_name']}}</td>
+			<td>@if($value['confirmed'])<span class="label label-success">Active</span>@else <span class="label">Inactive</span>@endif</td>
+			<td class="center">
+				<button class="btn btn-primary" data-value='{{ json_encode($value) }}' onclick="popup_edit_user(this)"><i class="fa fa-pencil"></i></button>
+				<button class="btn btn-danger" onclick="delete_user({{$value['id']}})"><i class="fa fa-remove"></i></button>
+			</td>
+		</tr>
+		@endforeach
+	</tbody>
+</table>
+
 <!-- set up the modal to start hidden and fade in and out -->
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog">

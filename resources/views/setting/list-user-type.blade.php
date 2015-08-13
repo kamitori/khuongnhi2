@@ -1,8 +1,10 @@
 <table class="table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable">
 	<thead>
 		<tr>
-			<th style="width:20%">STT</th>
-			<th style="width:60%">Name</th>
+			<th style="width:10%">STT</th>
+			<th style="width:15%">Name</th>
+			<th style="width:40%">Mô tả</th>
+			<th style="width:15%">Loại</th>
 			<th style="width:20%">Action</th>
 		</tr>
 	</thead>
@@ -11,6 +13,8 @@
 		 <tr>
 			<td>{{($key+1)}}</td>
 			<td>{{$value['name']}}</td>
+			<td>{{$value['description']}}</td>
+			<td>{{$value['main']?"Dùng chung":"Dùng riêng"}}</td>
 			<td class="center">
 				<button class="btn btn-primary" data-value='{{ json_encode($value) }}' onclick="popup_edit_usertype(this)"><i class="fa fa-pencil"></i></button>
 				<button class="btn btn-danger" onclick="delete_usertype({{$value['id']}})"><i class="fa fa-remove"></i></button>
@@ -32,13 +36,35 @@
 			<div class="modal-body">
 				<div class="control-group">
 					<input type="hidden" name="id" id="id">
-					<label class="control-label">Name</label>
+					<label class="control-label">Tên</label>
 					<div class="controls">
 						<input type="text"
 								id="name"
 								name="name"
 								value=""
+								style="width:340px;"
 						>
+					</div>
+				</div>
+				<div class="control-group">
+					<input type="hidden" name="id" id="id">
+					<label class="control-label">Mô tả</label>
+					<div class="controls">
+						<input type="text"
+								id="description"
+								name="description"
+								value=""
+								style="width:340px;"
+						>
+					</div>
+				</div>
+				<div class="control-group">
+					<input type="hidden" name="id" id="id">
+					<label class="control-label">&nbsp;</label>
+					<div class="controls">
+						Dùng chung: <input type="radio" value="1" name="main" checked>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						Dùng riêng: <input type="radio" value="0" name="main">
 					</div>
 				</div>
 			</div>
@@ -70,15 +96,12 @@
 		var data = $(object).attr("data-value");
 		data = $.parseJSON(data);
 		$.each(data,function(key,value){
-			if(key!='confirmed'){
+			if(key!='main'){
 				$("[name="+key+"]").val(value);
 			}
 			else{
-				if(value)
-					$("[name="+key+"]").attr("checked",true);
-				else
-					$("[name="+key+"]").attr("checked",false);
-
+				$("[name="+key+"]").attr("checked",false);
+				$("[name="+key+"][value="+value+"]").attr("checked",true);
 				$("[name="+key+"]").trigger('change');
 			}
 		})

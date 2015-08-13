@@ -59,7 +59,7 @@
 		@endif
 	</td>
 	<td data-type="currency" class="amount">{{$product['amount']}}</td>
-	@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+	@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 	<td><i class="fa fa-remove link" onclick="delete_product(this)"></i></td>
 	@endif
 </tr>
@@ -69,7 +69,7 @@
 <tr class="sum">
 	<td colspan="6">Tổng tiền: </td>
 	<td data-type="currency" class="right" id="sum_amount">{{$sum_amount}}</td>
-	@if(!$saleorder['status'] && $user->can("delete-saleorders"))
+	@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 	<td></td>
 	@endif
 </tr>
