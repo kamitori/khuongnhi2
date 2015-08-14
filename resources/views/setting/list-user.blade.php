@@ -6,11 +6,11 @@
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
+			<th>Tên</th>
 			<th>Email</th>
-			<th>User type</th>
-			<th>Active user</th>
-			<th>Action</th>
+			<th>Loại tài khoản</th>
+			<th>Kích hoạt</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,7 +20,7 @@
 			<td>{{$value['name']}}</td>
 			<td>{{$value['email']}}</td>
 			<td>{{$value['type_name']}}</td>
-			<td>@if($value['confirmed'])<span class="label label-success">Active</span>@else <span class="label">Inactive</span>@endif</td>
+			<td>@if($value['confirmed'])<span class="label label-success">Kích hoạt</span>@else <span class="label">Chưa kích hoạt</span>@endif</td>
 			<td class="center">
 				<button class="btn btn-primary" data-value='{{ json_encode($value) }}' onclick="popup_edit_user(this)"><i class="fa fa-pencil"></i></button>
 				<button class="btn btn-danger" onclick="delete_user({{$value['id']}})"><i class="fa fa-remove"></i></button>
@@ -74,7 +74,7 @@
 												<div class="controls">
 													<select name="type_id" id="type_id">
 														@foreach($user_types as $key => $type)
-														<option value="{{$type['id']}}">{{$type['name']}}</option>
+														<option value="{{$type['id']}}">{{$type['display_name']}}</option>
 														@endforeach
 													</select>
 												</div>

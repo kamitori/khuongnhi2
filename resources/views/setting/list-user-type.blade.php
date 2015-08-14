@@ -12,7 +12,7 @@
 		@foreach($usertypes as $key => $value)
 		 <tr>
 			<td>{{($key+1)}}</td>
-			<td>{{$value['name']}}</td>
+			<td>{{$value['display_name']}}</td>
 			<td>{{$value['description']}}</td>
 			<td>{{$value['main']?"Dùng chung":"Dùng riêng"}}</td>
 			<td class="center">

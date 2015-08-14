@@ -140,8 +140,8 @@
 				<i class="fa fa-list"></i>
 			</button>
 			<ul class="nav nav-list bs-docs-sidenav affix-top" id="settings_ul_nav_setup">
-				<li><a href="#typography"> Chung</a></li>
-				<li><a href="javascript:void(0)" onclick="settings_list('manage-user-settings')">User</a></li>
+				<li><a href="{{URL}}"> Trang chủ</a></li>
+				<li><a href="javascript:void(0)" onclick="settings_list('manage-user-settings')">Tài khoản</a></li>
 				<li><a href="javascript:void(0)" onclick="settings_list('province-settings')">Tỉnh thành</a></li>
 				<li><a href="javascrip:void(0)" onclick="settings_list('menu-settings')"> Menu</a></li>
 				<li><a href="javascrip:void(0)" onclick="settings_list('other-settings')"> Tùy chỉnh khác</a></li>

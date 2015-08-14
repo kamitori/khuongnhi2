@@ -39,7 +39,7 @@ class SettingsController extends Controller {
 
 	public function anyUserSettings(Request $request)
 	{
-		$users = User::select('users.*','roles.name as type_name','roles.id as type_id')
+		$users = User::select('users.*','roles.display_name as type_name','roles.id as type_id')
 		->leftJoin('role_user',function($join){
 			$join->on("users.id","=","role_user.user_id");
 		})
@@ -111,7 +111,7 @@ class SettingsController extends Controller {
 	public function anyCompanytypeSettings()
 	{
 		$companytypes = CompanyType::orderBy('name')->get();
-		return view('setting.list-companiestype',["companytypes"=>$companytypes]);
+		return view('setting.list-companytype',["companytypes"=>$companytypes]);
 	}
 
 	public function postUpdateCompanytype(Request $request)
@@ -154,7 +154,7 @@ class SettingsController extends Controller {
 	public function anyProducttypeSettings()
 	{
 		$producttypes = ProductType::orderBy('name')->get();
-		return view('setting.list-productsType',["producttypes"=>$producttypes]);
+		return view('setting.list-producttype',["producttypes"=>$producttypes]);
 	}
 
 	public function postUpdateProducttype(Request $request)
@@ -481,7 +481,8 @@ public function postUpdateUserTypeSettings(Request $request)
    		}else{
    			$usertype = new Role;
    		}
-   		$usertype->name = $name;
+   		$usertype->name = str_replace('-','_',\Str::slug($name));
+   		$usertype->display_name = $name;
    		$usertype->description = $description;
    		$usertype->main = $main;
    		if($usertype->save()){
@@ -503,6 +504,61 @@ public function anyDeleteUserType($id)
    		}
    		return $arr_return;
 }
+
+// =========== Permission =============
+public function anyPermisionSettings(){
+   	$roles = Role::orderBy('main','name')->get()->toArray();
+   	$permissions = Permission::select('permissions.*')
+   				->addSelect(\DB::raw('right(`name`,length(`name`)-instr(`name`,"-")) as controller'))
+   				->orderBy('controller','id')
+   				->get()
+   				->toArray();
+   	return view('setting.list-permission',[
+   						"roles" 		=> 	$roles,
+   						"permissions"	=>	$permissions
+   					]);
+}
+
+public function postPermissionDetail(Request $request){
+	$id = $request->has('id')?$request->get('id'):0;
+	$permissions  = \DB::select('select * from `permission_role` where `role_id`= :id',['id'=>$id]);
+	return $permissions;
+}
+
+public function postSavePermission(Request $request){
+	$arr_return = ['status'=>'error'];
+	$check = true;
+	$role_id = $request->has('role_id')?$request->get('role_id'):0;
+	$permission_id = $request->has('permission_id')?$request->get('permission_id'):array();
+	$list_has_role = \DB::table('permission_role')->where('role_id','=',$role_id)->lists('permission_id');
+	$arr_delete = array();
+	$arr_insert = array();
+	foreach ($permission_id as $key => $value) {
+		if(!in_array($value, $list_has_role))
+			$arr_insert[] = ['role_id'=>$role_id,'permission_id'=>$value];
+	}
+	foreach ($list_has_role as $key => $value) {
+		if(!in_array($value, $permission_id))
+			$arr_delete[] = $value;
+	}
+	//pr($arr_delete);
+	// die;
+	if(count($arr_insert)){
+		$tmp = \DB::table('permission_role')->insert($arr_insert);
+		$check = $check && $tmp;
+	}
+	if(count($arr_delete)){
+		$tmp = \DB::table('permission_role')->where('role_id','=',$role_id)->whereIn('permission_id',$arr_delete)->delete();
+		$check = $check && $tmp;
+	}
+	if($check){
+		$arr_return['status'] = 'success';
+	}else{
+		$arr_return['message'] = 'Error';
+	}
+	return $arr_return;
+}
+
 
 
    // ========== PDF Setting ===========

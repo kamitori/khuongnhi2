@@ -62,9 +62,9 @@ class Permission extends EntrustPermission implements Middleware {
 		$delete = false;
 		$admin = Auth::user();
 		$controller =  strtolower(str_replace(['App\Http\Controllers','\\','Controller'], '', $controller));
-		// if($method == 'anyCreateRole'){
-		// 	return true;
-		// }
+		if($method == 'anyCreateRole'){
+			return true;
+		}
 		if( Request::is($controller."*") ){
 			if(strpos($method, 'anyDelete') !== false){
 				if( $admin->can("delete-$controller") ){

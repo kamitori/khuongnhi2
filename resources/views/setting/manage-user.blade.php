@@ -3,24 +3,24 @@
 		<div class="widget widget-2 widget-white">
 			<div class="widget-head">
 				<span class="heading">
-					USER
+					&nbsp;
 				</span>
 			</div>
 			<div class="widget-body">
 				<div class="dd" id="list_menu">
 					<ol class="dd-list">
 						<li class="dd-item dd3-item">
-							<div class="dd3-content" onclick="other_settings_list('user-settings','User','user')">
-								Danh sách tài khooản
+							<div class="dd3-content" onclick="other_settings_list('user-settings','Tài khoản','user')">
+								Danh sách tài khoản
 							</div>
 						</li>
 						<li class="dd-item dd3-item">
-							<div class="dd3-content" onclick="other_settings_list('user-type-settings','User type','user_type')">
+							<div class="dd3-content" onclick="other_settings_list('user-type-settings','Loại tài khoản','user_type')">
 								Loại tài khoản
 							</div>
 						</li>
 						<li class="dd-item dd3-item">
-							<div class="dd3-content" onclick="other_settings_list('permision-settings','Permision','permision')">
+							<div class="dd3-content" onclick="other_settings_list('permision-settings','Phân quyền','permission')">
 								Phần quyền
 							</div>
 						</li>
@@ -46,7 +46,12 @@
 <script>
 	function other_settings_list(setting_function_name, name,module){
 		$("#module_name").text(name);
-		$("#module_popup").attr("onclick","create_"+module+"()")
+		if(module == 'permission'){
+			$("#module_popup").hide();
+		}else{
+			$("#module_popup").show();
+			$("#module_popup").attr("onclick","create_"+module+"()")
+		}
 		$.ajax({
 			url: "<?php echo URL; ?>/settings/" + setting_function_name,
 			type:"GET",
