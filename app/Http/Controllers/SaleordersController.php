@@ -546,18 +546,20 @@ class SaleordersController extends Controller {
 			if(!in_array($product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->where('product_id','=',$product_id)->first()->toArray();
-
-				$id_product = $mproduct['product_id'];
-				$quantity = $mproduct['quantity'];
-				$check = MProduct::where('module_id','=',$module_id)
-						->where('module_type','=',$module_type)
-						->where('product_id','=',$product_id)->delete();
-				$product = Product::find($mproduct['product_id']);
-				if($log==""){
-					$log .= "xóa sản phẩm ".$product->sku;
-				}else{
-					$log .= ", ".$product->sku;
+						->where('product_id','=',$product_id)->first();
+				if($mproduct){
+					$mproduct->toArray();
+					$id_product = $mproduct['product_id'];
+					$quantity = $mproduct['quantity'];
+					$check = MProduct::where('module_id','=',$module_id)
+							->where('module_type','=',$module_type)
+							->where('product_id','=',$product_id)->delete();
+					$product = Product::find($mproduct['product_id']);
+					if($log==""){
+						$log .= "xóa sản phẩm ".$product->sku;
+					}else{
+						$log .= ", ".$product->sku;
+					}
 				}
 			}
 		}
@@ -568,6 +570,7 @@ class SaleordersController extends Controller {
 		$saleorder = Saleorder::find(session('current_saleorder'));
 		$saleorder->updated_by = \Auth::user()->id;
 		$saleorder->save();
+
 		return $arr_return;
 	}
 
@@ -670,15 +673,18 @@ class SaleordersController extends Controller {
 		$id = $request->has('id')?$request->input('id'):0;
 		if($id){
 			$mproduct = MProduct::find($id);
-			$id_product = $mproduct->m_product_id;
-			$quantity = $mproduct->quantity;
-			$specification = $mproduct->specification;
-			$check  = MProduct::where('id','=',$id)->delete();
-			if($check){
-				Log::create_log(\Auth::user()->id,'App\Saleorder','Xóa sản phẩm '.$product->sku.' đơn hàng số '.session('current_saleorder'));
-				$arr_return['status'] = 'success';
-			}else{
-				$arr_return['message'] = 'Saving fail !';
+			if($mproduct){
+				$id_product = $mproduct->m_product_id;
+				$quantity = $mproduct->quantity;
+				$specification = $mproduct->specification;
+				$check  = MProduct::where('id','=',$id)->delete();
+				if($check){
+					$product = Product::find($mproduct->product_id);
+					Log::create_log(\Auth::user()->id,'App\Saleorder','Xóa sản phẩm '.$product->sku.' đơn hàng số '.session('current_saleorder'));
+					$arr_return['status'] = 'success';
+				}else{
+					$arr_return['message'] = 'Saving fail !';
+				}
 			}
 		}
 		$saleorder = Saleorder::find(session('current_saleorder'));
