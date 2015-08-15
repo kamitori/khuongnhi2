@@ -26,7 +26,7 @@ if (system.args.length < 3 || system.args.length > 5) {
         page.paperSize = size.length === 2 ? {
         						 width: size[0],
         						 height: size[1], 
-        						 margin: {top:'0.5cm',right:'0.5cm',left:'0.5cm',bottom:'0.5cm'},
+        						 margin: {top:'0.2cm',right:'0.2cm',left:'0.2cm',bottom:'0.2cm'},
         						 header: {
 							height: "0.5cm",
 							contents: phantom.callback(function(pageNum, numPages) {
@@ -44,7 +44,7 @@ if (system.args.length < 3 || system.args.length > 5) {
 
         					     }
                                            : { 
-                                                format: system.args[3], orientation: 'portrait', margin: '1cm'
+                                                format: system.args[3], orientation: 'portrait', margin: '0.2cm'
                                             };
 	// page.paperSize = {
 	// 	width: '8.5in',

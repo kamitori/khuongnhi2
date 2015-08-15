@@ -835,7 +835,7 @@ class SaleordersController extends Controller {
 				}
 			}
 			foreach ($arr_cache as $key => $value) {
-				$sum_amount += $value['amount'];
+				$sum_amount += $value['sell_price']*$value['quantity']*$value['specification'];
 			}
 			$arr_print['arr_data']['toa_moi'] = $sum_amount;
 			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];

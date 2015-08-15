@@ -11,7 +11,7 @@
 			box-shadow: 2px 5px 15px 2px #999;
 		}
 		.section{
-			padding: 30px;
+			padding: 20px;
 		}
 	</style>
 	<style type="text/css" media="all">
@@ -19,7 +19,7 @@
 			line-height: 1.6;
 		}
 		.section{
-			margin:10px;
+			/*margin:10px;*/
 		}
 		body{
 			<?php if(!isset($orential)) $orential = 'potrait'; ?>
@@ -51,7 +51,8 @@
 		}
 		table.table_list tr th{
 			font-size: 110%;
-			background: #d2d2d2;
+			background: #e1e2e3;
+			color:#000;
 		}
 		table.table_list tr th.money,table.table_list tr td.money{
 			text-align: right;
