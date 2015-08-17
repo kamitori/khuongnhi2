@@ -80,3 +80,6 @@ Route::controllers([
 Route::controllers([
 	   'exports' => 'ExportsController',
 		]);
+Route::controllers([
+	   'users' => 'UsersController',
+		]);

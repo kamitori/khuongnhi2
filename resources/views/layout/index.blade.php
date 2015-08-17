@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BootAdmin - Responsive Admin HTML Template</title>
+	<title>
+		@foreach($menus as $menu)
+			@foreach($menu['children'] as $menu_child)
+				@if( $menu_child['link'] != '' && Request::is($menu_child['link'].'*') )
+					{{$menu_child['name']}}
+				@else
+					{{'Trang chủ'}}
+					<?php $check_break = true;break; ?>
+				@endif
+			@endforeach
+			<?php if($check_break) break; ?>
+		@endforeach
+	</title>
+	<link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+	<link rel="icon" href="./logo.ico" type="image/x-icon" />
 	<!-- Meta -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -41,9 +55,8 @@
 	<script src="{{URL}}/scripts/jquery-1.8.2.min.js"></script>
 	<!-- Themer -->
 	<script>
-		var themerPrimaryColor = '#4EA0CF',
-		themerHeaderColor = '#393D41',
-		themerMenuColor = '#383f48';
+		var themerPrimaryColor = '{{\Auth::user()->primary_color}}';
+		var themerMenuColor = '{{\Auth::user()->menu_color}}';
 	</script>
 	<script src="{{URL}}/scripts/jquery.cookie.js"></script>
 	<script src="{{URL}}/scripts/themer.js"></script>
@@ -85,6 +98,7 @@
 			</div>
 	<!-- End Content -->
 	@yield('otherPage')
+	<div id="otherpage">
 	<div id="modal_confirm" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -107,6 +121,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- Script -->
 			<!-- Cubiq iScroll -->
@@ -147,7 +162,10 @@
 					"positionClass": "toast-top-center",
 					"preventDuplicates": true,
 					"newestOnTop": false,
-				} ;
+				};
+
+				$.minicolors.init();
+				$.minicolors.settings.letterCase = 'uppercase';
 			</script>
 			
 			

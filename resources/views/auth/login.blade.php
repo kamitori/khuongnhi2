@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Login Khuong Nhi</title>
+	<title>Đăng nhập</title>
+	<link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />
+	<link rel="icon" href="./logo.ico" type="image/x-icon" />
 	<!-- Bootstrap -->
 	<link href="{{URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="{{URL}}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />

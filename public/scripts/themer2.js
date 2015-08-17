@@ -170,15 +170,11 @@ function generateCSS(basePath)
 		primaryBgColorTargets.join(", \n") + "\n" + 
 		"{\n" +
 		"	background-color: @primaryColor;\n"+
-		 "	color:contrast(darken(@primaryColor,25%), darken(@primaryColor, "+(darken+60)+"%), lighten(@primaryColor, "+(lighten+60)+"%));\n" +
+		"	color:contrast(@primaryColor, darken(@primaryColor, "+(darken+60)+"%), lighten(@primaryColor, "+(lighten+60)+"%));\n" +
 		"}\n\n" +
 		primaryColorIconTargets.join(", \n") + "\n" + 
 		"{\n" +
-		 "	color:contrast(darken(@primaryColor,25%), darken(@primaryColor, "+(darken+60)+"%), lighten(@primaryColor, "+(lighten+60)+"%));\n" +
-		"}\n\n" +
-		primaryFooterTargets.join(", \n") + "\n" + 
-		"{\n" +
-		"	color:contrast(@menuColor, darken(@menuColor, "+(darken+30)+"%), lighten(@menuColor, "+(lighten+30)+"%));\n" +
+		"	color:contrast(@primaryColor, darken(@primaryColor, "+(darken+60)+"%), lighten(@primaryColor, "+(lighten+60)+"%));\n" +
 		"}\n\n" +
 		primaryTextColorTargets.join(", \n") + "\n" + 
 		"{\n" +
@@ -303,7 +299,7 @@ function generateCSS(basePath)
 	css += 
 		".table-primary tbody td,.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus,.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default\n" +
 		"{\n" +
-		"	background: contrast(darken(@primaryColor,20%),darken(@primaryColor, "+(darken+20)+"%), lighten(@primaryColor, "+(lighten+30)+"%));\n" +
+		"	background: contrast(@primaryColor,darken(@primaryColor, "+(darken+20)+"%), lighten(@primaryColor, "+(lighten+30)+"%),35%);\n" +
 		"}\n\n" +
 		".table-primary tbody tr:hover > td a\n"+
 		"{\n"+
@@ -485,18 +481,6 @@ var primaryColorIconTargets =
  	".widget.widget-2 .widget-head .heading i:before",
  	".table-primary thead th",
  	".accordion-toggle h4",
- 	".widget.widget-tabs .widget-head ul li a"
-];
-var primaryFooterTargets = 
-[
-	"#footer .wrap ul li.active span:first-child",
-	"#footer .wrap ul li:hover span:first-child",
-	"#footer .wrap ul li.active a",
-	"#footer .wrap ul li:hover a",
-	"#footer .wrap ul li.active span:first-child i:before",
-	"#footer .wrap ul li:hover span:first-child i:before",
-	"#footer .wrap ul li.active a i:before",
-	"#footer .wrap ul li:hover a i:before"
 ];
 var primaryTextColorTargets = 
 [
@@ -578,7 +562,7 @@ var headerCaretColorTargets =
 ];
 var sidebarBgColorTargets = 
 [
- 	".col.main-left","#footer","#select_color"
+ 	".col.main-left","#footer"
 ];
 var sidebarBgColor2Targets = 
 [
