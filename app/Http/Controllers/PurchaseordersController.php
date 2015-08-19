@@ -506,9 +506,15 @@ class PurchaseordersController extends Controller {
 			$mproduct->company_id	=	$company_id;
 			$mproduct->module_id		= 	$module_id;
 			$mproduct->module_type	=	$module_type;
-			$mproduct->specification	=	$last_mproduct->specification;
-			$mproduct->oum_id		=	$last_mproduct->oum_id;
-			$mproduct->origin_price	=	$last_mproduct->origin_price;
+			if($last_mproduct){
+				$mproduct->specification	=	$last_mproduct->specification;
+				$mproduct->oum_id			=	$last_mproduct->oum_id;
+				$mproduct->origin_price		=	$last_mproduct->origin_price;
+			}else{
+				$mproduct->specification	=	0;
+				$mproduct->oum_id			=	0;
+				$mproduct->origin_price		=	0;
+			}
 			$mproduct->save();
 			Session::put('product_of_po'.session('current_purchaseorder').".".$product->id , $product->id);
 			$last_sellprice = SellPrice::where('product_id','=',$product_id)->orderBy('m_product_id','desc')->first();
@@ -665,7 +671,11 @@ class PurchaseordersController extends Controller {
 			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
 				$old = Oum::find($mproduct->oum_id);
 				$new = Oum::find($request->input('oum_id'));
-				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				if($old){
+					$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}else{
+					$log .= 'đơn vị từ " " thành "'.$new->name.'" ';
+				}
 			}
 			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
 				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
