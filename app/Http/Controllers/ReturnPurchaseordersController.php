@@ -639,10 +639,7 @@ class ReturnPurchaseordersController extends Controller {
 						->addSelect('oums.name as oum_name')
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->get()->toArray();
-		$returnpurchaseorder = ReturnPurchaseorder::select('status')->where('id','=',$id)->first()->toArray();
-		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30);
-
-		
+		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30); 
 		$returnpurchaseorder->updated_by = \Auth::user()->id;
 		$returnpurchaseorder->save();
 		return $arr_return;

@@ -183,6 +183,7 @@ class ReceiptsController extends Controller {
 
 	public function postListReceiptCustomer(Request $request)
 	{
+		\DB::enableQueryLog();
 		$list_order = array();
 		$company_id = $request->has('company_id')?$request->input('company_id'):0;
 		$month = $request->has('month')?$request->input('month'):0;
@@ -303,6 +304,7 @@ class ReceiptsController extends Controller {
 				];
 
 		\Cache::put('list_receipt_customer'.\Auth::user()->id, $arr_cache, 30);
+
 		return view('receipt.list-receipt-customer',[
 					'list_order' =>$list_order
 			]);
@@ -541,6 +543,14 @@ class ReceiptsController extends Controller {
 			$arr_return['message'] = 'Not found';
 		}
 		return $arr_return;
+	}
+
+	public function saveNoDauKy(Request $request){
+		$time =date('H:i:s', time());
+		$arr_return = array('status' => 'error');
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$sum_paid = $request->has('sum_paid')?$request->input('sum_paid'):0;
+		die;
 	}
 
 

@@ -4,6 +4,7 @@
 		<a href="{{URL}}/receipts/distribute-year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Công nợ năm NCC</a>
 	</div>
 	<div class="buttons pull-right">
+		<a href="javascript:addNoDauKy()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm công nợ đầu</a>
 		<a href="javascript:addPaid()" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Thêm thanh toán</a>
 		<a href="javascript:window.open('{{URL}}/receipts/export-pdf-distribute','_blank');" class="btn btn-small btn-primary btn-icon "><i class="fa fa-print"></i> Xuất PDF</a>
 		<a href="" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Xuất Excel</a>
@@ -168,6 +169,51 @@
 		</div>
 	</div>
 </div>
+
+<div id="modal_no_dau_ky" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- dialog header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h5>Thêm công nợ đầu</h5>
+			</div>
+			<!-- dialog body -->
+			<form  method="post" accept-charset="utf-8" id="form_no_dau_ky">
+			<div class="modal-body">
+				<div class="row-fluid form_detail">
+					<div class="span12">
+						<div class="control-group">
+							<label class="control-label">Công ty:</label>
+							<div class="controls">
+								<select id="company_no_dau_ky" width="auto" data-type="select2">
+									@foreach($distributes as $company)
+									<option value="{{$company['id']}}">{{$company['name']}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Tổng nợ:</label>
+							<div class="controls">
+								<input type="text" id="sum_no_dau_ky" value="" data-type='number'>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<br/>
+				<div class="row center">
+					<button class="btn btn-primary" type="button" onclick="saveNoDauKy()">
+						Lưu
+					</button>
+				</div>
+			</div>
+			</form>
+			<!-- dialog buttons -->
+		</div>
+	</div>
+</div>
 @stop
 @section('pageCSS')
 	<style type="text/css" media="screen">
@@ -197,8 +243,8 @@
 				margin-left: -4% !important;
 			}
 		}
-		#modal_paid .select2{
-			width:84.5% !important;
+		#modal_paid .select2,#modal_no_dau_ky .select2{
+			width:84% !important;
 		}
 		.select2-hidden-accessible{
 			width:0 !important;
@@ -297,11 +343,9 @@
 					toastr['success']('Saving success!');
 					$("#modal_paid").modal("hide");
 					$(".left-list li[data-id="+current_company+"]").click();
-					function addPaid(){
-                     $("#form_paid")[0].reset();
-		$("#paid_id").val(0);
-		$("#modal_paid").modal("show");
-	}
+					$("#form_paid")[0].reset();
+					$("#paid_id").val(0);
+					$("#modal_paid").modal("show");
 				}else{
 					toastr['error'](data.message);
 				}
@@ -342,6 +386,43 @@
 		$("#user_paid").select2('val',data.user_id);
 		datatype_number();
 		$("#modal_paid").modal("show");
+	}
+
+	function addNoDauKy(){
+		$("#form_no_dau_ky")[0].reset();
+		$("#no_dau_ky_id").val(0);
+		$("#modal_no_dau_ky").modal("show");
+	}
+
+	function saveNoDauKy(){
+		var company_id = $("#company_no_dau_ky").val();
+		var sum_no_dau_ky = $("#sum_no_dau_ky").val();
+		while(sum_no_dau_ky.indexOf(',')>0){
+			sum_no_dau_ky = sum_no_dau_ky.replace(',','');
+		}
+		sum_no_dau_ky = parseFloat(sum_no_dau_ky);
+		$.ajax({
+			url : '{{URL}}/receipts/save-no-dau-ky',
+			type : 'POST',
+			data : {
+				
+				company_id 	: company_id,
+				sum_no_dau_ky	: sum_no_dau_ky,
+				type_no_dau_ky	: 'no_dau_ky_distribute',
+			},
+			success : function(data){
+				if(data.status == 'success'){
+					toastr['success']('Saving success!');
+					$("#modal_no_dau_ky").modal("hide");
+					$(".left-list li[data-id="+current_company+"]").click();
+					$("#form_no_dau_ky")[0].reset();
+					$("#no_dau_ky_id").val(0);
+					$("#modal_no_dau_ky").modal("show");
+				}else{
+					toastr['error'](data.message);
+				}
+			}
+		})
 	}
 
 </script>

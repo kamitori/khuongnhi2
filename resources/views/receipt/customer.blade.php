@@ -296,11 +296,9 @@
 					toastr['success']('Saving success!');
 					$("#modal_paid").modal("hide");
 					$(".left-list li[data-id="+current_company+"]").click();
-					function addPaid(){
-                     $("#form_paid")[0].reset();
-		$("#paid_id").val(0);
-		$("#modal_paid").modal("show");
-	}
+			        $("#form_paid")[0].reset();
+					$("#paid_id").val(0);
+					$("#modal_paid").modal("show");
 				}else{
 					toastr['error'](data.message);
 				}
