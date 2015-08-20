@@ -11,6 +11,7 @@ use App\ProductType;
 use App\Purchaseorder;
 use App\ReturnPurchaseorder;
 use App\ReturnSaleorder;
+use App\Saleorder;
 use App\Log;
 use Datatables;
 use Illuminate\Http\Request;
@@ -28,6 +29,13 @@ class ProductsController extends Controller {
 
 	public function getIndex(Request $request){
 		self::anyEntry($request);
+	}
+	public function getSku(Request $request,$sku){
+		$product = Product::where('sku','=',$sku)->get()->first();
+		if($product)
+			self::anyEntry($request,$product->id);
+		else
+			return redirect(URL.'/products');
 	}
 	public function anyEntry(Request $request,$id=null)
 	{
@@ -92,7 +100,9 @@ class ProductsController extends Controller {
 						->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id')
 						->get()->toArray();
 		}
+		
 		$view_list_po = self::getListPo();
+		$view_list_so = self::getListSo();
 
 		$arr_create = Product::select('users.name','products.created_at')
 					->leftJoin('users','users.id','=','products.created_by')
@@ -110,6 +120,7 @@ class ProductsController extends Controller {
 								'producttypes'=>$producttypes,
 								'product' => $product,
 								'view_list_po'	=> $view_list_po,
+								'view_list_so'	=> $view_list_so,
 								'list_instock' => $list_instock
 							        ]);
 	}
@@ -555,6 +566,29 @@ class ProductsController extends Controller {
 		$product = Product::find($id_product)->toArray();
 		return view('product.list-po',[
 				'list_po'		=>	$list_po ,
+				'product'	=>	$product
+			]);
+	}
+
+	public function getListSo()
+	{
+		$id_product = session('current_product') !== null ? session('current_product') : 0;
+		$list_so = Saleorder::select('saleorders.date','saleorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id','product_stocks.in_stock')
+			->leftJoin('m_products',function($join){
+				$join->on('m_products.module_id','=','saleorders.id')
+					->where('module_type','=','App\Saleorder');
+			})
+			->leftJoin('products','m_products.product_id','=','products.id')
+			->leftJoin('companies','m_products.company_id','=','companies.id')
+			->leftJoin('oums','m_products.oum_id','=','oums.id')
+			->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id')
+			->where('products.id','=',$id_product)
+			->where('saleorders.status','=',1)
+			->orderBy('date','desc')
+			->get()->toArray();
+		$product = Product::find($id_product)->toArray();
+		return view('product.list-so',[
+				'list_so'		=>	$list_so ,
 				'product'	=>	$product
 			]);
 	}

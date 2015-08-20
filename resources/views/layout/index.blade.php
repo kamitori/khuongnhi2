@@ -6,12 +6,8 @@
 			@foreach($menu['children'] as $menu_child)
 				@if( $menu_child['link'] != '' && Request::is($menu_child['link'].'*') )
 					{{$menu_child['name']}}
-				@else
-					{{'Trang chủ'}}
-					<?php $check_break = true;break; ?>
 				@endif
 			@endforeach
-			<?php if($check_break) break; ?>
 		@endforeach
 	</title>
 	<link rel="shortcut icon" href="./logo.ico" type="image/x-icon" />

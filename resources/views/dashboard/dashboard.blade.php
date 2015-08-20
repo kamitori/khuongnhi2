@@ -88,15 +88,7 @@
 					type: "line",
 					markerSize: 15,
 					yValueFormatString: "#,###",
-					dataPoints: [
-						{ x: get_week(new Date(),6), y: 135200000},
-						{ x: get_week(new Date(),5), y: 51400000},
-						{ x: get_week(new Date(),4), y: 12100000},
-						{ x: get_week(new Date(),3), y: 216300000},
-						{ x: get_week(new Date(),2), y: 95000000},
-						{ x: get_week(new Date(),1), y: 120100000},
-						{ x: get_week(new Date(),0), y: 8600000},  
-					]
+					dataPoints: <?php echo $doanh_so; ?>
 				}
 			]
 

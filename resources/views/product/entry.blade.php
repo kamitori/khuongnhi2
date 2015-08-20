@@ -208,11 +208,10 @@
 								<th class="center" style="width:10%">Đơn vị</th>
 								<th class="center" style="width:10%">Quy cách</th>
 								<th class="center" style="width:10%">Số lượng</th>
-								<th class="center" style="width:10%">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody id="list_po">
-							<!-- <?php echo $view_list_po; ?> -->
+							<?php echo $view_list_so; ?> 
 						</tbody>
 					</table>
 				</div>
