@@ -107,22 +107,26 @@ class ReceiptsController extends Controller {
 			$date[$key] = $value['date'];
 			$list_order[$key]['date'] = date('d-m-Y',strtotime($value['date']));
 		}
-		if($month!='all'){
-			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distribute')
-								->where('company_id','=',$company_id)
-								->where(function($query) use ($month,$year){
-									$query->where(function($query2) use ($month,$year){
-										$query2->where('month','<',$month)
-											->where('year','=',$year);
-									})->orWhere(function($query2) use ($month,$year){
-										$query2->where('year','<',$year);
-									});
-								})
-								->orderBy('year','desc')
-								->orderBy('month','desc')
-								->limit(1);
-			$receipt_month_prev = $receipt_month_prev->first();
-		}
+
+		$receipt_month_prev = ReceiptMonth::
+							where(function($query){
+								$query->where('type_receipt','=','distribute')
+										->orWhere('type_receipt','=','no_dau_ky_distribute');
+							})
+							->where('company_id','=',$company_id)
+							->where(function($query) use ($month,$year){
+								$query->where(function($query2) use ($month,$year){
+									$query2->where('month','<',$month)
+										->where('year','=',$year);
+								})->orWhere(function($query2) use ($month,$year){
+									$query2->where('year','<',$year);
+								});
+							})
+							->orderBy('year','desc')
+							->orderBy('month','desc')
+							->limit(1);
+		$receipt_month_prev = $receipt_month_prev->first();
+
 		if($month!='all' && $receipt_month_prev){
 			$receipt_current = ReceiptMonth::where('year','=',$year)
 					->where('month','=',$month)
@@ -137,11 +141,9 @@ class ReceiptsController extends Controller {
 
 		foreach ($list_order as $key => $value) {
 			if($key==0){
-				if($month!='all' && $receipt_month_prev){
+				if($receipt_month_prev){
 					$receipt_month_prev= $receipt_month_prev->toArray();
 					$list_order[$key]['no_cu']=$receipt_month_prev['con_lai'];
-				}else{
-					$list_order[$key]['no_cu']=0;
 				}
 			}else{
 				$list_order[$key]['no_cu']=$list_order[$key-1]['con_lai'];
@@ -255,7 +257,11 @@ class ReceiptsController extends Controller {
 		}
 		array_multisort($date,SORT_ASC,$list_order);
 		if($month!='all'){
-			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+			$receipt_month_prev = ReceiptMonth::
+								where(function($query){
+									$query->where('type_receipt','=','customer')
+										->orWhere('type_receipt','=','no_dau_ky_customer');
+								})
 								->where('company_id','=',$company_id)
 								->where(function($query) use ($month,$year){
 									$query->where(function($query2) use ($month,$year){
@@ -275,18 +281,16 @@ class ReceiptsController extends Controller {
 					->where('month','=',$month)
 					->where('company_id','=',$company_id)
 					->where('type_receipt','=','customer')
-					->get();
+					->get()->first();
 			$receipt_current->no_cu = abs($receipt_month_prev->con_lai);
 			$receipt_current->con_lai = $receipt_current->sum_amount + $receipt_current->no_cu - $receipt_current->paid;
 			$receipt_current->save();
 		}
 		foreach ($list_order as $key => $value) {
 			if($key==0){
-				if($month!='all' && $receipt_month_prev){
+				if($receipt_month_prev){
 					$receipt_month_prev= $receipt_month_prev->toArray();
 					$list_order[$key]['no_cu']=$receipt_month_prev['con_lai'];
-				}else{
-					$list_order[$key]['no_cu']=0;
 				}
 			}else{
 				$list_order[$key]['no_cu']=$list_order[$key-1]['con_lai'];
@@ -545,12 +549,136 @@ class ReceiptsController extends Controller {
 		return $arr_return;
 	}
 
-	public function saveNoDauKy(Request $request){
+	public function postSaveNoDauKyDistribute(Request $request){
+
 		$time =date('H:i:s', time());
 		$arr_return = array('status' => 'error');
 		$company_id = $request->has('company_id')?$request->input('company_id'):0;
-		$sum_paid = $request->has('sum_paid')?$request->input('sum_paid'):0;
-		die;
+		$sum_no_dau_ky = $request->has('sum_no_dau_ky')?$request->input('sum_no_dau_ky'):0;
+		$type_no_dau_ky = $request->has('type_no_dau_ky')?$request->input('type_no_dau_ky'):0;
+		$check = ReceiptMonth::where('company_id',"=",$company_id)
+							->where('type_receipt',"=",$type_no_dau_ky)
+							->count();
+		if($check){
+			$arr_return['message'] = 'Công nợ đầu của công ty đã thêm rồi';
+		}else{
+			$receipt = new ReceiptMonth;
+			$receipt->company_id = $company_id;
+			$receipt->sum_amount = $sum_no_dau_ky;
+			$receipt->con_lai = $sum_no_dau_ky;
+			$receipt->type_receipt = $type_no_dau_ky;
+			$receipt->save();
+			$arr_return['status'] = 'success';
+		}
+		$list_receipt = ReceiptMonth::where('company_id',$company_id)
+										->where('type_receipt','distribute')
+										->orWhere('type_receipt','no_dau_ky_distribute')
+										->orderBy('year','asc')->orderBy('month','asc')
+										->get()->toArray();
+		foreach ($list_receipt as $key => $value) {
+			if($key!=0){
+				if($list_receipt[$key-1]['type_receipt'] == 'no_dau_ky_distribute')
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['sum_amount'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+				else
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['con_lai'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+			}
+		}
+		return $arr_return;
+	}
+
+	public function getUpdateReceiptDistribute($company_id){
+		$list_receipt = ReceiptMonth::where('company_id',$company_id)
+										->where('type_receipt','distribute')
+										->orWhere('type_receipt','no_dau_ky_distribute')
+										->orderBy('year','asc')->orderBy('month','asc')
+										->get()->toArray();
+		foreach ($list_receipt as $key => $value) {
+			if($key!=0){
+				if($list_receipt[$key-1]['type_receipt'] == 'no_dau_ky_distribute')
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['sum_amount'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+				else
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['con_lai'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+			}
+		}
+		echo 'done';die;
+	}
+
+	public function postSaveNoDauKyCustomer(Request $request){
+
+		$time =date('H:i:s', time());
+		$arr_return = array('status' => 'error');
+		$company_id = $request->has('company_id')?$request->input('company_id'):0;
+		$sum_no_dau_ky = $request->has('sum_no_dau_ky')?$request->input('sum_no_dau_ky'):0;
+		$type_no_dau_ky = $request->has('type_no_dau_ky')?$request->input('type_no_dau_ky'):0;
+		$check = ReceiptMonth::where('company_id',"=",$company_id)
+							->where('type_receipt',"=",$type_no_dau_ky)
+							->count();
+		if($check){
+			$arr_return['message'] = 'Công nợ đầu của công ty đã thêm rồi';
+		}else{
+			$receipt = new ReceiptMonth;
+			$receipt->company_id = $company_id;
+			$receipt->sum_amount = $sum_no_dau_ky;
+			$receipt->con_lai = $sum_no_dau_ky;
+			$receipt->type_receipt = $type_no_dau_ky;
+			$receipt->save();
+			$arr_return['status'] = 'success';
+		}
+		$list_receipt = ReceiptMonth::where('company_id',$company_id)
+										->where('type_receipt','customer')
+										->orWhere('type_receipt','no_dau_ky_customer')
+										->orderBy('year','asc')->orderBy('month','asc')
+										->get()->toArray();
+		foreach ($list_receipt as $key => $value) {
+			if($key!=0){
+				if($list_receipt[$key-1]['type_receipt'] == 'no_dau_ky_customer')
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['sum_amount'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+				else
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['con_lai'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+			}
+		}
+		return $arr_return;
+	}
+
+	public function getUpdateReceiptCustomer($company_id){
+		$list_receipt = ReceiptMonth::where('company_id',$company_id)
+										->where('type_receipt','customer')
+										->orWhere('type_receipt','no_dau_ky_customer')
+										->orderBy('year','asc')->orderBy('month','asc')
+										->get()->toArray();
+		foreach ($list_receipt as $key => $value) {
+			if($key!=0){
+				if($list_receipt[$key-1]['type_receipt'] == 'no_dau_ky_customer')
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['sum_amount'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+				else
+					ReceiptMonth::where('id','=',$value['id'])->update([
+																'no_cu'=>$list_receipt[$key-1]['con_lai'],
+																'con_lai'=>$value['sum_amount']+$list_receipt[$key-1]['con_lai']-$value['paid'],
+																]);
+			}
+		}
+		echo 'done';die;
 	}
 
 

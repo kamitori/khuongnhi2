@@ -402,7 +402,7 @@
 		}
 		sum_no_dau_ky = parseFloat(sum_no_dau_ky);
 		$.ajax({
-			url : '{{URL}}/receipts/save-no-dau-ky',
+			url : '{{URL}}/receipts/save-no-dau-ky-distribute',
 			type : 'POST',
 			data : {
 				
@@ -417,7 +417,6 @@
 					$(".left-list li[data-id="+current_company+"]").click();
 					$("#form_no_dau_ky")[0].reset();
 					$("#no_dau_ky_id").val(0);
-					$("#modal_no_dau_ky").modal("show");
 				}else{
 					toastr['error'](data.message);
 				}
