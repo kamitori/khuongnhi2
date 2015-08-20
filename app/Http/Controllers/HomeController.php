@@ -61,6 +61,7 @@ class HomeController extends Controller {
 
 		$doanh_so = Saleorder::addSelect(\DB::raw('sum(sum_amount) as y'))
 							->addSelect(\DB::raw('Date(date) as x'))
+							->where('status',1)
 							->groupBy('x')
 							->orderBy('x','desc')
 							->limit(7)
@@ -68,7 +69,7 @@ class HomeController extends Controller {
 		$arr_x = array();
 		foreach ($doanh_so as $key => $value) {
 			$arr_x[] = $value['x'];
-			$doanh_so[$key]['x'] = date('d-m-Y',strtotime($value['x'])); 
+			$doanh_so[$key]['x'] = date('m-d-Y',strtotime($value['x'])); 
 		}
 		array_multisort($arr_x,SORT_ASC,$doanh_so);
 		$doanh_so = json_encode($doanh_so);

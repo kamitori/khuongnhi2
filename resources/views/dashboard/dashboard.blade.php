@@ -70,7 +70,9 @@
 		var doanhso = <?php echo $doanh_so; ?>;
 		$.each(doanhso,function(key,element){
 			doanhso[key]['x'] = new Date(element['x']);
+			doanhso[key]['indexLabel'] = doanhso[key]['y'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		})
+		console.log(doanhso)
 		var chart  = new CanvasJS.Chart("chartContainer",
 		{
 			title:{
@@ -90,6 +92,8 @@
 					type: "line",
 					markerSize: 15,
 					yValueFormatString: "#,###",
+					indexLabelFontColor: "#f4544f",
+					indexLabelFontFamily: "tahoma",
 					dataPoints: doanhso
 				}
 			]
