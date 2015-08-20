@@ -67,7 +67,10 @@
 <script>
 
 	$(function(){
-		
+		var doanhso = <?php echo $doanh_so; ?>;
+		$.each(doanhso,function(key,element){
+			doanhso[key]['x'] = new Date(element['x']);
+		})
 		var chart  = new CanvasJS.Chart("chartContainer",
 		{
 			title:{
@@ -80,7 +83,6 @@
 			},
 			axisX: {
 				valueFormatString: "DD/MM",
-				interval: 1,
 				intervalType: "day"
 			},
 			data:[
@@ -88,7 +90,7 @@
 					type: "line",
 					markerSize: 15,
 					yValueFormatString: "#,###",
-					dataPoints: <?php echo $doanh_so; ?>
+					dataPoints: doanhso
 				}
 			]
 

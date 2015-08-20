@@ -65,9 +65,12 @@ class HomeController extends Controller {
 							->orderBy('x','desc')
 							->limit(7)
 							->get()->toArray();
+		$arr_x = array();
 		foreach ($doanh_so as $key => $value) {
+			$arr_x[] = $value['x'];
 			$doanh_so[$key]['x'] = date('d-m-Y',strtotime($value['x'])); 
 		}
+		array_multisort($arr_x,SORT_ASC,$doanh_so);
 		$doanh_so = json_encode($doanh_so);
 
 		$this->layout->content = view('dashboard.dashboard',[
