@@ -16,10 +16,10 @@
 				<th style="width: 4%">
 					Chọn
 				</th>
-				<th style="width: 4%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
+				<th style="width: 8%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>STT</th>
 				<th style="width: 12%" data-column="sku" {{ isset($arr_sort['sku'])?'data-sort='.$arr_sort['sku']:'' }}>SKU</th>
-				<th style="width: 27%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
-				<th style="width: 27%">Nhà cung cấp</th>
+				<th style="width: 25%" data-column="name" {{ isset($arr_sort['name'])?'data-sort='.$arr_sort['name']:'' }}>Tên sản phẩm</th>
+				<th style="width: 25%">Nhà cung cấp</th>
 				<th style="width: 8%">ĐVT</th>
 				<th style="width: 8%">Quy cách</th>
 				<th style="width: 10%">Số lượng</th>
@@ -155,7 +155,8 @@
 			})
 		});
 
-		$('.table-list-view tbody tr td:not(:first-child)').on("click",function(){
+		$('.table-list-view tbody tr td:not(:first-child)').bind("click",function(){
+			$('.table-list-view tbody tr td:not(:first-child)').unbind("click");
 			var id = $(this).parent().attr('data-id');
 			var current = $("input[type=checkbox][data-id="+id+"]").is(":checked");
 			$(".chk_product[data-id="+id+"]").prop("checked", !current);
@@ -233,6 +234,7 @@
 					success:function(data){
 						console.log(data)
 						$(".chk_product").prop('disabled',false);
+						bind_click();
 					}
 				});
 			}else{
@@ -245,6 +247,7 @@
 					success:function(data){
 						console.log(data)
 						$(".chk_product").prop('disabled',false);
+						bind_click();
 					}
 				});
 			}
@@ -252,4 +255,14 @@
 
 
 	})
+
+	function bind_click(){
+		$('.table-list-view tbody tr td:not(:first-child)').bind("click",function(){
+			$('.table-list-view tbody tr td:not(:first-child)').unbind("click");
+			var id = $(this).parent().attr('data-id');
+			var current = $("input[type=checkbox][data-id="+id+"]").is(":checked");
+			$(".chk_product[data-id="+id+"]").prop("checked", !current);
+			$(".chk_product[data-id="+id+"]").trigger("change");
+		})
+	}
 </script>

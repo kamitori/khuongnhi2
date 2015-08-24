@@ -469,10 +469,13 @@ class PurchaseordersController extends Controller {
 	}
 
 	public function postAddProductSession(Request $request){
+		$start = microtime(TRUE);
 		$arr_id = $request->has('id')?$request->input('id'):array();
 		foreach ($arr_id as $key => $value) {
 			Session::put('product_of_po'.session('current_purchaseorder').".".$value , $value);
 		}
+		$time = microtime(TRUE) - $start;
+		echo $time;
 		return '';
 	}
 
