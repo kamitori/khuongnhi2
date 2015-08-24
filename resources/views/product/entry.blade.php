@@ -10,12 +10,19 @@
 		@if(!$product['status'] && $user->can("delete-products"))
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_product"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
-
-		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-search"></i> Tìm kiếm</a>
 		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
 		@if($user->can("view-history"))
 		<a href="{{URL}}/products/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 		@endif
+		<div style="display:inline-block;">
+			<strong style="margin-left: 10px;">SKU/Tên SP: </strong><input type="text" class="form-control" id="search_product">
+			<div id="search_list">
+				<span class="close"><i class="fa fa-remove"></i></span>
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="buttons pull-right">
 
@@ -390,11 +397,80 @@
 		#modal_instock .select2{
 			width:100% !important;
 		}
+
+		#search_list{
+			position: absolute;
+			background-color: #fff;
+			z-index: 1;
+			padding: 10px;
+			padding-top:20px;
+			padding-right:20px;
+			margin-left: 100px;
+			text-align: left;
+			display:none;
+			min-width: 200px;
+			max-height: 320px;
+			overflow-y: auto;
+			overflow-x:hidden;
+		}
+		#search_list span.close{
+			position: absolute;
+			top: 0;
+			right: 5px;
+			cursor: pointer;
+			padding: 5px;
+		}
+		#search_list ul{
+			margin: 0 !important;
+			margin-bottom: 10px;
+			display: table-row;
+		}
+		#search_list ul li{
+			list-style: none;
+			cursor: pointer;
+			padding: 3px;
+			white-space: nowrap;
+		}
+		#search_list ul li:hover{
+			background: #ddd;
+		}
 	</style>
 @stop
 
 @section('pageJS')
 	<script>
+		$("#search_list span.close").on("click",function(){
+			$("#search_list").hide();
+		})
+
+		$("#search_product").keypress(function(e){
+			if(e.keyCode==13){
+				var key = $(this).val();
+				$.ajax({
+					url : '{{URL}}/products/search-product',
+					type : 'POST',
+					data : {
+						key : key
+					},
+					success : function(data){
+						if(data.length){
+							var html='';
+							for(i=0;i<data.length;i++){
+								html+='<li onclick="go_to_product('+data[i]['id']+')">'+data[i]['sku']+' - '+data[i]['name']+'</li>';
+							}
+							$("#search_list ul").html(html);
+							$(window).trigger('resize');
+							$("#search_list").css('display','block');
+						}else{
+							$("#search_list ul").html('<strong>Không tìm thấy sản phẩm</strong>');
+							$(window).trigger('resize');
+							$("#search_list").css('display','block');
+						}
+					}
+				})
+			}
+		})
+
 		$("#form_entry input,#form_entry select").on("change",function(){
 			var data = $("#form_entry").serialize();
 			var id = $(this).attr("name");
@@ -646,6 +722,9 @@
 			$(obj).parent().parent().find('#invest').text(invest);
 		}
 
+		function go_to_product(id){
+			window.location = "{{URL}}/products/"+id;
+		}
 	
 	</script>
 @stop
