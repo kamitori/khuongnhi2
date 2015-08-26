@@ -447,7 +447,7 @@
 			if(e.keyCode==13){
 				var key = $(this).val();
 				$.ajax({
-					url : '{{URL}}/products/search-product',
+					url : '{{URL}}/products/search-product-by-key',
 					type : 'POST',
 					data : {
 						key : key

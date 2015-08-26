@@ -968,6 +968,21 @@ class ProductsController extends Controller {
 		return $arr_return;
 	}
 
+	public function anySearchProductByKey(Request $request){
+		$arr_return = array();
+		$key = $request->has('key')?$request->input('key'):'';
+		$key = '%'.$key.'%';
+		
+		$arr_return = Product::select('id','sku','name')
+				->where(function($query) use ($key){
+					$query->where('sku','like',$key)
+						->orWhere('name','like',$key);
+				})
+				->limit(15)
+				->get()->toArray();
+		return $arr_return;
+	}
+
 	public function anySearchProductStock(Request $request){
 		// DB::enableQueryLog();
 		$arr_return = array();
