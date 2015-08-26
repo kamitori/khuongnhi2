@@ -962,6 +962,7 @@ class ProductsController extends Controller {
 						->orWhere('name','like',$key);
 				})
 				->whereNotIn('id',$arr_product_of_po)
+				->orderBy('sku')
 				->limit(15)
 				->get()->toArray();
 		return $arr_return;
