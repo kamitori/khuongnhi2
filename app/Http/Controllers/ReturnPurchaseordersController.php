@@ -443,6 +443,9 @@ class ReturnPurchaseordersController extends Controller {
 				}
 			}
 		}
+		if(!count($arr_sort)){
+			$list_returnpurchaseorder = $list_returnpurchaseorder->orderBy('id','desc');
+		}
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}

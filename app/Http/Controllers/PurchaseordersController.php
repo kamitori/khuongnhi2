@@ -448,6 +448,9 @@ class PurchaseordersController extends Controller {
 				}
 			}
 		}
+		if(!count($arr_sort)){
+			$list_purchaseorder = $list_purchaseorder->orderBy('id','desc');
+		}
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}

@@ -445,6 +445,9 @@ class ReturnSaleordersController extends Controller {
 				}
 			}
 		}
+		if(!count($arr_sort)){
+			$list_returnsaleorder = $list_returnsaleorder->orderBy('id','desc');
+		}
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}

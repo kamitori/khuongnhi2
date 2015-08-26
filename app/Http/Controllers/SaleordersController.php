@@ -417,6 +417,7 @@ class SaleordersController extends Controller {
 								$join->on('saleorders.id', '=', 'module_id');
 							}
 						)->leftJoin('companies','companies.id','=','saleorders.company_id');
+
 		foreach ($arr_sort as $key => $value) {
 			if($key=='company_id'){
 				$list_saleorder = $list_saleorder->orderBy('companies.name',$value);
@@ -439,9 +440,13 @@ class SaleordersController extends Controller {
 				}
 			}
 		}
+		if(!count($arr_sort)){
+			$list_saleorder = $list_saleorder->orderBy('id','desc');
+		}
 		if(!isset($arr_filter['status'])){
 			$arr_filter['status'] = '';
 		}
+
 		$list_saleorder = $list_saleorder->paginate(20);
 		foreach($list_saleorder as $key => $so){
 			$list_saleorder[$key]['date'] = date('d-m-Y',strtotime($so['date']));
