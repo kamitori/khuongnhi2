@@ -143,7 +143,7 @@ class ProductsController extends Controller {
 		$product->name = $request->has('name') ? $request->input('name') : '';
 		$product->sku = $request->has('sku') ? $request->input('sku') : '';
 		$product->product_type = $request->has('product_type') ? $request->input('product_type') : 0;
-		$product->status=1;
+		$product->status=0;
 		$product->created_by = \Auth::user()->id;
 		if($product->save()){
 			Log::create_log(\Auth::user()->id,'App\Product','Tạo mới sản phẩm số '.$product->id);
