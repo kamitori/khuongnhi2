@@ -609,7 +609,8 @@ class ReturnPurchaseordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
-			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity - $old_quantity)*$mproduct->specification;
+			$so_luong_con = $product_stock->in_stock;
+			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity*$mproduct->specification);
 			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
 			if($product_stock->in_stock >=0){
 				if( !$mproduct->status){
@@ -625,7 +626,7 @@ class ReturnPurchaseordersController extends Controller {
 					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
 				}
 			}else{
-				$arr_return['message'] = 'Số lượng trả '.$mproduct->name.' lớn hơn số lượng đã nhập';
+				$arr_return['message'] = 'Số lượng trả '.$mproduct->name.' lớn hơn số lượng đã nhập<br/> Số lượng đã nhập là '.$so_luong_con.' cái';
 			}
 		}
 

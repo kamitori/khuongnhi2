@@ -488,9 +488,10 @@ class SaleordersController extends Controller {
 		$module_id = session('current_saleorder');
 		$module_type = 'App\Saleorder';
 		$arr_product = session('product_of_so'.session('current_saleorder'));
+
 		$arr_product_of_so = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->lists('product_id');
+						->lists('m_product_id');
 		$log = "";
 		if(!in_array($m_product_id, $arr_product_of_so)){
 			$product = MProduct::find($m_product_id);
@@ -504,6 +505,7 @@ class SaleordersController extends Controller {
 			$mproduct->oum_id		=	$product->oum_id;
 			$mproduct->origin_price	=	$product->origin_price;
 			$mproduct->save();
+			MProduct::where('id',$mproduct->id)->update(['order'=>$mproduct->id]);
 			$product = Product::find($mproduct->product_id);
 			$log .= "Thêm sản phẩm ".$product->sku;
 		}
@@ -537,6 +539,7 @@ class SaleordersController extends Controller {
 				$mproduct->oum_id		=	$product->oum_id;
 				$mproduct->origin_price	=	$product->origin_price;
 				$mproduct->save();
+				MProduct::where('id',$mproduct->id)->update(['order'=>$mproduct->id]);
 				$product = Product::find($mproduct->product_id);
 				if($log==""){
 					$log .= "Thêm sản phẩm ".$product->sku;
@@ -597,6 +600,7 @@ class SaleordersController extends Controller {
 						->addSelect('oums.name as oum_name')
 						->leftJoin('oums','oums.id','=','m_products.oum_id')
 						->with('getsellprices')
+						->orderBy('order','asc')
 						->get()->toArray();
 		\Cache::put('list_product_so'.\Auth::user()->id, $list_product, 30);
 		return view('saleorder.list-product',[	'distributes'=>$distributes,
@@ -633,6 +637,7 @@ class SaleordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$product_stock = ProductStock::where('m_product_id','=',$mproduct_po->id)->first();
+			$ton_kho = $product_stock->in_stock;
 			$product_stock->in_stock = $product_stock->in_stock - ($mproduct->quantity*$mproduct->specification);
 			$mproduct->origin_price = $mproduct_po->origin_price;
 			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
@@ -651,7 +656,7 @@ class SaleordersController extends Controller {
 					$arr_return['message'] = 'Đơn hàng đã hoàn thành không thể cập nhật';
 				}
 			}else{
-				$arr_return['message'] = 'Số lượng mua lớn hơn số lượng tồn kho';
+				$arr_return['message'] = 'Số lượng mua lớn hơn số lượng tồn kho <br/> Số lượng tồn kho còn '.$ton_kho.' cái';
 			}
 		}//Init array
 		$list_product = array();
@@ -916,5 +921,23 @@ class SaleordersController extends Controller {
 				->paginate(50);
 
 		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
+	}
+
+	public function anyUpdateOrder(Request $request){
+		$arr_return = ['status'=>'error'];
+		$arr_order = $request->has('arr_order')?$request->input('arr_order'):array();
+		$check = true;
+		foreach ($arr_order as $key => $value) {
+			if($check){
+				$tmp = Mproduct::where('id','=',$value)->update(['order'=>$key]);
+				$check = $check && $tmp;
+			}
+		}
+		if($check){
+			$arr_return['status'] = 'success';
+		}else{
+			$arr_return['message'] = 'Save error';
+		}
+		return $arr_return;
 	}
 }

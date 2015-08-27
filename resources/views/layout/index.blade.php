@@ -83,7 +83,7 @@
 									<div class="inner topRight">
 										<?php echo isset($content) ? $content : '' ?>
 										@yield('content')
-										<div style="height:70px; dispplay:block">&nbsp;</div>
+										<!-- <div style="height:70px; dispplay:block">&nbsp;</div> -->
 									</div>
 								</div>
 							</div>
@@ -152,6 +152,8 @@
 			<script src="{{URL}}/scripts/select2.min.js" type="text/javascript"></script>
 			<script src="{{URL}}/scripts/toastr/toastr.js" type="text/javascript"></script>
 			<script src="{{URL}}/scripts/togglebutton/js/bootstrap2-toggle.min.js" type="text/javascript"></script>
+			<script src="{{URL}}/scripts/jquery-sortable-min.js" type="text/javascript"></script>
+			
 
 			<script>
 				toastr.options ={

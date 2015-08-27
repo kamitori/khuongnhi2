@@ -596,6 +596,7 @@ class ReturnSaleordersController extends Controller {
 							->where('company_id','=',$mproduct->company_id)
 							->get();
 			$mproduct_so->con_lai = $mproduct_so->quantity * $mproduct_so->specification;
+			$so_luong_con = $mproduct_so->con_lai;
 			foreach ($mproduct_rso_before as $key => $value) {
 				$mproduct_so->con_lai -=  $value->quantity * $value->specification;
 			}
@@ -641,7 +642,7 @@ class ReturnSaleordersController extends Controller {
 						$arr_return['message'] = 'Saving fail !';
 					}
 				}else{
-					$arr_return['message'] = 'Số lượng sản phẩm trả về lớn hơn số lượng đã bán';
+					$arr_return['message'] = 'Số lượng sản phẩm trả về lớn hơn số lượng đã bán <br/> Số lượng đã bán là '.$so_luong_con.' cái';
 				}
 			// }else{
 			// 	$arr_return['message'] = 'Số lượng trả hàng lớn hơn số lượng đã bán';

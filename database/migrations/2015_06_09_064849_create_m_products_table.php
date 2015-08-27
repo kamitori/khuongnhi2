@@ -28,6 +28,7 @@ class CreateMProductsTable extends Migration {
 			$table->integer('m_product_id')->unsigned()->default(0);
 			$table->integer('m_product_id_so')->unsigned()->default(0);
 			$table->double('amount_interest')->default(0);
+			$table->double('order')->unsigned()->default(0);
 			$table->integer('quantity')->default(0);
 			$table->integer('created_by')->default(0);
 			$table->integer('updated_by')->default(0);

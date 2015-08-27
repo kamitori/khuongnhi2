@@ -220,11 +220,14 @@
 							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
 						</div>
 					</div>
-					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-list-edit">
+					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center sorted_table table-list-edit">
 						<thead>
 							<tr>
+								@if(!$saleorder['status'] && $user->can("edit-saleorders"))
+								<th style="width:3%">&nbsp;</th>
+								@endif
 								<th style="width:7%">Mã</th>
-								<th style="width:35%">Tên sản phẩm</th>
+								<th style="width:32%">Tên sản phẩm</th>
 								<th style="width:8%">ĐV tính</th>
 								<th style="width:7%">Quy cách</th>
 								<th style="width:13%">Đơn giá</th>
@@ -321,6 +324,33 @@
 		cursor: pointer;
 		padding: 5px;
 	}
+	/* line 94, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_table tr {
+  cursor: pointer; }
+/* line 96, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_table tr.placeholder {
+  display: block;
+  background: red;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none; 
+}
+.sorted_table tr.placeholder > td{
+	border-top:1px solid #f00;
+}
+  /* line 103, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+  .sorted_table tr.placeholder:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-left-color: red;
+    margin-top: -5px;
+    left: -5px;
+    border-right: none; }
+
 </style>
 
 @section('pageJS')
@@ -449,6 +479,8 @@
 				$("#list_product_quick").css('display','none');
 				$(window).trigger('resize');
 			})
+
+			
 
 		}) // End Jquery
 		function add_product_quick(id){

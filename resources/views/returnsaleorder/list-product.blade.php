@@ -71,11 +71,18 @@
 		datatype_number();
 		datatype_quantity();
 		select_table();
+		var old_quantity = 0;
+		var old_specification = 0;
 		$("#list_product input#quantity").on('focusin', function(){
-			old_value = $(this).val();
+			old_quantity = $(this).val();
 		});
+		$("#list_product input#specification").on('focusin', function(){
+			old_specification = $(this).val();
+		});
+
 		$("#list_product select, #list_product input").on('change',function(e){
 			e.preventDefault();
+			var id_input = $(this).attr('id');
 			var id = $(this).parent().parent().attr('data-id');
 			var row = $("#row_product_"+id);
 			data = {};
@@ -100,9 +107,16 @@
 						console.log($("#row_product_"+id).find(".amount"));
 						toastr['success']('Saving success !');
 						sum_amount();
+						old_quantity = row.find("#quantity").val();
+						old_specification = row.find("#specification").val();
 					}else{
 						toastr['error'](data.message);
-						$("tr[data-id="+id+"]").find("#quantity").val(old_value);
+						if(id_input=='quantity'){
+							$("tr[data-id="+id+"]").find("#quantity").val(old_quantity);
+						}else{
+							console.log(old_specification);
+							$("tr[data-id="+id+"]").find("#specification").val(old_specification);
+						}
 					}
 					
 				}
