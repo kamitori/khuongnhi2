@@ -223,6 +223,7 @@
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center sorted_table table-list-edit">
 						<thead>
 							<tr>
+							
 								@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 								<th style="width:3%">&nbsp;</th>
 								@endif
