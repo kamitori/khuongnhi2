@@ -156,6 +156,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 	],
 
 	/*
@@ -212,8 +213,9 @@ return [
 		 */
 		'Datatables'  => 'yajra\Datatables\Datatables',
 		'Flash' => 'laracasts/Flash/Flash',
-        		'Image' => 'Intervention\Image\Facades\Image',
-        		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+		'Image' => 'Intervention\Image\Facades\Image',
+		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	],
 
 ];

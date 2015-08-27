@@ -123,7 +123,6 @@
 						old_specification = row.find("#specification").val();
 					}else{
 						toastr['error'](data.message);
-
 						if(id_input=='quantity'){
 							$("tr[data-id="+id+"]").find("#quantity").val(old_quantity);
 						}else{
