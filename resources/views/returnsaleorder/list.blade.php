@@ -23,7 +23,7 @@
 			<th style="width: 10%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>Mã hóa đơn</th>
 			<th style="width: 39%" data-column="company_id" {{ isset($arr_sort['company_id'])?'data-sort='.$arr_sort['company_id']:'' }}>Nhà cung cấp</th>
 			<th style="width: 13%" data-column="date" {{ isset($arr_sort['date'])?'data-sort='.$arr_sort['date']:'' }}>Ngày đặt hàng</th>
-			<th style="width: 20%" data-column="sum_invest" {{ isset($arr_sort['sum_invest'])?'data-sort='.$arr_sort['sum_invest']:'' }}>Tổng tiền trả hàng</th>
+			<th style="width: 20%" data-column="sum_amount" {{ isset($arr_sort['sum_amount'])?'data-sort='.$arr_sort['sum_amount']:'' }}>Tổng tiền trả hàng</th>
 			<th style="width: 13%" data-column="status" {{ isset($arr_sort['status'])?'data-sort='.$arr_sort['status']:'' }}>Tình trạng</th>
 			<th style="width: 5%" class="no-sort">&nbsp;</th>
 		</tr>
@@ -69,7 +69,7 @@
 			<td>{{($rso['id'])}}</td>
 			<td>{{$rso['company']['name']}}</td>
 			<td>{{date('d-m-Y',strtotime($rso['date']))}}</td>
-			<td data-type="currency">{{$rso['sum_invest']!=null?$rso['sum_invest']:0}}</td>
+			<td data-type="currency">{{$rso['sum_amount']!=null?$rso['sum_amount']:0}}</td>
 			<td>{{$rso['status']==1?'Hoàn thành':'Mới'}}</td>
 			<td>
 				<a href="{{URL}}/returnsaleorders/delete-from-list/{{$rso['id']}}">

@@ -6,7 +6,7 @@
 <tr data-id="{{$product['id']}}" id="row_product_{{$product['id']}}" class="sort">
 	<input type="hidden" id="id" value="{{$product['id']}}">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	@if(!$saleorder['status'] && $user->can("edit-saleorders"))
+	@if(!$saleorder['status'])
 	<td><i class="fa fa-arrows" style="cursor: move;"></i></td>
 	@endif
 	<td>{{$product['sku']}}</td>
@@ -70,7 +70,11 @@
 @endforeach
 @if(count($list_product))
 <tr class="sum">
+	@if(!$saleorder['status'])
 	<td colspan="7">Tổng tiền: </td>
+	@else
+	<td colspan="6">Tổng tiền: </td>
+	@endif
 	<td data-type="currency" class="right" id="sum_amount">{{$sum_amount}}</td>
 	@if(!$saleorder['status'] && $user->can("edit-saleorders"))
 	<td></td>
