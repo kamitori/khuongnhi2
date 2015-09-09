@@ -101,9 +101,10 @@ class ProductsController extends Controller {
 						->get()->toArray();
 		}
 		
-		$view_list_po = self::getListPo();
-		$view_list_so = self::getListSo();
-
+		$view_list_po = self::getListPo($request);
+		$view_list_so = self::getListSo($request);
+		$companies = array();
+		$companies = Company::orderBy('name')->get()->toArray();
 		$arr_create = Product::select('users.name','products.created_at')
 					->leftJoin('users','users.id','=','products.created_by')
 					->where('products.id','=',$product['id'])
@@ -121,7 +122,8 @@ class ProductsController extends Controller {
 								'product' => $product,
 								'view_list_po'	=> $view_list_po,
 								'view_list_so'	=> $view_list_so,
-								'list_instock' => $list_instock
+								'list_instock' => $list_instock,
+								'companies'	=> $companies
 							        ]);
 	}
 
@@ -547,26 +549,107 @@ class ProductsController extends Controller {
 		die;
 	}
 
-	public function getListPo()
+	public function getListPo(Request $request)
 	{
+		$list_order = array();
 		$id_product = session('current_product') !== null ? session('current_product') : 0;
-		$list_po = Purchaseorder::select('purchaseorders.date','purchaseorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id','product_stocks.in_stock')
-			->leftJoin('m_products',function($join){
-				$join->on('m_products.module_id','=','purchaseorders.id')
-					->where('module_type','=','App\Purchaseorder');
-			})
-			->leftJoin('products','m_products.product_id','=','products.id')
-			->leftJoin('companies','m_products.company_id','=','companies.id')
-			->leftJoin('oums','m_products.oum_id','=','oums.id')
-			->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id')
-			->where('products.id','=',$id_product)
-			->where('purchaseorders.status','=',1)
-			->orderBy('date','desc')
-			->get()->toArray();
+		$type = $request->has('type')? $request->input('type'): 'all';
+		$company_id = $request->has('company_id')? $request->input('company_id'): 'all';
+		if($type=='all' || $type=='po'){
+			$list_po = Purchaseorder::select('purchaseorders.date','purchaseorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id','product_stocks.in_stock')
+				->leftJoin('m_products',function($join){
+					$join->on('m_products.module_id','=','purchaseorders.id')
+						->where('module_type','=','App\Purchaseorder');
+				})
+				->leftJoin('products','m_products.product_id','=','products.id')
+				->leftJoin('companies','m_products.company_id','=','companies.id')
+				->leftJoin('oums','m_products.oum_id','=','oums.id')
+				->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id')
+				->where('products.id','=',$id_product)
+				->where('purchaseorders.status','=',1)
+				->orderBy('date','desc');
+			if($company_id != 'all')
+				$list_po = 	$list_po->where('companies.id','=',$company_id);
+			$list_po =	$list_po->get()->toArray();
+			
+
+			foreach ($list_po as $key => $value) {
+				$arr_tmp = array();
+				$arr_tmp['company_name'] = $value['company_name'];
+				$arr_tmp['oum_name'] = $value['oum_name'];
+				$arr_tmp['specification'] = $value['specification'];
+				$arr_tmp['quantity'] = $value['quantity'];
+				$arr_tmp['id'] = $value['id'];
+				$arr_tmp['product_id'] = $value['product_id'];
+				$arr_tmp['date'] = $value['date'];
+				$arr_tmp['in_stock'] = $value['in_stock'];
+				$arr_tmp['type'] = 'po';
+				$list_order[] = $arr_tmp;
+			}
+		}
+
+		if($type=='all' || $type=='rpo'){
+			$list_rpo = ReturnSaleorder::select('return_saleorders.date','return_saleorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id')
+				->leftJoin('m_products',function($join){
+					$join->on('m_products.module_id','=','return_saleorders.id')
+						->where('module_type','=','App\ReturnSaleorder');
+				})
+				->leftJoin('products','m_products.product_id','=','products.id')
+				->leftJoin('companies','m_products.company_id','=','companies.id')
+				->leftJoin('oums','m_products.oum_id','=','oums.id')
+				->where('products.id','=',$id_product)
+				->where('return_saleorders.status','=',1)
+				->orderBy('date','desc');
+			if($company_id != 'all')
+				$list_rpo = $list_rpo->where('companies.id','=',$company_id);
+			$list_rpo =	$list_rpo->get()->toArray();
+			foreach ($list_rpo as $key => $value) {
+				$arr_tmp = array();
+				$arr_tmp['company_name'] = $value['company_name'];
+				$arr_tmp['oum_name'] = $value['oum_name'];
+				$arr_tmp['specification'] = $value['specification'];
+				$arr_tmp['quantity'] = $value['quantity'];
+				$arr_tmp['id'] = $value['id'];
+				$arr_tmp['date'] = $value['date'];
+				$arr_tmp['in_stock'] = 0;
+				$arr_tmp['type'] = 'rpo';
+				$list_order[] = $arr_tmp;
+			}
+		}
 		$product = Product::find($id_product)->toArray();
+		if($type=='all' || $type=='in_stock'){
+			if($product['check_in_stock']){
+				$list_instock = MProduct::select('m_products.*','product_stocks.in_stock')
+							->with('company')->with('oum')
+							->where('m_products.product_id','=',session('current_product'))
+							->where('module_type','=','in_stock')
+							->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id');
+				if($company_id != 'all')
+					$list_instock = $list_instock->where('m_products.company_id','=',$company_id);
+				$list_instock = $list_instock->get()->toArray();
+			}
+			foreach ($list_instock as $key => $value) {
+				$arr_tmp = array();
+				$arr_tmp['company_name'] = $value['company']['name'];
+				$arr_tmp['oum_name'] = $value['oum']['name'];
+				$arr_tmp['specification'] = $value['specification'];
+				$arr_tmp['quantity'] = $value['quantity'];
+				$arr_tmp['id'] = $value['id'];
+				$arr_tmp['product_id'] = $value['product_id'];
+				$arr_tmp['date'] = date("Y-m-d H:i:s");
+				$arr_tmp['in_stock'] = $value['in_stock'];
+				$arr_tmp['type'] = 'in_stock';
+				$list_order[] = $arr_tmp;
+			}
+		}
+		$arr_date = array();
+		foreach ($list_order as $key => $value) {
+			$arr_date[] = $value['date'];
+		}
+		array_multisort($arr_date,SORT_DESC,$list_order);
 		return view('product.list-po',[
-				'list_po'		=>	$list_po ,
-				'product'	=>	$product
+				'list_order'		=>	$list_order ,
+				'product'		=>	$product
 			]);
 	}
 

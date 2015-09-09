@@ -154,51 +154,51 @@
 		<div class="tab-content">
 			<div class="tab-pane active" id="stockTab1">
 				<div class="block row">
-					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center">
+					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center " id="table_nhap">
 						<thead>
 							<tr class="small">
-								<th class="center" style="width:10%">Ngày nhập</th>
-								<th class="center" style="width:10%">Mã mua hàng</th>
-								<th class="center" style="width:30%">Nhà cung cấp</th>
-								<th class="center" style="width:10%">Đơn vị</th>
-								<th class="center" style="width:10%">Quy cách</th>
-								<th class="center" style="width:10%">Số lượng</th>
-								<th class="center" style="width:10%">Tồn kho</th>
+								<th class="center" style="width:8%">Ngày nhập</th>
+								<th class="center" style="width:6%">Mã</th>
+								<th class="center" style="width:10%">Loại</th>
+								<th class="center" style="width:26%">Công ty</th>
+								<th class="center" style="width:8%">Đơn vị</th>
+								<th class="center" style="width:8%">Quy cách</th>
+								<th class="center" style="width:8%">Số lượng</th>
+								<th class="center" style="width:8%">Đã nhập</th>
+								<th class="center" style="width:8%">Tồn kho</th>
 								@if(!$product['status'])
 								<th class="center" style="width:10%">&nbsp;</th>
 								@endif
 							</tr>
+							<tr class="sort">
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center">
+									<select id="select_type">
+										<option value="all"></option>
+										<option value="po">Mua hàng</option>
+										<option value="rpo">Đại lý trả</option>
+										<option value="in_stock">Tồn đầu</option>
+									</select>
+								</th>
+								<th class="center">
+									<select id="select_company" data-type="select2">
+											<option value="all"></option>
+										@foreach($companies as $key => $value)
+											<option value="{{$value['id']}}">{{$value['name']}}</option>
+										@endforeach
+									</select>
+								</th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
+							</tr>
 						</thead>
 						<tbody id="list_po">
-							@if($product['check_in_stock'])
-							@foreach($list_instock as $instock)
-							<tr>
-								<td class="center"></td>
-								<td class="center">Tồn đầu</td>
-								<td class="center">{{ $instock['company']['name'] }}</td>
-								<td class="center">{{ $instock['oum']['name'] }}</td>
-								<td class="center">{{ $instock['specification'] }}</td>
-								<td class="center">{{ $instock['quantity'] }}</td>
-								<?php
-									$tonkho = floor($instock['in_stock']/$instock['specification']);
-									$view_tonkho = $tonkho.' '.$instock['oum']['name'];
-									if($instock['in_stock']%$instock['specification'] && $instock['specification']!=1){
-										$sodu = $instock['in_stock']%$instock['specification'];
-										$view_tonkho .= ' + '.$sodu.' '.'cái';
-									}
-								?>
-								<td  class="center" >{{ $view_tonkho }}</td>
-								@if(!$product['status'])
-								<td  class="center" >
-									<button class="btn btn-primary" type="button" onclick="popup_sellprice({{$instock['product_id']}})" title="Thêm giá cho sản phẩm" >
-										<i class="fa fa-usd"></i>
-										Giá bán
-									</button>
-								</td>
-								@endif
-							</tr>
-							@endforeach
-							@endif
+
 							<?php echo $view_list_po; ?>
 						</tbody>
 					</table>
@@ -434,6 +434,24 @@
 		#search_list ul li:hover{
 			background: #ddd;
 		}
+
+		.sort .select2-selection__rendered{
+			font-size: 90% !important;
+			font-weight: normal !important;
+			text-transform: capitalize !important;
+			text-shadow: none !important;
+			font-family: 'Open-San',Tahoma, Geneva, sans-serif !important;
+			line-height: 18px !important;
+		}
+		.sort .select2-container .select2-selection--single{
+			height: 20px;
+		}
+		.sort .select2-container--default .select2-selection--single .select2-selection__arrow{
+			height:15px;
+		}
+		#select2-select_company-results li:first-child{
+			height: 18px;
+		}
 	</style>
 @stop
 
@@ -529,7 +547,20 @@
 			window.location = '{{URL}}/purchaseorders/create'
 		})
 
-		
+		$("#table_nhap select").on("change",function(){
+			var type = $("#select_type").val();
+			var company_id = $("#select_company").val();
+			$.ajax({
+				url : '{{URL}}/products/list-po',
+				type: 'GET',
+				data:{
+					type : type,
+					company_id : company_id
+				},
+				success:function(data){
+					$("#table_nhap tbody").html(data);				}
+			})
+		})
 
 		function popup_instock(){
 			$("#modal_instock").modal("show");
