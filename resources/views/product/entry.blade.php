@@ -206,15 +206,41 @@
 			</div>
 			<div class="tab-pane" id="stockTab2">
 				<div class="block row">
-					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center">
+					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center" id="table_xuat">
 						<thead>
 							<tr class="small">
-								<th class="center" style="width:15%">Ngày bán</th>
+								<th class="center" style="width:10%">Ngày bán</th>
 								<th class="center" style="width:10%">Mã đơn hàng</th>
-								<th class="center" style="width:45%">Khách hàng</th>
-								<th class="center" style="width:10%">Đơn vị</th>
-								<th class="center" style="width:10%">Quy cách</th>
-								<th class="center" style="width:10%">Số lượng</th>
+								<th class="center" style="width:10%">Loại</th>
+								<th class="center" style="width:36%">Khách hàng</th>
+								<th class="center" style="width:8%">Đơn vị</th>
+								<th class="center" style="width:8%">Quy cách</th>
+								<th class="center" style="width:8%">Số lượng</th>
+								<th class="center" style="width:8%">Đã xuất</th>
+							</tr>
+							<tr class="sort">
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center">
+									<select id="select_type">
+										<option value="all"></option>
+										<option value="po">Mua hàng</option>
+										<option value="rpo">Đại lý trả</option>
+										<option value="in_stock">Tồn đầu</option>
+									</select>
+								</th>
+								<th class="center">
+									<select id="select_company" data-type="select2">
+											<option value="all"></option>
+										@foreach($companies as $key => $value)
+											<option value="{{$value['id']}}">{{$value['name']}}</option>
+										@endforeach
+									</select>
+								</th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
+								<th class="center"></th>
 							</tr>
 						</thead>
 						<tbody id="list_po">
@@ -442,6 +468,7 @@
 			text-shadow: none !important;
 			font-family: 'Open-San',Tahoma, Geneva, sans-serif !important;
 			line-height: 18px !important;
+			margin-left: 12px;
 		}
 		.sort .select2-container .select2-selection--single{
 			height: 20px;
@@ -451,6 +478,9 @@
 		}
 		#select2-select_company-results li:first-child{
 			height: 18px;
+		}
+		#table_xuat .select2{
+			width:100% !important;
 		}
 	</style>
 @stop
@@ -548,8 +578,8 @@
 		})
 
 		$("#table_nhap select").on("change",function(){
-			var type = $("#select_type").val();
-			var company_id = $("#select_company").val();
+			var type = $("#table_nhap #select_type").val();
+			var company_id = $("#table_nhap #select_company").val();
 			$.ajax({
 				url : '{{URL}}/products/list-po',
 				type: 'GET',
@@ -558,7 +588,23 @@
 					company_id : company_id
 				},
 				success:function(data){
-					$("#table_nhap tbody").html(data);				}
+					$("#table_nhap tbody").html(data);				
+				}
+			})
+		})
+		$("#table_xuat select").on("change",function(){
+			var type = $("#table_xuat #select_type").val();
+			var company_id = $("#table_xuat #select_company").val();
+			$.ajax({
+				url : '{{URL}}/products/list-so',
+				type: 'GET',
+				data:{
+					type : type,
+					company_id : company_id
+				},
+				success:function(data){
+					$("#table_xuat tbody").html(data);				
+				}
 			})
 		})
 

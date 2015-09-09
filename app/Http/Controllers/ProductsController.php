@@ -653,25 +653,71 @@ class ProductsController extends Controller {
 			]);
 	}
 
-	public function getListSo()
+	public function getListSo(Request $request)
 	{
+		$list_order = array();
 		$id_product = session('current_product') !== null ? session('current_product') : 0;
-		$list_so = Saleorder::select('saleorders.date','saleorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id','product_stocks.in_stock')
-			->leftJoin('m_products',function($join){
-				$join->on('m_products.module_id','=','saleorders.id')
-					->where('module_type','=','App\Saleorder');
-			})
-			->leftJoin('products','m_products.product_id','=','products.id')
-			->leftJoin('companies','m_products.company_id','=','companies.id')
-			->leftJoin('oums','m_products.oum_id','=','oums.id')
-			->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id')
-			->where('products.id','=',$id_product)
-			->where('saleorders.status','=',1)
-			->orderBy('date','desc')
-			->get()->toArray();
+		$type = $request->has('type')? $request->input('type'): 'all';
+		$company_id = $request->has('company_id')? $request->input('company_id'): 'all';
+		if($type=='all' || $type=='so'){
+			$list_so = Saleorder::select('saleorders.date','saleorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id')
+				->leftJoin('m_products',function($join){
+					$join->on('m_products.module_id','=','saleorders.id')
+						->where('module_type','=','App\Saleorder');
+				})
+				->leftJoin('products','m_products.product_id','=','products.id')
+				->leftJoin('companies','m_products.company_id','=','companies.id')
+				->leftJoin('oums','m_products.oum_id','=','oums.id')
+				->where('products.id','=',$id_product)
+				->where('saleorders.status','=',1)
+				->orderBy('date','desc');
+			if($company_id != 'all')
+				$list_so = $list_so->where('companies.id','=',$company_id);
+			$list_so = $list_so->get()->toArray();
+
+			foreach ($list_so as $key => $value) {
+				$arr_tmp = array();
+				$arr_tmp['company_name'] = $value['company_name'];
+				$arr_tmp['oum_name'] = $value['oum_name'];
+				$arr_tmp['specification'] = $value['specification'];
+				$arr_tmp['quantity'] = $value['quantity'];
+				$arr_tmp['id'] = $value['id'];
+				$arr_tmp['date'] = $value['date'];
+				$arr_tmp['type'] = 'so';
+				$list_order[] = $arr_tmp;
+			}
+		}
+		if($type=='all' || $type=='rpo'){
+			$list_rpo = ReturnPurchaseorder::select('return_purchaseorders.date','return_purchaseorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id')
+				->leftJoin('m_products',function($join){
+					$join->on('m_products.module_id','=','return_purchaseorders.id')
+						->where('module_type','=','App\ReturnPurchaseorder');
+				})
+				->leftJoin('products','m_products.product_id','=','products.id')
+				->leftJoin('companies','m_products.company_id','=','companies.id')
+				->leftJoin('oums','m_products.oum_id','=','oums.id')
+				->where('products.id','=',$id_product)
+				->where('return_purchaseorders.status','=',1)
+				->orderBy('date','desc');
+			if($company_id != 'all')
+				$list_rpo  = $list_rpo->where('companies.id','=',$company_id);
+			$list_rpo = $list_rpo->get()->toArray();
+
+			foreach ($list_rpo as $key => $value) {
+				$arr_tmp = array();
+				$arr_tmp['company_name'] = $value['company_name'];
+				$arr_tmp['oum_name'] = $value['oum_name'];
+				$arr_tmp['specification'] = $value['specification'];
+				$arr_tmp['quantity'] = $value['quantity'];
+				$arr_tmp['id'] = $value['id'];
+				$arr_tmp['date'] = $value['date'];
+				$arr_tmp['type'] = 'rpo';
+				$list_order[] = $arr_tmp;
+			}
+		}
 		$product = Product::find($id_product)->toArray();
 		return view('product.list-so',[
-				'list_so'		=>	$list_so ,
+				'list_order'		=>	$list_order ,
 				'product'	=>	$product
 			]);
 	}
