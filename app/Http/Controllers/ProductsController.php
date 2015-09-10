@@ -117,7 +117,11 @@ class ProductsController extends Controller {
 					->get()->first()->toArray();
 		$this->layout->arr_create = $arr_create;
 		$this->layout->arr_update = $arr_update;
-		$list_month =ReceiptMonth::select('month','year')->distinct()->where('month','>',0)->get()->toArray();
+		$list_month =ReceiptMonth::select('month','year')
+									->distinct()->where('month','>',0)
+									->orderBy('year','DESC')
+									->orderBy('month','DESC')
+									->get()->toArray();
 		
 		$this->layout->content=view('product.entry', ['distributes'=>$distributes,
 								'oums'=>$oums,
