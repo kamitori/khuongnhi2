@@ -12,6 +12,7 @@ use App\Purchaseorder;
 use App\ReturnPurchaseorder;
 use App\ReturnSaleorder;
 use App\Saleorder;
+use App\ReceiptMonth;
 use App\Log;
 use Datatables;
 use Illuminate\Http\Request;
@@ -116,6 +117,8 @@ class ProductsController extends Controller {
 					->get()->first()->toArray();
 		$this->layout->arr_create = $arr_create;
 		$this->layout->arr_update = $arr_update;
+		$list_month =ReceiptMonth::select('month','year')->distinct()->where('month','>',0)->get()->toArray();
+		
 		$this->layout->content=view('product.entry', ['distributes'=>$distributes,
 								'oums'=>$oums,
 								'producttypes'=>$producttypes,
@@ -123,7 +126,8 @@ class ProductsController extends Controller {
 								'view_list_po'	=> $view_list_po,
 								'view_list_so'	=> $view_list_so,
 								'list_instock' => $list_instock,
-								'companies'	=> $companies
+								'companies'	=> $companies,
+								'list_month' => $list_month
 							        ]);
 	}
 
@@ -551,10 +555,12 @@ class ProductsController extends Controller {
 
 	public function getListPo(Request $request)
 	{
+		\DB::enableQueryLog();
 		$list_order = array();
 		$id_product = session('current_product') !== null ? session('current_product') : 0;
 		$type = $request->has('type')? $request->input('type'): 'all';
 		$company_id = $request->has('company_id')? $request->input('company_id'): 'all';
+		$month_year = $request->has('month_year')? $request->input('month_year'): 'all';
 		if($type=='all' || $type=='po'){
 			$list_po = Purchaseorder::select('purchaseorders.date','purchaseorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id','product_stocks.in_stock')
 				->leftJoin('m_products',function($join){
@@ -570,8 +576,16 @@ class ProductsController extends Controller {
 				->orderBy('date','desc');
 			if($company_id != 'all')
 				$list_po = 	$list_po->where('companies.id','=',$company_id);
+			if($month_year != 'all'){
+				$month = explode('-',$month_year);
+				$list_po = 	$list_po->whereRaw("MONTH(`purchaseorders`.`date`)=".$month[0])
+									->whereRaw("YEAR(`purchaseorders`.`date`)=".$month[1]);
+
+			}
 			$list_po =	$list_po->get()->toArray();
-			
+			// $query = \DB::getQueryLog();
+			// print_r($query[count($query)-1]);
+			// pr($list_po);die;
 
 			foreach ($list_po as $key => $value) {
 				$arr_tmp = array();
@@ -602,6 +616,12 @@ class ProductsController extends Controller {
 				->orderBy('date','desc');
 			if($company_id != 'all')
 				$list_rpo = $list_rpo->where('companies.id','=',$company_id);
+			if($month_year != 'all'){
+				$month = explode('-',$month_year);
+				$list_rpo = 	$list_rpo->whereRaw("MONTH(`return_saleorders`.`date`)=".$month[0])
+									->whereRaw("Year(`return_saleorders`.`date`)=".$month[1]);
+
+			}
 			$list_rpo =	$list_rpo->get()->toArray();
 			foreach ($list_rpo as $key => $value) {
 				$arr_tmp = array();
@@ -617,7 +637,7 @@ class ProductsController extends Controller {
 			}
 		}
 		$product = Product::find($id_product)->toArray();
-		if($type=='all' || $type=='in_stock'){
+		if(($type=='all' || $type=='in_stock') && $month_year == 'all'){
 			if($product['check_in_stock']){
 				$list_instock = MProduct::select('m_products.*','product_stocks.in_stock')
 							->with('company')->with('oum')
@@ -659,6 +679,7 @@ class ProductsController extends Controller {
 		$id_product = session('current_product') !== null ? session('current_product') : 0;
 		$type = $request->has('type')? $request->input('type'): 'all';
 		$company_id = $request->has('company_id')? $request->input('company_id'): 'all';
+		$month_year = $request->has('month_year')? $request->input('month_year'): 'all';
 		if($type=='all' || $type=='so'){
 			$list_so = Saleorder::select('saleorders.date','saleorders.id','m_products.quantity','m_products.specification','oums.name as oum_name','companies.name as company_name','m_products.id as product_id')
 				->leftJoin('m_products',function($join){
@@ -673,6 +694,11 @@ class ProductsController extends Controller {
 				->orderBy('date','desc');
 			if($company_id != 'all')
 				$list_so = $list_so->where('companies.id','=',$company_id);
+			if($month_year != 'all'){
+				$month = explode('-',$month_year);
+				$list_so = 	$list_so->whereRaw("MONTH(`saleorders`.`date`)=".$month[0])
+									->whereRaw("Year(`saleorders`.`date`)=".$month[1]);
+			}
 			$list_so = $list_so->get()->toArray();
 
 			foreach ($list_so as $key => $value) {
@@ -701,6 +727,11 @@ class ProductsController extends Controller {
 				->orderBy('date','desc');
 			if($company_id != 'all')
 				$list_rpo  = $list_rpo->where('companies.id','=',$company_id);
+			if($month_year != 'all'){
+				$month = explode('-',$month_year);
+				$list_rpo = 	$list_rpo->whereRaw("MONTH(`return_purchaseorders`.`date`)=".$month[0])
+									->whereRaw("Year(`return_purchaseorders`.`date`)=".$month[1]);
+			}
 			$list_rpo = $list_rpo->get()->toArray();
 
 			foreach ($list_rpo as $key => $value) {

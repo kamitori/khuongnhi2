@@ -157,10 +157,10 @@
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center " id="table_nhap">
 						<thead>
 							<tr class="small">
-								<th class="center" style="width:8%">Ngày nhập</th>
+								<th class="center" style="width:10px%">Ngày nhập</th>
 								<th class="center" style="width:6%">Mã</th>
 								<th class="center" style="width:10%">Loại</th>
-								<th class="center" style="width:26%">Công ty</th>
+								<th class="center" style="width:24%">Công ty</th>
 								<th class="center" style="width:8%">Đơn vị</th>
 								<th class="center" style="width:8%">Quy cách</th>
 								<th class="center" style="width:8%">Số lượng</th>
@@ -171,7 +171,14 @@
 								@endif
 							</tr>
 							<tr class="sort">
-								<th class="center"></th>
+								<th class="center">
+									<select id="select_month" data-type="select2">
+										<option value="all"></option>
+										@foreach($list_month as $key => $value)
+										<option value="{{$value['month']}}-{{$value['year']}}">Tháng {{$value['month']}}-{{$value['year']}}</option>
+										@endforeach
+									</select>
+								</th>
 								<th class="center"></th>
 								<th class="center">
 									<select id="select_type">
@@ -219,7 +226,14 @@
 								<th class="center" style="width:8%">Đã xuất</th>
 							</tr>
 							<tr class="sort">
-								<th class="center"></th>
+								<th class="center">
+									<select id="select_month" data-type="select2">
+										<option value="all"></option>
+										@foreach($list_month as $key => $value)
+										<option value="{{$value['month']}}-{{$value['year']}}">Tháng {{$value['month']}}-{{$value['year']}}</option>
+										@endforeach
+									</select>
+								</th>
 								<th class="center"></th>
 								<th class="center">
 									<select id="select_type">
@@ -476,7 +490,8 @@
 		.sort .select2-container--default .select2-selection--single .select2-selection__arrow{
 			height:15px;
 		}
-		#select2-select_company-results li:first-child{
+		#select2-select_company-results li:first-child,
+		#select2-select_month-results li:first-child{
 			height: 18px;
 		}
 		#table_xuat .select2{
@@ -580,12 +595,14 @@
 		$("#table_nhap select").on("change",function(){
 			var type = $("#table_nhap #select_type").val();
 			var company_id = $("#table_nhap #select_company").val();
+			var month_year = $("#table_nhap #select_month").val();
 			$.ajax({
 				url : '{{URL}}/products/list-po',
 				type: 'GET',
 				data:{
 					type : type,
-					company_id : company_id
+					company_id : company_id,
+					month_year : month_year,
 				},
 				success:function(data){
 					$("#table_nhap tbody").html(data);				
@@ -595,12 +612,14 @@
 		$("#table_xuat select").on("change",function(){
 			var type = $("#table_xuat #select_type").val();
 			var company_id = $("#table_xuat #select_company").val();
+			var month_year = $("#table_xuat #select_month").val();
 			$.ajax({
 				url : '{{URL}}/products/list-so',
 				type: 'GET',
 				data:{
 					type : type,
-					company_id : company_id
+					company_id : company_id,
+					month_year : month_year
 				},
 				success:function(data){
 					$("#table_xuat tbody").html(data);				
