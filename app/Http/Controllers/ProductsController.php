@@ -14,6 +14,7 @@ use App\ReturnSaleorder;
 use App\Saleorder;
 use App\ReceiptMonth;
 use App\Log;
+use App\TonDauThang;
 use Datatables;
 use Illuminate\Http\Request;
 use Session;
@@ -363,7 +364,7 @@ class ProductsController extends Controller {
 		$distributes = Company::getDistributeList()->get()->toArray();
 		$oums = Oum::orderBy('name')->get()->toArray();
 		$producttypes = ProductType::get()->toArray();
-		$list_all_product = Product::select('sku','name')->get()->toArray();
+		$list_all_product = Product::select('sku','name')->orderBy('sku')->get()->toArray();
 		DB::enableQueryLog();
 		$list_product = MProduct::select(
 					'products.id',
@@ -479,6 +480,7 @@ class ProductsController extends Controller {
 	public function anyListClear(Request $request)
 	{
 		Session::forget('sort_filter_product');
+		Session::forget('sort_filter_product_ton_dau_thang');
 		return redirect('products/list');
 	}
 
@@ -1270,7 +1272,185 @@ class ProductsController extends Controller {
 				->leftJoin('users','users.id','=','logs.user_id')
 				->orderBy('id','desc')
 				->paginate(50);
-
 		$this->layout->content=view('log.log', ['list_log'=>$list_log]);
+	}
+
+
+	public function getCreateTonDauThang(){
+		$list_month = ReceiptMonth::select('month','year')
+									->distinct()->where('month','>',0)
+									->orderBy('year','ASC')
+									->orderBy('month','ASC')
+									->get()->toArray();
+		foreach ($list_month as $key => $value) {
+			$check = TonDauThang::where('month','=',$value['month'])
+								->where('year','=',$value['year'])
+								->get()->first();
+			if(!$check){
+				if($key==0){
+					$arr_insert = array();
+					$list_instock = Mproduct::where('module_type','=','in_stock')
+									->get()->toArray();
+					// pr($list_instock);die;
+					foreach ($list_instock as $key2 => $value2) {
+						$arr_insert[$key2]['product_id'] = $value2['product_id'];
+						$arr_insert[$key2]['quantity'] = $value2['quantity']*$value2['specification'];
+						$arr_insert[$key2]['month'] = $value['month'];
+						$arr_insert[$key2]['year'] = $value['year'];
+					}
+					TonDauThang::insert($arr_insert);
+				}else{
+					$arr_insert = array();
+					$list_prev_month = TonDauThang::where('month','=',$list_month[$key-1]['month'])
+												->where('year','=',$list_month[$key-1]['year'])
+												->get();
+					foreach ($list_prev_month as $key2 => $value2) {
+						$arr_insert[$value2['product_id']]['product_id'] = $value2['product_id']; 
+						$arr_insert[$value2['product_id']]['quantity'] = $value2['quantity']; 
+						$arr_insert[$value2['product_id']]['month'] = $list_month[$key]['month']; 
+						$arr_insert[$value2['product_id']]['year'] = $list_month[$key]['year']; 
+					}
+					$list_product_po = Mproduct::where('module_type','=','App\Purchaseorder')
+												->leftJoin('purchaseorders','module_id','=','purchaseorders.id')
+												->whereRaw('MONTH(`purchaseorders`.`date`)='.$list_month[$key-1]['month'])
+												->whereRaw('YEAR(`purchaseorders`.`date`)='.$list_month[$key-1]['year'])
+				 	                         ->get()->toArray();
+					foreach ($list_product_po as $key2 => $value2) {
+						if(!isset($arr_insert[$value2['product_id']])){
+							$arr_insert[$value2['product_id']]['product_id'] = $value2['product_id'];
+							$arr_insert[$value2['product_id']]['quantity'] = $value2['quantity']*$value2['specification'];
+							$arr_insert[$value2['product_id']]['month'] = $value['month'];
+							$arr_insert[$value2['product_id']]['year'] = $value['year'];
+						}else{
+							$arr_insert[$value2['product_id']]['quantity'] += $value2['quantity']*$value2['specification'];
+						}
+					}
+
+					$list_product_rpo = Mproduct::where('module_type','=','App\ReturnPurchaseorder')
+												->leftJoin('return_purchaseorders','module_id','=','return_purchaseorders.id')
+												->whereRaw('MONTH(`return_purchaseorders`.`date`)='.$list_month[$key-1]['month'])
+												->whereRaw('YEAR(`return_purchaseorders`.`date`)='.$list_month[$key-1]['year'])
+				 	                         ->get()->toArray();
+				 	foreach ($list_product_rpo as $key2 => $value2) {
+						if(isset($arr_insert[$value2['product_id']])){
+							$arr_insert[$value2['product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
+						}
+					}
+
+					$list_product_so = Mproduct::where('module_type','=','App\Saleorder')
+												->leftJoin('saleorders','module_id','=','saleorders.id')
+												->whereRaw('MONTH(`saleorders`.`date`)='.$list_month[$key-1]['month'])
+												->whereRaw('YEAR(`saleorders`.`date`)='.$list_month[$key-1]['year'])
+				 	                         ->get()->toArray();
+				 	foreach ($list_product_so as $key2 => $value2) {
+						if(isset($arr_insert[$value2['product_id']])){
+							$arr_insert[$value2['product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
+						}
+					}
+
+					$list_product_rpo = Mproduct::where('module_type','=','App\ReturnPurchaseorder')
+												->leftJoin('return_purchaseorders','module_id','=','return_purchaseorders.id')
+												->whereRaw('MONTH(`return_purchaseorders`.`date`)='.$list_month[$key-1]['month'])
+												->whereRaw('YEAR(`return_purchaseorders`.`date`)='.$list_month[$key-1]['year'])
+				 	                         ->get()->toArray();
+				 	foreach ($list_product_rpo as $key2 => $value2) {
+						if(isset($arr_insert[$value2['product_id']])){
+							$arr_insert[$value2['product_id']]['quantity'] += $value2['quantity']*$value2['specification'];
+						}
+					}
+					TonDauThang::insert($arr_insert);
+				}
+			}
+		}
+		echo "Done !";
+		die;
+	}
+
+	public function anyTonDauThang(Request $request){
+
+		\DB::enableQueryLog();
+		if($request->has('input-sort')){
+			$arr_sort = $request->input('input-sort');
+			$arr_sort =(array) json_decode($arr_sort);
+		}elseif( session('sort_filter_product_ton_dau_thang.arr_sort') !== null){
+			$arr_sort = session('sort_filter_product_ton_dau_thang.arr_sort');
+		}else{
+			$arr_sort=array();
+		}
+		session('sort_filter_product_ton_dau_thang.arr_sort', $arr_sort);
+
+		$list_month = ReceiptMonth::select('month','year')
+									->distinct()->where('month','>',0)
+									->orderBy('year','ASC')
+									->orderBy('month','ASC')
+									->get()->toArray();
+		if($request->has('input-filter')){
+			$arr_filter = $request->input('input-filter');
+		}elseif( session('sort_filter_product_ton_dau_thang.arr_filter') !== null ){
+			$arr_filter = session('sort_filter_product_ton_dau_thang.arr_filter');
+		}else{
+			$arr_filter=[
+					'sku'=>'',
+					'like_name'=>'',
+					'name'=>''
+				       ];
+			if(count($list_month)){
+				$arr_filter['month'] = $list_month[0]['month'].'-'.$list_month[0]['year'];
+			}
+		}
+		session(['sort_filter_product_ton_dau_thang.arr_sort'=>$arr_sort]);
+		session(['sort_filter_product_ton_dau_thang.arr_filter'=> $arr_filter]);
+
+		$list_all_product = Product::select('sku','name')->orderBy('sku')->get()->toArray();
+		$list_month = array();
+		
+		$list_product = TonDauThang::select(
+					'products.id',
+					'products.name',
+					'products.sku',
+					'ton_dau_thangs.quantity',
+					'ton_dau_thangs.month',
+					'ton_dau_thangs.year'
+		            )
+					->leftJoin('products','products.id','=','ton_dau_thangs.product_id')
+					->where('ton_dau_thangs.quantity','>',0);
+
+		foreach ($arr_filter as $key => $value) {
+			if($value!=''){
+				if($arr_filter['sku']!=''){
+					$list_product->where('products.sku',$arr_filter['sku']);
+				}elseif($key == 'like_name'){
+					$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
+					$arr_filter['name']='';
+				}elseif($key == 'name' && $arr_filter['name']!=''){
+					$list_product->where('products.name',$arr_filter['name']);
+				}elseif($key == 'month' && $arr_filter['month'] !=''){
+					$month_year = explode('-',$arr_filter['month']);
+					$list_product->where('ton_dau_thangs.month','=',$month_year[0])
+								->where('ton_dau_thangs.year','=',$month_year[1]);
+				}
+			}
+		}
+
+		foreach ($arr_sort as $key => $value) {
+			$list_product = $list_product->orderBy($key,$value);
+		}
+		$list_month = ReceiptMonth::select('month','year')
+									->distinct()->where('month','>',0)
+									->orderBy('year','ASC')
+									->orderBy('month','ASC')
+									->get()->toArray();
+		$list_product = $list_product->orderBy('products.id','asc');
+		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
+		$list_product = $list_product->paginate(100);
+
+
+		$this->layout->content=view('product.list-ton-dau-thang', [
+								'list_product'		=> $list_product,
+								'list_all_product'		=>$list_all_product,
+								'arr_sort' 		=> $arr_sort,
+								'arr_filter' 		=> $arr_filter,
+								'list_month'	=> $list_month
+							        ]);
 	}
 }

@@ -11,6 +11,7 @@
 		<button href="javascript:void()" class="btn btn-small btn-primary btn-icon " id="delete_product"><i class="fa fa-remove"></i> Xóa</button>
 		@endif
 		<a href="{{URL}}/products/list" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Danh sách</a>
+		<a href="{{URL}}/products/ton-dau-thang" class="btn btn-small btn-primary btn-icon "><i class="fa fa-list"></i> Tổn đầu tháng</a>
 		@if($user->can("view-history"))
 		<a href="{{URL}}/products/log" class="btn btn-small btn-primary btn-icon "><i class="fa fa-clock-o"></i> Lịch sử</a>
 		@endif
