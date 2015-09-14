@@ -1368,7 +1368,7 @@ class ProductsController extends Controller {
 
 	public function anyTonDauThang(Request $request){
 
-		\DB::enableQueryLog();
+
 		if($request->has('input-sort')){
 			$arr_sort = $request->input('input-sort');
 			$arr_sort =(array) json_decode($arr_sort);
@@ -1400,6 +1400,7 @@ class ProductsController extends Controller {
 				$arr_filter['month'] = $list_month[0]['month'].'-'.$list_month[0]['year'];
 			}
 		}
+
 		session(['sort_filter_product_ton_dau_thang.arr_sort'=>$arr_sort]);
 		session(['sort_filter_product_ton_dau_thang.arr_filter'=> $arr_filter]);
 
@@ -1437,24 +1438,30 @@ class ProductsController extends Controller {
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
 					->groupBy('products.id','m_products.company_id','m_products.oum_id','m_products.specification','m_products.origin_price')
 					->where('ton_dau_thangs.quantity','>',0);
-					
+
 					
 		foreach ($arr_filter as $key => $value) {
 			if($value!=''){
 				if($arr_filter['sku']!=''){
 					$list_product->where('products.sku',$arr_filter['sku']);
-				}elseif($key == 'like_name'){
+				}
+				if($key == 'like_name'){
 					$list_product->where('products.name','LIKE',"%".$arr_filter['like_name']."%");
 					$arr_filter['name']='';
-				}elseif($key == 'name' && $arr_filter['name']!=''){
+				}
+				if($key == 'name' && $arr_filter['name']!=''){
 					$list_product->where('products.name',$arr_filter['name']);
-				}elseif($key == 'company_id'){
+				}
+				if($key == 'company_id'){
 					$list_product->where('m_products.company_id',$arr_filter['company_id']);
-				}elseif($key == 'status'){
+				}
+				if($key == 'status'){
 					$list_product->where('products.status',$arr_filter['status']);
-				}elseif($key == 'oum_id'){
+				}
+				if($key == 'oum_id'){
 					$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
-				}elseif($key == 'month' && $arr_filter['month'] !=''){
+				}
+				if($key == 'month' && $arr_filter['month'] !=''){
 					$month_year = explode('-',$arr_filter['month']);
 					$list_product->where('ton_dau_thangs.month','=',$month_year[0])
 								->where('ton_dau_thangs.year','=',$month_year[1]);
@@ -1485,18 +1492,11 @@ class ProductsController extends Controller {
 		$list_product = $list_product->orderBy('products.id','asc');
 		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
 		$sum_invest =  0;
-		//echo "<table>";
+
 		foreach ($list_product->get()->toArray() as $key => $value) {
-			//echo '<tr>';
 			$sum_invest += $value['origin_price'] * $value['quantity'];
-			//echo "<td>".$value['id']."</td>";
-			//echo "<td>".$value['origin_price'] * $value['quantity']."</td>";
 		}
-		//echo "</table>";
-
-		//echo $sum_invest;die;
 		$list_product = $list_product->paginate(100);
-
 
 		$this->layout->content=view('product.list-ton-dau-thang', [
 								'distributes'			=> $distributes,
