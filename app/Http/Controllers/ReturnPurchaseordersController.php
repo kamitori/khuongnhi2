@@ -571,7 +571,7 @@ class ReturnPurchaseordersController extends Controller {
 
 		Session::forget('product_of_rpo'.session('current_returnpurchaseorder'));
 		foreach ($list_product as $key => $value) {
-			Session::put('product_of_rpo'.session('current_returnpurchaseorder').".".$value['id'] , $value['id']);
+			Session::put('product_of_rpo'.session('current_returnpurchaseorder').".".$value['m_product_id'] , $value['m_product_id']);
 		}
 
 		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30);
