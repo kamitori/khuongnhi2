@@ -1291,9 +1291,9 @@ class ProductsController extends Controller {
 					$arr_insert = array();
 					$list_instock = Mproduct::where('module_type','=','in_stock')
 									->get()->toArray();
-					// pr($list_instock);die;
+
 					foreach ($list_instock as $key2 => $value2) {
-						$arr_insert[$key2]['product_id'] = $value2['product_id'];
+						$arr_insert[$key2]['m_product_id'] = $value2['id'];
 						$arr_insert[$key2]['quantity'] = $value2['quantity']*$value2['specification'];
 						$arr_insert[$key2]['month'] = $value['month'];
 						$arr_insert[$key2]['year'] = $value['year'];
@@ -1305,57 +1305,57 @@ class ProductsController extends Controller {
 												->where('year','=',$list_month[$key-1]['year'])
 												->get();
 					foreach ($list_prev_month as $key2 => $value2) {
-						$arr_insert[$value2['product_id']]['product_id'] = $value2['product_id']; 
-						$arr_insert[$value2['product_id']]['quantity'] = $value2['quantity']; 
-						$arr_insert[$value2['product_id']]['month'] = $list_month[$key]['month']; 
-						$arr_insert[$value2['product_id']]['year'] = $list_month[$key]['year']; 
+						$arr_insert[$value2['m_product_id']]['m_product_id'] = $value2['m_product_id']; 
+						$arr_insert[$value2['m_product_id']]['quantity'] = $value2['quantity']; 
+						$arr_insert[$value2['m_product_id']]['month'] = $list_month[$key]['month']; 
+						$arr_insert[$value2['m_product_id']]['year'] = $list_month[$key]['year']; 
 					}
-					$list_product_po = Mproduct::where('module_type','=','App\Purchaseorder')
+					$list_product_po = Mproduct::select('m_products.*')
+												->where('module_type','=','App\Purchaseorder')
 												->leftJoin('purchaseorders','module_id','=','purchaseorders.id')
 												->whereRaw('MONTH(`purchaseorders`.`date`)='.$list_month[$key-1]['month'])
 												->whereRaw('YEAR(`purchaseorders`.`date`)='.$list_month[$key-1]['year'])
 				 	                         ->get()->toArray();
 					foreach ($list_product_po as $key2 => $value2) {
-						if(!isset($arr_insert[$value2['product_id']])){
-							$arr_insert[$value2['product_id']]['product_id'] = $value2['product_id'];
-							$arr_insert[$value2['product_id']]['quantity'] = $value2['quantity']*$value2['specification'];
-							$arr_insert[$value2['product_id']]['month'] = $value['month'];
-							$arr_insert[$value2['product_id']]['year'] = $value['year'];
-						}else{
-							$arr_insert[$value2['product_id']]['quantity'] += $value2['quantity']*$value2['specification'];
-						}
+						$arr_insert[$value2['m_product_id']]['m_product_id'] = $value2['id'];
+						$arr_insert[$value2['m_product_id']]['quantity'] = $value2['quantity']*$value2['specification'];
+						$arr_insert[$value2['m_product_id']]['month'] = $value['month'];
+						$arr_insert[$value2['m_product_id']]['year'] = $value['year'];
 					}
 
-					$list_product_rpo = Mproduct::where('module_type','=','App\ReturnPurchaseorder')
+					$list_product_rpo = Mproduct::select('m_products.*')
+												->where('module_type','=','App\ReturnPurchaseorder')
 												->leftJoin('return_purchaseorders','module_id','=','return_purchaseorders.id')
 												->whereRaw('MONTH(`return_purchaseorders`.`date`)='.$list_month[$key-1]['month'])
 												->whereRaw('YEAR(`return_purchaseorders`.`date`)='.$list_month[$key-1]['year'])
 				 	                         ->get()->toArray();
 				 	foreach ($list_product_rpo as $key2 => $value2) {
-						if(isset($arr_insert[$value2['product_id']])){
-							$arr_insert[$value2['product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
+						if(isset($arr_insert[$value2['m_product_id']])){
+							$arr_insert[$value2['m_product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
 						}
 					}
 
-					$list_product_so = Mproduct::where('module_type','=','App\Saleorder')
+					$list_product_so = Mproduct::select('m_products.*')
+												->where('module_type','=','App\Saleorder')
 												->leftJoin('saleorders','module_id','=','saleorders.id')
 												->whereRaw('MONTH(`saleorders`.`date`)='.$list_month[$key-1]['month'])
 												->whereRaw('YEAR(`saleorders`.`date`)='.$list_month[$key-1]['year'])
 				 	                         ->get()->toArray();
 				 	foreach ($list_product_so as $key2 => $value2) {
-						if(isset($arr_insert[$value2['product_id']])){
-							$arr_insert[$value2['product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
+						if(isset($arr_insert[$value2['m_product_id']])){
+							$arr_insert[$value2['m_product_id']]['quantity'] -= $value2['quantity']*$value2['specification'];
 						}
 					}
 
-					$list_product_rpo = Mproduct::where('module_type','=','App\ReturnPurchaseorder')
+					$list_product_rpo = Mproduct::select('m_products.*')
+												->where('module_type','=','App\ReturnPurchaseorder')
 												->leftJoin('return_purchaseorders','module_id','=','return_purchaseorders.id')
 												->whereRaw('MONTH(`return_purchaseorders`.`date`)='.$list_month[$key-1]['month'])
 												->whereRaw('YEAR(`return_purchaseorders`.`date`)='.$list_month[$key-1]['year'])
 				 	                         ->get()->toArray();
 				 	foreach ($list_product_rpo as $key2 => $value2) {
-						if(isset($arr_insert[$value2['product_id']])){
-							$arr_insert[$value2['product_id']]['quantity'] += $value2['quantity']*$value2['specification'];
+						if(isset($arr_insert[$value2['m_product_id']])){
+							$arr_insert[$value2['m_product_id']]['quantity'] += $value2['quantity']*$value2['specification'];
 						}
 					}
 					TonDauThang::insert($arr_insert);
@@ -1392,7 +1392,9 @@ class ProductsController extends Controller {
 			$arr_filter=[
 					'sku'=>'',
 					'like_name'=>'',
-					'name'=>''
+					'name'=>'',
+					'company_id'=>'',
+					'oum_id'=>''
 				       ];
 			if(count($list_month)){
 				$arr_filter['month'] = $list_month[0]['month'].'-'.$list_month[0]['year'];
@@ -1403,18 +1405,40 @@ class ProductsController extends Controller {
 
 		$list_all_product = Product::select('sku','name')->orderBy('sku')->get()->toArray();
 		$list_month = array();
-		
+		//Init array
+		$distributes = array();
+		$oums = array();
+		$producttypes = array();
+		$list_sku = array();
+		//Get value array
+		$distributes = Company::getDistributeList()->get()->toArray();
+		$oums = Oum::orderBy('name')->get()->toArray();
+		$producttypes = ProductType::get()->toArray();
+		$list_all_product = Product::select('sku','name')->orderBy('sku')->get()->toArray();
+
 		$list_product = TonDauThang::select(
 					'products.id',
 					'products.name',
 					'products.sku',
 					'ton_dau_thangs.quantity',
 					'ton_dau_thangs.month',
-					'ton_dau_thangs.year'
+					'ton_dau_thangs.year',
+					'm_products.oum_id',
+					'm_products.specification',
+					'm_products.origin_price',
+					'companies.name as company_name',
+					'oums.name as oum_name'
 		            )
-					->leftJoin('products','products.id','=','ton_dau_thangs.product_id')
+					->addSelect(DB::raw('product_stocks.in_stock/m_products.specification as real_in_stock'))
+					->leftJoin('m_products','m_products.id','=','ton_dau_thangs.m_product_id')
+					->leftJoin('products','products.id','=','m_products.product_id')
+					->leftJoin('oums','oums.id','=','m_products.oum_id')	
+					->leftJoin('companies','companies.id','=','m_products.company_id')
+					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
+					->groupBy('products.id','m_products.company_id','m_products.oum_id','m_products.specification','m_products.origin_price')
 					->where('ton_dau_thangs.quantity','>',0);
-
+					
+					
 		foreach ($arr_filter as $key => $value) {
 			if($value!=''){
 				if($arr_filter['sku']!=''){
@@ -1424,6 +1448,12 @@ class ProductsController extends Controller {
 					$arr_filter['name']='';
 				}elseif($key == 'name' && $arr_filter['name']!=''){
 					$list_product->where('products.name',$arr_filter['name']);
+				}elseif($key == 'company_id'){
+					$list_product->where('m_products.company_id',$arr_filter['company_id']);
+				}elseif($key == 'status'){
+					$list_product->where('products.status',$arr_filter['status']);
+				}elseif($key == 'oum_id'){
+					$list_product->where('m_products.oum_id',$arr_filter['oum_id']);
 				}elseif($key == 'month' && $arr_filter['month'] !=''){
 					$month_year = explode('-',$arr_filter['month']);
 					$list_product->where('ton_dau_thangs.month','=',$month_year[0])
@@ -1433,7 +1463,19 @@ class ProductsController extends Controller {
 		}
 
 		foreach ($arr_sort as $key => $value) {
-			$list_product = $list_product->orderBy($key,$value);
+			if($key=='company_id'){
+				$list_product = $list_product->orderBy('companies.name',$value);
+			}elseif($key=='oum_id'){
+				$list_product = $list_product->orderBy('oums.name',$value);
+			}elseif($key=='id'){
+				$list_product = $list_product->orderBy('products.id',$value);
+			}elseif($key=='specification'){
+				$list_product = $list_product->orderBy('m_products.specification',$value);
+			}elseif($key=='quantity'){
+				$list_product = $list_product->orderBy('ton_dau_thangs.quantity',$value);
+			}else{
+				$list_product = $list_product->orderBy($key,$value);
+			}
 		}
 		$list_month = ReceiptMonth::select('month','year')
 									->distinct()->where('month','>',0)
@@ -1442,15 +1484,30 @@ class ProductsController extends Controller {
 									->get()->toArray();
 		$list_product = $list_product->orderBy('products.id','asc');
 		\Cache::put('list_product'.\Auth::user()->id, $list_product->get()->toArray(), 30);
+		$sum_invest =  0;
+		//echo "<table>";
+		foreach ($list_product->get()->toArray() as $key => $value) {
+			//echo '<tr>';
+			$sum_invest += $value['origin_price'] * $value['quantity'];
+			//echo "<td>".$value['id']."</td>";
+			//echo "<td>".$value['origin_price'] * $value['quantity']."</td>";
+		}
+		//echo "</table>";
+
+		//echo $sum_invest;die;
 		$list_product = $list_product->paginate(100);
 
 
 		$this->layout->content=view('product.list-ton-dau-thang', [
-								'list_product'		=> $list_product,
-								'list_all_product'		=>$list_all_product,
-								'arr_sort' 		=> $arr_sort,
-								'arr_filter' 		=> $arr_filter,
-								'list_month'	=> $list_month
+								'distributes'			=> $distributes,
+								'oums'					=> $oums,
+								'producttypes'			=> $producttypes,
+								'list_product'			=> $list_product,
+								'list_all_product'		=> $list_all_product,
+								'arr_sort' 				=> $arr_sort,
+								'arr_filter' 			=> $arr_filter,
+								'sum_invest'			=> $sum_invest,
+								'list_month'			=> $list_month
 							        ]);
 	}
 }

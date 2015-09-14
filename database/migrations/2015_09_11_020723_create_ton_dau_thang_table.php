@@ -14,7 +14,7 @@ class CreateTonDauThangTable extends Migration {
 	{
 		Schema::create('ton_dau_thangs', function(Blueprint $table)
 		{
-			$table->integer('product_id')->unsigned();
+			$table->integer('m_product_id')->unsigned();
 			$table->integer('month')->unsigned();
 			$table->integer('year')->unsigned();
 			$table->integer('quantity')->unsigned();
