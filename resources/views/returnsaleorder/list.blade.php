@@ -22,7 +22,7 @@
 		<tr class="small">
 			<th style="width: 10%" data-column="id" {{ isset($arr_sort['id'])?'data-sort='.$arr_sort['id']:'' }}>Mã hóa đơn</th>
 			<th style="width: 39%" data-column="company_id" {{ isset($arr_sort['company_id'])?'data-sort='.$arr_sort['company_id']:'' }}>Nhà cung cấp</th>
-			<th style="width: 13%" data-column="date" {{ isset($arr_sort['date'])?'data-sort='.$arr_sort['date']:'' }}>Ngày đặt hàng</th>
+			<th style="width: 13%" data-column="date" {{ isset($arr_sort['date'])?'data-sort='.$arr_sort['date']:'' }}>Ngày trả hàng</th>
 			<th style="width: 20%" data-column="sum_amount" {{ isset($arr_sort['sum_amount'])?'data-sort='.$arr_sort['sum_amount']:'' }}>Tổng tiền trả hàng</th>
 			<th style="width: 13%" data-column="status" {{ isset($arr_sort['status'])?'data-sort='.$arr_sort['status']:'' }}>Tình trạng</th>
 			<th style="width: 5%" class="no-sort">&nbsp;</th>

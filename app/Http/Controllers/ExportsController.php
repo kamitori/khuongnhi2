@@ -112,7 +112,9 @@ class ExportsController extends Controller {
 
 	public static function getCreatePrintPdf($arr_print,$id_template,$name,$oriental='potrait'){
 		$pdf = PdfTemplate::find($id_template)->toArray();
+		pr($pdf);
 		$oriental = $pdf['oriental'];
+		
 		$arr_body = $arr_print['arr_list']['arr_body'];
 		$arr_sum = $arr_print['arr_list']['arr_sum'];
 		$arr_head = $arr_print['arr_list']['arr_head'];
@@ -168,10 +170,13 @@ class ExportsController extends Controller {
 		$time = time();
 		$file_name = md5($time).'.html';
 		file_put_contents(public_path().'\\cache\\'.$file_name, $content);
-		if($oriental=='landscape')
+		if($oriental=='landscape'){
 			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 1100px*740px 0.96';
-		else
+			echo $cmd;die;
+		}
+		else{
 			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 740px*1100px 0.96';
+		}
 		if(exec($cmd)){
 			return   URL.'/upload/'.$name.'_'.$time.'.pdf';
 		}

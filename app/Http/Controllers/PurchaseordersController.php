@@ -31,6 +31,7 @@ class PurchaseordersController extends Controller {
 	*/
 	
 	public function getIndex(Request $request){
+		pr(Session::get('product_of_po'.session('current_purchaseorder')));
 		self::anyEntry($request);
 	}
 

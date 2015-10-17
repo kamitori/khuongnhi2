@@ -880,6 +880,66 @@ class ReturnSaleordersController extends Controller {
 		die;
 	}
 
+	public function anyExportExcel(){
+		if (\Cache::has('list_returnsaleorder'.\Auth::user()->id)){
+			
+			
+			\Excel::create('Danh_san_pham', function($excel){
+				$excel->sheet('Danh_san_pham', function($sheet){
+					$cache = \Cache::get('list_returnsaleorder'.\Auth::user()->id);
+					$sheet->row(1, array(
+						 'STT',
+					     'Mã HĐ',
+					     'Nhà Cung Cấp',
+					     'Ngày Trả Hàng',
+					     'Tổng Tiền Trả Hàng',
+					));
+					$sheet->setColumnFormat(array(
+					    'I' => '#,##0',
+					    'J'	=> '#,##0'
+					));
+					$sheet->cell('A1:J1', function($cell){
+						$cell->setFontWeight('bold');
+					});
+					$index=0;
+					foreach ($cache as $key => $value) {
+						$index++;
+						$arr_tmp = array();
+						$arr_tmp[] = $index;
+						$arr_tmp[] = isset($value['product_id'])?$value['product_id']:$value['id'];
+						$arr_tmp[] = $value['sku'];
+						$arr_tmp[] = $value['name'];
+						$arr_tmp[] = $value['company_name'];
+						$arr_tmp[] = $value['oum_name'];
+						$arr_tmp[] = $value['specification'];
+						if(isset($value['quantity'])){
+							$value['in_stock'] = $value['quantity'];
+						}
+						if($value['in_stock'] % $value['specification'] ==0){
+							$arr_tmp[] = ($value['in_stock'] / $value['specification']).' '.$value['oum_name'];
+						}else{
+							$arr_tmp[] = ($value['in_stock'] / $value['specification']).' '.$value['oum_name'].' + '.($value['in_stock'] % $value['specification']).' cái';
+						}
+						
+						$arr_tmp[] = $value['origin_price'];
+						$arr_tmp[] = $value['origin_price']*$value['in_stock'];
+						$sheet->appendRow($arr_tmp);
+					}
+					$sheet->mergeCells('A'.($index+1).':'.'I'.($index+1));
+					$sheet->setCellValue('A'.($index+1),'Tổng vốn lưu:');
+					$sheet->cell('A'.($index+1), function($cell){
+						$cell->setAlignment('right');
+						$cell->setFontWeight('bold');
+					});
+					$sheet->setCellValue('J'.($index+1),'=sum(J2:J'.($index).')');
+
+					$sheet->setBorder('A1:J'.($index+1), 'thin');
+				});
+			})->export('xls');
+			die;
+		}
+	}
+
 	public function anyLog(){
 		$list_log = Log::select('logs.*','users.name')
 				->where('module_type','=','App\ReturnSaleorder')
