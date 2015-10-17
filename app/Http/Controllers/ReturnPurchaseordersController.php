@@ -494,12 +494,12 @@ class ReturnPurchaseordersController extends Controller {
 		$arr_product = session('product_of_rpo'.session('current_returnpurchaseorder'));
 		$arr_product_of_rpo = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->lists('product_id');
+						->lists('m_product_id');
 
 		$log = "";
-		foreach ($arr_product as $key => $product_id) {
-			if(!in_array($product_id, $arr_product_of_rpo)){
-				$product = MProduct::find($product_id);
+		foreach ($arr_product as $key => $m_product_id) {
+			if(!in_array($m_product_id, $arr_product_of_rpo)){
+				$product = MProduct::find($m_product_id);
 				$mproduct = new MProduct;
 				$mproduct->product_id	=	$product->product_id;
 				$mproduct->m_product_id	=	$product->id;
@@ -520,17 +520,17 @@ class ReturnPurchaseordersController extends Controller {
 		}
 
 		$log_delete = "";
-		foreach ($arr_product_of_rpo as $key => $product_id) {
-			if(!in_array($product_id, $arr_product)){
+		foreach ($arr_product_of_rpo as $key => $m_product_id) {
+			if(!in_array($m_product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->where('product_id','=',$product_id)->first()->toArray();
+						->where('m_product_id','=',$m_product_id)->first()->toArray();
 
-				$id_product = $mproduct['product_id'];
+				$m_product_id_delete = $mproduct['m_product_id'];
 				$quantity = $mproduct['quantity'];
 				$check = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->where('product_id','=',$product_id)->delete();
+						->where('m_product_id','=',$m_product_id_delete)->delete();
 				$product = Product::find($mproduct['product_id']);
 				if($log==""){
 					$log .= "xóa sản phẩm ".$product->sku;

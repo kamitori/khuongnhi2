@@ -643,6 +643,7 @@ class ProductsController extends Controller {
 			}
 		}
 		$product = Product::find($id_product)->toArray();
+
 		if(($type=='all' || $type=='in_stock') && $month_year == 'all'){
 			if($product['check_in_stock']){
 				$list_instock = MProduct::select('m_products.*','product_stocks.in_stock')
@@ -650,23 +651,25 @@ class ProductsController extends Controller {
 							->where('m_products.product_id','=',session('current_product'))
 							->where('module_type','=','in_stock')
 							->leftJoin('product_stocks','product_stocks.m_product_id','=','m_products.id');
-				if($company_id != 'all')
+				if($company_id != 'all'){
 					$list_instock = $list_instock->where('m_products.company_id','=',$company_id);
+				}
 				$list_instock = $list_instock->get()->toArray();
+				foreach ($list_instock as $key => $value) {
+					$arr_tmp = array();
+					$arr_tmp['company_name'] = $value['company']['name'];
+					$arr_tmp['oum_name'] = $value['oum']['name'];
+					$arr_tmp['specification'] = $value['specification'];
+					$arr_tmp['quantity'] = $value['quantity'];
+					$arr_tmp['id'] = $value['id'];
+					$arr_tmp['product_id'] = $value['product_id'];
+					$arr_tmp['date'] = date("Y-m-d H:i:s");
+					$arr_tmp['in_stock'] = $value['in_stock'];
+					$arr_tmp['type'] = 'in_stock';
+					$list_order[] = $arr_tmp;
+				}
 			}
-			foreach ($list_instock as $key => $value) {
-				$arr_tmp = array();
-				$arr_tmp['company_name'] = $value['company']['name'];
-				$arr_tmp['oum_name'] = $value['oum']['name'];
-				$arr_tmp['specification'] = $value['specification'];
-				$arr_tmp['quantity'] = $value['quantity'];
-				$arr_tmp['id'] = $value['id'];
-				$arr_tmp['product_id'] = $value['product_id'];
-				$arr_tmp['date'] = date("Y-m-d H:i:s");
-				$arr_tmp['in_stock'] = $value['in_stock'];
-				$arr_tmp['type'] = 'in_stock';
-				$list_order[] = $arr_tmp;
-			}
+			
 		}
 		$arr_date = array();
 		foreach ($list_order as $key => $value) {
