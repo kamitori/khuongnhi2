@@ -1198,6 +1198,8 @@ class ProductsController extends Controller {
 					->whereNotIn('m_products.id',$arr_product_of_so)
 					->leftJoin('companies','companies.id','=','m_products.company_id')
 					->leftJoin('product_stocks','m_products.id','=','product_stocks.m_product_id')
+					->orderBy('products.name')
+					->orderBy('purchaseorders.date')
 					->limit(15)
 					->get()->toArray();
 
