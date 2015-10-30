@@ -455,6 +455,9 @@
 							if(data.length){
 								var html='';
 								for(i=0;i<data.length;i++){
+									if(data[i]['oum_name']==null){
+										data[i]['oum_name'] = '';
+									}
 									var tonkho = Math.floor((data[i]['in_stock']/data[i]['specification']))+' '+data[i]['oum_name']+'('+data[i]['specification']+')';
 									if(data[i]['in_stock']%data[i]['specification'] && data[i]['specification'] > 1){
 										tonkho +='+'+data[i]['in_stock']%data[i]['specification']+' cái';

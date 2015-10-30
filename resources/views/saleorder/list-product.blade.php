@@ -23,9 +23,13 @@
 			@foreach($oums as $oum)
 			<option value="{{$oum['id']}}"  
 					<?php 
-						if ($product['oum_id']==$oum['id']) echo 'selected';
-						elseif($oum['name']=='Cái') echo 'selected'; 
+					if($product['oum_id']){
+						if ($product['oum_id']==$oum['id'])  echo ' selected';
 						else echo ''; 
+					}else{
+						if($oum['name']=='Cái') echo 'selected';
+					}
+						
 					?> 
 			>
 				{{$oum['name']}}
