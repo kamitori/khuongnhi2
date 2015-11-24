@@ -435,7 +435,7 @@ class PurchaseordersController extends Controller {
 			}
 		}
 		if($arr_filter['id']!=''){
-			$list_purchaseorder->where('id',$arr_filter['id']);
+			$list_purchaseorder->where('purchaseorders.id',$arr_filter['id']);
 		}else{
 			foreach ($arr_filter as $key => $value) {
 				if($value!=''){
