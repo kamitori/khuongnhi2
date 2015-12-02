@@ -546,6 +546,7 @@ class ReturnPurchaseordersController extends Controller {
 		$returnpurchaseorder = ReturnPurchaseorder::find(session('current_returnpurchaseorder'));
 		$returnpurchaseorder->updated_by = \Auth::user()->id;
 		$returnpurchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -592,7 +593,11 @@ class ReturnPurchaseordersController extends Controller {
 			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
 				$old = Oum::find($mproduct->oum_id);
 				$new = Oum::find($request->input('oum_id'));
-				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				if($old){
+					$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}else{
+					$log .= 'đơn vị từ " " thành "'.$new->name.'" ';
+				}
 			}
 			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
 				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
@@ -646,6 +651,7 @@ class ReturnPurchaseordersController extends Controller {
 		\Cache::put('list_product_rpo'.\Auth::user()->id, $list_product, 30); 
 		$returnpurchaseorder->updated_by = \Auth::user()->id;
 		$returnpurchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -669,6 +675,10 @@ class ReturnPurchaseordersController extends Controller {
 				$arr_return['message'] = 'Saving fail !';
 			}
 		}
+		$returnpurchaseorder = ReturnPurchaseorder::find(session('current_returnpurchaseorder'));
+		$returnpurchaseorder->updated_by = \Auth::user()->id;
+		$returnpurchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 

@@ -546,6 +546,7 @@ class ReturnSaleordersController extends Controller {
 		$returnsaleorder = ReturnSaleorder::find(session('current_returnsaleorder'));
 		$returnsaleorder->updated_by = \Auth::user()->id;
 		$returnsaleorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -595,14 +596,21 @@ class ReturnSaleordersController extends Controller {
 							->where('company_id','=',$mproduct->company_id)
 							->get();
 			$mproduct_so->con_lai = $mproduct_so->quantity * $mproduct_so->specification;
-			$so_luong_con = $mproduct_so->con_lai;
+
+			
+			
 			foreach ($mproduct_rso_before as $key => $value) {
 				$mproduct_so->con_lai -=  $value->quantity * $value->specification;
 			}
+			$so_luong_con = $mproduct_so->con_lai;
 			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
 				$old = Oum::find($mproduct->oum_id);
 				$new = Oum::find($request->input('oum_id'));
-				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				if($old){
+					$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}else{
+					$log .= 'đơn vị từ " " thành "'.$new->name.'" ';
+				}
 			}
 			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
 				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
@@ -620,13 +628,7 @@ class ReturnSaleordersController extends Controller {
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
 			$check_return = ($mproduct_so->con_lai - $mproduct->quantity*$mproduct->specification) >=0;
-			// echo ($mproduct_so->con_lai);
-			// echo ($mproduct->quantity*$mproduct->specification);
-			// echo ($mproduct_so->con_lai - $mproduct->quantity*$mproduct->specification);
-			// die;
-			// echo $mproduct_so->quantity*$mproduct_so->specification."<br/><br/>";
-			// echo ($mproduct_so->quantity*$mproduct_so->specification - $mproduct->quantity*$mproduct->specification);
-			// die;
+
 			$mproduct->origin_price = $mproduct_so->origin_price;
 			$mproduct->amount = $mproduct->specification* $mproduct->quantity* $mproduct->sell_price;
 			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
@@ -641,7 +643,7 @@ class ReturnSaleordersController extends Controller {
 						$arr_return['message'] = 'Saving fail !';
 					}
 				}else{
-					$arr_return['message'] = 'Số lượng sản phẩm trả về lớn hơn số lượng đã bán <br/> Số lượng đã bán là '.$so_luong_con.' cái';
+					$arr_return['message'] = 'Số lượng sản phẩm trả về lớn hơn số lượng còn lại trong kho <br/> Số lượng còn lại trong kho là '.$so_luong_con.' cái';
 				}
 			// }else{
 			// 	$arr_return['message'] = 'Số lượng trả hàng lớn hơn số lượng đã bán';
@@ -665,6 +667,7 @@ class ReturnSaleordersController extends Controller {
 		
 		$returnsaleorder->updated_by = \Auth::user()->id;
 		$returnsaleorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -691,6 +694,7 @@ class ReturnSaleordersController extends Controller {
 		$returnsaleorder = ReturnSaleorder::find(session('current_returnsaleorder'));
 		$returnsaleorder->updated_by = \Auth::user()->id;
 		$returnsaleorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 

@@ -544,6 +544,7 @@ class PurchaseordersController extends Controller {
 			$log .= "Thêm sản phẩm ".$product->sku;
 		}
 		Log::create_log(\Auth::user()->id,'App\Purchaseorder',$log.' vào đơn hàng mua số '.session('current_purchaseorder'));
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -637,6 +638,7 @@ class PurchaseordersController extends Controller {
 		$purchaseorder = Purchaseorder::find(session('current_purchaseorder'));
 		$purchaseorder->updated_by = \Auth::user()->id;
 		$purchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -733,6 +735,7 @@ class PurchaseordersController extends Controller {
 		\Cache::put('list_product_po'.\Auth::user()->id, $list_product, 30);
 		$purchaseorder->updated_by = \Auth::user()->id;
 		$purchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -757,6 +760,7 @@ class PurchaseordersController extends Controller {
 		$purchaseorder = Purchaseorder::find(session('current_purchaseorder'));
 		$purchaseorder->updated_by = \Auth::user()->id;
 		$purchaseorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 

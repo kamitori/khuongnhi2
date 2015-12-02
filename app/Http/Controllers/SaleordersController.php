@@ -510,6 +510,7 @@ class SaleordersController extends Controller {
 			$log .= "Thêm sản phẩm ".$product->sku;
 		}
 		Log::create_log(\Auth::user()->id,'App\Saleorder',$log.' vào đơn hàng số '.session('current_saleorder'));
+		self::getListProduct();
 		return $arr_return;
 	}
 
@@ -578,9 +579,10 @@ class SaleordersController extends Controller {
 		$saleorder = Saleorder::find(session('current_saleorder'));
 		$saleorder->updated_by = \Auth::user()->id;
 		$saleorder->save();
-
+		self::getListProduct();
 		return $arr_return;
 	}
+
 
 	public function getListProduct(){
 		$id = session('current_saleorder');
@@ -620,7 +622,11 @@ class SaleordersController extends Controller {
 			if($request->has('oum_id')  && $mproduct->oum_id != $request->input('oum_id')){
 				$old = Oum::find($mproduct->oum_id);
 				$new = Oum::find($request->input('oum_id'));
-				$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				if($old){
+					$log .= 'đơn vị từ "'.$old->name.'" thành "'.$new->name.'" ';
+				}else{
+					$log .= 'đơn vị từ " " thành "'.$new->name.'" ';
+				}
 			}
 			if($request->has('sell_price')  && $mproduct->sell_price != $request->input('sell_price')){
 				$log .= 'giá bán từ "'.$mproduct->sell_price.'" thành "'.$request->input('sell_price').'" ';
@@ -672,7 +678,7 @@ class SaleordersController extends Controller {
 						->with('getsellprices')
 						->get()->toArray();
 		\Cache::put('list_product_so'.\Auth::user()->id, $list_product, 30);
-		
+		self::getListProduct();
 		$saleorder->updated_by = \Auth::user()->id;
 		$saleorder->save();
 		return $arr_return;
@@ -700,6 +706,7 @@ class SaleordersController extends Controller {
 		$saleorder = Saleorder::find(session('current_saleorder'));
 		$saleorder->updated_by = \Auth::user()->id;
 		$saleorder->save();
+		self::getListProduct();
 		return $arr_return;
 	}
 
