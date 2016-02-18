@@ -159,7 +159,7 @@ class ReturnSaleordersController extends Controller {
 
 		$arr_product = MProduct::where('module_type','=','App\ReturnSaleorder')
 						->where('module_id','=',$returnsaleorder['id'])
-						->lists('product_id');
+						->lists('m_product_id_so');
 
 		Session::forget('product_of_rso'.session('current_returnsaleorder'));
 		foreach ($arr_product as $key => $value) {
@@ -485,115 +485,54 @@ class ReturnSaleordersController extends Controller {
 	}
 
 	public function anyAddProduct(Request $request){
-		// $arr_return = array(
-		// 	"status"=>'success'
-		// );
-		// $company_id = $request->has('company_id')?$request->input('company_id'):0;
-		// $module_id = session('current_returnsaleorder');
-		// $module_type = 'App\ReturnSaleorder';
-		// $arr_product = session('product_of_rso'.session('current_returnsaleorder'));
-		// $arr_product_of_rso = Mproduct::where('module_id','=',$module_id)
-		// 				->where('module_type','=',$module_type)
-		// 				->lists('product_id');
-		// $log = "";
-		// foreach ($arr_product as $key => $product_id) {
-		// 	if(!in_array($product_id, $arr_product_of_rso)){
-		// 		$product = MProduct::find($product_id);
-		// 		$mproduct = new MProduct;
-		// 		$mproduct->product_id		=	$product->product_id;
-		// 		$mproduct->m_product_id	=	$product->m_product_id;
-		// 		$mproduct->m_product_id_so	=	$product->id;
-		// 		$mproduct->module_id		= 	$module_id;
-		// 		$mproduct->company_id	= 	$product->company_id;
-		// 		$mproduct->module_type	=	$module_type;
-		// 		$mproduct->specification	=	$product->specification;
-		// 		$mproduct->oum_id		=	$product->oum_id;
-		// 		$mproduct->sell_price		=	$product->sell_price;
-		// 		$mproduct->save();
-		// 		$product = Product::find($mproduct->product_id);
-		// 		if($log==""){
-		// 			$log .= "Thêm sản phẩm ".$product->sku;
-		// 		}else{
-		// 			$log .= ", ".$product->sku;
-		// 		}	
-		// 	}
-		// }
-
-		// $log_delete = "";
-		// foreach ($arr_product_of_rso as $key => $product_id) {
-		// 	if(!in_array($product_id, $arr_product)){
-		// 		$mproduct = MProduct::where('module_id','=',$module_id)
-		// 				->where('module_type','=',$module_type)
-		// 				->where('product_id','=',$product_id)->first()->toArray();
-
-		// 		$id_product = $mproduct['product_id'];
-		// 		$quantity = $mproduct['quantity'];
-		// 		$check = MProduct::where('module_id','=',$module_id)
-		// 				->where('module_type','=',$module_type)
-		// 				->where('product_id','=',$product_id)->delete();
-		// 		$product = Product::find($mproduct['product_id']);
-		// 		if($log==""){
-		// 			$log .= "xóa sản phẩm ".$product->sku;
-		// 		}else{
-		// 			$log .= ", ".$product->sku;
-		// 		}
-		// 	}
-		// }
-		// if($log_delete !="")
-		// 	Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
-		// else
-		// 	Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' vào đơn hàng đại lý trả số '.session('current_returnsaleorder'));
-		// $returnsaleorder = ReturnSaleorder::find(session('current_returnsaleorder'));
-		// $returnsaleorder->updated_by = \Auth::user()->id;
-		// $returnsaleorder->save();
-		// self::getListProduct();
-		// return $arr_return;
 		$arr_return = array(
 			"status"=>'success'
 		);
 		$company_id = $request->has('company_id')?$request->input('company_id'):0;
 		$module_id = session('current_returnsaleorder');
-		$module_type = 'App\Returnsaleorder';
-		$arr_product = session('product_of_rs'.session('current_returnsaleorder'));
-		$arr_product_of_rs = Mproduct::where('module_id','=',$module_id)
+		$module_type = 'App\ReturnSaleorder';
+		$arr_product = session('product_of_rso'.session('current_returnsaleorder'));
+		$arr_product_of_rso = Mproduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->lists('m_product_id');
+						->lists('m_product_id_so');
 
 		$log = "";
-		foreach ($arr_product as $key => $m_product_id) {
-			if(!in_array($m_product_id, $arr_product_of_rs)){
-				$product = MProduct::find($m_product_id);
+		foreach ($arr_product as $key => $product_id) {
+			if(!in_array($product_id, $arr_product_of_rso)){
+				$product = MProduct::find($product_id);
 				$mproduct = new MProduct;
-				$mproduct->product_id	=	$product->product_id;
-				$mproduct->m_product_id	=	$product->id;
-				$mproduct->module_id	= 	$module_id;
+				$mproduct->product_id		=	$product->product_id;
+				$mproduct->m_product_id	=	$product->m_product_id;
+				$mproduct->m_product_id_so	=	$product->id;
+				$mproduct->module_id		= 	$module_id;
 				$mproduct->company_id	= 	$product->company_id;
 				$mproduct->module_type	=	$module_type;
 				$mproduct->specification	=	$product->specification;
 				$mproduct->oum_id		=	$product->oum_id;
-				$mproduct->origin_price	=	$product->origin_price;
+				$mproduct->sell_price		=	$product->sell_price;
 				$mproduct->save();
 				$product = Product::find($mproduct->product_id);
 				if($log==""){
 					$log .= "Thêm sản phẩm ".$product->sku;
 				}else{
 					$log .= ", ".$product->sku;
-				}
+				}	
 			}
 		}
 
 		$log_delete = "";
-		foreach ($arr_product_of_rs as $key => $m_product_id) {
-			if(!in_array($m_product_id, $arr_product)){
+
+		foreach ($arr_product_of_rso as $key => $product_id) {
+			if(!in_array($product_id, $arr_product)){
 				$mproduct = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->where('m_product_id','=',$m_product_id)->first()->toArray();
+						->where('product_id','=',$product_id)->first()->toArray();
 
-				$m_product_id_delete = $mproduct['m_product_id'];
+				$id_product = $mproduct['product_id'];
 				$quantity = $mproduct['quantity'];
 				$check = MProduct::where('module_id','=',$module_id)
 						->where('module_type','=',$module_type)
-						->where('m_product_id','=',$m_product_id_delete)->delete();
+						->where('product_id','=',$product_id)->delete();
 				$product = Product::find($mproduct['product_id']);
 				if($log==""){
 					$log .= "xóa sản phẩm ".$product->sku;
@@ -603,14 +542,15 @@ class ReturnSaleordersController extends Controller {
 			}
 		}
 		if($log_delete !="")
-			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' và .'.$log_delete.' đơn hàng trả đại lý số '.session('current_returnsaleorder'));
+			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' và .'.$log_delete.' đơn hàng đại lý trả số '.session('current_returnsaleorder'));
 		else
-			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' vào đơn hàng trả đại lý số '.session('current_returnsaleorder'));
-		$returnsaleorder = Returnsaleorder::find(session('current_returnsaleorder'));
+			Log::create_log(\Auth::user()->id,'App\ReturnSaleorder',$log.' vào đơn hàng đại lý trả số '.session('current_returnsaleorder'));
+		$returnsaleorder = ReturnSaleorder::find(session('current_returnsaleorder'));
 		$returnsaleorder->updated_by = \Auth::user()->id;
 		$returnsaleorder->save();
 		self::getListProduct();
 		return $arr_return;
+		
 	}
 
 	public function getListProduct(){
@@ -650,17 +590,13 @@ class ReturnSaleordersController extends Controller {
 		if($id){
 			$mproduct = MProduct::find($id);
 			$mproduct_po = Mproduct::find($mproduct->m_product_id);
-			$mproduct_so = Mproduct::where('m_product_id','=',$mproduct_po->id)
-							->where('module_type','=','App\\Saleorder')
-							->where('company_id','=',$mproduct->company_id)
-							->get()->first();
+			$mproduct_so = Mproduct::find($mproduct->m_product_id_so);
+
 			$mproduct_rso_before = Mproduct::where('m_product_id_so','=',$mproduct_so->id)
 							->where('module_type','=','App\\ReturnSaleorder')
 							->where('company_id','=',$mproduct->company_id)
 							->get();
 			$mproduct_so->con_lai = $mproduct_so->quantity * $mproduct_so->specification;
-
-			
 			
 			foreach ($mproduct_rso_before as $key => $value) {
 				$mproduct_so->con_lai -=  $value->quantity * $value->specification;

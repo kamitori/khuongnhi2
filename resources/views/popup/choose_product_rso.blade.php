@@ -65,8 +65,9 @@
 		</thead>
 		<tbody style="position: relative !important;">
 			@foreach ($list_product as $key => $product)
+
 			<tr class="selectable" data-id="{{$product['id']}}" >
-				<td  style="width: 3%" class="center"><input type="checkbox" value="" class="chk_product" data-id="{{$product['id']}}" {{ isset( $session_product[$product['id']] )?'checked':''}}></td>
+				<td  style="width: 3%" class="center"><input type="checkbox" value="" class="chk_product" data-id="{{$product['id']}}" {{ isset( $session_product[$product['id']] )?'checked':''}}> </td>
 				<td>{{($product['id'])}}</td>
 				<td>{{$product['sku']}}</td>
 				<td>{{$product['name']}}</td>
