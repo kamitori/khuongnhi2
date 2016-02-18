@@ -67,9 +67,14 @@ class RevenuesController extends Controller {
 	}
 
 	public function getCustomer(){
+		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$customers = Company::getCustomerList()->get()->toArray();
 		$this->layout->content = view('revenue.revenue-customer',[
 							'customers'	=>	$customers,
+							'min_year'	=> 	$min_year
 						]);
 	}
 
@@ -143,9 +148,14 @@ class RevenuesController extends Controller {
 	}
 
 	public function getUser(){
+		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$users = User::get()->toArray();
 		$this->layout->content = view('revenue.revenue-user',[
 							'users'	=>	$users,
+							'min_year'	=> $min_year
 						]);
 	}
 
@@ -218,7 +228,9 @@ class RevenuesController extends Controller {
 
 	public function getProduct(){
 		$min_year = ReceiptMonth::min('year');
-
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
 						->where('type_receipt','=','customer')
@@ -323,7 +335,9 @@ class RevenuesController extends Controller {
 
 	public function getCustomerMonth(){
 		$min_year = ReceiptMonth::min('year');
-
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
 						->where('type_receipt','=','customer')
@@ -428,6 +442,9 @@ class RevenuesController extends Controller {
 
 	public function getCustomerYear(){
 		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$this->layout->content = view('revenue.revenue-customer-year',[	
 							'min_year'		=>	$min_year
 						]);
@@ -598,9 +615,14 @@ class RevenuesController extends Controller {
 	}
 
 	public function getDistribute(){
+		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$distributes = Company::getDistributeList()->get()->toArray();
 		$this->layout->content = view('revenue.revenue-distribute',[
 							'distributes'	=>	$distributes,
+							'min_year'		=>	$min_year
 						]);
 	}
 
@@ -702,7 +724,9 @@ class RevenuesController extends Controller {
 
 	public function getDistributeMonth(){
 		$min_year = ReceiptMonth::min('year');
-
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
 						->where('type_receipt','=','customer')
@@ -814,8 +838,9 @@ class RevenuesController extends Controller {
 
 	public function getDistributeYear(){
 		$min_year = ReceiptMonth::min('year');
-
-
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$this->layout->content = view('revenue.revenue-distribute-year',[	
 							'min_year'		=>	$min_year
 						]);

@@ -134,12 +134,25 @@ class ReturnSaleordersController extends Controller {
 		$address = Address::where('module_id','=',$returnsaleorder->id)
 					->where('module_type','=','App\ReturnSaleorder')->first();
 					
+		$address_province = isset($address->province_id)?$address->province_id:0;
 		$country_province = Province::addSelect('provinces.name as province_name')
-						->where('provinces.id','=',$address->province_id)
+						->where('provinces.id','=',$address_province)
 						->addSelect('countries.name as country_name')
 						->leftJoin('countries','countries.id','=','provinces.country_id')
 						->first();
-		$address = $address->toArray();
+		if($country_province){
+			$country_province->toArray();
+			$purchaseorder['province_name'] = $country_province['province_name'];
+			$purchaseorder['country_name'] = $country_province['country_name'];
+		}else{
+			$purchaseorder['province_name'] = '';
+			$purchaseorder['country_name'] = '';
+		}
+		if($address){
+			$address = $address->toArray();
+		}else{
+			$address = array();
+		}
 		$returnsaleorder = $returnsaleorder->toArray();
 		$returnsaleorder['province_name'] = isset($country_province->province_name)?$country_province->province_name:'';
 		$returnsaleorder['country_name'] = isset($country_province->country_name)?$country_province->country_name:'';

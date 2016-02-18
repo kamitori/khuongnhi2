@@ -23,13 +23,16 @@ class ReceiptsController extends Controller {
 	{
 		$distributes = array();
 		$user = array();
-
-
 		$distributes = Company::getDistributeList()->get()->toArray();
 		$users = User::get()->toArray();
+		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$this->layout->content = view('receipt.distribute',[
 							'distributes'	=>	$distributes,
-							'users'		=>	$users
+							'users'			=>	$users,
+							'min_year' 	=>	$min_year
 								]);
 	}
 
@@ -173,12 +176,16 @@ class ReceiptsController extends Controller {
 		$customers = array();
 		$user = array();
 
-
+		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$customers = Company::getCustomerList()->get()->toArray();
 		$users = User::get()->toArray();
 		$this->layout->content = view('receipt.customer',[
 							'customers'	=>	$customers,
-							'users'		=>	$users
+							'users'		=>	$users,
+							'min_year'	=> $min_year
 								]);
 	}
 
@@ -317,6 +324,9 @@ class ReceiptsController extends Controller {
 	public function getDistributeMonth()
 	{
 		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
@@ -371,6 +381,9 @@ class ReceiptsController extends Controller {
 	public function getCustomerMonth()
 	{
 		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
@@ -425,6 +438,9 @@ class ReceiptsController extends Controller {
 	public function getDistributeYear()
 	{
 		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$this->layout->content = view('receipt.distribute-year',[
 							'min_year'		=>	$min_year
 								]);
@@ -467,6 +483,9 @@ class ReceiptsController extends Controller {
 	public function getCustomerYear()
 	{
 		$min_year = ReceiptMonth::min('year');
+		if($min_year==0){
+			$min_year = intval(date('Y'));
+		}
 		$this->layout->content = view('receipt.customer-year',[
 							'min_year'		=>	$min_year
 								]);
