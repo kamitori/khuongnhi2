@@ -156,9 +156,12 @@ class PurchaseordersController extends Controller {
 			$purchaseorder['province_name'] = '';
 			$purchaseorder['country_name'] = '';
 		}
-		// var_dump(DB::getQueryLog());
-		// pr($purchaseorder);die;
-		$address = $address->toArray();
+		if($address){
+			$address = $address->toArray();
+		}else{
+			$address = array();
+		}
+		
 		$purchaseorder = $purchaseorder->toArray();
 		//Init array
 		$distributes = array();

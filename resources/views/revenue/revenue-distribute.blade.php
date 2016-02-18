@@ -33,9 +33,13 @@
 								</select>
 							</div>
 							<div class="date right" style="width:48%;">
+								<?php 
+									$current_year = intval(date('Y'));
+								?>
 								<select id="year" class="span12">
-									<option value="2015">Năm 2015</option>
-									<option value="2016">Năm 2016</option>		
+									@for($i=$min_year;$i <= $current_year;$i++)
+									<option value="{{$i}}">Năm {{$i}}</option>
+									@endfor	
 								</select>
 							</div>
 							<div class="company">

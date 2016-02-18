@@ -1,10 +1,9 @@
 <div class="heading-buttons main-left">
 	<div class="buttons pull-left">
 		<a href="{{URL}}/revenues/customer" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu KH</a>
+		<a href="{{URL}}/revenues/distribute" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu NCC</a>
 		<a href="{{URL}}/revenues/product" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu sản phẩm</a>
 		<a href="{{URL}}/revenues/user" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu nhân viên</a>
-		<a href="{{URL}}/revenues/month" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu tháng</a>
-		<a href="{{URL}}/revenues/year" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Doanh thu năm</a>
 		<a href="{{URL}}/revenues/other" class="btn btn-small btn-primary btn-icon "><i class="fa fa-plus"></i> Chi khác</a>
 	</div>
 </div>

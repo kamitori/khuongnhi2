@@ -5,9 +5,7 @@
 @foreach($list_order as $po)
 	<tr>
 		<td  class="center" >
-			@if($po['type']!=='in_stock')
-				{{ date('d-m-Y',strtotime($po['date'])) }}
-			@endif
+			{{ date('d-m-Y',strtotime($po['date'])) }}
 		</td>
 		<td class="center" >{{ $po['id'] }}</td>
 		<td>

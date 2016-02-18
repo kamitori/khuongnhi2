@@ -663,7 +663,7 @@ class ProductsController extends Controller {
 					$arr_tmp['quantity'] = $value['quantity'];
 					$arr_tmp['id'] = $value['id'];
 					$arr_tmp['product_id'] = $value['product_id'];
-					$arr_tmp['date'] = date("Y-m-d H:i:s");
+					$arr_tmp['date'] = $value['created_at'];
 					$arr_tmp['in_stock'] = $value['in_stock'];
 					$arr_tmp['type'] = 'in_stock';
 					$list_order[] = $arr_tmp;
@@ -1579,5 +1579,103 @@ class ProductsController extends Controller {
 			})->export('xls');
 			die;
 		}
+	}
+
+	public function anyImportProduct(){
+		/*
+		\Excel::load('kho-2015.xls', function($reader) {
+		    $results = $reader->get();
+		    $company = Company::getDistributeList()->get()->toArray();
+		    $arr_company = array();
+		    foreach ($company as $key => $value) {
+		    	$arr_company[$value['name']] = $value['id'];
+		    }
+		    // pr($arr_company);die;
+		    $arr_oum = array();
+		    $oums = Oum::orderBy('name')->get()->toArray();
+		    foreach ($oums as $key => $value) {
+		    	$arr_oum[$value['name']] = $value['id'];
+		    }
+		 	foreach ($results as $row) {
+
+		 	 	$product = new Product;
+				$product->name = $row['ten_san_pham'];
+				$product->sku = $row['sku'];
+				// $name_product = $row['ten_san_pham'];
+				// $check1 = is_numeric(mb_strpos($name_product, "Áo"));
+				// $check2 = is_numeric(mb_strpos($name_product, 'Váy'));
+				// $check3 = is_numeric(mb_strpos($name_product, 'Quần'));
+				// $check3 = is_numeric(mb_strpos($name_product, 'Đầm'));
+				// $check4 = is_numeric(mb_strpos($name_product, 'Bộ')) && is_numeric(mb_strpos($name_product, 'ton'));
+				// $check5 = is_numeric(mb_strpos($name_product, 'Bộ')) && is_numeric(mb_strpos($name_product, 'bo'));
+				// $check6 = is_numeric(mb_strpos($name_product, 'Bộ')) && is_numeric(mb_strpos($name_product, 'thun'));
+				// $check = $check1 || $check2 || $check3 || $check4 || $check5 || $check6;
+				if($row['loai_san_pham'] == "Đồ dùng"){
+					$product->product_type = 2;
+				}else{
+					$product->product_type = 1;
+				}
+				$product->status=0;
+				$product->created_by = \Auth::user()->id;
+				if($product->save()){
+					$mproduct = new MProduct;
+					$mproduct->product_id	=	$product->id;
+					$mproduct->module_id	= 	0;
+					$mproduct->company_id	= 	$arr_company[$row['nha_cung_cap']];
+					$mproduct->module_type	=	'in_stock';
+					$mproduct->specification	=	$row['quy_cach'];
+					$mproduct->oum_id		=	$arr_oum[$row['don_vi_ban']];
+					$mproduct->origin_price	=	intval(str_replace(",","",$row['gia_goc']));
+					$mproduct->quantity		=	$row['so_luong'];
+					$mproduct->invest		=	intval(str_replace(",","",$row['gia_goc']))*intval($row['so_luong'])*intval($row['quy_cach']);
+					if($mproduct->save()){
+						Product::where('id','=',$product->id)->update(['check_in_stock'=>1]);
+						if(intval($row['gia_npp'])>0){
+							$sell_price = new SellPrice;
+							$sell_price->name = "Giá NPP";
+							$sell_price->price = intval($row['gia_npp']);
+							$sell_price->product_id = $product->id;
+							$sell_price->m_product_id = $mproduct->id;
+							$sell_price->save();
+						}
+						if(intval($row['gia_npp'])>0){
+							$sell_price = new SellPrice;
+							$sell_price->name = "Giá NPP";
+							$sell_price->price = intval($row['gia_npp']);
+							$sell_price->product_id = $product->id;
+							$sell_price->m_product_id = $mproduct->id;
+							$sell_price->save();
+						}
+						if(intval($row['dai_ly'])>0){
+							$sell_price = new SellPrice;
+							$sell_price->name = "Giá đại lý";
+							$sell_price->price = intval($row['dai_ly']);
+							$sell_price->product_id = $product->id;
+							$sell_price->m_product_id = $mproduct->id;
+							$sell_price->save();
+						}
+						if(intval($row['shop'])>0){
+							$sell_price = new SellPrice;
+							$sell_price->name = "Giá bán shop";
+							$sell_price->price = intval($row['shop']);
+							$sell_price->product_id = $product->id;
+							$sell_price->m_product_id = $mproduct->id;
+							$sell_price->save();
+						}
+						if(intval($row['ban_le'])>0){
+							$sell_price = new SellPrice;
+							$sell_price->name = "Giá bán lẻ";
+							$sell_price->price = intval($row['ban_le']);
+							$sell_price->product_id = $product->id;
+							$sell_price->m_product_id = $mproduct->id;
+							$sell_price->save();
+						}
+					}
+				}
+		 	}
+		 	echo "Done";
+		 	die;
+		});
+		*/
 	}
 }
