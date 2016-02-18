@@ -229,6 +229,9 @@ class ReturnSaleordersController extends Controller {
 		if($returnsaleorder->status == 0){
 			$address = Address::where('module_id','=',$returnsaleorder->id)
 						->where('module_type','=','App\ReturnSaleorder')->first();
+			if(!$address){
+				$address = new Address;
+			}
 			if($request->has('company_id')  && $returnsaleorder->company_id != $request->input('company_id')){
 				$old = Company::find($returnsaleorder->company_id);
 				if(!$old){

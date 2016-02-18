@@ -230,6 +230,10 @@ class SaleordersController extends Controller {
 		if($saleorder->status == 0){
 			$address = Address::where('module_id','=',$saleorder->id)
 						->where('module_type','=','App\Saleorder')->first();
+			if(!$address){
+				$address = new Address;
+			}
+
 			if($request->has('company_id')  && $saleorder->company_id != $request->input('company_id')){
 				$old = Company::find($saleorder->company_id);
 				if(!$old){
@@ -292,8 +296,6 @@ class SaleordersController extends Controller {
 			$saleorder->company_phone = $request->has('company_phone') ? $request->input('company_phone') : '';
 			$saleorder->company_email = $request->has('company_email') ? $request->input('company_email') : '';
 			$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
-
-			
 
 			$address->module_id  = $saleorder->id;
 			$address->module_type  = 'App\Saleorder';

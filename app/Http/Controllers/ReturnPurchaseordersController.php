@@ -217,6 +217,9 @@ class ReturnPurchaseordersController extends Controller {
 		if($returnpurchaseorder->status == 0){
 			$address = Address::where('module_id','=',$returnpurchaseorder->id)
 						->where('module_type','=','App\ReturnPurchaseorder')->first();
+			if(!$address){
+				$address = new Address;
+			}
 			if($request->has('company_id')  && $returnpurchaseorder->company_id != $request->input('company_id')){
 				$old = Company::find($returnpurchaseorder->company_id);
 				if(!$old){

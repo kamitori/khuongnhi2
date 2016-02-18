@@ -236,6 +236,9 @@ class PurchaseordersController extends Controller {
 		if($purchaseorder->status == 0){
 			$address = Address::where('module_id','=',$purchaseorder->id)
 						->where('module_type','=','App\Purchaseorder')->first();
+			if(!$address){
+				$address = new Address;
+			}
 			if($request->has('company_id')  && $purchaseorder->company_id != $request->input('company_id')){
 				$old = Company::find($purchaseorder->company_id);
 				if(!$old){
