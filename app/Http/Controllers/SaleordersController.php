@@ -794,7 +794,7 @@ class SaleordersController extends Controller {
 			}else{
 				$arr_print['arr_data']['no_cu'] = 0;
 			}
-			
+
 			$list_po = Saleorder::where('date','>=',$begin)
 					->where('date','<',$end)
 					->where('status','=',1)
@@ -872,6 +872,9 @@ class SaleordersController extends Controller {
 			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];
 
 			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
+			if($so->status==0){
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
 			$arr_print['arr_data']['toa_moi'] = number_format($arr_print['arr_data']['toa_moi']);
 			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
 			$arr_print['arr_list']['arr_sum'][] = [
