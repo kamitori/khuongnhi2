@@ -1573,7 +1573,7 @@ class ProductsController extends Controller {
 						$cell->setAlignment('right');
 						$cell->setFontWeight('bold');
 					});
-					$sheet->setCellValue('J'.($index+2),'=sum(J2:J'.($index).')');
+					$sheet->setCellValue('J'.($index+2),'=sum(J2:J'.($index+1).')');
 
 					$sheet->setBorder('A1:J'.($index+2), 'thin');
 				});
