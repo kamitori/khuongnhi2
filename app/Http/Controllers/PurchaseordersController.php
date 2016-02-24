@@ -331,6 +331,10 @@ class PurchaseordersController extends Controller {
 			foreach ($arr_mproduct as $key => $mproduct) {
 				$purchaseorder->sum_amount = $purchaseorder->sum_amount + $mproduct['invest'];
 				$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+				if(!$product_stock){
+					$product_stock = new ProductStock;
+					$product_stock->in_stock = 0;
+				}
 				$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
 				if($product_stock->in_stock < 0){
 					$check_save_in_stock = false;
@@ -346,6 +350,10 @@ class PurchaseordersController extends Controller {
 								->get()->toArray();
 				foreach ($arr_mproduct as $key => $mproduct) {
 					$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+					if(!$product_stock){
+						$product_stock = new ProductStock;
+						$product_stock->in_stock = 0;
+					}
 					$product_stock->in_stock = $product_stock->in_stock - ($mproduct['quantity']*$mproduct['specification']);
 					$product_stock->save();
 				}
@@ -359,6 +367,10 @@ class PurchaseordersController extends Controller {
 				if($purchaseorder->status){
 					foreach ($arr_mproduct as $key => $mproduct) {
 						$product_stock = ProductStock::where('m_product_id','=',$mproduct['id'])->first();
+						if(!$product_stock){
+							$product_stock = new ProductStock;
+							$product_stock->in_stock = 0;
+						}
 						$product_stock->in_stock = $product_stock->in_stock +  ($mproduct['quantity']*$mproduct['specification']);
 						$product_stock->save();
 					}
