@@ -678,6 +678,7 @@ class PurchaseordersController extends Controller {
 	}
 
 	public function postUpdateMproduct(Request $request){
+		\DB::enableQueryLog();
 		$arr_return= array('status'=>'error','invest'=>0);
 		$id = $request->has('id')?$request->input('id'):0;
 		$log="";
@@ -706,7 +707,11 @@ class PurchaseordersController extends Controller {
 			$mproduct->specification =  $request->has('specification')?$request->input('specification'):0;
 			$old_quantity = $mproduct->quantity ;
 			$mproduct->quantity =  $request->has('quantity')?$request->input('quantity'):0;
-			$product_stock = ProductStock::where('m_product_id','=',$mproduct->id)->first();
+			$product_stock = ProductStock::where('m_product_id',"=",intval($mproduct->id))->first();
+			if(!$product_stock){
+				$product_stock = new ProductStock;
+				$product_stock->in_stock = 0;
+			}
 			$product_stock->in_stock = $product_stock->in_stock + ($mproduct->quantity - $old_quantity);
 			$mproduct->invest = $mproduct->specification* $mproduct->quantity* $mproduct->origin_price;
 			// if($product_stock->in_stock >=0){
