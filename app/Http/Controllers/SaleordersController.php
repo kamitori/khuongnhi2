@@ -298,7 +298,7 @@ class SaleordersController extends Controller {
 			$address_id = isset($saleorder->address_id) ? $saleorder->address_id : 0;
 
 			$address->module_id  = $saleorder->id;
-			$address->module_type  = 'App\Saleorder';
+			$address->module_type  = 'App\\Saleorder';
 			$address->address  = $request->has('address') ? $request->input('address') : '';
 			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
 			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';

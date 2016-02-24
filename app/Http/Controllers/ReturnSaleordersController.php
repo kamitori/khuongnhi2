@@ -299,7 +299,7 @@ class ReturnSaleordersController extends Controller {
 			
 
 			$address->module_id  = $returnsaleorder->id;
-			$address->module_type  = 'App\ReturnSaleorder';
+			$address->module_type  = 'App\\ReturnSaleorder';
 			$address->address  = $request->has('address') ? $request->input('address') : '';
 			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
 			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';

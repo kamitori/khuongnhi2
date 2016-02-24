@@ -1566,15 +1566,16 @@ class ProductsController extends Controller {
 						$arr_tmp[] = $value['origin_price']*$value['in_stock'];
 						$sheet->appendRow($arr_tmp);
 					}
-					$sheet->mergeCells('A'.($index+1).':'.'I'.($index+1));
-					$sheet->setCellValue('A'.($index+1),'Tổng vốn lưu:');
-					$sheet->cell('A'.($index+1), function($cell){
+
+					$sheet->mergeCells('A'.($index+2).':'.'I'.($index+2));
+					$sheet->setCellValue('A'.($index+2),'Tổng vốn lưu:');
+					$sheet->cell('A'.($index+2), function($cell){
 						$cell->setAlignment('right');
 						$cell->setFontWeight('bold');
 					});
-					$sheet->setCellValue('J'.($index+1),'=sum(J2:J'.($index).')');
+					$sheet->setCellValue('J'.($index+2),'=sum(J2:J'.($index).')');
 
-					$sheet->setBorder('A1:J'.($index+1), 'thin');
+					$sheet->setBorder('A1:J'.($index+2), 'thin');
 				});
 			})->export('xls');
 			die;
@@ -1582,7 +1583,7 @@ class ProductsController extends Controller {
 	}
 
 	public function anyImportProduct(){
-		/*
+		
 		\Excel::load('kho-2015.xls', function($reader) {
 		    $results = $reader->get();
 		    $company = Company::getDistributeList()->get()->toArray();
@@ -1638,14 +1639,6 @@ class ProductsController extends Controller {
 							$sell_price->m_product_id = $mproduct->id;
 							$sell_price->save();
 						}
-						if(intval($row['gia_npp'])>0){
-							$sell_price = new SellPrice;
-							$sell_price->name = "Giá NPP";
-							$sell_price->price = intval($row['gia_npp']);
-							$sell_price->product_id = $product->id;
-							$sell_price->m_product_id = $mproduct->id;
-							$sell_price->save();
-						}
 						if(intval($row['dai_ly'])>0){
 							$sell_price = new SellPrice;
 							$sell_price->name = "Giá đại lý";
@@ -1676,6 +1669,6 @@ class ProductsController extends Controller {
 		 	echo "Done";
 		 	die;
 		});
-		*/
+		
 	}
 }

@@ -286,7 +286,7 @@ class ReturnPurchaseordersController extends Controller {
 			
 
 			$address->module_id  = $returnpurchaseorder->id;
-			$address->module_type  = 'App\ReturnPurchaseorder';
+			$address->module_type  = 'App\\ReturnPurchaseorder';
 			$address->address  = $request->has('address') ? $request->input('address') : '';
 			$address->town_city  = $request->has('town_city') ? $request->input('town_city') : '';
 			$address->zip_postcode  = $request->has('zip_postcode') ? $request->input('zip_postcode') : '';
