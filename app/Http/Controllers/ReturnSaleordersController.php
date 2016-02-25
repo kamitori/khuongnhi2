@@ -729,9 +729,9 @@ class ReturnSaleordersController extends Controller {
 						'arr_head' => 	[
 								['text'=>'Mã','class'=>''],
 								['text'=>'Tên sản phẩm','class'=>''],
-								['text'=>'Đơn vị','class'=>''],
-								['text'=>'Quy cách','class'=>''],
-								['text'=>'Số lượng','class'=>''],
+								['text'=>'Đơn vị','class'=>'center'],
+								['text'=>'Quy cách','class'=>'center'],
+								['text'=>'Số lượng','class'=>'center'],
 								['text'=>'Đơn giá','class'=>'money'],
 								['text'=>'Thành tiền','class'=>'money']
 								],

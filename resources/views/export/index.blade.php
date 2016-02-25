@@ -48,7 +48,12 @@
 			padding: 4px;
 			font-size: 23px;
 			font-family:arial,helvetica,sans-serif;
+		}
+		table.table_list tr td{
 			text-align: left;
+		}
+		table.table_list tr th.center,table.table_list tr td.center{
+			text-align: center;
 		}
 		table.table_list tr th{
 			font-size: 25px;
