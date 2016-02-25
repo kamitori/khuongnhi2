@@ -97,7 +97,8 @@ class ExportsController extends Controller {
 		$name = $request->has('name')?$request->input('name'):0;
 		$name = Str::slug($name,'_');
 		if($id){
-			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/exports/try/'.$id.'?phantomjs='.md5('phantomjs').' '.public_path().'\\upload\\'.$name.'.pdf 740px*1100px 0.96';
+			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/exports/try/'.$id.'?phantomjs='.md5('phantomjs').' '.public_path().'\\upload\\'.$name.'.pdf 8.3in*11.7in 0.96';
+			echo $cmd;die;
 			if(exec($cmd)){
 				$arr_return['status'] = 'success';
 				$arr_return['link'] = URL.'/upload/'.$name.'.pdf';

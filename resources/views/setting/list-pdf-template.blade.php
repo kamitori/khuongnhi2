@@ -15,8 +15,8 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<strong>Kiểu in:</strong>
 				<select id="select_oriental" >
-					<option value="potrait" data-width="780">Kiểu đứng</option>
-					<option value="landscape" data-width="1100">Kiểu ngang</option>
+					<option value="potrait" data-width="996">Kiểu đứng</option>
+					<option value="landscape" data-width="1404">Kiểu ngang</option>
 				</select>
 				<input type="hidden" value="" id="id_template">
 				<textarea id="edit_pdf"></textarea>
@@ -42,8 +42,8 @@
 <script>
 	$(function(){
 		CKEDITOR.basePath = '{{URL}}/scripts/ckeditor/';
-		CKEDITOR.config.width = '780px';
-		CKEDITOR.config.height = '350px';
+		CKEDITOR.config.width = '996px';
+		CKEDITOR.config.height = '450px';
 		CKEDITOR.replace('edit_pdf', {
 			"filebrowserImageUploadUrl": "scripts/ckeditor/plugins/imgupload/imgupload.php"
 		});
@@ -72,9 +72,9 @@
 					}
 				})
 				if(data.oriental == 'landscape'){
-					$("#cke_edit_pdf").width("1100px");
+					$("#cke_edit_pdf").width("1404px");
 				}else{
-					$("#cke_edit_pdf").width("780px");
+					$("#cke_edit_pdf").width("996px");
 				}
 			}
 		});

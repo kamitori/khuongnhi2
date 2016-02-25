@@ -9,6 +9,7 @@
 	<style type="text/css" media="screen">
 		body{
 			box-shadow: 2px 5px 15px 2px #999;
+			font-size: 1.5em;
 		}
 		.section{
 			padding: 20px;
@@ -24,15 +25,15 @@
 		body{
 			<?php if(!isset($orential)) $orential = 'potrait'; ?>
 			@if($orential=='potrait')
-			width:740px;
-			min-height: 1000px;
+			width:996px;
+			min-height: 1304px;
 			@else
-			min-height:600px;
-			width: 1100px;
+			min-height:996px;
+			width: 1404px;
 			@endif
 			margin: auto;
 			margin-top:20px;
-			margin-bottom:30px;
+			margin-bottom:20px;
 			font-family:arial,helvetica,sans-serif;
 		}
 		table.table_list{
