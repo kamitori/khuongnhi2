@@ -98,7 +98,6 @@ class ExportsController extends Controller {
 		$name = Str::slug($name,'_');
 		if($id){
 			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/exports/try/'.$id.'?phantomjs='.md5('phantomjs').' '.public_path().'\\upload\\'.$name.'.pdf 8.3in*11.7in 0.96';
-			echo $cmd;die;
 			if(exec($cmd)){
 				$arr_return['status'] = 'success';
 				$arr_return['link'] = URL.'/upload/'.$name.'.pdf';
@@ -172,11 +171,10 @@ class ExportsController extends Controller {
 		$file_name = md5($time).'.html';
 		file_put_contents(public_path().'\\cache\\'.$file_name, $content);
 		if($oriental=='landscape'){
-			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 1100px*740px 0.96';
-			echo $cmd;die;
+			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 11.7in*8.3in 0.96';
 		}
 		else{
-			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 740px*1100px 0.96';
+			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 8.3in*11.7in 0.96';
 		}
 		if(exec($cmd)){
 			return   URL.'/upload/'.$name.'_'.$time.'.pdf';

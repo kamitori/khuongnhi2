@@ -46,7 +46,7 @@
 		table.table_list tr th,table.table_list tr td{
 			border: 1px solid #777;
 			padding: 4px;
-			font-size: 18px;
+			font-size: 20px;
 			font-family:arial,helvetica,sans-serif;
 			text-align: center;
 		}
