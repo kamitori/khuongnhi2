@@ -30,15 +30,15 @@ if (system.args.length < 3 || system.args.length > 5) {
         						 header: {
 							height: "0.5cm",
 							contents: phantom.callback(function(pageNum, numPages) {
-								return "<span style='float:right;font-size:9px;font-family:arial,helvetica,sans-serif;'>" + time + "</span>";
+								return "<span style='float:right;font-size:12px;font-family:arial,helvetica,sans-serif;'>" + time + "</span>";
 							})
 						},
 						footer: {
 							height: "0.5cm",
 							contents: phantom.callback(function(pageNum, numPages) {
 								if(numPages>1)
-									return "<span style='float:right;font-size:9px;font-family:arial,helvetica,sans-serif;'>" + pageNum + " / " + numPages + "</span>";
-								else return "<span style='float:right;font-size:9px;font-family:arial,helvetica,sans-serif;'>&nbsp;</span>"
+									return "<span style='float:right;font-size:12px;font-family:arial,helvetica,sans-serif;'>" + pageNum + " / " + numPages + "</span>";
+								else return "<span style='float:right;font-size:12px;font-family:arial,helvetica,sans-serif;'>&nbsp;</span>"
 							})
 						}
 

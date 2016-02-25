@@ -869,12 +869,12 @@ class SaleordersController extends Controller {
 				$sum_amount += $value['sell_price']*$value['quantity']*$value['specification'];
 			}
 			$arr_print['arr_data']['toa_moi'] = $sum_amount;
-			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];
-
-			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
 			if($so->status==0){
 				$arr_print['arr_data']['no_cu'] = 0;
 			}
+			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];
+
+			$arr_print['arr_data']['no_cu'] = number_format($arr_print['arr_data']['no_cu']);
 			$arr_print['arr_data']['toa_moi'] = number_format($arr_print['arr_data']['toa_moi']);
 			$arr_print['arr_data']['tong_cong'] = number_format($arr_print['arr_data']['tong_cong']);
 			$arr_print['arr_list']['arr_sum'][] = [
