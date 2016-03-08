@@ -822,14 +822,16 @@ class SaleordersController extends Controller {
 			$list_paid = Paid::where('date','>=',$begin)
 						->where('date','<',$end)
 						->where('company_id','=',$so->company_id)
-						->where('type_paid','=','distribute')
+						->where('type_paid','=','customer')
 						->get()->toArray();
+			
 			foreach ($list_paid as $key => $value) {
 				$list_order[$key_order]['id'] = $value['id'];
 				$list_order[$key_order]['date'] =  $value['date'];
 				$list_order[$key_order]['sum_amount'] =  -$value['sum_paid'];
 				$key_order++;
 			}
+
 			$date = array();
 			foreach ($list_order as $key => $value) {
 				$date[$key] = $value['date'];

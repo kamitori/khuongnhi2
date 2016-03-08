@@ -810,7 +810,7 @@ class ReturnSaleordersController extends Controller {
 			$list_paid = Paid::where('date','>=',$begin)
 						->where('date','<',$end)
 						->where('company_id','=',$rso->company_id)
-						->where('type_paid','=','distribute')
+						->where('type_paid','=','customer')
 						->get()->toArray();
 			foreach ($list_paid as $key => $value) {
 				$list_order[$key_order]['id'] = $value['id'];
