@@ -1291,19 +1291,23 @@ $(function()
 		value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$(this).text(value);
 	})
-	$("[data-type=currency]").each(function(){
-		$(this).prop('autocomplete','off');
-		$(this).prop('autocorrect','off');
-		$(this).prop('autocapitalize','off');
-		$(this).prop('spellcheck','false');
-		value = $(this).text().replace(',','')
-		while(value.indexOf(',')>0){
-			value = value.replace(',','')
-		}
-		value = parseInt(value);
-		value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$(this).text(value);
-	})
+	// $("[data-type=currency]").each(function(){
+	// 	$(this).prop('autocomplete','off');
+	// 	$(this).prop('autocorrect','off');
+	// 	$(this).prop('autocapitalize','off');
+	// 	$(this).prop('spellcheck','false');
+	// 	value = $(this).text().replace(',','')
+	// 	while(value.indexOf(',')>0){
+	// 		value = value.replace(',','')
+	// 	}
+	// 	value = parseInt(value);
+	// 	value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	// 	if($(this).attr('data-name')){
+	// 		$(this).text($(this).attr('data-name') +" - "+value);
+	// 	}else{
+	// 		$(this).text(value);
+	// 	}
+	// })
 	$(".table-list-edit tbody tr td[data-type=currency]").each(function(){
 		value = $(this).text().replace(',','')
 		while(value.indexOf(',')>0){
@@ -1473,7 +1477,11 @@ function datatype_currency(){
 		}
 		value = parseInt(value);
 		value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$(this).text(value);
+		if($(this).attr('data-name')){
+			$(this).text($(this).attr('data-name') +" - "+value);
+		}else{
+			$(this).text(value);
+		}
 	})
 }
 

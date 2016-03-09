@@ -144,7 +144,7 @@ class ReceiptsController extends Controller {
 
 		foreach ($list_order as $key => $value) {
 			if($key==0){
-				if($receipt_month_prev){
+				if(isset($receipt_month_prev)){
 					$receipt_month_prev= $receipt_month_prev->toArray();
 					$list_order[$key]['no_cu']=$receipt_month_prev['con_lai'];
 				}
@@ -295,8 +295,8 @@ class ReceiptsController extends Controller {
 		}
 		foreach ($list_order as $key => $value) {
 			if($key==0){
-				if($receipt_month_prev){
-					$receipt_month_prev= $receipt_month_prev->toArray();
+				if(isset($receipt_month_prev)){
+					$receipt_month_prev = $receipt_month_prev->toArray();
 					$list_order[$key]['no_cu']=$receipt_month_prev['con_lai'];
 				}
 			}else{

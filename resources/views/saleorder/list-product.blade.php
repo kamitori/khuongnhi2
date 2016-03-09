@@ -51,7 +51,7 @@
 		@else
 		<select class="sell_price" name="sell_price" id="sell_price">
 			@foreach($product['getsellprices'] as $sellprice)
-			<option value="{{$sellprice['price']}}"  {{$product['sell_price']==$sellprice['price']?'selected':''}} data-type="currency">
+			<option value="{{$sellprice['price']}}"  {{$product['sell_price']==$sellprice['price']?'selected':''}} data-type="currency" data-name="{{$sellprice['name']}}">
 				{{$sellprice['price']}}
 			</option>
 		 	@endforeach

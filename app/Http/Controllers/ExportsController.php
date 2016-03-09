@@ -112,7 +112,7 @@ class ExportsController extends Controller {
 
 	public static function getCreatePrintPdf($arr_print,$id_template,$name,$oriental='potrait'){
 		$pdf = PdfTemplate::find($id_template)->toArray();
-		pr($pdf);
+		// pr($pdf);
 		$oriental = $pdf['oriental'];
 		
 		$arr_body = $arr_print['arr_list']['arr_body'];
