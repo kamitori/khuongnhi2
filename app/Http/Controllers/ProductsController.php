@@ -2061,4 +2061,31 @@ class ProductsController extends Controller {
 		echo "done";die;
 		
 	}
+
+	public function anyImportPrice(){
+		
+		\Excel::load('gia.xls', function($reader) {
+		    	$results = $reader->get();
+		 	foreach ($results as $row) {
+		 		$row = $row->toArray();
+		 		$sku  = $row['sku'];
+		 		$product = Product::where('sku','=',$sku)->first();
+		 		$mproducts = MProduct::where('product_id','=',$product->id)
+		 						->where('module_type','in_stock')
+		 						->orwhere('module_type','App\\Purchaseorder')
+		 						->get();
+		 		foreach ($mproducts as $key => $value) {
+					$sell_price = new SellPrice;
+					$sell_price->name = "Giá hot cấp 2";
+					$sell_price->price = intval($row['gia_hot_cap_2']);
+					$sell_price->product_id = $product->id;
+					$sell_price->m_product_id = $value->id;
+					$sell_price->save();
+		 		}
+		 	 }
+		});
+		echo "done";
+		die;
+		
+	}
 }
