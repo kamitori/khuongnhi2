@@ -2063,7 +2063,7 @@ class ProductsController extends Controller {
 	}
 
 	public function anyImportPrice(){
-		
+		set_time_limit(0);
 		\Excel::load('gia.xls', function($reader) {
 		    	$results = $reader->get();
 		 	foreach ($results as $row) {
@@ -2071,8 +2071,10 @@ class ProductsController extends Controller {
 		 		$sku  = $row['sku'];
 		 		$product = Product::where('sku','=',$sku)->first();
 		 		$mproducts = MProduct::where('product_id','=',$product->id)
-		 						->where('module_type','in_stock')
-		 						->orwhere('module_type','App\\Purchaseorder')
+		 						->where(function ($query){
+									$query->where('module_type','in_stock')
+		 						          ->orwhere('module_type','App\\Purchaseorder');
+								})
 		 						->get();
 		 		foreach ($mproducts as $key => $value) {
 					$sell_price = new SellPrice;
