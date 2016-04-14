@@ -1974,7 +1974,6 @@ class ProductsController extends Controller {
 						IF(SELECT EXISTS(SELECT 1 FROM receipt_months WHERE month = MONTH(NEW.date) and year = YEAR(NEW.date) and type_receipt='distribute'  and `company_id`=NEW.company_id and NEW.company_id > 0 LIMIT 1)=0) THEN
 							INSERT INTO `khuongnhi`.`receipt_months` (`id`, `month`, `year`, `type_receipt`, `sum_amount`, `paid`, `no_cu`, `con_lai`, `created_at`, `updated_at`,`company_id`) VALUES (NULL, MONTH(NEW.date), YEAR(NEW.date), 'distribute', NEW.sum_amount, '0', '0', '0', NOW(), NOW(),NEW.company_id);
 						ELSE
-
 							UPDATE `khuongnhi`.`receipt_months` SET 
 							`sum_amount`=`sum_amount` - NEW.sum_amount,
 							`con_lai`= `sum_amount`+`no_cu`- `paid`
@@ -1982,7 +1981,6 @@ class ProductsController extends Controller {
 							AND `year` = YEAR(NEW.date)
 							AND `type_receipt` = 'distribute'
 							AND `company_id` = NEW.company_id;
-
 						END IF;
 					END IF;
 					IF(NEW.status =0 AND OLD.status =1) THEN

@@ -837,7 +837,7 @@ class PurchaseordersController extends Controller {
 			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
 			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
 
-			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distributes')
 								->where('company_id','=',$po->company_id)
 								->where(function($query) use ($month,$year){
 									$query->where(function($query2) use ($month,$year){

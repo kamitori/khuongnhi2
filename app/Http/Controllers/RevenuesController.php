@@ -729,7 +729,7 @@ class RevenuesController extends Controller {
 		}
 		$arr_month_year = ReceiptMonth::select('year','month')
 						->groupBy('year','month')
-						->where('type_receipt','=','customer')
+						->where('type_receipt','=','distribute')
 						->orderBy('year','DESC')
 						->orderBy('month','DESC')
 						->get()->toArray();

@@ -17,11 +17,11 @@ class MProduct extends Model {
 	}
 	public function sellprices()
 	{
-		return $this->hasMany('App\SellPrice','m_product_id')->orderBy('price');
+		return $this->hasMany('App\SellPrice','m_product_id')->orderBy('price')->orderBy('id');
 	}
 
 	public function getsellprices()
 	{
-		return $this->hasMany('App\SellPrice','m_product_id','m_product_id')->orderBy('price');
+		return $this->hasMany('App\SellPrice','m_product_id','m_product_id')->orderBy('price')->orderBy('id');
 	}
 }

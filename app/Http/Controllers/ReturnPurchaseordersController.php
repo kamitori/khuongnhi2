@@ -747,7 +747,7 @@ class ReturnPurchaseordersController extends Controller {
 			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
 			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
 
-			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','customer')
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distribute')
 								->where('company_id','=',$rpo->company_id)
 								->where(function($query) use ($month,$year){
 									$query->where(function($query2) use ($month,$year){
@@ -761,6 +761,7 @@ class ReturnPurchaseordersController extends Controller {
 								->orderBy('month','desc')
 								->limit(1);
 			$receipt_month_prev = $receipt_month_prev->first();
+
 			if($receipt_month_prev){
 				$arr_print['arr_data']['no_cu'] = $receipt_month_prev->con_lai;
 			}else{
