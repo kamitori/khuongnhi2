@@ -73,7 +73,6 @@ class ReceiptsController extends Controller {
 					->where('status','=',1)
 					->where('company_id','=',$company_id)
 					->get()->toArray();
-
 		foreach ($list_rpo as $key => $value) {
 			$list_order[$key_order]['id'] = $value['id'];
 			$list_order[$key_order]['date'] =  $value['date'];
@@ -129,14 +128,13 @@ class ReceiptsController extends Controller {
 							->orderBy('month','desc')
 							->limit(1);
 		$receipt_month_prev = $receipt_month_prev->first();
-
 		if($month!='all' && $receipt_month_prev){
 			$receipt_current = ReceiptMonth::where('year','=',$year)
 					->where('month','=',$month)
 					->where('company_id','=',$company_id)
 					->where('type_receipt','=','distribute')
 					->first();
-			$receipt_current->no_cu = abs($receipt_month_prev->con_lai);
+			$receipt_current->no_cu = $receipt_month_prev->con_lai;
 			$receipt_current->con_lai = $receipt_current->sum_amount + $receipt_current->no_cu - $receipt_current->paid;
 			$receipt_current->save();
 		}
@@ -289,7 +287,7 @@ class ReceiptsController extends Controller {
 					->where('company_id','=',$company_id)
 					->where('type_receipt','=','customer')
 					->get()->first();
-			$receipt_current->no_cu = abs($receipt_month_prev->con_lai);
+			$receipt_current->no_cu = $receipt_month_prev->con_lai;
 			$receipt_current->con_lai = $receipt_current->sum_amount + $receipt_current->no_cu - $receipt_current->paid;
 			$receipt_current->save();
 		}
@@ -1013,5 +1011,52 @@ class ReceiptsController extends Controller {
 			return redirect($link);
 		}
 		die;
+	}
+
+	static public function anyUpdateReceiptMonth(){
+		$year = intval(date('Y'));
+		$month = intval(date('m'));
+
+		// Customer
+		$list_order = ReceiptMonth::select('receipt_months.*','companies.name as company_name','companies.id as company_id')
+					->where('year','=',$year)
+					->where('month','=',$month)
+					->where('type_receipt','=','customer')
+					->leftJoin('companies','companies.id','=','receipt_months.company_id')
+					->orderBy('companies.name')
+					->get()->toArray();
+		foreach ($list_order as $key => $value) {
+			ReceiptMonth::where('year','=',$value['year'])
+					->where('month','=',$value['month'])
+					->where('company_id','=',$value['company_id'])
+					->where('type_receipt','=',$value['type_receipt'])
+					->update([
+							'con_lai' => ($value['sum_amount'] - $value['paid'] + $value['no_cu'])
+						]);
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// Distribute
+		$list_order = ReceiptMonth::select('receipt_months.*','companies.name as company_name','companies.id as company_id')
+					->where('year','=',$year)
+					->where('month','=',$month)
+					->where('type_receipt','=','distribute')
+					->leftJoin('companies','companies.id','=','receipt_months.company_id')
+					->orderBy('companies.name')
+					->get()->toArray();
+		foreach ($list_order as $key => $value) {
+			ReceiptMonth::where('year','=',$value['year'])
+					->where('month','=',$value['month'])
+					->where('company_id','=',$value['company_id'])
+					->where('type_receipt','=',$value['type_receipt'])
+					->update([
+							'con_lai' => ($value['sum_amount'] - $value['paid'] + $value['no_cu'])
+						]);
+			$list_order[$key]['con_lai']=$list_order[$key]['sum_amount'] - $list_order[$key]['paid'] + $list_order[$key]['no_cu'];
+		}
+		date_default_timezone_set('Asia/Saigon');
+		return date('d-m-Y G:i:s')."\n";
 	}
 }	
