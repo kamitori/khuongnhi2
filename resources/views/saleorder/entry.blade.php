@@ -218,6 +218,7 @@
 							<button class="btn btn-primary btn-small btn-icon"  onclick="popup_product();"><i class="fa fa-plus"></i>Thêm sản phẩm</button>
 							@endif
 							<button class="btn btn-primary btn-small btn-icon" onclick="print_pdf();"><i class="fa fa-print"></i>Xuất PDF</button>
+							<button class="btn btn-primary btn-small btn-icon" onclick="print_excel();"><i class="fa fa-print"></i>Xuất Excel</button>
 						</div>
 					</div>
 					<table class="table table-bordered table-condensed table-striped table-primary table-vertical-center sorted_table table-list-edit">
@@ -602,6 +603,9 @@
 
 		function print_pdf(){
 			window.open('{{URL}}/saleorders/export-pdf','_blank');
+		}
+		function print_excel(){
+			window.open('{{URL}}/saleorders/export-excel','_blank');
 		}
 
 	</script>

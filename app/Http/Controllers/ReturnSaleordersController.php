@@ -832,6 +832,9 @@ class ReturnSaleordersController extends Controller {
 			foreach ($arr_cache as $key => $value) {
 				$sum_amount += $value['amount'];
 			}
+			if($rso->status==0){
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
 			$arr_print['arr_data']['toa_moi'] = $sum_amount;
 			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] - $arr_print['arr_data']['toa_moi'];
 

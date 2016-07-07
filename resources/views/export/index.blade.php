@@ -28,8 +28,8 @@
 			width:996px;
 			min-height: 1304px;
 			@else
-			min-height:996px;
-			width: 1404px;
+			height:996px;
+			min-width: 1404px;
 			@endif
 			margin: auto;
 			margin-top:20px;
@@ -41,8 +41,9 @@
 			width: 100%;
 			margin: auto;
 			border-spacing: 0;
+			margin-left: 1px;
 		}
-
+		
 		table.table_list tr th,table.table_list tr td{
 			border: 1px solid #777;
 			padding: 4px;

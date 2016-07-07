@@ -837,7 +837,7 @@ class PurchaseordersController extends Controller {
 			$arr_print['arr_data']['address'] .= $arr_dress->town_city?$arr_dress->town_city.', ':'';
 			$arr_print['arr_data']['address'] .= $arr_dress->province_name?$arr_dress->province_name:'';
 
-			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distributes')
+			$receipt_month_prev = ReceiptMonth::where('type_receipt','=','distribute')
 								->where('company_id','=',$po->company_id)
 								->where(function($query) use ($month,$year){
 									$query->where(function($query2) use ($month,$year){
@@ -905,6 +905,9 @@ class PurchaseordersController extends Controller {
 			$sum_invest = 0;
 			foreach ($arr_cache as $key => $value) {
 				$sum_invest += $value['invest'];
+			}
+			if($po->status==0){
+				$arr_print['arr_data']['no_cu'] = 0;
 			}
 			$arr_print['arr_data']['toa_moi'] = $sum_invest;
 			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] + $arr_print['arr_data']['toa_moi'];

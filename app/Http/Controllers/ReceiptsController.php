@@ -1059,4 +1059,55 @@ class ReceiptsController extends Controller {
 		date_default_timezone_set('Asia/Saigon');
 		return date('d-m-Y G:i:s')."\n";
 	}
+
+	static public function anyUpdateReceiptMonthCompany(){
+		$list_company = Company::get()->toArray();
+		foreach ($list_company as $key2 => $value2) {
+			$company_id = $value2['id'];
+			echo $company_id;
+			$list_distribute = ReceiptMonth::where("company_id","=",$company_id)
+									  ->where('type_receipt','=','distribute')
+									  ->orderBy('year','ASC')
+									  ->orderBy('month','ASC')
+									  ->get()->toArray();
+			if(count($list_distribute)){
+				foreach ($list_distribute as $key => $value) {
+					if($key==0){
+						$current = ReceiptMonth::where("id","=",$value['id'])->first();
+						$current->con_lai = $current->sum_amount - $current->paid + $current->no_cu;
+						$current->save();
+					}else{
+						$current = ReceiptMonth::where("id","=",$value['id'])->first();
+						$current->no_cu = $list_distribute[$key-1]['con_lai'];
+						$current->con_lai = $current->sum_amount - $current->paid + $current->no_cu;
+						$current->save();
+					}
+				}
+			}
+
+			$list_customer = ReceiptMonth::where("company_id","=",$company_id)
+									  ->where('type_receipt','=','customer')
+									  ->orderBy('year','ASC')
+									  ->orderBy('month','ASC')
+									  ->get()->toArray();
+			if(count($list_customer)){
+				foreach ($list_customer as $key => $value) {
+					if($key==0){
+						$current = ReceiptMonth::where("id","=",$value['id'])->first();
+						$current->con_lai = $current->sum_amount - $current->paid + $current->no_cu;
+						$current->save();
+					}else{
+						$current = ReceiptMonth::where("id","=",$value['id'])->first();
+						$current->no_cu = $list_customer[$key-1]['con_lai'];
+						$current->con_lai = $current->sum_amount - $current->paid + $current->no_cu;
+						$current->save();
+					}
+				}
+			}
+		}
+		
+		echo "Done!";
+		die;
+	}
+	
 }	

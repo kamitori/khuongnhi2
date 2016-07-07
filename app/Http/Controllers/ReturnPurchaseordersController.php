@@ -817,6 +817,9 @@ class ReturnPurchaseordersController extends Controller {
 			foreach ($arr_cache as $key => $value) {
 				$sum_invest += $value['invest'];
 			}
+			if($rpo->status==0){
+				$arr_print['arr_data']['no_cu'] = 0;
+			}
 			$arr_print['arr_data']['toa_moi'] = $sum_invest;
 			$arr_print['arr_data']['tong_cong'] = $arr_print['arr_data']['no_cu'] - $arr_print['arr_data']['toa_moi'];
 

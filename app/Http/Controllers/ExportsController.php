@@ -125,7 +125,7 @@ class ExportsController extends Controller {
 						<thead>
 							<tr>';
 			foreach ($arr_head as $key => $value) {
-				$table_list.='<th class="'.$value['class'].'">'.$value['text'].'</th>';
+				$table_list.='<th class="'.$value['class'].'">'.str_replace(" ", "&nbsp;", $value['text']).'</th>';
 			}
 			$table_list .='			</tr>
 						</thead>
@@ -176,8 +176,85 @@ class ExportsController extends Controller {
 		else{
 			$cmd = public_path().'\\phantomjs\\phantomjs '. public_path().'\\phantomjs\\rasterize.js '.URL.'/cache/'.$file_name.' '.public_path().'\\upload\\'.$name.'_'.$time.'.pdf 8.3in*11.7in 0.96';
 		}
+		// echo $cmd;die;
 		if(exec($cmd)){
 			return   URL.'/upload/'.$name.'_'.$time.'.pdf';
 		}
+	}
+
+	public static function getCreatePrintExcel($arr_print,$id_template,$name){
+
+		\Excel::create($name, function($excel) use ($arr_print,$id_template,$name){
+				$excel->sheet($name, function($sheet) use ($arr_print,$id_template,$name){
+					$cache = \Cache::get('list_product'.\Auth::user()->id);
+					$so_cot = count($arr_print['arr_list']['arr_head']);
+					$so_dong = count($arr_print['arr_list']['arr_body']);
+					$arr_header = array();
+					$arr_columns = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N");
+					$arr_format = array();
+					$arr_align = array();
+					foreach ($arr_print['arr_list']['arr_head'] as $key => $value) {
+						$arr_header[] = $value['text'];
+						if($value['class']=='money'){
+							$arr_format[$arr_columns[$key]]= '#,##0';
+						}
+						if($value['class']=='center'){
+							$sheet->getStyle($arr_columns[$key].'1:'.$arr_columns[$key].($so_dong+1))->getAlignment()->applyFromArray(
+							    	array('horizontal' => 'center')
+							);
+						}
+					}
+					
+					$sheet->row(1, $arr_header);
+					$sheet->setColumnFormat($arr_format);
+					$sheet->cell('A1:'.$arr_columns[$so_cot-1].'1', function($cell){
+						$cell->setFontWeight('bold');
+					});
+					$index=0;
+					foreach ($arr_print['arr_list']['arr_body'] as $key => $value) {
+						$index++;
+						$arr_tmp = array();
+						$arr_tmp[] = $index;
+						foreach ($arr_print['arr_list']['arr_key'] as $key2 => $value2) {
+							$arr_tmp[] = $value[$value2];
+						}
+						$sheet->appendRow($index+1,$arr_tmp);
+					}
+					$sheet->setStyle(array(
+					    'font' => array(
+					        'name'      =>  'Arial',
+					        'size'      =>  11
+					    )
+					));
+					if(isset($arr_print['arr_list']['arr_sum'])){
+						foreach ($arr_print['arr_list']['arr_sum'] as $key => $value) {
+							
+							$sheet->mergeCells('A'.($so_dong+2).':'.$arr_columns[$value[0]['colspan']].''.($so_dong+2).'');
+							$sheet->cell('A'.($so_dong+2),function($cell) use ($value){
+								$cell->setValue($value[0]['value']) ;
+								$cell->setAlignment('right') ;
+								$cell->setFontWeight(true);
+								$cell->setFontSize(13);
+							});
+							$sheet->cell($arr_columns[$value[0]['colspan']+1].($so_dong+2),function($cell) use ($so_dong,$so_cot,$arr_columns){
+								$cell->setValue('=sum('.$arr_columns[$so_cot-1].'2:'.$arr_columns[$so_cot-1].($so_dong+1).')');
+								$cell->setFontWeight(true);
+ 								$cell->setFontSize(13);
+							});							
+						}
+					}
+					$sheet->setBorder('A1:'.$arr_columns[$so_cot-1].($so_dong+2),'thin');
+					// $sheet->mergeCells('A'.($index+2).':'.'I'.($index+2));
+					// $sheet->setCellValue('A'.($index+2),'Tổng vốn lưu:');
+					// $sheet->cell('A'.($index+2), function($cell){
+					// 	$cell->setAlignment('right');
+					// 	$cell->setFontWeight('bold');
+					// });
+					// $sheet->setCellValue('J'.($index+2),'=sum(J2:J'.($index+1).')');
+
+					// $sheet->setBorder('A1:J'.($index+2), 'thin');
+				});
+			})->export('xlsx');
+			die;
 	}
 }
